@@ -1,0 +1,428 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>设计模式之桥接模式 | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="设计模式之桥接模式">
+            
+	            设计模式之桥接模式
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/博客列表">
+            博客列表
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/设计模式" title='设计模式'>
+                        设计模式
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/04/11</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>桥接模式</p>
+</blockquote>
+<p>1.1定义：将抽象部分与它的实现部分分离开来，使他们都可以独立变化。</p>
+<p>1.1结构图</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1232443/o_7.png" alt=" "><br>图7</p>
+<ul>
+<li><p>Abstraction：抽象部分的接口。通常在这个对象里面，要维护一个实现部分的对象引用，在抽象对象里面的方法，需要调用实现部分的对象来完成。这个对象里面的方法，通常都是跟具体的业务相关的方法。</p>
+</li>
+<li><p>RefinedAbstraction：扩展抽象部分的接口，通常在这些对象里面，定义跟实际业务相关的方法，这些方法的实现通常会使用Abstraction中定义的方法，也可能需要调用实现部分的对象来完成。</p>
+</li>
+<li><p>Implementor：定义实现部分的接口，这个接口不用和Abstraction里面的方法一致，通常是由Implementor接口提供基本的操作，而Abstraction里面定义的是基于这些基本操作的业务方法，也就是说Abstraction定义了基于这些基本操作的较高层次的操作。</p>
+</li>
+<li><p>ConcreteImplementor：真正实现Implementor接口的对象。</p>
+</li>
+</ul>
+<p>①　所谓桥接，通俗点说就是在不同的东西之间搭一个桥，让他们能够连接起来，可以相互通讯和使用。那么在桥接模式中到底是给什么东西来搭桥呢？就是为被分离了的抽象部分和实现部分来搭桥。</p>
+<p>②　在桥接模式中的桥接是单向的，也就是只能是抽象部分的对象去使用具体实现部分的对象，而不能反过来。</p>
+<p>③　桥接模式的意图：使得抽象和实现可以独立变化，都可以分别扩充。也就是说抽象部分和实现部分是一种非常松散的关系，从某个角度来讲，抽象部分和实现部分是可以完全分开的，独立的，那抽象和实现为何还要组合在一起呢？原因是在抽象部分和实现部分还是存在内部联系的，抽象部分的实现通常是需要调用实现部分的功能来实现的。</p>
+<p>④　桥接模式将继承关系转化成关联关系，它降低了类与类之间的耦合度，减少了系统中类的数量，也减少了代码量。</p>
+<ul>
+<li><p>实现化：针对抽象化给出的具体实现。它和抽象化是一个互逆的过程，实现化是对抽象化事物的进一步具体化。</p>
+</li>
+<li><p>脱耦：脱耦就是将抽象化和实现化之间的耦合解脱开，或者说是将它们之间的强关联改换成弱关联，将两个角色之间的继承关系改为关联关系。</p>
+</li>
+<li><p>抽象化：将复杂物体的一个或几个特性抽出去而只注意其他特性的行动或过程。在面向对象就是将对象共同的性质抽取出去而形成类的过程。</p>
+</li>
+</ul>
+<p>⑤　桥接模式中的所谓脱耦，就是指在一个软件系统的抽象化和实现化之间使用关联关系（组合或者聚合关系）而不是继承关系，从而使两者可以相对独立地变化，这就是桥接模式的用意。</p>
+<p>⑥　桥接模式的主要目的是将一个对象的变化因素抽象出来，不是通过类继承的方式来满足这个因素的变化，而是通过对象组合的方式来依赖因素的抽象，这样当依赖的因素的具体实现发生后，而我们的具体的引用却不用发生变化，因为我们的对象是依赖于抽象的，而不是具体的实现</p>
+<p>1.3适用场景</p>
+<ul>
+<li><p>想避免在抽象及实现之间存在永久的绑定</p>
+</li>
+<li><p>抽象及其实现可以使用子类扩展，</p>
+</li>
+<li><p>抽象的实现改动应该对客户端没有影响</p>
+</li>
+</ul>
+<p>1.4优缺点</p>
+<ul>
+<li><p>分离抽象接口及其实现部分。提高了比继承更好的解决方案。</p>
+</li>
+<li><p>桥接模式提高了系统的可扩充性，在两个变化维度中任意扩展一个维度，都不需要修改原有系统。</p>
+</li>
+<li><p>实现细节对客户透明，可以对用户隐藏实现细节。</p>
+</li>
+<li><p>（缺点）桥接模式的引入会增加系统的理解与设计难度，由于聚合关联关系建立在抽象层，要求开发者针对抽象进行设计与编程</p>
+</li>
+<li><p>（缺点）桥接模式要求正确识别出系统中两个独立变化的维度，因此其使用范围具有一定的局限性。</p>
+</li>
+</ul>
+<p>1.5实例</p>
+<p>说明：有两个纬度的变化，一个纬度是抽象的消息这边，包括普通消息、加急消息和特急消息，这几个抽象的消息本身就具有一定的关系，加急消息和特急消息会扩展普通消息；另一个纬度在具体的消息发送方式上，包括站内短消息、Email和手机短信息，这几个方式是平等的，可被切换的方式。这两个纬度一共可以组合出9种不同的可能性来。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1232443/o_8.png" alt=" "><br>图8</p>
+<ul>
+<li><p>存在的问题：消息的抽象和实现是混杂在一起的，势必会引起一个纬度的变化，会引起另一个纬度进行相应的变化，从而使得程序扩展起来非常困难。</p>
+</li>
+<li><p>解决办法：就必须把这两个纬度分开，也就是将抽象部分和实现部分分开，让它们相互独立。</p>
+</li>
+</ul>
+<p>1.5.1.2009A</p>
+<p>  现欲实现一个图像浏览系统，要求该系统能够显示BMP、3PEG和GIF三种格式的文件，并且能够在Windows和Linux两种操作系统上运行。系统首先将BMP、JPEG和 GIF三种格式的文件解析为像素矩阵，然后将像素矩阵显示在屏幕上。系统需具有较好的扩展性以支持新的文件格式和操作系统。为满足上述需求并减少所需生成的子类数目，采用桥接(Bridge)设计模式进行设计，所得类图如图9所示。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1232443/o_9.png" alt=" "><br>图9</p>
+<p>   采用该设计模式的原因在于：系统解析BMP、GIF与JPEG文件的代码仅与文件格式相关，而在屏幕上显示像素矩阵的代码则仅与操作系统相关。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">Matrix</span></span>&#123;    <span class="comment">// 各种格式的文件最终都被转化为像素矩阵</span></span><br><span class="line">   &#125;；</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">Imagelmp</span></span>&#123;</span><br><span class="line">   public：</span><br><span class="line">      virtual <span class="keyword">void</span> doPaint (Matrix m)=<span class="number">0</span>；  <span class="comment">// 显示像素矩阵m</span></span><br><span class="line">   &#125;；</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">WinImp</span> ：<span class="title">public</span> <span class="title">ImageImp</span></span>&#123;</span><br><span class="line">   public：</span><br><span class="line">   <span class="keyword">void</span> doPaint (Matrix m) &#123; <span class="comment">/*调用Windows系统的绘制函数绘制像素矩阵*/</span>)</span><br><span class="line">   &#125;；</span><br><span class="line">   class LinuxImp : public ImageImp&#123;</span><br><span class="line">   public:</span><br><span class="line">       <span class="keyword">void</span> doPaint(Matrix m) &#123; <span class="comment">/*调用 Linux系统的绘制函数绘制像素矩阵*/</span> &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">Image</span> </span>&#123;</span><br><span class="line">   public:</span><br><span class="line">   <span class="keyword">void</span> setImp (Image Imp *imp)&#123;<span class="keyword">this</span>.imp = imp;&#125;</span><br><span class="line">   virtual <span class="keyword">void</span> parseFile(string file Name)=<span class="number">0</span>;</span><br><span class="line">   protected:ImageImp;</span><br><span class="line">   &#125;;</span><br><span class="line">   class BMP : public Image&#123;</span><br><span class="line">   public:</span><br><span class="line">       <span class="keyword">void</span> parse File(string fileName) &#123;</span><br><span class="line">             <span class="comment">// 此处解析BMP文件并获得一个像素矩阵对象m</span></span><br><span class="line">       imp-&gt;doPaint (fileName);<span class="comment">// 显示像素矩阵m</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">   class  GIF : public Image&#123;</span><br><span class="line">       <span class="comment">// 此处代码省略</span></span><br><span class="line">   &#125;;</span><br><span class="line">   class  JPEG : public Image&#123;</span><br><span class="line">      <span class="comment">// 此处代码省略</span></span><br><span class="line">   &#125;;</span><br><span class="line">   <span class="keyword">void</span> main()&#123;</span><br><span class="line">        <span class="comment">//在Windows操作系统上查看demo. bmp图像文件</span></span><br><span class="line">        Image *imagel = <span class="keyword">new</span> BMP();</span><br><span class="line">        ImageImp *imageImpl = <span class="keyword">new</span> WinImp();</span><br><span class="line">        imagel-＞setImp(imageImpl) ;</span><br><span class="line">        imagel-＞parseFile(<span class="string">"demo.bmp"</span>)；</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//现假设该系统需要支持10种格式的图像文件和5种操作系统，不考虑类Matrix，若采用桥接设计模式则至少需要设计17个类</span></span><br></pre></td></tr></table></figure>
+<p>1.5.1.2013B</p>
+<p>欲开发一个绘图软件，要求使用不同的绘图程序绘制不同的图形。以绘制直线和圆形为例，对应的绘图程序如表1所示。<br> 表1<br> <img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1232443/o_%e8%a1%a83.png" alt=" "></p>
+<p>该绘图软件的扩展性要求，将不断扩充新的图形和新的绘图程序。 为了避免出现类爆炸的情况，先采取桥接（Bridge）模式来实现上述要求，得到如图10所示的类图。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1232443/o_10.png" alt=" "><br>图10 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DP1</span></span>&#123;</span><br><span class="line">public:</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> draw_aline(double x1,double y1,double x1,double y1)&#123;<span class="comment">/*代码省略*/</span>&#125;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> draw_a_circle(double x,double y,double r)&#123;<span class="comment">/*代码省略*/</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DP1</span></span>&#123;</span><br><span class="line">public:</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> drawline(double x1,double x1,double y1,double y1)&#123;<span class="comment">/*代码省略*/</span>&#125;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> drawcircle(double x,double y,double r)&#123;<span class="comment">/*代码省略*/</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Drawing</span></span>&#123;</span><br><span class="line">public:</span><br><span class="line">virtual <span class="keyword">void</span> drawLine(double x1,double y1,double x1,double y1);</span><br><span class="line">virtual <span class="keyword">void</span> drawCircle(double x,double y,double r);</span><br><span class="line">&#125;;</span><br><span class="line">class V1Drawing:public Drawing&#123;</span><br><span class="line">public:</span><br><span class="line"><span class="keyword">void</span> drawLine(double x1,double y1,double x1,double y1)&#123;<span class="comment">/*代码省略*/</span>&#125;</span><br><span class="line"><span class="keyword">void</span> drawCircle(double x,double y,double r)&#123; <span class="attr">DP1</span>::V1Drawing(x,y,r);&#125;</span><br><span class="line">&#125;;</span><br><span class="line">class V1Drawing:public Drawing&#123;</span><br><span class="line">public:</span><br><span class="line"><span class="keyword">void</span> drawLine(double x1,double y1,double x1,double y1)&#123;<span class="comment">/*代码省略*/</span>&#125;</span><br><span class="line"><span class="keyword">void</span> drawCircle(double x,double y,double r)&#123; <span class="attr">DP1</span>::V1Drawing(x,y,r);&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">shape</span></span>&#123;</span><br><span class="line">public:</span><br><span class="line">virtual <span class="keyword">void</span> draw()=<span class="number">0</span> ;</span><br><span class="line">Shape(Drawing *dp)&#123;_dp=dp;&#125;</span><br><span class="line"><span class="keyword">void</span> drawLine(double x1,double y1,double x1,double y1)&#123;</span><br><span class="line">_dp-&gt;drawLine(x1,y1,x1,y1);&#125;</span><br><span class="line"><span class="keyword">void</span> drawCircle(double x,double y,double r)&#123;_dp-&gt;drawCircle(x,y,r);&#125;</span><br><span class="line">private:Drawing *_dp;</span><br><span class="line">&#125;;</span><br><span class="line">class Rectangle:public Shape&#123; </span><br><span class="line">public:</span><br><span class="line"><span class="keyword">void</span> draw()&#123;<span class="comment">/*代码省略*/</span>&#125;</span><br><span class="line"><span class="comment">//其余代码省略</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Circle:public Shape&#123;</span><br><span class="line">private:double _x,_y,_r;</span><br><span class="line">public:</span><br><span class="line">Circle(Drawing *_dp,double x,double y,double r):  Shape(dp) &#123; _x=x;_y=y;_r=r;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">void</span> draw()&#123;drawCircle(_x,_y,_r); &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>1.5.3.2017B</p>
+<p>某图像预览程序要求能够查看BMP，JPEG和GIF三种格式的文件，且能够在Windows和Linux两种操作系统上运行。程序需具有较好的扩展性以支持新的文件格式和操作系统。为满足上述需求并减少所需生成的子类数目，现采用桥接 （Bridge）模式进行设计，得到如图11所示的类图。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1232443/o_11.png" alt=" "><br>图11</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">matrix</span></span>&#123;<span class="comment">//各种格式的文件最终都被转化为像素矩阵</span></span><br><span class="line"><span class="comment">//此处代码省略</span></span><br><span class="line">&#125;；</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Implement</span></span>&#123;</span><br><span class="line">Public:</span><br><span class="line">Virtual Void doPaint(Matrix m)=<span class="number">0</span>;<span class="comment">//显示像素矩阵m</span></span><br><span class="line">&#125;；</span><br><span class="line">class WinImp:public Implementor&#123;</span><br><span class="line">Public:</span><br><span class="line">Void doPaint(Matrix m)&#123;<span class="comment">/*调用Windows系统的绘制函数绘制像素矩阵*/</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line">class LinuxImp: public Implementor&#123;</span><br><span class="line">public:</span><br><span class="line">Void doPaint(Matrix m)&#123;<span class="comment">/*调用Linux系统的绘制函数绘制像素矩阵*/</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Imag</span></span>&#123;</span><br><span class="line">public:</span><br><span class="line"><span class="keyword">void</span> setImp(Implementor *imp)&#123;<span class="keyword">this</span>.imp=imp;&#125;</span><br><span class="line">virtual <span class="keyword">void</span> parseFile(<span class="built_in">String</span> fileName)=<span class="number">0</span>;</span><br><span class="line">protected: </span><br><span class="line">Implenentor *imp;</span><br><span class="line">&#125;;</span><br><span class="line">class BMPImage:public Image&#123;</span><br><span class="line"><span class="comment">//此处代码省略</span></span><br><span class="line">&#125;；</span><br><span class="line">class GIFImage:public Image&#123;</span><br><span class="line">public:</span><br><span class="line"><span class="keyword">void</span> parseFile(<span class="built_in">String</span> fileName)&#123;</span><br><span class="line"><span class="comment">//此处解析GIF文件并获取一个像素矩阵对象m</span></span><br><span class="line">  imp-&gt;doPaint(Matrix m);<span class="comment">//显示像素矩阵m</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;；</span><br><span class="line">class JPEGImage:public Image&#123;</span><br><span class="line"><span class="comment">//此处代码省略</span></span><br><span class="line">&#125;;</span><br><span class="line">int main()&#123;</span><br><span class="line">public <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="built_in">String</span>[] args)&#123;</span><br><span class="line"><span class="comment">//在Linux操作系统上查看demo.gif图像文件</span></span><br><span class="line">Imag imag= <span class="keyword">new</span> GIFImage();</span><br><span class="line">Implementor imageImp= <span class="keyword">new</span> LinuxImp()   ;</span><br><span class="line">imp.setImp(<span class="string">"imageImp"</span>);</span><br><span class="line">image.parseFile(“demo.gif”);</span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.6 总结</p>
+<ul>
+<li><p>桥接模式实现了抽象化与实现化的脱耦。他们两个互相独立，不会影响到对方。</p>
+</li>
+<li><p>对于两个独立变化的维度，使用桥接模式再适合不过了。</p>
+</li>
+<li><p>对于“具体的抽象类”所做的改变，是不会影响到客户。</p>
+</li>
+</ul>
+<p>完整源代码见：<a href="https://github.com/255255255255/design-mode" target="_blank" rel="noopener">https://github.com/255255255255/design-mode</a></p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="../img/reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/04/15/设计模式之模板方法模式/" class="pre-post btn btn-default" title='设计模式之模板方法模式'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">设计模式之模板方法模式</span>
+        </a>
+    
+    
+        <a href="/2018/04/08/设计模式之抽象工厂模式/" class="next-post btn btn-default" title='设计模式之抽象工厂模式'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">设计模式之抽象工厂模式</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

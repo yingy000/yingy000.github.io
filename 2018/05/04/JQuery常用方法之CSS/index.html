@@ -1,0 +1,460 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>jQuery常用方法之css | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="jQuery常用方法之css">
+            
+	            jQuery常用方法之css
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/博客列表">
+            博客列表
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/JavaScript框架" title='JavaScript框架'>
+                        JavaScript框架
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/05/04</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="css-gt-css"><a href="#css-gt-css" class="headerlink" title="css-&gt;css"></a>css-&gt;css</h2><h3 id="1-CSS-：获取匹配元素集合中的第一个元素的样式属性的计算值"><a href="#1-CSS-：获取匹配元素集合中的第一个元素的样式属性的计算值" class="headerlink" title="1.CSS()：获取匹配元素集合中的第一个元素的样式属性的计算值"></a>1.CSS()：获取匹配元素集合中的第一个元素的样式属性的计算值</h3><ul>
+<li><p>设置单个样式属性:</p>
+<p><code>$(&#39;.test&#39;).css(&#39;background-Color&#39;, &#39;purple&#39;);</code></p>
+</li>
+<li><p>设置多个样式属性:</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#test"</span>).css(&#123;</span><br><span class="line">  <span class="string">'background-color'</span>: <span class="string">'#ffe'</span>, </span><br><span class="line">  <span class="string">'border-left'</span>: <span class="string">'5px solid #ccc'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取css样式，一次只能获取一个css样式值，如果想要获取多个值，可以利用each()方法循环遍历。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$(<span class="string">'.test'</span>).css(<span class="string">'background-Color'</span>);</span><br><span class="line">$(<span class="string">'.test'</span>).css(<span class="string">'border-left'</span>);</span><br></pre></td></tr></table></figure>
+<p>注意:</p>
+<ul>
+<li><p>在css属性中，如果有<code>&#39;-&#39;</code>连接的属性一定要带单引号或者双引号，没有用特殊字符连接的属性可以不用带引号。总而言之，引号还是带着比较好。</p>
+</li>
+<li><p>获取速写的CSS属性(例如： <code>margin, background, border</code>) 是不支持的，虽然有些浏览器有这个功能，但是不能保证。</p>
+</li>
+<li><p>如果你想获取已经渲染的<code>border-width</code>，可以使用<code>$( elem ).css( &quot;borderTopWidth&quot; )</code>,<br><code>$( elem ).css( &quot;borderBottomWidth&quot; )</code>，其他的也是如此，依此类推。</p>
+</li>
+</ul>
+<p>举例：</p>
+<ul>
+<li>1.1.点击div，得到它的背景颜色</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            div &#123;</span><br><span class="line">                width: 60px;</span><br><span class="line">                height: 60px;</span><br><span class="line">                margin: 5px;</span><br><span class="line">                float: left;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">        &lt;script src=&quot;../jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;span id=&quot;result&quot;&gt;&amp;nbsp;&lt;/span&gt;</span><br><span class="line">        &lt;div style=&quot;background-color:blue;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div style=&quot;background-color:rgb(15,99,30);&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div style=&quot;background-color:#123456;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div style=&quot;background-color:#f11;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            $(function()&#123;</span><br><span class="line">            $(&quot;div&quot;).click(function() &#123;</span><br><span class="line">                var color = $(this).css(&quot;background-color&quot;);</span><br><span class="line">                $(&quot;#result&quot;).html(&quot;That div is &lt;span style=&apos;color:&quot; +</span><br><span class="line">                    color + &quot;;&apos;&gt;&quot; + color + &quot;&lt;/span&gt;.&quot;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1238457/o_28.png" alt=" "></p>
+<ul>
+<li>1.2.点击div，得到宽度，高度，文本颜色，背景颜色。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            div &#123;</span><br><span class="line">                height: 50px;</span><br><span class="line">                margin: 5px;</span><br><span class="line">                padding: 5px;</span><br><span class="line">                float: left;</span><br><span class="line">            &#125;</span><br><span class="line">            #box1 &#123;</span><br><span class="line">                width: 50px;</span><br><span class="line">                color: yellow;</span><br><span class="line">                background-color: blue;</span><br><span class="line">            &#125;</span><br><span class="line">            #box2 &#123;</span><br><span class="line">                width: 80px;</span><br><span class="line">                color: rgb(255, 255, 255);</span><br><span class="line">                background-color: rgb(15, 99, 30);</span><br><span class="line">            &#125;</span><br><span class="line">            #box3 &#123;</span><br><span class="line">                width: 40px;</span><br><span class="line">                color: #fcc;</span><br><span class="line">                background-color: #123456;</span><br><span class="line">            &#125;</span><br><span class="line">            #box4 &#123;</span><br><span class="line">                width: 70px;</span><br><span class="line">                background-color: #f11;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">        &lt;script src=&quot;http://code.jquery.com/jquery-latest.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;p id=&quot;result&quot;&gt;&amp;nbsp;&lt;/p&gt;</span><br><span class="line">        &lt;div id=&quot;box1&quot;&gt;1&lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box2&quot;&gt;2&lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box3&quot;&gt;3&lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box4&quot;&gt;4&lt;/div&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            $(&quot;div&quot;).click(function() &#123;</span><br><span class="line">                var html = [&quot;The clicked div has the following styles:&quot;];</span><br><span class="line"></span><br><span class="line">                var styleProps = $(this).css([&quot;width&quot;, &quot;height&quot;, &quot;color&quot;, &quot;background-color&quot;]);</span><br><span class="line">                $.each(styleProps, function(prop, value) &#123;</span><br><span class="line">                    html.push(prop + &quot;: &quot; + value);</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line">                $(&quot;#result&quot;).html(html.join(&quot;&lt;br&gt;&quot;));</span><br><span class="line">            &#125;);</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1238457/o_29.png" alt=" "></p>
+<ul>
+<li>1.3.当你点击一个div的时候递增他的尺寸</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            div &#123;</span><br><span class="line">                width: <span class="number">20</span>px;</span><br><span class="line">                height: <span class="number">15</span>px;</span><br><span class="line">                background-color: #f33;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">        &lt;script src="../</span>jquery.min.js<span class="string">"&gt;&lt;/script&gt;	</span></span><br><span class="line"><span class="string">    &lt;/head&gt;</span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string">        &lt;div&gt;click&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div&gt;click&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;script&gt;</span></span><br><span class="line"><span class="string">            $(function()&#123;</span></span><br><span class="line"><span class="string">            $("</span>div<span class="string">").click(function() &#123;</span></span><br><span class="line"><span class="string">                $(this).css(&#123;</span></span><br><span class="line"><span class="string">                    width: function(index, value) &#123;</span></span><br><span class="line"><span class="string">                        return parseFloat(value) * 1.2;</span></span><br><span class="line"><span class="string">                    &#125;,</span></span><br><span class="line"><span class="string">                    height: function(index, value) &#123;</span></span><br><span class="line"><span class="string">                        return parseFloat(value) * 1.2;</span></span><br><span class="line"><span class="string">                    &#125;</span></span><br><span class="line"><span class="string">                &#125;);</span></span><br><span class="line"><span class="string">            &#125;);</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">        &lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="css-gt-位置"><a href="#css-gt-位置" class="headerlink" title="css-&gt;位置"></a>css-&gt;位置</h2><h3 id="2-offset-获取-设置指定元素的左上角的位置"><a href="#2-offset-获取-设置指定元素的左上角的位置" class="headerlink" title="2.offset():获取/设置指定元素的左上角的位置"></a>2.offset():获取/设置指定元素的左上角的位置</h3><p>如果传参数就是设置<code>offset(top，left)</code>的值，如果不传参数就是获取<code>offset(top,left)</code>中的值。如果没有设置top和left的值，就获取的是原来有的值，如果设置了新的top和left的值，新的值就会覆盖原来的值，利用<code>offset(top，left)</code>获取到的自然是新的top和left的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    &lt;style type=<span class="string">"text/css"</span>&gt;</span><br><span class="line">        *&#123;</span><br><span class="line">            margin: <span class="number">0</span>;</span><br><span class="line">            padding: <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        div&#123;</span><br><span class="line">            width:<span class="number">200</span>px;</span><br><span class="line">            height:<span class="number">200</span>px;</span><br><span class="line">            background-color: #0099CC;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;script src="../</span>js/jquery.min.js<span class="string">" type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    $(document).ready(function () &#123;</span></span><br><span class="line"><span class="string">        $("</span>div<span class="string">").offset(&#123;</span></span><br><span class="line"><span class="string">            top:10,</span></span><br><span class="line"><span class="string">            left:10</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">        var obj=$("</span>div<span class="string">").offset();</span></span><br><span class="line"><span class="string">        console.log("</span>left:<span class="string">"+obj.left+"</span>,<span class="attr">top</span>:<span class="string">"+obj.top);</span></span><br><span class="line"><span class="string">      &#125;);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232448/o_15.png" alt=" "></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232448/o_16.png" alt=" "></p>
+<p>注意：</p>
+<ul>
+<li>在设置left和top值的时候，只能传数值类型，不能传字符串。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(<span class="string">"div"</span>).offset(&#123;</span><br><span class="line">    top:<span class="number">10</span>;</span><br><span class="line">    left:<span class="number">10</span>;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="comment">//写成下面的形式是错的</span></span><br><span class="line">(<span class="string">"div"</span>).offset(&#123;</span><br><span class="line">    top:<span class="string">"10px"</span>;</span><br><span class="line">    left:<span class="string">"10px"</span>;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>如果没有设置position定位，那么position的默认值为static，也就是 <code>position=static</code>，如果设置了offset()方法之后，position的值就变成了relative，也就是<code>position=relative</code>。</p>
+</li>
+<li><p>如果你自己设置了position，并且不是static，那么position的值就是你自己设置的定位，就算设置了offset()方法之后，position的值也不会变成relative，position的值依旧是你设置的那个值。</p>
+</li>
+<li><p>jQuery不支持获取隐藏元素的偏移坐标。同样的，也无法取得隐藏元素的border, margin,或 padding 信息。</p>
+</li>
+<li><p>若元素的属性设置的是 visibility:hidden，那么我们依然可以取得它的坐标。但是若设置的属性是 display:none，由于在绘制 DOM 树时根本就不绘制该元素，所以它的位置属性值是 undefined。</p>
+</li>
+</ul>
+<p>举例：</p>
+<ul>
+<li>2.1.点击查看位置</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">"utf-8"</span> /&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            p &#123;</span><br><span class="line">                margin-left: <span class="number">10</span>px;</span><br><span class="line">                color: blue;</span><br><span class="line">                width: <span class="number">200</span>px;</span><br><span class="line">                cursor: pointer;</span><br><span class="line">            &#125;</span><br><span class="line">            span &#123;</span><br><span class="line">                color: red;</span><br><span class="line">                cursor: pointer;</span><br><span class="line">            &#125;</span><br><span class="line">            div.abs &#123;</span><br><span class="line">                width: <span class="number">50</span>px;</span><br><span class="line">                height: <span class="number">50</span>px;</span><br><span class="line">                position: absolute;</span><br><span class="line">                left: <span class="number">220</span>px;</span><br><span class="line">                top: <span class="number">35</span>px;</span><br><span class="line">                background-color: green;</span><br><span class="line">                cursor: pointer;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">        &lt;script src="../</span>jquery.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;/head&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string">        &lt;div id="</span>result<span class="string">"&gt;Click an element.&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;</span></span><br><span class="line"><span class="string">            This is the best way to &lt;span&gt;find&lt;/span&gt; an offset.</span></span><br><span class="line"><span class="string">        &lt;/p&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="</span>abs<span class="string">"&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;script&gt;</span></span><br><span class="line"><span class="string">            $(function()&#123;</span></span><br><span class="line"><span class="string">            $("</span>*<span class="string">", document.body).click(function(e) &#123;</span></span><br><span class="line"><span class="string">                var offset = $(this).offset();</span></span><br><span class="line"><span class="string">                e.stopPropagation();</span></span><br><span class="line">                $("#result").text(this.tagName + " coords ( " + offset.left + ", " +</span><br><span class="line">                    offset.top + <span class="string">" )"</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">        &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1238457/o_30.png" alt=" "></p>
+<h3 id="3-position：获取匹配元素中第一个元素的当前坐标-相对于最近的那个具有定位的父元素。"><a href="#3-position：获取匹配元素中第一个元素的当前坐标-相对于最近的那个具有定位的父元素。" class="headerlink" title="3.position：获取匹配元素中第一个元素的当前坐标,相对于最近的那个具有定位的父元素。"></a>3.position：获取匹配元素中第一个元素的当前坐标,相对于最近的那个具有定位的父元素。</h3><p>返回一个object，包含left和top属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    &lt;style type=<span class="string">"text/css"</span>&gt;</span><br><span class="line">        *&#123;</span><br><span class="line">            margin: <span class="number">0</span>;</span><br><span class="line">            padding: <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        p&#123;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top:<span class="number">100</span>px;</span><br><span class="line">            left: <span class="number">50</span>px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">        &lt;p&gt;我是p元素&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;script src=<span class="string">"../js/jquery.min.js"</span> type=<span class="string">"text/javascript"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log($(<span class="string">"p"</span>).position());</span><br><span class="line">      &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
+<p>注意：因为<code>position()</code>方法不接受任何参数的值，索引<code>position()</code>方法只能获取已经存在的值，而不能设置值。</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232448/o_17.png" alt=" "></p>
+<h3 id="4-scrollTop-：获取或者设置窗口垂直方向的滚动的位置"><a href="#4-scrollTop-：获取或者设置窗口垂直方向的滚动的位置" class="headerlink" title="4.scrollTop()：获取或者设置窗口垂直方向的滚动的位置"></a>4.scrollTop()：获取或者设置窗口垂直方向的滚动的位置</h3><p>浏览器和scrollTop值存在着某种比例关系，这是由浏览器内部决定的。</p>
+<p>如果传参数就是设置<code>scrollTop()</code>的值，如果不传参数就是获取<code>scrollTop()</code>中的值。</p>
+<p>scrollTop的值为可滚动区域在可视区域的上方被隐藏区域的高度。</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232448/o_11.png" alt=" "></p>
+<p>如果没有设置<code>scrollTop()</code>的值，而是直接获取<code>scrollTop()</code>值的话，获取到的值是0，如果设置了<code>scrollTop()</code>的值，那么获取到的值就是设置的值。</p>
+<p>如果在页面中没有滚动条的话，设置不了值，也获取不了值。都白搭，可以设置值和获取值的前提是一定要有滚动条。(右滚动条和下滚动条)</p>
+<h3 id="5-scrollLeft-：获取或者设置元素水平方向滚动的位置"><a href="#5-scrollLeft-：获取或者设置元素水平方向滚动的位置" class="headerlink" title="5.scrollLeft()：获取或者设置元素水平方向滚动的位置"></a>5.scrollLeft()：获取或者设置元素水平方向滚动的位置</h3><p>如果传参数就是设置<code>scrollLeft()</code>的值，如果不传参数就是获取<code>scrollLeft()</code>中的值。</p>
+<p>如果没有设置<code>scrollLeft()</code>的值，而是直接获取<code>scrollLeft()</code>值的话，获取到的值是0，如果设置了<code>scrollLeft()</code>的值，那么获取到的值就是设置的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    &lt;style type=<span class="string">"text/css"</span>&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        width: <span class="number">300</span>px;</span><br><span class="line">        height: <span class="number">300</span>px;</span><br><span class="line">        background-color:#FF0000;</span><br><span class="line">        overflow: scroll;</span><br><span class="line">    &#125;</span><br><span class="line">    p&#123;</span><br><span class="line">        width: <span class="number">1500</span>px;</span><br><span class="line">        height: <span class="number">1500</span>px;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script type="text/</span>javascript<span class="string">" src="</span>../js/jquery<span class="number">-1.11</span><span class="number">.1</span>.min.js<span class="string">" &gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;script type="</span>text/javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    $(function()&#123;</span></span><br><span class="line"><span class="string">        //设置scrollTop值</span></span><br><span class="line"><span class="string">        $("</span>input:eq(<span class="number">0</span>)<span class="string">").click(function()&#123;</span></span><br><span class="line"><span class="string">            $("</span>div<span class="string">").scrollTop("</span><span class="number">100</span><span class="string">");</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">        //获取scrollTop值</span></span><br><span class="line"><span class="string">        $("</span>input:eq(<span class="number">1</span>)<span class="string">").click(function()&#123;</span></span><br><span class="line"><span class="string">            console.log($("</span>div<span class="string">").scrollTop());</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">        //设置scrollLeft值</span></span><br><span class="line"><span class="string">        $("</span>input:eq(<span class="number">2</span>)<span class="string">").click(function()&#123;</span></span><br><span class="line"><span class="string">            $("</span>div<span class="string">").scrollLeft("</span><span class="number">200</span><span class="string">");</span></span><br><span class="line"><span class="string">        //获取scrollLeft值</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">        $("</span>input:eq(<span class="number">3</span>)<span class="string">").click(function()&#123;</span></span><br><span class="line"><span class="string">            console.log($("</span>div<span class="string">").scrollLeft());</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string">    &lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">&lt;input type="</span>button<span class="string">" value="</span>设置scrollTop值<span class="string">" /&gt;</span></span><br><span class="line"><span class="string">&lt;input type="</span>button<span class="string">" value="</span>获取scrollTop值<span class="string">" /&gt;</span></span><br><span class="line"><span class="string">&lt;input type="</span>button<span class="string">" value="</span>设置scrollLeft值<span class="string">" /&gt;</span></span><br><span class="line"><span class="string">&lt;input type="</span>button<span class="string">" value="</span>获取scrollLeft值<span class="string">" /&gt;</span></span><br><span class="line"><span class="string">&lt;div&gt;&lt;p&gt;我是p元素&lt;/p&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 设置scrollTop的值伪100，设置scrollLeft的值为100</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232448/o_18.png" alt=" "></p>
+<p>没有设置scrollTop值，直接获取，和设置了scrollTop值，获取</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232448/o_19.png" alt=" "></p>
+<p>没有设置scrollLeft值，直接获取，和设置了scrollLeft值，获取</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232448/o_20.png" alt=" "></p>
+<p>举例：5.1.固定导航栏</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            * &#123;</span><br><span class="line">                margin: <span class="number">0</span>;</span><br><span class="line">                padding: <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            .main &#123;</span><br><span class="line">                width: <span class="number">865</span>px;</span><br><span class="line">                margin: <span class="number">0</span> auto;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">        &lt;script type="text/</span>javascript<span class="string">" src="</span>../js/jquery<span class="number">-1.11</span><span class="number">.1</span>.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">           &lt;script type="</span>text/javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">        $(window).load(function() &#123;</span></span><br><span class="line"><span class="string">            var topHeight = $("</span>.top<span class="string">").height();</span></span><br><span class="line"><span class="string">            var navHeight = $("</span>.nav<span class="string">").height();</span></span><br><span class="line"><span class="string">            $(window).scroll(function () &#123;</span></span><br><span class="line"><span class="string">                var docSccrollTop = $(document).scrollTop();</span></span><br><span class="line"><span class="string">                //如果scrollTop的值大于顶部图片的高度</span></span><br><span class="line"><span class="string">                if(docSccrollTop &gt; topHeight)&#123;</span></span><br><span class="line"><span class="string">                    $("</span>.nav<span class="string">").css(&#123;</span></span><br><span class="line"><span class="string">                        "</span>position<span class="string">":"</span>fixed<span class="string">","</span>top<span class="string">":0</span></span><br><span class="line"><span class="string">                    &#125;);</span></span><br><span class="line"><span class="string">                    // 此时 nav的位置固定，如果不设置 main部分的margin-top的话，将有一部分内容被挡住 nav的高度</span></span><br><span class="line"><span class="string">                   $("</span>.main<span class="string">").css("</span>margin-top<span class="string">", navHeight);</span></span><br><span class="line"><span class="string">                &#125;else&#123;</span></span><br><span class="line"><span class="string">                   $("</span>.nav<span class="string">").css(&#123;"</span>position<span class="string">":"</span><span class="keyword">static</span><span class="string">"&#125;);  /*静态定位*/</span></span><br><span class="line"><span class="string">                    $("</span>.main<span class="string">").css("</span>margin-top<span class="string">",0);</span></span><br><span class="line"><span class="string">                &#125;</span></span><br><span class="line"><span class="string">            &#125;);</span></span><br><span class="line"><span class="string">        &#125;);</span></span><br><span class="line"><span class="string">    &lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;/head&gt;</span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="</span>top<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            &lt;img src="</span>imgs/top.png<span class="string">" /&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="</span>nav<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            &lt;img src="</span>imgs/nav.png<span class="string">" /&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="</span>main<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            &lt;img src="</span>imgs/main.png<span class="string">" /&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1238457/o_31.png" alt=" "></p>
+<p>注意：</p>
+<ul>
+<li><p>顶部头图片的高度只需要获取一次就好了，所有不用绑定在scroll()函数中，</p>
+</li>
+<li><p>scroll()表示每次滚动都会触发的事件。</p>
+</li>
+</ul>
+<h2 id="css-gt-尺寸"><a href="#css-gt-尺寸" class="headerlink" title="css-&gt;尺寸"></a>css-&gt;尺寸</h2><h3 id="6-height-：获取匹配元素集合中的第一个元素的当前计算高度值"><a href="#6-height-：获取匹配元素集合中的第一个元素的当前计算高度值" class="headerlink" title="6.height()：获取匹配元素集合中的第一个元素的当前计算高度值"></a>6.height()：获取匹配元素集合中的第一个元素的当前计算高度值</h3><p>如果传参数就是设置<code>height</code>的值，如果不传参数就是获取<code>height</code>中的值。</p>
+<h3 id="7-width-：获取匹配元素集合中的第一个元素的当前计算宽度值"><a href="#7-width-：获取匹配元素集合中的第一个元素的当前计算宽度值" class="headerlink" title="7.width()：获取匹配元素集合中的第一个元素的当前计算宽度值"></a>7.width()：获取匹配元素集合中的第一个元素的当前计算宽度值</h3><p>如果传参数就是设置<code>width</code>中的值，如果不传参数就是获取<code>width</code>中的值。</p>
+<p>关于JQuery获取图片的高度和宽度时存在着一些问题。</p>
+<p>问题总结：</p>
+<ul>
+<li>当获取图片的高度和宽度时候，有可能能获取到，但是一刷新图片的高度和宽度就变成0了。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;style type=<span class="string">"text/css"</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">        &lt;script type="text/</span>javascript<span class="string">" src="</span>../js/jquery<span class="number">-1.11</span><span class="number">.1</span>.min.js<span class="string">" &gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">        &lt;script type="</span>text/javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">        //此时JQuery在入口函数中获取不到图片的高度，因为jQuery的执行时机，在DOM树加载之后就开始执行，图片这时候还没有加载进来。</span></span><br><span class="line"><span class="string">            $(document).ready(function()&#123;</span></span><br><span class="line"><span class="string">                var height=$("</span>img<span class="string">").height();</span></span><br><span class="line"><span class="string">                var width=$("</span>img<span class="string">").width();</span></span><br><span class="line"><span class="string">                console.log(height);</span></span><br><span class="line"><span class="string">                console.log(width);</span></span><br><span class="line"><span class="string">            &#125;)</span></span><br><span class="line"><span class="string">        &lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;/head&gt;</span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string">        &lt;img  src="</span>imgs/<span class="number">001.</span>jpg<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可能能获取到的原因是浏览器觉得你可能需要获取到这张图片的宽度和高度，所以浏览器就告诉你了，所以一刷新图片的高度和宽度又变成0了。</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232448/o_13.png" alt=" "></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232448/o_14.png" alt=" "></p>
+<ul>
+<li>css()获取高度和height获取高度的区别？</li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232448/o_12.png" alt=" "></p>
+<p>如何动态的设置图片的高度？</p>
+<p>如果传参数就是设置height的值，如果不传参数就是获取height中的值。</p>
+<p>解决办法：</p>
+<ul>
+<li>在JavaScript的入口函数中可以混用JQuery的代码，在JQuery的入口函数中可以混用JavaScript的代码，同样可以获取到图片的高度。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="comment">//在javaScript的入口函数，会等到所有的外部文件加载完才开始，索引肯定能获取到图片的高度和宽度</span></span><br><span class="line">    <span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> height=$(<span class="string">"img"</span>).height();</span><br><span class="line">        <span class="keyword">var</span> width=$(<span class="string">"img"</span>).width();</span><br><span class="line">        <span class="built_in">console</span>.log(height);</span><br><span class="line">        <span class="built_in">console</span>.log(width);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232448/o_13.png" alt=" "></p>
+<ul>
+<li>不仅可以使用onload()函数，还可以使用load()函数，在javascript中，”onload()”和”load()”的功能是一样的。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="built_in">window</span>.load=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> height=$(<span class="string">"img"</span>).height();</span><br><span class="line">        <span class="keyword">var</span> width=$(<span class="string">"img"</span>).width();</span><br><span class="line">        <span class="built_in">console</span>.log(height);</span><br><span class="line">        <span class="built_in">console</span>.log(width);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="../img/reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/05/06/JQuery常用方法之AJAX/" class="pre-post btn btn-default" title='jQuery常用方法之AJAX'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">jQuery常用方法之AJAX</span>
+        </a>
+    
+    
+        <a href="/2018/05/02/jQuery选择器/" class="next-post btn btn-default" title='jQuery选择器详解'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">jQuery选择器详解</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#css-gt-css"><span class="toc-text">css-&gt;css</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CSS-：获取匹配元素集合中的第一个元素的样式属性的计算值"><span class="toc-text">1.CSS()：获取匹配元素集合中的第一个元素的样式属性的计算值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css-gt-位置"><span class="toc-text">css-&gt;位置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-offset-获取-设置指定元素的左上角的位置"><span class="toc-text">2.offset():获取/设置指定元素的左上角的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-position：获取匹配元素中第一个元素的当前坐标-相对于最近的那个具有定位的父元素。"><span class="toc-text">3.position：获取匹配元素中第一个元素的当前坐标,相对于最近的那个具有定位的父元素。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-scrollTop-：获取或者设置窗口垂直方向的滚动的位置"><span class="toc-text">4.scrollTop()：获取或者设置窗口垂直方向的滚动的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-scrollLeft-：获取或者设置元素水平方向滚动的位置"><span class="toc-text">5.scrollLeft()：获取或者设置元素水平方向滚动的位置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css-gt-尺寸"><span class="toc-text">css-&gt;尺寸</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-height-：获取匹配元素集合中的第一个元素的当前计算高度值"><span class="toc-text">6.height()：获取匹配元素集合中的第一个元素的当前计算高度值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-width-：获取匹配元素集合中的第一个元素的当前计算宽度值"><span class="toc-text">7.width()：获取匹配元素集合中的第一个元素的当前计算宽度值</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

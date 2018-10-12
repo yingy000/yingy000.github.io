@@ -1,0 +1,397 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>2-1-Git基础 | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="2-1-Git基础">
+            
+	            2-1-Git基础
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/博客列表">
+            博客列表
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Git" title='Git'>
+                        Git
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/07/24</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="1-获取Git仓库"><a href="#1-获取Git仓库" class="headerlink" title="1.获取Git仓库"></a>1.获取Git仓库</h2><p>有两种方法可以获取到Git项目仓库。第一种是在现有项目下导入所有文件到Git；第二种是从一个服务器克隆一个现有的Git仓库。</p>
+<h3 id="1-1-在现有目录中初始化仓库"><a href="#1-1-在现有目录中初始化仓库" class="headerlink" title="1.1.在现有目录中初始化仓库"></a>1.1.在现有目录中初始化仓库</h3><p>在现有目录点击右键，就可以看到Git Bash的快捷键方式，</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_3.png" alt=" "></p>
+<p><code>git init</code>命令将创建一个.git的子目录，这个子目录含有初始化的Git仓库中所有的必须文件，这些文件是Git仓库的骨干。但是，仅仅是做了一个初始化的操作，你的项目里的文件还没有被跟踪。</p>
+<p>如果是在一个已经存在文件的文件夹中初始化Git仓库来进行版本控制的话，你应该开始跟踪这些文件并提交。可以通过<code>git add</code>命令来实现对文件的跟踪，然后执行<code>git commit</code>提交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add *</span><br><span class="line"></span><br><span class="line">git commit -m &quot;first-commit&quot;</span><br></pre></td></tr></table></figure>
+<p>现在，已经得到了一个实际维护(或者说是跟踪)着若干个文件的Git仓库。</p>
+<h3 id="1-2-克隆现有的仓库"><a href="#1-2-克隆现有的仓库" class="headerlink" title="1.2.克隆现有的仓库"></a>1.2.克隆现有的仓库</h3><p><code>git clone</code>命令：获取一份已经存在了的Git仓库的拷贝。</p>
+<p>Git克隆的是该Git仓库服务器上的几乎所有数据，而不是仅仅复制完成你的工作所需要文件。当你执行<code>git clone</code>命令的时候，默认配置下远程Git仓库中的每一个文件的每一个版本都将被拉取下来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone [url]</span><br><span class="line"></span><br><span class="line">git clone https://github.com/Alicesii/blog</span><br><span class="line">或</span><br><span class="line">git clone https://github.com/Alicesii/blog myblog   //自定义本地仓库的名字myblog</span><br></pre></td></tr></table></figure>
+<p>在该目录下初始化一个<code>.git</code>文件夹，从远程仓库拉取下所有数据放入<code>.git</code>文件夹，然后从中读取最新版本的文件的拷贝。</p>
+<p>Git支持多种数据传输协议，可以使用的是<code>https://</code>协议，也可以使用<code>git://</code>协议或者使用SSH传输协议。</p>
+<h2 id="2-记录每次更新到仓库"><a href="#2-记录每次更新到仓库" class="headerlink" title="2.记录每次更新到仓库"></a>2.记录每次更新到仓库</h2><p>假如我们有一个项目的Git仓库，并从这个仓库中取出所有文件的工作拷贝。接下来，对这些文件做些修改，在完成了一个阶段的目标之后，提交本次更新到仓库。</p>
+<p>工作目录下的每一个文件都只存在着这两种状态：已跟踪或未跟踪。</p>
+<p>已跟踪的文件是指那些被纳入了版本控制的文件，在上一次快照中有它们的记录，在工作一段时间后，它们的状态可能处于未修改，已修改或已放入暂存区。</p>
+<p>工作目录中除已跟踪文件以外的所有其它文件都属于未跟踪文件，它们既不存在于上次快照的记录中，也没有放入暂存区。</p>
+<p>初次克隆某个仓库的时候，工作目录中的所有文件都属于已跟踪文件，并处于未修改状态。</p>
+<p>编辑过某些文件之后，由于自上次提交后对它们做了修改，Git将它们标记为已修改文件。我们可以将这些修改过的文件放入暂存区，然后提交所有暂存了的修改，如此反复。使用Git时文件的生命周期如下：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1268239/o_7.png" alt=" "></p>
+<p>文件的状态变化周期</p>
+<h3 id="2-1-检查当前文件状态"><a href="#2-1-检查当前文件状态" class="headerlink" title="2.1.检查当前文件状态"></a>2.1.检查当前文件状态</h3><p>查看文件处于哪些状态，使用<code>git status</code>命令。</p>
+<p>如果在克隆仓库后立即执行此命令，会是这样的输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing added to commit, working directory clean</span><br></pre></td></tr></table></figure>
+<p>说明现在的工作目录十分干净。也就是说，所有已跟踪文件在上次提交后都未被更改过。并且当前目录下没有出现任何处于未跟踪状态的新文件，否则Git会在这里列出来。该命令还显示了当前所在分支，并且告诉你这个分支同远程服务器上对应的分支没有偏离。</p>
+<p>我们可以在项目下创建一个README.MD的文件，如果之前不存在这个文件，使用<code>git status</code>命令，将看到一个新的未跟踪文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ echo &apos;css garden&apos; &gt;README.md</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line"></span><br><span class="line">         README.md</span><br></pre></td></tr></table></figure>
+<p>在状态报告中可以看到新建的README.MD文件出现在<code>Untracked files</code>下。未跟踪的文件意味着Git在之前的快照(提交)没有这些文件，Git不会自动将之纳入跟踪范围。</p>
+<h3 id="2-2-跟踪新文件"><a href="#2-2-跟踪新文件" class="headerlink" title="2.2.跟踪新文件"></a>2.2.跟踪新文件</h3><p>开始跟踪一个文件，使用<code>git add</code>命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git add README.md</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">        new file:   README.md</span><br></pre></td></tr></table></figure>
+<p>READMD文件文件已被跟踪，并处于暂存状态。</p>
+<p>在<code>Changes to be committed</code>下的所有文件都是已暂存状态，如果此时提交，那么该文件此时此刻的版本江北存留在历史记录中。</p>
+<h3 id="2-3-暂存已修改文件"><a href="#2-3-暂存已修改文件" class="headerlink" title="2.3.暂存已修改文件"></a>2.3.暂存已修改文件</h3><p>修改一个已被跟踪的文件，然后运行<code>git status</code>命令，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        modified:   five.html</span><br></pre></td></tr></table></figure>
+<p>文件five.html出现在<code>Changes not staged for commit</code>下，说明已跟踪文件的内容发生了变化，但还没有放到暂存区。要暂存这次更新，又需要使用git add命令。</p>
+<p>git add命令有多种作用：</p>
+<ul>
+<li><p>跟踪新文件</p>
+</li>
+<li><p>把已跟踪的文件放到暂存区</p>
+</li>
+<li><p>合并时把有冲突的文件标记为以解决状态</p>
+</li>
+<li><p>“添加内容到下一次提交中”而不是”将一个文件添加到项目中”</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git add *</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">        new file:   README.md</span><br><span class="line">        modified:   five.html</span><br></pre></td></tr></table></figure>
+<p>两个文件都已暂存，下次提交时就会一并记录到仓库。</p>
+<p>如果需要在修改five.html文件，我们可以再看一下暂存区的状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">        new file:   README.md</span><br><span class="line">        modified:   five.html</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        modified:   five.html</span><br></pre></td></tr></table></figure>
+<p>我们可以发现five.html文件同时出现在暂存区和非暂存区，这种情况是不可能发生的，实际上Git只暂存了你运行<code>git add</code>命令时的那个版本，如果你现在提交，five.html的版本是你最后一次运行<code>git add</code>命令时的那个版本，而不是你运行<code>git commit</code>时，在工作目录中的当前版本。因此，运行了<code>git add</code>之后又作了修订的文件，需要重新运行git add把最新版本重新暂存起来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git add *</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">        new file:   README.md</span><br><span class="line">        modified:   five.html</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-状态简览"><a href="#2-4-状态简览" class="headerlink" title="2.4.状态简览"></a>2.4.状态简览</h3><p>git status命令的输出十分详细，但又有些繁琐，可以使用<code>git status -s</code>命令，得到一种更为紧凑的格式输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git status -s</span><br><span class="line"> M  README.md</span><br><span class="line">MM  five.html</span><br><span class="line">A  five.txt</span><br><span class="line">?? .project</span><br></pre></td></tr></table></figure>
+<p>新添加的未跟踪文件前面有<code>??</code>标记，新添加到暂存区中的文件前面有<code>A</code>标记，修改过的文件前面有<code>M</code>标记。你可能注意到了<code>M</code>有两个可以出现的位置，出现在右边的 <code>M</code>表示该文文件被修改了但是还没放入暂存区，出现在靠左边的<code>M</code>表示该文件被修改了并放入了暂存区。</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="../img/reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/07/24/2-2-Git基础/" class="pre-post btn btn-default" title='2-2-Git基础'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">2-2-Git基础</span>
+        </a>
+    
+    
+        <a href="/2018/07/22/1-认识Git/" class="next-post btn btn-default" title='认识Git'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">认识Git</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-获取Git仓库"><span class="toc-text">1.获取Git仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-在现有目录中初始化仓库"><span class="toc-text">1.1.在现有目录中初始化仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-克隆现有的仓库"><span class="toc-text">1.2.克隆现有的仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-记录每次更新到仓库"><span class="toc-text">2.记录每次更新到仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-检查当前文件状态"><span class="toc-text">2.1.检查当前文件状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-跟踪新文件"><span class="toc-text">2.2.跟踪新文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-暂存已修改文件"><span class="toc-text">2.3.暂存已修改文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-状态简览"><span class="toc-text">2.4.状态简览</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

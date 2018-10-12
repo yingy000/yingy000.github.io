@@ -1,0 +1,381 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>3-定义类和对象 | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="3-定义类和对象">
+            
+	            3-定义类和对象
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/博客列表">
+            博客列表
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/JavaScript" title='JavaScript'>
+                        JavaScript
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/03/25</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="定义类或对象"><a href="#定义类或对象" class="headerlink" title="定义类或对象"></a>定义类或对象</h2><h3 id="1-工厂方式"><a href="#1-工厂方式" class="headerlink" title="1.工厂方式"></a>1.工厂方式</h3><p>一般情况下对象的属性在对象创建后定义。例如下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var car=new Object();</span><br><span class="line">car.color=&quot;red&quot;;</span><br><span class="line">car.doors=4;</span><br><span class="line">car.mpg=23;</span><br><span class="line">car.showcolor=function()&#123;</span><br><span class="line">	console.log(this.color);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1255650/o_13.png" alt=" "></p>
+<p>在上述代码中，创建对象car,给它设置了几个属性：颜色、门、时速。最后一个属性实际上是指向函数的指针，意味着该属性是个方法，运行这段代码后，就可以使用对象car。问题是可能需要创建多个car实例。</p>
+<p>要解决这个问题，开发者创造了能创建并返回特定类型的对象的工厂函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function createcar()&#123;</span><br><span class="line">  var car=new Object();</span><br><span class="line">  car.color=&quot;red&quot;;</span><br><span class="line">  car.doors=4;</span><br><span class="line">  car.mpg=23;</span><br><span class="line">  car.showcolor=function()&#123;</span><br><span class="line">	console.log(this.color);</span><br><span class="line">  &#125;;</span><br><span class="line">  return car;</span><br><span class="line">&#125;</span><br><span class="line">var car1=new createcar();</span><br><span class="line">var car2=new createcar();</span><br><span class="line">car1.showcolor()   //red</span><br><span class="line">car2.showcolor()    //red</span><br></pre></td></tr></table></figure>
+<p>将对象car封装在函数createcar()中，并且返回car对象作为函数值。当调用此函数时，将创建新对象，并赋予它所有必要的属性，复制出一个car对象。使用该方法，可以很容易地创建car对象的两个版本(car1和car2)，它们的属性完全一样，就像是双胞胎。</p>
+<p>我们还可以修改<code>createcar()</code>函数，给它传递各个属性的默认值，而不是赋予属性默认值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function createcar(icolor,idoor,impg)&#123;</span><br><span class="line">  var car=new Object();</span><br><span class="line">  car.color=icolor;</span><br><span class="line">  car.doors=idoor;</span><br><span class="line">  car.mpg=impg;</span><br><span class="line">  car.showcolor=function()&#123;</span><br><span class="line">	console.log(this.color);</span><br><span class="line">  &#125;;</span><br><span class="line">  return car;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var car1=new createcar(&quot;pink&quot;,4,25);</span><br><span class="line"></span><br><span class="line">var car2=new createcar(&quot;black&quot;,4,30);</span><br><span class="line"></span><br><span class="line">car1.showcolor()   //pink</span><br><span class="line"></span><br><span class="line">car2.showcolor()    //black</span><br></pre></td></tr></table></figure>
+<p>给<code>createcar()</code>函数加上参数，也就是为创建的car对象color、doors和mpg属性赋值，这使得car1对象和car2对象具有相同的属性，却有不同的属性值。</p>
+<p>我们肯定发现了一个问题，每次调用<code>createcar()</code>函数时，都要创建新函数<code>showcolor()</code>，这意味着每个对象都有自己独立的<code>showcolor()</code>版本。但事实上，每个对象都共享了同一个函数<code>showcolor()</code>。</p>
+<p>解决办法：在工厂函数外定义对象的方法，然后通过属性指向该方法，从而避开这个问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function showcolor()&#123;</span><br><span class="line">	console.log(this.color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function  createcar(icolor,idoor,impg)&#123;</span><br><span class="line">  var car=new Object();</span><br><span class="line">  car.color=icolor;</span><br><span class="line">  car.doors=idoor;</span><br><span class="line">  car.mpg=impg;</span><br><span class="line">  car.showcolor=showcolor;</span><br><span class="line">  return car;</span><br><span class="line">&#125;</span><br><span class="line">var car1=new createcar(&quot;pink&quot;,4,25);</span><br><span class="line"></span><br><span class="line">var car2=new createcar(&quot;black&quot;,4,30);</span><br><span class="line"></span><br><span class="line">car1.showcolor()   //pink</span><br><span class="line"></span><br><span class="line">car2.showcolor()    //black</span><br></pre></td></tr></table></figure>
+<p>在上述代码中，在函数crearcar()前定义了函数showcolor()。在crearcar()内部，赋予对象一个指向已经存在的showcolor()函数的指针。从功能上来说，这样解决了重复创建函数对象的问题，但showcolor()函数看起来不像对象的方法。这些一系列的问题引发了开发者定义的构造函数的出现。</p>
+<h3 id="2-构造函数方式"><a href="#2-构造函数方式" class="headerlink" title="2.构造函数方式"></a>2.构造函数方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function createcar(icolor,idoor,impg)&#123;</span><br><span class="line">  this.color=icolor;</span><br><span class="line">  this.doors=idoor;</span><br><span class="line">  this.mpg=impg;</span><br><span class="line">  this.showcolor=function showcolor()&#123;</span><br><span class="line">        console.log(this.color);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var car1=new createcar(&quot;pink&quot;,4,25);</span><br><span class="line"></span><br><span class="line">var car2=new createcar(&quot;black&quot;,4,30);</span><br><span class="line"></span><br><span class="line">car1.showcolor()   //pink</span><br><span class="line"></span><br><span class="line">car2.showcolor()    //black</span><br></pre></td></tr></table></figure>
+<p>观察上述代码，我们可以发现在构造函数内部没有创建对象，而是使用this关键字。</p>
+<p>使用new运算符调用构造函数时，在执行第一行代码前先创建一个对象，只有用this才能访问该对象，然后可以直接赋予this属性，默认情况下是构造函数的返回值(不必明确使用return运算符)。</p>
+<p>同工厂函数一样，构造函数会重复生成函数，为每个对象都创建独立的函数版本。同工厂函数相似，也可以用外部函数重写构造函数，但是这样做没有任何的意义，所以开发者又定义了原型方式。</p>
+<h3 id="3-原型方式"><a href="#3-原型方式" class="headerlink" title="3.原型方式"></a>3.原型方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function car()&#123;</span><br><span class="line">&#125;</span><br><span class="line">car.prototype.color=&quot;red&quot;;</span><br><span class="line"></span><br><span class="line">car.prototype.doors=4;</span><br><span class="line"></span><br><span class="line">car.prototype.mpg=23;</span><br><span class="line"></span><br><span class="line">car.prototype.showcolor=function()&#123; //属性指向函数</span><br><span class="line">	console.log(this.color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var car1=new car();</span><br><span class="line"></span><br><span class="line">var car2=new car();</span><br><span class="line"></span><br><span class="line">car1.showcolor();  //red</span><br><span class="line"></span><br><span class="line">car2.showcolor();  //red</span><br></pre></td></tr></table></figure>
+<p>在上述代码中，首先定义构造函数car，然后通过给car的prototype属性添加属性去定义car对象的属性。调用<code>new car()</code>时，原型的所有属性都立即赋予要创建的对象，意味着所有car实例存放的都是指向<code>showcolor()</code>函数的指针。同时，所有属性看起来都属于一个对象，这就解决了工厂函数和构造函数存在着的最大的问题。</p>
+<p>我们可以使用<code>instanceOf</code>运算符检查给定变量指向的对象的类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(car1 instanceof car)  //true</span><br><span class="line">console.log(car2 instanceof car)  //true</span><br></pre></td></tr></table></figure>
+<p>这下感觉是不是很完美了呢？其实不尽然，还是有着诸多的缺点滴。</p>
+<p>第一个缺点：这个构造函数是不能有参数的，也就是说通过原型方式创建对象时，不能通过给构造函数传递参数初始化属性的值，类似这种：<code>var car1=new car(&quot;pink&quot;,4,25);</code>，这意味着必须在对象创建后才能改变属性的默认值，这样也是很无奈了。</p>
+<p>第二个缺点：当属性指向对象，而不是指向函数时会出现很大的问题。</p>
+<p>一般来说，函数共享是ok的，不会造成任何问题，但对象却是很少被多个实例共享的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function car()&#123;</span><br><span class="line">&#125;</span><br><span class="line">car.prototype.color=&quot;red&quot;;</span><br><span class="line"></span><br><span class="line">car.prototype.doors=4;</span><br><span class="line"></span><br><span class="line">car.prototype.mpg=23;</span><br><span class="line"></span><br><span class="line">car.prototype.drivers=new Array(&quot;张三&quot;,&quot;李四&quot;);</span><br><span class="line">car.prototype.showcolor=function()&#123; //属性指向函数</span><br><span class="line">	console.log(this.color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var car1=new car();</span><br><span class="line"></span><br><span class="line">var car2=new car();</span><br><span class="line"></span><br><span class="line">car1.drivers.push(&quot;王五&quot;);</span><br><span class="line"></span><br><span class="line">console.log(car1.drivers);  //[&quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;]</span><br><span class="line"></span><br><span class="line">console.log(car2.drivers);  //[&quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;]</span><br></pre></td></tr></table></figure>
+<p>哎呀！！这就很尴尬了，我明明只给对象car1添加了内容，为什么对象car2也会有呢？这该作何解释呢？</p>
+<p>解释：属性drivers是指向Array对象的指针，该数组中包含两个名字<code>&quot;张三&quot;</code>和<code>&quot;李四&quot;</code>。由于drivers是引用值,car对象的两个实例car1和car2都指向同一个数组，这意味着给car1.drivers添加值<code>&quot;王五&quot;</code>，在car2.drivers中也能看到，输出这两个指针中的任何一个，结果都是显示字符串。为了解决这个问题，需要联合使用构造函数和原型方式。</p>
+<h3 id="4-混合的构造函数和原型方式"><a href="#4-混合的构造函数和原型方式" class="headerlink" title="4.混合的构造函数和原型方式"></a>4.混合的构造函数和原型方式</h3><p>混合的构造函数和原型方式指的是用构造函数定义对象的所有非函数属性，用原型方式定义对象函数属性。结果所有函数都只创建一次，而且每个对象都有自己的对象属性实例，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function car(icolor,idoor,impg)&#123;</span><br><span class="line">this.color=icolor;</span><br><span class="line">  this.doors=idoor;</span><br><span class="line">  this.mpg=impg;</span><br><span class="line">this.drivers=new Array(&quot;张三&quot;,&quot;李四&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">car.prototype.showcolor=function()&#123; //属性指向函数</span><br><span class="line">  console.log(this.color);</span><br><span class="line">&#125;</span><br><span class="line">var car1=new car(&quot;pink&quot;,4,25);</span><br><span class="line"></span><br><span class="line">var car2=new car(&quot;black&quot;,4,30);</span><br><span class="line"></span><br><span class="line">console.log(car1.showcolor())   //pink</span><br><span class="line"></span><br><span class="line">console.log(car2.showcolor())    //black</span><br><span class="line"></span><br><span class="line">car1.drivers.push(&quot;王五&quot;);</span><br><span class="line"></span><br><span class="line">console.log(car1.drivers);  //[&quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;]</span><br><span class="line"></span><br><span class="line">console.log(car2.drivers);  //[&quot;张三&quot;, &quot;李四&quot;]</span><br></pre></td></tr></table></figure>
+<p>上述代码中，所有的非函数属性都在构造函数中创建，意味着可以用构造函数的参数赋予属性默认值。并且只创建showcolor()函数的一个实例，没有内存浪费。从结果中我们可以看出对象car1改变数组得drivers的值并不会影响对象car2数组的drivers的值。</p>
+<p>我们可以使用instanceOf运算符检查给定变量指向的对象的类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(car1 instanceof car)  //true</span><br><span class="line">console.log(car2 instanceof car)  //true</span><br></pre></td></tr></table></figure>
+<p>混合的构造函数和原型方式创建对象，算是一种比较完美的方式了。</p>
+<h3 id="5-动态原型方法"><a href="#5-动态原型方法" class="headerlink" title="5.动态原型方法"></a>5.动态原型方法</h3><p>动态原型方法的基本思想与混合的构造函数和原型方式相同，在构造函数定义对象的所有非函数属性，用原型方式定义对象函数属性。唯一的区别就是赋予对象方法的位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function car(icolor,idoor,impg)&#123;</span><br><span class="line">this.color=icolor;</span><br><span class="line">  this.doors=idoor;</span><br><span class="line">  this.mpg=impg;</span><br><span class="line">this.drivers=new Array(&quot;张三&quot;,&quot;李四&quot;);</span><br><span class="line"></span><br><span class="line">if(typeof car._initialized==&quot;undefined&quot;)&#123;</span><br><span class="line">   car.prototype.showcolor=function()&#123; //属性指向函数</span><br><span class="line">      console.log(this.color);</span><br><span class="line">  &#125;;</span><br><span class="line">   car.initialized=true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直到检查<code>typeof car._initialized</code>是否等于<code>&quot;undefined&quot;</code>之前，这个构造函数都未发生变化。如果这个值未定义，构造函数将用原型方式继续定义对象的方法，然后把<code>car._initialized</code>设置为true。如果这个值定义了(它的值为true，typeof为Boolean)，那么就不再创建该方法。也就是说该方法使用标志<code>(_initialized)</code>来判断是否已经给原型赋予了任何方法。</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="../img/reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/03/27/3-修改对象/" class="pre-post btn btn-default" title='3-修改对象'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">3-修改对象</span>
+        </a>
+    
+    
+        <a href="/2018/03/23/3-对象的类型-内置对象/" class="next-post btn btn-default" title='3-内置对象'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">3-内置对象</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义类或对象"><span class="toc-text">定义类或对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-工厂方式"><span class="toc-text">1.工厂方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-构造函数方式"><span class="toc-text">2.构造函数方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-原型方式"><span class="toc-text">3.原型方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-混合的构造函数和原型方式"><span class="toc-text">4.混合的构造函数和原型方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-动态原型方法"><span class="toc-text">5.动态原型方法</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

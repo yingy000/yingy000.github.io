@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>2018-09-20日报之Android Debug Bridge | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="2018-09-20日报之Android Debug Bridge">
+            
+	            2018-09-20日报之Android Debug Bridge
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/博客列表">
+            博客列表
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Camera tuning小组日报" title='Camera tuning小组日报'>
+                        Camera tuning小组日报
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/09/20</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="Android-Debug-Bridge-version-1-0-31-Android调试桥版本1-0-31"><a href="#Android-Debug-Bridge-version-1-0-31-Android调试桥版本1-0-31" class="headerlink" title="Android Debug Bridge version 1.0.31(Android调试桥版本1.0.31)"></a>Android Debug Bridge version 1.0.31(Android调试桥版本1.0.31)</h2><h3 id="1-a：指示adb监听连接的所有接口"><a href="#1-a：指示adb监听连接的所有接口" class="headerlink" title="1.-a：指示adb监听连接的所有接口"></a>1.<code>-a</code>：指示adb监听连接的所有接口</h3><h3 id="2-d-：将命令引导到唯一连接的USB设备，如果有多个USB设备出现，则返回一个错误。"><a href="#2-d-：将命令引导到唯一连接的USB设备，如果有多个USB设备出现，则返回一个错误。" class="headerlink" title="2.-d ：将命令引导到唯一连接的USB设备，如果有多个USB设备出现，则返回一个错误。"></a>2.<code>-d</code> ：将命令引导到唯一连接的USB设备，如果有多个USB设备出现，则返回一个错误。</h3><h3 id="3-e：将命令引导到唯一运行的模拟器，如果超过一个模拟器正在运行，则返回一个错误。"><a href="#3-e：将命令引导到唯一运行的模拟器，如果超过一个模拟器正在运行，则返回一个错误。" class="headerlink" title="3.-e：将命令引导到唯一运行的模拟器，如果超过一个模拟器正在运行，则返回一个错误。"></a>3.<code>-e</code>：将命令引导到唯一运行的模拟器，如果超过一个模拟器正在运行，则返回一个错误。</h3><h3 id="4-s：-用给定的命令将命令引导到设备或模拟器，序列号或限定符，覆盖ANDROLD-SERIAL-串号-。"><a href="#4-s：-用给定的命令将命令引导到设备或模拟器，序列号或限定符，覆盖ANDROLD-SERIAL-串号-。" class="headerlink" title="4.-s： 用给定的命令将命令引导到设备或模拟器，序列号或限定符，覆盖ANDROLD_SERIAL(串号)。"></a>4.<code>-s</code>： 用给定的命令将命令引导到设备或模拟器，序列号或限定符，覆盖ANDROLD_SERIAL(串号)。</h3><h3 id="5-H：adb服务器主机名-默认-localhost-。"><a href="#5-H：adb服务器主机名-默认-localhost-。" class="headerlink" title="5.-H：adb服务器主机名(默认:localhost)。"></a>5.<code>-H</code>：adb服务器主机名(默认:localhost)。</h3><h3 id="6-P：adb服务器-默认：5037-。"><a href="#6-P：adb服务器-默认：5037-。" class="headerlink" title="6.-P：adb服务器(默认：5037)。"></a>6.<code>-P</code>：adb服务器(默认：5037)。</h3><h3 id="7-devices-l-：列出所有的连接设备"><a href="#7-devices-l-：列出所有的连接设备" class="headerlink" title="7.devices [-l]：列出所有的连接设备"></a>7.<code>devices [-l]</code>：列出所有的连接设备</h3><h3 id="8-connect-lt-host-gt-lt-port-gt-：通过IP连接到设备，如果没有指定端口号，则默认使用了5555。"><a href="#8-connect-lt-host-gt-lt-port-gt-：通过IP连接到设备，如果没有指定端口号，则默认使用了5555。" class="headerlink" title="8.connect &lt;host&gt;[:&lt;port&gt;]：通过IP连接到设备，如果没有指定端口号，则默认使用了5555。"></a>8.<code>connect &lt;host&gt;[:&lt;port&gt;]</code>：通过IP连接到设备，如果没有指定端口号，则默认使用了5555。</h3><h3 id="9-disconnect-lt-host-gt-lt-port-gt-：断开与一个ip设备的连接，如果没有指定端口号，则默认使用5555端口，在没有附加参数的情况下运行这个命令，将断开与所有连接的ip设备的连接。"><a href="#9-disconnect-lt-host-gt-lt-port-gt-：断开与一个ip设备的连接，如果没有指定端口号，则默认使用5555端口，在没有附加参数的情况下运行这个命令，将断开与所有连接的ip设备的连接。" class="headerlink" title="9.disconnect [&lt;host&gt;[:&lt;port&gt;]]：断开与一个ip设备的连接，如果没有指定端口号，则默认使用5555端口，在没有附加参数的情况下运行这个命令，将断开与所有连接的ip设备的连接。"></a>9.<code>disconnect [&lt;host&gt;[:&lt;port&gt;]]</code>：断开与一个ip设备的连接，如果没有指定端口号，则默认使用5555端口，在没有附加参数的情况下运行这个命令，将断开与所有连接的ip设备的连接。</h3><h3 id="10-device-commands-磁盘操作命令"><a href="#10-device-commands-磁盘操作命令" class="headerlink" title="10.device commands:磁盘操作命令"></a>10.<code>device commands</code>:磁盘操作命令</h3><h4 id="10-1-adb-push-p-lt-local-gt-lt-remote-gt"><a href="#10-1-adb-push-p-lt-local-gt-lt-remote-gt" class="headerlink" title="10.1. adb push [-p] &lt;local&gt; &lt;remote&gt;"></a>10.1. <code>adb push [-p] &lt;local&gt; &lt;remote&gt;</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">复制文件/目录到设备</span><br><span class="line"></span><br><span class="line">&quot;-p&quot;来显示转移的进度</span><br></pre></td></tr></table></figure>
+<h4 id="10-2-adb-pull-p-a-lt-remote-gt-lt-local-gt"><a href="#10-2-adb-pull-p-a-lt-remote-gt-lt-local-gt" class="headerlink" title="10.2. adb pull [-p] [-a] &lt;remote&gt; [&lt;local&gt;]"></a>10.2. <code>adb pull [-p] [-a] &lt;remote&gt; [&lt;local&gt;]</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">复制文件/目录到设备</span><br><span class="line"></span><br><span class="line">&quot;-p&quot;来显示转移的进度</span><br><span class="line"></span><br><span class="line">&quot;-a&quot;的意思是复制时间戳和模式</span><br></pre></td></tr></table></figure>
+<h4 id="10-3-adb-shell-：交互式地运行远程shell"><a href="#10-3-adb-shell-：交互式地运行远程shell" class="headerlink" title="10.3. adb shell ：交互式地运行远程shell"></a>10.3. <code>adb shell</code> ：交互式地运行远程shell</h4><h4 id="10-4-adb-shell-lt-command-gt-：运行远程shell命令"><a href="#10-4-adb-shell-lt-command-gt-：运行远程shell命令" class="headerlink" title="10.4. adb shell &lt;command&gt;：运行远程shell命令"></a>10.4. <code>adb shell &lt;command&gt;</code>：运行远程shell命令</h4><h4 id="10-5-adb-emu-lt-command-gt-：运行模拟器控制台命令"><a href="#10-5-adb-emu-lt-command-gt-：运行模拟器控制台命令" class="headerlink" title="10.5. adb emu &lt;command&gt;：运行模拟器控制台命令"></a>10.5. <code>adb emu &lt;command&gt;</code>：运行模拟器控制台命令</h4><h4 id="10-6-adb-logcat-lt-filter-spec-gt-View-device-log-查看设备日志"><a href="#10-6-adb-logcat-lt-filter-spec-gt-View-device-log-查看设备日志" class="headerlink" title="10.6. adb logcat [ &lt;filter-spec&gt; ] - View device log(查看设备日志)"></a>10.6. <code>adb logcat [ &lt;filter-spec&gt; ] - View device log</code>(查看设备日志)</h4><h4 id="10-7-adb-bugreport：从设备返回所有信息，这应该包含在Bug报告中"><a href="#10-7-adb-bugreport：从设备返回所有信息，这应该包含在Bug报告中" class="headerlink" title="10.7. adb bugreport：从设备返回所有信息，这应该包含在Bug报告中"></a>10.7. <code>adb bugreport</code>：从设备返回所有信息，这应该包含在Bug报告中</h4><h4 id="10-8-adb-restore-lt-file-gt-：从备份存档中恢复设备内容"><a href="#10-8-adb-restore-lt-file-gt-：从备份存档中恢复设备内容" class="headerlink" title="10.8. adb restore &lt;file&gt;：从备份存档中恢复设备内容"></a>10.8. <code>adb restore &lt;file&gt;</code>：从备份存档中恢复设备内容</h4><h4 id="10-9-adb-help：显示这个帮助信息"><a href="#10-9-adb-help：显示这个帮助信息" class="headerlink" title="10.9. adb help：显示这个帮助信息"></a>10.9. <code>adb help</code>：显示这个帮助信息</h4><h4 id="10-10-adb-version：显示版本数"><a href="#10-10-adb-version：显示版本数" class="headerlink" title="10.10. adb version：显示版本数"></a>10.10. <code>adb version</code>：显示版本数</h4><h3 id="11-scripting-脚本语言"><a href="#11-scripting-脚本语言" class="headerlink" title="11. scripting:(脚本语言)"></a>11. scripting:(脚本语言)</h3><h4 id="11-1-adb-wait-for-device-：一直等待，知道设备上线"><a href="#11-1-adb-wait-for-device-：一直等待，知道设备上线" class="headerlink" title="11.1. adb wait-for-device ：一直等待，知道设备上线"></a>11.1. <code>adb wait-for-device</code> ：一直等待，知道设备上线</h4><h4 id="11-2-adb-start-server-：确保有一个服务器在运行"><a href="#11-2-adb-start-server-：确保有一个服务器在运行" class="headerlink" title="11.2. adb start-server ：确保有一个服务器在运行"></a>11.2. <code>adb start-server</code> ：确保有一个服务器在运行</h4><h4 id="11-3-adb-kill-server-：如果服务器正在运行，就杀死服务器"><a href="#11-3-adb-kill-server-：如果服务器正在运行，就杀死服务器" class="headerlink" title="11.3. adb kill-server ：如果服务器正在运行，就杀死服务器"></a>11.3. <code>adb kill-server</code> ：如果服务器正在运行，就杀死服务器</h4><h4 id="11-4-adb-get-state-：打印：脱机引导加载程序"><a href="#11-4-adb-get-state-：打印：脱机引导加载程序" class="headerlink" title="11.4. adb get-state ：打印：脱机引导加载程序"></a>11.4. <code>adb get-state</code> ：打印：脱机引导加载程序</h4><h4 id="11-5-adb-get-serialno：打印序列号"><a href="#11-5-adb-get-serialno：打印序列号" class="headerlink" title="11.5. adb get-serialno：打印序列号"></a>11.5. <code>adb get-serialno</code>：打印序列号</h4><h4 id="11-6-adb-get-devpath：打印设备路径"><a href="#11-6-adb-get-devpath：打印设备路径" class="headerlink" title="11.6. adb get-devpath：打印设备路径"></a>11.6. <code>adb get-devpath</code>：打印设备路径</h4><h4 id="11-7-adb-status-window-：为指定的设备连续打印设备状态"><a href="#11-7-adb-status-window-：为指定的设备连续打印设备状态" class="headerlink" title="11.7. adb status-window ：为指定的设备连续打印设备状态"></a>11.7. <code>adb status-window</code> ：为指定的设备连续打印设备状态</h4><h4 id="11-8-adb-remount-：在设备读写上重新安装-系统分区"><a href="#11-8-adb-remount-：在设备读写上重新安装-系统分区" class="headerlink" title="11.8. adb remount ：在设备读写上重新安装/系统分区"></a>11.8. <code>adb remount</code> ：在设备读写上重新安装/系统分区</h4><h4 id="11-9-adb-reboot-bootloader-recovery-：重新启动设备，可选地进入"><a href="#11-9-adb-reboot-bootloader-recovery-：重新启动设备，可选地进入" class="headerlink" title="11.9. adb reboot [bootloader|recovery]：重新启动设备，可选地进入"></a>11.9. <code>adb reboot [bootloader|recovery]</code>：重新启动设备，可选地进入</h4><h4 id="11-10-adb-reboot-bootloader-：将设备重新引导到引导加载程序中"><a href="#11-10-adb-reboot-bootloader-：将设备重新引导到引导加载程序中" class="headerlink" title="11.10 adb reboot-bootloader ：将设备重新引导到引导加载程序中"></a>11.10 <code>adb reboot-bootloader</code> ：将设备重新引导到引导加载程序中</h4><h4 id="11-11-adb-root：重新启动带有根权限的adbd守护进程"><a href="#11-11-adb-root：重新启动带有根权限的adbd守护进程" class="headerlink" title="11.11. adb root：重新启动带有根权限的adbd守护进程"></a>11.11. <code>adb root</code>：重新启动带有根权限的adbd守护进程</h4><h4 id="11-12-adb-usb：重新启动adbd守护进程监听USB"><a href="#11-12-adb-usb：重新启动adbd守护进程监听USB" class="headerlink" title="11.12. adb usb：重新启动adbd守护进程监听USB"></a>11.12. <code>adb usb</code>：重新启动adbd守护进程监听USB</h4><h4 id="11-13-adb-tcpip-lt-port-gt-：重新启动adbd守护进程，监听指定端口上的TCP"><a href="#11-13-adb-tcpip-lt-port-gt-：重新启动adbd守护进程，监听指定端口上的TCP" class="headerlink" title="11.13. adb tcpip &lt;port&gt;：重新启动adbd守护进程，监听指定端口上的TCP"></a>11.13. <code>adb tcpip &lt;port&gt;</code>：重新启动adbd守护进程，监听指定端口上的TCP</h4>
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="../img/reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/09/21/C-2018-09-21/" class="pre-post btn btn-default" title='2018-09-21日报之Sublime编辑器'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">2018-09-21日报之Sublime编辑器</span>
+        </a>
+    
+    
+        <a href="/2018/09/19/C-2018-09-19/" class="next-post btn btn-default" title='2018-09-19日报之手机摄像模组图像质量规范(3)'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">2018-09-19日报之手机摄像模组图像质量规范(3)</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-Debug-Bridge-version-1-0-31-Android调试桥版本1-0-31"><span class="toc-text">Android Debug Bridge version 1.0.31(Android调试桥版本1.0.31)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-a：指示adb监听连接的所有接口"><span class="toc-text">1.-a：指示adb监听连接的所有接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-d-：将命令引导到唯一连接的USB设备，如果有多个USB设备出现，则返回一个错误。"><span class="toc-text">2.-d ：将命令引导到唯一连接的USB设备，如果有多个USB设备出现，则返回一个错误。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-e：将命令引导到唯一运行的模拟器，如果超过一个模拟器正在运行，则返回一个错误。"><span class="toc-text">3.-e：将命令引导到唯一运行的模拟器，如果超过一个模拟器正在运行，则返回一个错误。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-s：-用给定的命令将命令引导到设备或模拟器，序列号或限定符，覆盖ANDROLD-SERIAL-串号-。"><span class="toc-text">4.-s： 用给定的命令将命令引导到设备或模拟器，序列号或限定符，覆盖ANDROLD_SERIAL(串号)。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-H：adb服务器主机名-默认-localhost-。"><span class="toc-text">5.-H：adb服务器主机名(默认:localhost)。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-P：adb服务器-默认：5037-。"><span class="toc-text">6.-P：adb服务器(默认：5037)。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-devices-l-：列出所有的连接设备"><span class="toc-text">7.devices [-l]：列出所有的连接设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-connect-lt-host-gt-lt-port-gt-：通过IP连接到设备，如果没有指定端口号，则默认使用了5555。"><span class="toc-text">8.connect &lt;host&gt;[:&lt;port&gt;]：通过IP连接到设备，如果没有指定端口号，则默认使用了5555。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-disconnect-lt-host-gt-lt-port-gt-：断开与一个ip设备的连接，如果没有指定端口号，则默认使用5555端口，在没有附加参数的情况下运行这个命令，将断开与所有连接的ip设备的连接。"><span class="toc-text">9.disconnect [&lt;host&gt;[:&lt;port&gt;]]：断开与一个ip设备的连接，如果没有指定端口号，则默认使用5555端口，在没有附加参数的情况下运行这个命令，将断开与所有连接的ip设备的连接。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-device-commands-磁盘操作命令"><span class="toc-text">10.device commands:磁盘操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-1-adb-push-p-lt-local-gt-lt-remote-gt"><span class="toc-text">10.1. adb push [-p] &lt;local&gt; &lt;remote&gt;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-2-adb-pull-p-a-lt-remote-gt-lt-local-gt"><span class="toc-text">10.2. adb pull [-p] [-a] &lt;remote&gt; [&lt;local&gt;]</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-3-adb-shell-：交互式地运行远程shell"><span class="toc-text">10.3. adb shell ：交互式地运行远程shell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-4-adb-shell-lt-command-gt-：运行远程shell命令"><span class="toc-text">10.4. adb shell &lt;command&gt;：运行远程shell命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-5-adb-emu-lt-command-gt-：运行模拟器控制台命令"><span class="toc-text">10.5. adb emu &lt;command&gt;：运行模拟器控制台命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-6-adb-logcat-lt-filter-spec-gt-View-device-log-查看设备日志"><span class="toc-text">10.6. adb logcat [ &lt;filter-spec&gt; ] - View device log(查看设备日志)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-7-adb-bugreport：从设备返回所有信息，这应该包含在Bug报告中"><span class="toc-text">10.7. adb bugreport：从设备返回所有信息，这应该包含在Bug报告中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-8-adb-restore-lt-file-gt-：从备份存档中恢复设备内容"><span class="toc-text">10.8. adb restore &lt;file&gt;：从备份存档中恢复设备内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-9-adb-help：显示这个帮助信息"><span class="toc-text">10.9. adb help：显示这个帮助信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-10-adb-version：显示版本数"><span class="toc-text">10.10. adb version：显示版本数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-scripting-脚本语言"><span class="toc-text">11. scripting:(脚本语言)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-1-adb-wait-for-device-：一直等待，知道设备上线"><span class="toc-text">11.1. adb wait-for-device ：一直等待，知道设备上线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-2-adb-start-server-：确保有一个服务器在运行"><span class="toc-text">11.2. adb start-server ：确保有一个服务器在运行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-3-adb-kill-server-：如果服务器正在运行，就杀死服务器"><span class="toc-text">11.3. adb kill-server ：如果服务器正在运行，就杀死服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-4-adb-get-state-：打印：脱机引导加载程序"><span class="toc-text">11.4. adb get-state ：打印：脱机引导加载程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-5-adb-get-serialno：打印序列号"><span class="toc-text">11.5. adb get-serialno：打印序列号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-6-adb-get-devpath：打印设备路径"><span class="toc-text">11.6. adb get-devpath：打印设备路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-7-adb-status-window-：为指定的设备连续打印设备状态"><span class="toc-text">11.7. adb status-window ：为指定的设备连续打印设备状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-8-adb-remount-：在设备读写上重新安装-系统分区"><span class="toc-text">11.8. adb remount ：在设备读写上重新安装/系统分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-9-adb-reboot-bootloader-recovery-：重新启动设备，可选地进入"><span class="toc-text">11.9. adb reboot [bootloader|recovery]：重新启动设备，可选地进入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-10-adb-reboot-bootloader-：将设备重新引导到引导加载程序中"><span class="toc-text">11.10 adb reboot-bootloader ：将设备重新引导到引导加载程序中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-11-adb-root：重新启动带有根权限的adbd守护进程"><span class="toc-text">11.11. adb root：重新启动带有根权限的adbd守护进程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-12-adb-usb：重新启动adbd守护进程监听USB"><span class="toc-text">11.12. adb usb：重新启动adbd守护进程监听USB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-13-adb-tcpip-lt-port-gt-：重新启动adbd守护进程，监听指定端口上的TCP"><span class="toc-text">11.13. adb tcpip &lt;port&gt;：重新启动adbd守护进程，监听指定端口上的TCP</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
