@@ -1,0 +1,602 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>2-运算符 | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="2-运算符">
+            
+	            2-运算符
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/博客列表">
+            博客列表
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/JavaScript" title='JavaScript'>
+                        JavaScript
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/04/15</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="1-一元运算符"><a href="#1-一元运算符" class="headerlink" title="1.一元运算符"></a>1.一元运算符</h2><h3 id="1-1-delete运算符：删除对以前定义的对象属性或方法的引用"><a href="#1-1-delete运算符：删除对以前定义的对象属性或方法的引用" class="headerlink" title="1.1.delete运算符：删除对以前定义的对象属性或方法的引用"></a>1.1.delete运算符：删除对以前定义的对象属性或方法的引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str=new String();</span><br><span class="line">str.name=&quot;张三&quot;   //&quot;张三&quot;</span><br><span class="line">str.name   //&quot;张三&quot;</span><br><span class="line">delete str.name  //true</span><br><span class="line">str.name   //undefined</span><br></pre></td></tr></table></figure>
+<p>运算符不能删除未定义的属性和方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str=new String();</span><br><span class="line"></span><br><span class="line">delete str.add() //删除add()方法时将会报错，因为add()方法没有定义。</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-void运算符：对任何值都返回undefined，该运算符通常用于避免输出不应该输出的值。"><a href="#1-2-void运算符：对任何值都返回undefined，该运算符通常用于避免输出不应该输出的值。" class="headerlink" title="1.2.void运算符：对任何值都返回undefined，该运算符通常用于避免输出不应该输出的值。"></a>1.2.void运算符：对任何值都返回undefined，该运算符通常用于避免输出不应该输出的值。</h3><p>举例：从HTML的<code>&lt;a&gt;</code>元素调用JavaScript函数时，函数不能返回有效值，否则浏览器将清空页面的所有效果只显示函数的结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;&quot;&gt;我是链接&lt;/a&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">window.onload=function()&#123;</span><br><span class="line"> var a=document.getElementById(&quot;a&quot;);</span><br><span class="line">	var test=window.open(&quot;about:black&quot;);</span><br><span class="line">		  document.write(test);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1255650/o_6.png" alt=" "></p>
+<p>从图中可以看到显示<code>&quot;[Object window]&quot;</code>，因为<code>window.open()</code>方法反回了对新打开的窗口的应用，然后该对象被转换成要显示的字符串。</p>
+<p>解决方法：用void运算符调用<code>window.open()</code>函数，这时<code>window.open()</code>调用返回undefined，它不是有效的值，所以不会显示在浏览器窗口中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;&quot;&gt;我是链接&lt;/a&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">window.onload=function()&#123;</span><br><span class="line">  var a=document.getElementById(&quot;a&quot;);</span><br><span class="line">  var test=void (window.open(&quot;about:black&quot;));</span><br><span class="line">	 document.write(test);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1255650/o_7.png" alt=" "></p>
+<h3 id="1-3-前增量-前减量运算符"><a href="#1-3-前增量-前减量运算符" class="headerlink" title="1.3.前增量/前减量运算符"></a>1.3.前增量/前减量运算符</h3><p>增量/减量运算都发生在计算表达式之前。</p>
+<h3 id="1-4-后增量-后减量运算符"><a href="#1-4-后增量-后减量运算符" class="headerlink" title="1.4.后增量/后减量运算符"></a>1.4.后增量/后减量运算符</h3><p>后缀式运算符是在计算过包含它们的表达式后才进行增量或减量运算的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var num=10</span><br><span class="line"></span><br><span class="line">num--  //10</span><br><span class="line"></span><br><span class="line">num  //9</span><br><span class="line"></span><br><span class="line">--num  //8</span><br><span class="line"></span><br><span class="line">num  //8</span><br><span class="line"></span><br><span class="line">num--  //8</span><br><span class="line"></span><br><span class="line">num  //7</span><br></pre></td></tr></table></figure>
+<p>总结：前缀式运算符先<code>++/--</code>在计算表达式的值，后缀式运算符先计算表达式的值在<code>++/--</code>。</p>
+<h3 id="1-5-一元加法"><a href="#1-5-一元加法" class="headerlink" title="1.5.一元加法"></a>1.5.一元加法</h3><p>一元加法本质上对数字无任何影响;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var num=10</span><br><span class="line"></span><br><span class="line">+num  //10</span><br></pre></td></tr></table></figure>
+<p>虽然一元加法本质上对数字无任何影响，但可以把字符串转化为数字。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var num=&apos;10&apos;</span><br><span class="line"></span><br><span class="line">typeof num   //&quot;string&quot;</span><br><span class="line"></span><br><span class="line">snum=+num  //10</span><br><span class="line"></span><br><span class="line">typeof snum  //&quot;number&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="1-6-一元减法"><a href="#1-6-一元减法" class="headerlink" title="1.6.一元减法"></a>1.6.一元减法</h3><p>与一元加法运算符相似，一元减法运算符也会把字符串转换成近似的数字，并且还会对值求负。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var num=&apos;10&apos;</span><br><span class="line"></span><br><span class="line">typeof num   //&quot;string&quot;</span><br><span class="line"></span><br><span class="line">snum=-num  //-10</span><br><span class="line"></span><br><span class="line">typeof snum  //&quot;number&quot;</span><br></pre></td></tr></table></figure>
+<p>注意：当函数无明确返回值时，返回值也是<code>undefined</code>。</p>
+<h2 id="2-位运算符"><a href="#2-位运算符" class="headerlink" title="2.位运算符"></a>2.位运算符</h2><h3 id="2-1-关于整数"><a href="#2-1-关于整数" class="headerlink" title="2.1.关于整数"></a>2.1.关于整数</h3><p>ECMAScript整数有两种类型：有符号整数和无符号整数。</p>
+<p>在ECMAScript中，所有整数字面量默认都是有符号位整数。</p>
+<p>有符号位整数使用前31位表示整数的数值，用第32位表示整数的符号，0表示正数，1表示负数。数值的范围从-2147483648~2147483647。</p>
+<p>两种方式存储二进制形式的有符号位整数：</p>
+<ul>
+<li>存储正数：前31位中的每一位都表示2的幂，从第一位开始，表示2的零次方，第二位表示2的一次方，依次类推。</li>
+</ul>
+<p>举例：18的二进制只用了前5位，它们是这个数字的有效位，把数字转换成二进制字符串，就只能看到有效位。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var num=18</span><br><span class="line"></span><br><span class="line">num.toString(2)  //&quot;10010&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1255650/o_8.png" alt=" "></p>
+<ul>
+<li>存储负数：采用二进制补码的形式</li>
+</ul>
+<p>第一步：确定该数字的非负版本的二进制表示(-18-&gt;18)</p>
+<p>第二步：求得二进制反码，也就是说把0替换为1，把1替换为0;</p>
+<p>第三步：在二进制反码上加1</p>
+<p>举例：求-18的二进制表示</p>
+<p>第一步：确定18的二进制表示：0000 0000 0000 0000 0000 0000 0001 0010</p>
+<p>第二步：计算二进制的反码：1111 1111 1111 1111 1111 1111 1110 1101</p>
+<p>第三步：反码+1：1111 1111 1111 1111 1111 1111 1110 1110</p>
+<p>所以-18的二进制表示为1111 1111 1111 1111 1111 1111 1110 1110</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var num=-18</span><br><span class="line"></span><br><span class="line">num.toString(2)  //&quot;-10010&quot;</span><br></pre></td></tr></table></figure>
+<p>大家是不是很奇怪结果输出”-10010”，而非二进制的补码形式1111 1111 1111 1111 1111 1111 1110 1110，这是为了避免开发者访问第31位。</p>
+<p>无符号整数的数值范围为0~4294967295。</p>
+<p>注意：所有整数字面量都默认存储为有符号位整数，只有用ECMAScript的位运算符才能创建无符号整数。</p>
+<h3 id="2-2-位运算NOT"><a href="#2-2-位运算NOT" class="headerlink" title="2.2.位运算NOT"></a>2.2.位运算NOT</h3><p>位运算NOT由否定号(~)表示,它的处理过程分为三步：</p>
+<p>第一步：把运算数转换成32位数字</p>
+<p>第二步：把二进制形式转换成它的二进制反码。</p>
+<p>第三步：把二进制反码转换成浮点数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num=18   //0000 0000 0000 0000 0000 0000 0001 0010</span><br><span class="line"></span><br><span class="line">var num1=~18 //1111 1111 1111 1111 1111 1111 1110 1101</span><br><span class="line"></span><br><span class="line">num1  //-19</span><br></pre></td></tr></table></figure>
+<p>位运算符实质上是对数字求负，然后减1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num=18</span><br><span class="line"></span><br><span class="line">var num1=-num-1</span><br><span class="line"></span><br><span class="line">num1   //-19</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-位运算AND"><a href="#2-3-位运算AND" class="headerlink" title="2.3.位运算AND"></a>2.3.位运算AND</h3><p>位运算由和号(&amp;)表示，直接对数字的二进制形式进行运算。</p>
+<p>AND的运算规则，只有两个都为1时才为1，其余情况都为0;</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s=25&amp;18 ;</span><br><span class="line"></span><br><span class="line">console.log(s);   //16</span><br></pre></td></tr></table></figure>
+<p>25的二进制形式：0000 0000 0000 0000 0000 0000 0001 1001</p>
+<p>18的二进制形式：0000 0000 0000 0000 0000 0000 0001 0010</p>
+<p>结果：0000 0000 0000 0000 0000 0001 0000   //16</p>
+<h3 id="2-4-位运算OR"><a href="#2-4-位运算OR" class="headerlink" title="2.4.位运算OR"></a>2.4.位运算OR</h3><p>位运算由竖线(|)表示，直接对数字的二进制形式进行运算。</p>
+<p>OR的运算规则，只有两个都为0时才为0，其余情况都为1;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s=25|18 ;</span><br><span class="line"></span><br><span class="line">console.log(s);   //16</span><br></pre></td></tr></table></figure>
+<p>25的二进制形式：0000 0000 0000 0000 0000 0000 0001 1001</p>
+<p>18的二进制形式：0000 0000 0000 0000 0000 0000 0001 0010</p>
+<p>结果：0000 0000 0000 0000 0000 0001 1011   //27</p>
+<h2 id="2-5-位运算XOR"><a href="#2-5-位运算XOR" class="headerlink" title="2.5.位运算XOR"></a>2.5.位运算XOR</h2><p>位运算由符号(^)表示，直接对数字的二进制形式进行运算。</p>
+<p>XOR的运算规则，相同为0，不同为1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s=25^18 ;</span><br><span class="line"></span><br><span class="line">console.log(s);   //16</span><br></pre></td></tr></table></figure>
+<p>25的二进制形式：0000 0000 0000 0000 0000 0000 0001 1001</p>
+<p>18的二进制形式：0000 0000 0000 0000 0000 0000 0001 0010</p>
+<p>结果：0000 0000 0000 0000 0000 0000 1011   //11</p>
+<h3 id="2-6-左移运算"><a href="#2-6-左移运算" class="headerlink" title="2.6.左移运算"></a>2.6.左移运算</h3><p>左移运算由两个小于号表示(&lt;&lt;)，它把数字中的所有位数向左移动指定的数量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num=2   //10</span><br><span class="line"></span><br><span class="line">var num1=num&lt;&lt;5 //1000000</span><br><span class="line"></span><br><span class="line">console.log(num1)  //64</span><br></pre></td></tr></table></figure>
+<p>注意：左移操作保留数字的符号位。所以，如果把-2左移5位为-64，而不是64。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num=-2  //-10</span><br><span class="line"></span><br><span class="line">var num1=num&lt;&lt;5  //-1000000</span><br><span class="line"></span><br><span class="line">console.log(num1)  //-64</span><br></pre></td></tr></table></figure>
+<p>注意：为了避免开发者访问31位，所以-2显示为-10，而不是1111 1111 1111 1111 1111 1111 1111 1110，-64显示为-1000000而不是1111 1111 1111 1111 1110 0000</p>
+<h3 id="2-7-有符号右移运算"><a href="#2-7-有符号右移运算" class="headerlink" title="2.7.有符号右移运算"></a>2.7.有符号右移运算</h3><p>左移运算由两个大于号表示(&gt;&gt;)，它把数字中的所有位数向右移动指定的数量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num=64  //1000000</span><br><span class="line"></span><br><span class="line">var num1=num&gt;&gt;5 //10</span><br><span class="line"></span><br><span class="line">console.log(num1)  //2</span><br></pre></td></tr></table></figure>
+<p>移动数位后会造成空位，这些空位位于数字的左侧，但是位于符号位之前。</p>
+<h3 id="2-8-无符号右移运算"><a href="#2-8-无符号右移运算" class="headerlink" title="2.8.无符号右移运算"></a>2.8.无符号右移运算</h3><p>无符号左移运算由三个大于号表示(&gt;&gt;&gt;)，它把无符号32位数中的所有位数整体右移。</p>
+<p>对于正数，无符号右移运算结果和有符号右移运算结果相同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num=64  //1000000</span><br><span class="line"></span><br><span class="line">var num1=num&gt;&gt;&gt;5 //10</span><br><span class="line"></span><br><span class="line">console.log(num1)  //2</span><br></pre></td></tr></table></figure>
+<p>对于负数，那就呵呵了！！！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num=-64  //1000000</span><br><span class="line"></span><br><span class="line">var num1=num&gt;&gt;&gt;5 //111111111111111111111111110</span><br><span class="line"></span><br><span class="line">num1  //134217726</span><br></pre></td></tr></table></figure>
+<p>怎么会出现这种结果呢？</p>
+<p>无符号右移运算用0填充所有空位，对于负数由于无符号右移运算的结果是一个32位的正数，所有负数的无符号右移运算得到的总是一个非常大的数字。如何得到这种结果？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num=-64&gt;&gt;&gt;5</span><br><span class="line"></span><br><span class="line">num.toString(2)  //&quot;111111111111111111111111110&quot;</span><br><span class="line"></span><br><span class="line">num  //134217726</span><br></pre></td></tr></table></figure>
+<h2 id="3-Boolean运算符"><a href="#3-Boolean运算符" class="headerlink" title="3.Boolean运算符"></a>3.Boolean运算符</h2><p>Boolean运算符有三种，NOT、AND、OR</p>
+<h3 id="3-1-逻辑NOT"><a href="#3-1-逻辑NOT" class="headerlink" title="3.1.逻辑NOT"></a>3.1.逻辑NOT</h3><p>Boolean运算符NOT由感叹号(~)表示，逻辑NOT运算符的行为如下：</p>
+<p>如果运算数是对象，返回false</p>
+<p>如果运算符是数字0，返回true</p>
+<p>如果运算符是0以外的任何数字，返回false</p>
+<p>如果运算符是null,返回true</p>
+<p>如果运算符是NaN,返回true</p>
+<p>如果运算符是undefined，发生错误</p>
+<p>举例：该运算符用于控制循环</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var bFound=false;</span><br><span class="line">var  i=0;</span><br><span class="line">while(!bFound)&#123;</span><br><span class="line">  if(aValues[i]==vSearchValue)&#123;</span><br><span class="line">    bFound=true;</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">  i++;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Boolean变量(bFound)用于记录检索是否成功，找到问题的数据项时，bFound将被设置为true,!bFound将等于false，意味着运行将跳出while循环。</p>
+<h3 id="3-2-逻辑AND运算符时"><a href="#3-2-逻辑AND运算符时" class="headerlink" title="3.2.逻辑AND运算符时"></a>3.2.逻辑AND运算符时</h3><p>逻辑AND运算符用双和号(&amp;&amp;)表示，逻辑AND运算符的行为，只有两个都为true时才为true，其余情况都为false;</p>
+<p>如果一个运算符是对象，另一个是Boolean值，返回该对象。</p>
+<p>如果两个运算符都是对象，返回第二个对象</p>
+<p>如果某个运算符是null，返回null</p>
+<p>如果某个运算符是NaN，返回NaN</p>
+<p>如果运算符是undefined，发生错误</p>
+<p>如果第一个运算数决定了结果，就不再计算第二个运算数，对于逻辑AND运算来说，如果第一个运算数是false,那么无论第二个运算数的值是什么，结果都不可能等于true。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a=true</span><br><span class="line"></span><br><span class="line">var s=a&amp;&amp;b  //报错(b没有被定义)</span><br><span class="line"></span><br><span class="line">console.log(s)//这句将不会被执行</span><br></pre></td></tr></table></figure>
+<p>报错的原因：a的值true，逻辑AND运算将继续计算变量b的值，由于变量b是未定义的，不能用于逻辑AND运算，这样做就会引发错误。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a=false</span><br><span class="line"></span><br><span class="line">var s=a&amp;&amp;b</span><br><span class="line"></span><br><span class="line">console.log(s) //false</span><br></pre></td></tr></table></figure>
+<p>第一个运算数是false,即使第二个变量的值是未定义的，结果都是false，这一点很重要。</p>
+<h3 id="3-3-OR"><a href="#3-3-OR" class="headerlink" title="3.3.OR"></a>3.3.OR</h3><p>位运算由双竖线(||)表示，逻辑OR运算符的行为，只有两个都为false时才为false，其余情况都为true;</p>
+<p>如果一个运算符是对象，另一个是Boolean值，返回该对象。</p>
+<p>如果两个运算符都是对象，返回第一个对象</p>
+<p>如果某个运算符是null，返回null</p>
+<p>如果某个运算符是NaN，返回NaN</p>
+<p>如果运算符是undefined，发生错误</p>
+<p>如果第一个运算数决定了结果，就不再计算第二个运算数，对于逻辑OR运算来说，如果第一个运算数是true,那么无论第二个运算数的值是什么，结果都不可能等于false。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a=true</span><br><span class="line"></span><br><span class="line">var s=a||b</span><br><span class="line"></span><br><span class="line">console.log(s) //true</span><br></pre></td></tr></table></figure>
+<p>第一个运算数是true,即使第二个变量的值是未定义的，结果都是true。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a=false</span><br><span class="line"></span><br><span class="line">var s=a||b  //报错(b没有被定义)</span><br><span class="line"></span><br><span class="line">console.log(s)//这句将不会被执行</span><br></pre></td></tr></table></figure>
+<p>报错的原因：a的值为false，逻辑OR运算将继续计算变量b的值，由于变量b是未定义的，不能用于逻辑OR运算，这样做就会引发错误。</p>
+<h2 id="4-乘性运算符"><a href="#4-乘性运算符" class="headerlink" title="4.乘性运算符"></a>4.乘性运算符</h2><h3 id="4-1-乘法运算符"><a href="#4-1-乘法运算符" class="headerlink" title="4.1.乘法运算符"></a>4.1.乘法运算符</h3><p>乘法运算符由星号<code>(*)</code>表示，用于表示两个数相乘。</p>
+<p>规则：</p>
+<p>如果运算数都是数字，执行常规的乘法运算，即两个整数或两个负数相乘结果为正数，两个运算数符号不同，结果为负数。如果运算结果太大生成的结果是Infinity，如果运算结果太小生成的结果是-Infinity。</p>
+<p>如果某个运算数是NaN，结果为NaN。</p>
+<p>Infinity乘以0,结果为NaN</p>
+<p>Infinity乘以0以外的任何数字，结果为Infinity或-Infinity(由第二个运算数的符号决定)</p>
+<p>Infinity乘以Infinity，结果为Infinity。</p>
+<h3 id="4-2-除法运算符"><a href="#4-2-除法运算符" class="headerlink" title="4.2.除法运算符"></a>4.2.除法运算符</h3><p>除法运算符由斜线<code>(/)</code>表示，用第二个运算数除第一个运算数。</p>
+<p>规则：</p>
+<p>如果运算数都是数字，执行常规的除法运算，即两个整数或两个负数除法结果为正数，两个运算数符号不同，结果为负数。如果运算结果太大生成的结果是Infinity，如果运算结果太小生成的结果是-Infinity。</p>
+<p>如果某个运算数是NaN，结果为NaN。</p>
+<p>Infinity被Infinity除,结果为NaN</p>
+<p>Infinity被任何数除，结果为Infinity。</p>
+<p>0除以一个非无穷大的数字，结果为NaN。</p>
+<p>Infinity被0以外的任何数字除，结果为Infinity或-Infinity(由第二个运算数的符号决定)</p>
+<h3 id="4-3-取模运算符"><a href="#4-3-取模运算符" class="headerlink" title="4.3.取模运算符"></a>4.3.取模运算符</h3><p>取模运算符由斜线<code>(%)</code>表示。</p>
+<p>规则：</p>
+<p>如果运算数都是数字，执行常规的除法运算，返回除法运算得到的余数。</p>
+<p>如果被除数是Infinity，或者除数是0，结果为NaN。</p>
+<p>Infinity被Infinity除,结果为NaN</p>
+<p>如果除数是无穷大的数，结果为被除数。</p>
+<p>如果被除数为0，结果为0。</p>
+<h2 id="5-加性运算符"><a href="#5-加性运算符" class="headerlink" title="5.加性运算符"></a>5.加性运算符</h2><h3 id="5-1-加法运算符"><a href="#5-1-加法运算符" class="headerlink" title="5.1.加法运算符"></a>5.1.加法运算符</h3><p>加法运算符由符号<code>(+)</code>表示。</p>
+<p>规则：</p>
+<p>某个运算数是NaN,结果为NaN</p>
+<p>Infinity加Infinity，结果为Infinity。</p>
+<p>-Infinity加-Infinity，结果为-Infinity。</p>
+<p>Infinity加-Infinity，结果为NaN。</p>
+<p>+0加+0，结果为+0。</p>
+<p>-0加+0，结果为+0。</p>
+<p>-0加-0，结果为-0。</p>
+<p>如果某个运算符是字符串，将采用以下规则：</p>
+<p>如果两个运算数都是字符串，把第二个字符串连接到第一个字符串上。</p>
+<p>如果只有一个运算符是字符串，把另一个运算符转换成字符串，结果是两个字符串连接成的字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var str=5+5</span><br><span class="line"></span><br><span class="line">console.log(str); //10</span><br><span class="line"></span><br><span class="line">var str=5+&apos;5&apos;</span><br><span class="line"></span><br><span class="line">console.log(str)  //&quot;55&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-减法运算符"><a href="#5-2-减法运算符" class="headerlink" title="5.2.减法运算符"></a>5.2.减法运算符</h3><p>减法运算符由符号<code>(-)</code>表示。</p>
+<p>规则：</p>
+<p>某个运算数是NaN,结果为NaN</p>
+<p>Infinity减Infinity，结果为NaN。</p>
+<p>-Infinity减-Infinity，结果为NaN。</p>
+<p>Infinity减-Infinity，结果为Infinity。</p>
+<p>-Infinity减Infinity，结果为-Infinity。</p>
+<p>+0减+0，结果为+0。</p>
+<p>-0减-0，结果为-0。</p>
+<p>某个运算符不是数字，结果为NaN.</p>
+<h2 id="6-关系运算符"><a href="#6-关系运算符" class="headerlink" title="6.关系运算符"></a>6.关系运算符</h2><p>关系运算符小于(&lt;)、大于(&gt;)、小于等于(&lt;=)和大于等于(&gt;=)执行的是两个数的比较运算，每个关系运算符都返回一个Boolean值。</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s=&quot;Bdedee&quot;&lt;&quot;aldee&quot;</span><br><span class="line"></span><br><span class="line">console.log(s); //true</span><br></pre></td></tr></table></figure>
+<p>字母”Bdedee”小于”aldee”，原因是字母B的ASCII是66，字母a的ASCII是97。如果要强制性得到按照真正的字母顺序比较的结果，必须把这两个运算符转换成相同的大小写形式(全大写或者全小写)，然后在进行比较，才可以得到比较正常的数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s=&quot;Bdedee&quot;.toLowerCase()&lt;&quot;aldee&quot;.toLowerCase()</span><br><span class="line"></span><br><span class="line">console.log(s); //false</span><br></pre></td></tr></table></figure>
+<p>当我们比较两个字符串形式的数字时，会发生什么呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s=&quot;51&quot;&lt;&quot;6&quot;</span><br><span class="line"></span><br><span class="line">console.log(s)  //true</span><br></pre></td></tr></table></figure>
+<p>原因：两个运算符都是字符串，所以比较的是它们的ASCII值。(字符串”51”的ASCII值为53，字符串”6”的ASCII值为54)</p>
+<p>当我们比较的一个为字符串，一个为数字时，又会发生什么呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s=&quot;51&quot;&lt;6</span><br><span class="line"></span><br><span class="line">console.log(s) //false</span><br></pre></td></tr></table></figure>
+<p>这就有趣了，字符串”51”被转换成了数字51,然后和数字6进行比较，肯定是数字51比较大了。</p>
+<p>我们再来看一种令人不可思议的情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s=&quot;a&quot;&lt;6</span><br><span class="line"></span><br><span class="line">console.log(s) //false</span><br></pre></td></tr></table></figure>
+<p>为什么会输出false呢？我真是不能理解了，字母”a”不能转换成有意义的数字，如果对它调用parseInt()方法，返回值为NaN，根据规则，任何包含NaN的关系运算都要返回false。</p>
+<h2 id="7-等性运算符"><a href="#7-等性运算符" class="headerlink" title="7.等性运算符"></a>7.等性运算符</h2><p>判断两个变量是否相等，在处理原始值时，这种运算相当简单，但涉及到对象，任务就有些复杂。</p>
+<h3 id="7-1-等号和非等号"><a href="#7-1-等号和非等号" class="headerlink" title="7.1.等号和非等号"></a>7.1.等号和非等号</h3><p>等号由双等号(==)表示，当且仅当两个运算数相等时，它返回true。</p>
+<p>非等号由感叹号加等号<code>(!=)</code>，当且仅当两个运算数不相等时，它返回true。</p>
+<p>规则：</p>
+<p>如果一个运算数是Boolean值，在检查相等性之前，把它转换成数字值，false转换成0，true抓换成1.</p>
+<p>如果一个运算数是字符串，另一个是数字，在检查相等性之前，要尝试把字符串转换成数字。</p>
+<p>如果一个运算数是对象，另一个是字符串，在检查相等性之前，要尝试把对象转换成字符串(调用toString()方法)</p>
+<p>如果一个运算数是对象，另一个是数字，在检查相等性之前，要尝试把对象转换成数字(调用valueOf()方法)</p>
+<p>注意：</p>
+<ul>
+<li><p>值null和undefined相等</p>
+</li>
+<li><p>在检查相等性时，不能把null和undefined转换成其他值</p>
+</li>
+<li><p>如果两个运算符都是对象，那么比较的是它们的引用值，如果两个运算数指向同一个对象，那么返回true，否则返回false。</p>
+</li>
+<li><p>如果某个运算数是NaN,等号将返回false,非等号将返回true。(NAN它与自身不相等)</p>
+</li>
+</ul>
+<p>NaN==NaN   //false</p>
+<p>我们可以使用<code>isNaN()</code>函数来判断一个数的数据类型是不是非数。</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var obj=&#123;age:18&#125;</span><br><span class="line"></span><br><span class="line">obj.age==18  //true</span><br><span class="line"></span><br><span class="line">obj.name=&quot;zhangsan&quot;</span><br><span class="line"></span><br><span class="line">obj.name==&quot;zhangsan&quot; //true</span><br><span class="line"></span><br><span class="line">null==undefined  //true</span><br><span class="line"></span><br><span class="line">&quot;NaN&quot;==NaN  //false</span><br><span class="line"></span><br><span class="line">0==NaN  //false</span><br><span class="line"></span><br><span class="line">NaN==NaN  //false</span><br><span class="line"></span><br><span class="line">false==0  //true</span><br><span class="line"></span><br><span class="line">true==1  //true</span><br><span class="line"></span><br><span class="line">NaN!=NaN  //true</span><br><span class="line"></span><br><span class="line">true==2  //false(true==1!=2)</span><br></pre></td></tr></table></figure>
+<h3 id="7-2-全等号和非全等号"><a href="#7-2-全等号和非全等号" class="headerlink" title="7.2.全等号和非全等号"></a>7.2.全等号和非全等号</h3><p>全等号和非全等号运算符所做的与等号和非等号相同，只是它们在类型检查相等性前，不执行类型转换。</p>
+<p>全等号由三个等号(===)表示，只有在无需类型转换运算数就相等的情况下，才返回true。</p>
+<p>非全等号由三个等号(!==)表示，只有在无需类型转换运算数不相等的情况下，才返回true。</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var s= &quot;5&quot;===5</span><br><span class="line"></span><br><span class="line">console.log(s)  //false</span><br><span class="line"></span><br><span class="line">var s= &quot;5&quot;==5</span><br><span class="line"></span><br><span class="line">console.log(s)  //true</span><br><span class="line"></span><br><span class="line">var s= &quot;5&quot;!==5</span><br><span class="line"></span><br><span class="line">console.log(s) //true</span><br><span class="line"></span><br><span class="line">var s= &quot;5&quot;!=5</span><br><span class="line"></span><br><span class="line">console.log(s)  //false</span><br></pre></td></tr></table></figure>
+<h3 id="7-3-总结："><a href="#7-3-总结：" class="headerlink" title="7.3.总结："></a>7.3.总结：</h3><p>全等(“===”)</p>
+<p>1、如果类型不同，就[不相等]</p>
+<p>2、如果两个都是数值，并且是同一个值，那么[相等]；(!例外)的是，如果其中至少一个是NaN，那么[不相等]。</p>
+<p>3、如果两个都是字符串，每个位置的字符都一样，那么[相等]；否则[不相等]。</p>
+<p>4、如果两个值都是true，或者都是false，那么[相等]。</p>
+<p>5、如果两个值都引用同一个对象或函数，那么[相等]；否则[不相等]。</p>
+<p>6、如果两个值都是null，或者都是undefined，那么[相等]。</p>
+<p>等号(“==”)</p>
+<p>1、如果两个值类型相同，进行 === 比较。</p>
+<p>2、如果两个值类型不同，他们可能相等。根据下面规则进行类型转换再比较：</p>
+<p>  a、如果一个是null、一个是undefined，那么[相等]。</p>
+<p>  b、如果一个是字符串，一个是数值，把字符串转换成数值再进行比较。</p>
+<p>  c、如果任一值是 true，把它转换成 1 再比较；如果任一值是 false，把它转换成 0 再比较。</p>
+<p>  d、如果一个是对象，另一个是数值或字符串，把引用类型转换成原始类型类型的值再比较，利用它的toString()或者valueOf()方法。</p>
+<p>  e、任何其他组合，都[不相等]。</p>
+<h2 id="8-条件运算符"><a href="#8-条件运算符" class="headerlink" title="8.条件运算符"></a>8.条件运算符</h2><p><code>variable=boolean_expression?true_value:false_value;</code></p>
+<p>该表达式主要是根据boolean_expression的计算结果有条件的为变量赋值。如果boolean_expression为true,就把true_value赋给变量，如果它为false，就把false_value赋给变量。</p>
+<h2 id="9-赋值运算符"><a href="#9-赋值运算符" class="headerlink" title="9.赋值运算符"></a>9.赋值运算符</h2><p>简单的赋值运算由等号(=)实现，只是把等号右边的值赋给等号左边的变量。</p>
+<p>复合赋值运算是由乘性运算符、加性运算符或者移位运算符加等号(=)实现的。</p>
+<p>每种主要的算术运算以及其他几个运算都要符合赋值运算符：</p>
+<p>乘法/赋值：(* =)</p>
+<p>除法/赋值：(/ =)</p>
+<p>取模/赋值：(% =)</p>
+<p>加法/赋值：(+ =)</p>
+<p>减法/赋值：(- =)</p>
+<p>左移/赋值：(&lt;&lt; =)</p>
+<p>有符号右移/赋值：(&gt;&gt; =)</p>
+<p>无符号右移/赋值：(&gt;&gt;&gt; =)</p>
+<h2 id="10-逗号运算符"><a href="#10-逗号运算符" class="headerlink" title="10.逗号运算符"></a>10.逗号运算符</h2><p>用逗号运算符可以再一条语句中执行多个运算。</p>
+<p><code>var a=1,b=2,c=3;</code></p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1242272/o_reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/04/16/meの天使在人间/" class="pre-post btn btn-default" title='meの天使在人间'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">meの天使在人间</span>
+        </a>
+    
+    
+        <a href="/2018/04/12/2-转换/" class="next-post btn btn-default" title='2-转换'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">2-转换</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#运算符"><span class="toc-text">运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-一元运算符"><span class="toc-text">1.一元运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-delete运算符：删除对以前定义的对象属性或方法的引用"><span class="toc-text">1.1.delete运算符：删除对以前定义的对象属性或方法的引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-void运算符：对任何值都返回undefined，该运算符通常用于避免输出不应该输出的值。"><span class="toc-text">1.2.void运算符：对任何值都返回undefined，该运算符通常用于避免输出不应该输出的值。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-前增量-前减量运算符"><span class="toc-text">1.3.前增量/前减量运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-后增量-后减量运算符"><span class="toc-text">1.4.后增量/后减量运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-一元加法"><span class="toc-text">1.5.一元加法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-一元减法"><span class="toc-text">1.6.一元减法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-位运算符"><span class="toc-text">2.位运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-关于整数"><span class="toc-text">2.1.关于整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-位运算NOT"><span class="toc-text">2.2.位运算NOT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-位运算AND"><span class="toc-text">2.3.位运算AND</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-位运算OR"><span class="toc-text">2.4.位运算OR</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-位运算XOR"><span class="toc-text">2.5.位运算XOR</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-左移运算"><span class="toc-text">2.6.左移运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-有符号右移运算"><span class="toc-text">2.7.有符号右移运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-无符号右移运算"><span class="toc-text">2.8.无符号右移运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Boolean运算符"><span class="toc-text">3.Boolean运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-逻辑NOT"><span class="toc-text">3.1.逻辑NOT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-逻辑AND运算符时"><span class="toc-text">3.2.逻辑AND运算符时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-OR"><span class="toc-text">3.3.OR</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-乘性运算符"><span class="toc-text">4.乘性运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-乘法运算符"><span class="toc-text">4.1.乘法运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-除法运算符"><span class="toc-text">4.2.除法运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-取模运算符"><span class="toc-text">4.3.取模运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-加性运算符"><span class="toc-text">5.加性运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-加法运算符"><span class="toc-text">5.1.加法运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-减法运算符"><span class="toc-text">5.2.减法运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-关系运算符"><span class="toc-text">6.关系运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-等性运算符"><span class="toc-text">7.等性运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-等号和非等号"><span class="toc-text">7.1.等号和非等号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-全等号和非全等号"><span class="toc-text">7.2.全等号和非全等号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-总结："><span class="toc-text">7.3.总结：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-条件运算符"><span class="toc-text">8.条件运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-赋值运算符"><span class="toc-text">9.赋值运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-逗号运算符"><span class="toc-text">10.逗号运算符</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: true || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

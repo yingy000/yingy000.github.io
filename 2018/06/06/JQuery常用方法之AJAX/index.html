@@ -1,0 +1,472 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>jQuery常用方法之AJAX | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="jQuery常用方法之AJAX">
+            
+	            jQuery常用方法之AJAX
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/博客列表">
+            博客列表
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/JavaScript框架" title='JavaScript框架'>
+                        JavaScript框架
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/06/06</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>我们不得不承认一点我们自己封装的<code>ajax()</code>函数有各种各样的Bug，那我们可以看下封装JQuery的大牛封装的<code>ajax()</code>方法是有多么的厉害，站在巨人的肩膀上总会看的更远。</p>
+</blockquote>
+<h2 id="JQuery版的表单事件提交"><a href="#JQuery版的表单事件提交" class="headerlink" title="JQuery版的表单事件提交"></a>JQuery版的表单事件提交</h2><ul>
+<li>jQuery.html</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;Ajax&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">	&lt;style&gt;</span></span><br><span class="line"><span class="regexp">		body &#123;</span></span><br><span class="line"><span class="regexp">			margin: 0;</span></span><br><span class="line"><span class="regexp">			padding: 0;</span></span><br><span class="line"><span class="regexp">			background-color: #F7F7F7;</span></span><br><span class="line"><span class="regexp">		&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">		.ajax &#123;</span></span><br><span class="line"><span class="regexp">			width: 400px;</span></span><br><span class="line"><span class="regexp">			text-align: center;</span></span><br><span class="line"><span class="regexp">			margin: 50px auto;</span></span><br><span class="line"><span class="regexp">		&#125;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>style&gt;</span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">	&lt;div class="ajax"&gt;</span></span><br><span class="line"><span class="regexp">		&lt;input type="text" id="text" /</span>&gt;</span><br><span class="line">		&lt;input type=<span class="string">"submit"</span> value=<span class="string">"发送"</span> id=<span class="string">"sub"</span> /&gt;</span><br><span class="line">		&lt;p id=<span class="string">"result"</span>&gt;&lt;/p&gt;</span><br><span class="line">	&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	&lt;script src="js/</span>jquery.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">	&lt;script&gt;</span></span><br><span class="line"><span class="string">		$('#sub').on('click', function () &#123;</span></span><br><span class="line"><span class="string">			var val = $('#text').val();</span></span><br><span class="line"><span class="string">			$.ajax(&#123;</span></span><br><span class="line"><span class="string">				url: 'jquery.php',</span></span><br><span class="line"><span class="string">				type: 'post',</span></span><br><span class="line"><span class="string">				data: &#123;text: val&#125;,</span></span><br><span class="line"><span class="string">				success: function (data) &#123;</span></span><br><span class="line"><span class="string">					console.log(data);</span></span><br><span class="line"><span class="string">					$('#result').html(data);</span></span><br><span class="line"><span class="string">				&#125;,</span></span><br><span class="line"><span class="string">				error: function () &#123;</span></span><br><span class="line"><span class="string">					console.log('错误啦');</span></span><br><span class="line"><span class="string">				&#125;,</span></span><br><span class="line"><span class="string">			&#125;);</span></span><br><span class="line"><span class="string">		&#125;);</span></span><br><span class="line"><span class="string">	&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>jQuery.php</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &apos;&lt;strong&gt;&apos;.$_POST[&apos;text&apos;].&apos;&lt;/strong&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240733/o_8.png" alt=" "></p>
+<p>我们明显的可以看到JQuery的方式比利用原生的JavaScript要方便的多。</p>
+<p>首先看一下JQuery中关于ajax都封装了哪些方法，</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240927/o_12.png" alt=" "></p>
+<p>看到这么多的方法是不是都要发怵了，不过我们只需要掌握常用的方法就好了。</p>
+<h2 id="ajax-gt-请求"><a href="#ajax-gt-请求" class="headerlink" title="ajax-&gt;请求"></a>ajax-&gt;请求</h2><ul>
+<li><p><code>$.ajax(url,[settings])</code></p>
+</li>
+<li><p><code>load(url,[data],[callback])</code></p>
+</li>
+<li><p><code>$.get(url,[data],[fn],[type])</code></p>
+</li>
+<li><p><code>$.getJSON(url,[data],[fn])</code></p>
+</li>
+<li><p><code>$.getScript(url,[callback])</code></p>
+</li>
+<li><p><code>$.post(url,[data],[fn],[type])</code></p>
+</li>
+<li><p><code>$.ajaxSetup([options])</code></p>
+</li>
+<li><p><code>serialize()</code>：简单的来说就是把表单的数据转化成键值对key:value的形式。</p>
+</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;Ajax&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">	&lt;style&gt;</span></span><br><span class="line"><span class="regexp">		body &#123;</span></span><br><span class="line"><span class="regexp">			margin: 0;</span></span><br><span class="line"><span class="regexp">			padding: 0;</span></span><br><span class="line"><span class="regexp">			background-color: #F7F7F7;</span></span><br><span class="line"><span class="regexp">		&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">		.ajax &#123;</span></span><br><span class="line"><span class="regexp">			width: 400px;</span></span><br><span class="line"><span class="regexp">			text-align: center;</span></span><br><span class="line"><span class="regexp">			margin: 50px auto;</span></span><br><span class="line"><span class="regexp">		&#125;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>style&gt;</span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">	&lt;div class="ajax"&gt;</span></span><br><span class="line"><span class="regexp">		&lt;input type="text" id="text" /</span>&gt;</span><br><span class="line">		&lt;input type=<span class="string">"submit"</span> value=<span class="string">"发送"</span> id=<span class="string">"sub"</span> /&gt;</span><br><span class="line">		&lt;p id=<span class="string">"result"</span>&gt;&lt;/p&gt;</span><br><span class="line">	&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	&lt;script src="./</span>js/jquery.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">	&lt;script&gt;</span></span><br><span class="line"><span class="string">		$('#sub').on('click', function () &#123;</span></span><br><span class="line"><span class="string">			var val = $('#text').val();</span></span><br><span class="line"><span class="string">			$.ajax(&#123;</span></span><br><span class="line"><span class="string">				url: 'jquery.php',</span></span><br><span class="line"><span class="string">				type: 'post',</span></span><br><span class="line"><span class="string">				// 约束服务器返回的数据格式</span></span><br><span class="line"><span class="string">				dataType: 'json',</span></span><br><span class="line"><span class="string">				// 设置超时</span></span><br><span class="line"><span class="string">				timeout: 5000,</span></span><br><span class="line"><span class="string">				data: &#123;text: val&#125;,</span></span><br><span class="line"><span class="string">				beforeSend: function () &#123;</span></span><br><span class="line"><span class="string">					// 通常用来做验证工作、Loading</span></span><br><span class="line"><span class="string">					console.log('提前发送');</span></span><br><span class="line"><span class="string">				&#125;,</span></span><br><span class="line"><span class="string">				success: function (data) &#123;</span></span><br><span class="line"><span class="string">					console.log(data);</span></span><br><span class="line"><span class="string">					$('#result').html(data);</span></span><br><span class="line"><span class="string">					console.log(1);</span></span><br><span class="line"><span class="string">				&#125;,</span></span><br><span class="line"><span class="string">				error: function () &#123;</span></span><br><span class="line"><span class="string">					console.log('错误啦');</span></span><br><span class="line"><span class="string">				&#125;,</span></span><br><span class="line"><span class="string">				// 响应完成时调用，执行顺序晚于success 或者 error</span></span><br><span class="line"><span class="string">				complete: function () &#123;</span></span><br><span class="line"><span class="string">					console.log(2);</span></span><br><span class="line"><span class="string">				&#125;</span></span><br><span class="line"><span class="string">			&#125;);</span></span><br><span class="line"><span class="string">		&#125;);</span></span><br><span class="line"><span class="string">	&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="解释一：beforesend-function-：发送之前执行的函数"><a href="#解释一：beforesend-function-：发送之前执行的函数" class="headerlink" title="解释一：beforesend:function(){}：发送之前执行的函数"></a>解释一：<code>beforesend:function(){}：</code>发送之前执行的函数</h3><p>使用场景：</p>
+<ul>
+<li><p>比如说在提交表单数据之前，总是希望验证一下。</p>
+</li>
+<li><p>还有就是loading加载状态。</p>
+</li>
+</ul>
+<h3 id="解释二：dataType-约束服务器返回的数据格式"><a href="#解释二：dataType-约束服务器返回的数据格式" class="headerlink" title="解释二：dataType:约束服务器返回的数据格式"></a>解释二：<code>dataType:</code>约束服务器返回的数据格式</h3><ul>
+<li><p><code>dataType: &#39;json&#39;</code>：程序继续往下执行</p>
+</li>
+<li><p><code>dataType: &#39;xml&#39;</code>：数据的格式不正确，执行错误函数。(因为请求的是JSON类型的数据)</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'错误啦'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解释三：timeout-3000"><a href="#解释三：timeout-3000" class="headerlink" title="解释三：timeout:3000"></a>解释三：<code>timeout</code>:3000</h3><p>设置超时处理，当超过3秒钟后，就中断请求，不在等待了。</p>
+<h3 id="解释四：complete-function"><a href="#解释四：complete-function" class="headerlink" title="解释四：complete: function(){}"></a>解释四：<code>complete: function(){}</code></h3><p>完成响应之后指定的函数，也就是说不管是完成成功的响应，还是完成失败的响应，反正就是最后需要执行的函数。</p>
+<h3 id="解释五：serialize"><a href="#解释五：serialize" class="headerlink" title="解释五：serialize()"></a>解释五：<code>serialize()</code></h3><p>简单的来说就是把表单的数据转化成键值对<code>key:value</code>的形式</p>
+<h3 id="解释六：-ajaxSetup-：用来全局设置的，类似于全局变量的效果-全局-局部"><a href="#解释六：-ajaxSetup-：用来全局设置的，类似于全局变量的效果-全局-局部" class="headerlink" title="解释六：$.ajaxSetup()：用来全局设置的，类似于全局变量的效果(全局===局部)"></a>解释六：<code>$.ajaxSetup()</code>：用来全局设置的，类似于全局变量的效果(全局===局部)</h3><p>关于JQuery封装的<code>ajax()</code>方法配置的回调函数还有很多，我们就了解一下平常能用到的就可以了。</p>
+<p>举例：表单注册</p>
+<ul>
+<li>index.html</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"register"</span>&gt;</span><br><span class="line">		&lt;form id=<span class="string">"ajaxForm"</span>&gt;</span><br><span class="line">			&lt;ul&gt;</span><br><span class="line">				&lt;li&gt;</span><br><span class="line">					&lt;label <span class="keyword">for</span>=<span class="string">""</span>&gt;用户名&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">					&lt;input type="text" name="name" class="name"&gt;</span></span><br><span class="line"><span class="regexp">				&lt;/</span>li&gt;</span><br><span class="line">				&lt;li&gt;</span><br><span class="line">					&lt;label <span class="keyword">for</span>=<span class="string">""</span>&gt;请设置密码&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">					&lt;input type="password" name="pass" class="pass"&gt;</span></span><br><span class="line"><span class="regexp">				&lt;/</span>li&gt;</span><br><span class="line">				&lt;li&gt;</span><br><span class="line">					&lt;label <span class="keyword">for</span>=<span class="string">""</span>&gt;请确认密码&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">					&lt;input type="password" name="repass" class="repass"&gt;</span></span><br><span class="line"><span class="regexp">				&lt;/</span>li&gt;</span><br><span class="line">				&lt;li&gt;</span><br><span class="line">					&lt;label <span class="keyword">for</span>=<span class="string">""</span>&gt;验证手机&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">					&lt;input type="text" name="mobile" class="mobile"&gt;</span></span><br><span class="line"><span class="regexp">				&lt;/</span>li&gt;</span><br><span class="line">				&lt;li&gt;</span><br><span class="line">					&lt;label <span class="keyword">for</span>=<span class="string">""</span>&gt;短信验证码&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">					&lt;input type="text" name="code" class="code"&gt;</span></span><br><span class="line"><span class="regexp">					&lt;input type="button" value="获取验证码" class="verify"&gt;</span></span><br><span class="line"><span class="regexp">				&lt;/</span>li&gt;</span><br><span class="line">				&lt;li&gt;</span><br><span class="line">					&lt;label <span class="keyword">for</span>=<span class="string">""</span>&gt;&lt;/label&gt;</span><br><span class="line">					&lt;input type=<span class="string">"button"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"submit"</span> value=<span class="string">"立即注册"</span>&gt;</span><br><span class="line">				&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">			&lt;/u</span>l&gt;</span><br><span class="line">		&lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>div&gt;</span><br><span class="line">	&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"tips"</span>&gt;</span><br><span class="line">		&lt;p&gt;&lt;/p&gt;</span><br><span class="line">	&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	&lt;script src="js/</span>jquery.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">	&lt;script&gt;</span></span><br><span class="line"><span class="string">		//点击提交表单</span></span><br><span class="line"><span class="string">		$('.submit').on('click',function()&#123;</span></span><br><span class="line"><span class="string">			var that=$(this);</span></span><br><span class="line"><span class="string">			if(that.is('.disabled')) return;</span></span><br><span class="line"><span class="string">		//获取表单文本框的值，可以用到serialize()方法，</span></span><br><span class="line"><span class="string">		//把表单的数据转化成键值对key:value的形式，这种格式的数据正是我们所需要的。</span></span><br><span class="line">			var value=$("#ajaxForm").serialize();</span><br><span class="line">			$.ajax(&#123;</span><br><span class="line">				url:<span class="string">"register.php"</span>,</span><br><span class="line">				type:<span class="string">"post"</span>,</span><br><span class="line">				dataType:<span class="string">"json"</span>,</span><br><span class="line">				data: value,</span><br><span class="line">				beforeSend:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">					<span class="keyword">if</span>($(<span class="string">'.name'</span>).val()==<span class="string">''</span>)&#123;</span><br><span class="line">						$(<span class="string">'.tips p'</span>).text(<span class="string">'用户名不能为空'</span>).show().delay(<span class="number">1500</span>).fadeOut();</span><br><span class="line">					       <span class="comment">//终止请求</span></span><br><span class="line">				       	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="comment">//添加禁止项</span></span><br><span class="line">					that.addClass(<span class="string">"disabled"</span>);</span><br><span class="line">					that.val(<span class="string">"正在提交"</span>);</span><br><span class="line">				&#125;,</span><br><span class="line">				success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">					<span class="comment">//在接口中约定了注册成功的code为10001，注册失败的code为10002</span></span><br><span class="line">					<span class="keyword">if</span>(data.code!=<span class="number">10000</span>)&#123;</span><br><span class="line">						alert(<span class="string">'注册失败'</span>);</span><br><span class="line">						that.val(<span class="string">'注册失败请重试'</span>);</span><br><span class="line">						<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">					&#125;<span class="keyword">else</span>&#123;<span class="comment">//注册成功</span></span><br><span class="line">						location.href=<span class="string">"https://yingy0.github.io/"</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				error:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				&#125;,</span><br><span class="line">				complete:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">					that.removeClass(<span class="string">"disabled"</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;)</span><br><span class="line">	&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>register.php</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	if($_POST[&apos;name&apos;]) &#123;</span><br><span class="line">		//只要name这个表单项填写了内容，即认为注册成功,</span><br><span class="line">		//不去复杂的判断密码的格式、用户名的格式，减轻服务端的压力</span><br><span class="line">		//但是如果填name这个表单项，则认为注册失败</span><br><span class="line">		$arr = array(</span><br><span class="line">			&apos;code&apos;=&gt;10000,</span><br><span class="line">			&apos;msg&apos;=&gt;&apos;注册成功&apos;,</span><br><span class="line">			&apos;result&apos;=&gt;array(&apos;name&apos;=&gt;&apos;yangying&apos;, &apos;age&apos;=&gt;18)</span><br><span class="line">		     //具体返回的结果可能又是一个数组</span><br><span class="line">		);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		$arr = array(</span><br><span class="line">			&apos;code&apos;=&gt;10002,</span><br><span class="line">			&apos;msg&apos;=&gt;&apos;注册失败&apos;,</span><br><span class="line">			&apos;result&apos;=&gt;&apos;一些信息&apos;</span><br><span class="line">		);</span><br><span class="line">	&#125;</span><br><span class="line">	echo json_encode($arr);</span><br><span class="line">	sleep(3);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="解释一：获取表单文本框的值："><a href="#解释一：获取表单文本框的值：" class="headerlink" title="解释一：获取表单文本框的值："></a>解释一：获取表单文本框的值：</h3><p>一般情况下我们用的是val()方法获取文本框的值，但是每次只能获取一个表单文本框的值，如果我们需要所有的表单文本框的数据，那我们就得写好多个重复的代码，这样是很繁琐的。</p>
+<p>举例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">	&lt;label for=&quot;&quot;&gt;用户名&lt;/label&gt;</span><br><span class="line">	&lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;name&quot;&gt;</span><br><span class="line">&lt;/li&gt;</span><br><span class="line">&lt;li&gt;</span><br><span class="line">	&lt;label for=&quot;&quot;&gt;请设置密码&lt;/label&gt;</span><br><span class="line">	&lt;input type=&quot;password&quot; name=&quot;pass&quot; class=&quot;pass&quot;&gt;</span><br><span class="line">&lt;/li&gt;</span><br><span class="line">&lt;li&gt;</span><br><span class="line">	&lt;label for=&quot;&quot;&gt;请确认密码&lt;/label&gt;</span><br><span class="line">	&lt;input type=&quot;password&quot; name=&quot;repass&quot; class=&quot;repass&quot;&gt;</span><br><span class="line">&lt;/li&gt;</span><br><span class="line">&lt;li&gt;</span><br><span class="line">    &lt;label for=&quot;&quot;&gt;验证手机&lt;/label&gt;</span><br><span class="line">	&lt;input type=&quot;text&quot; name=&quot;mobile&quot; class=&quot;mobile&quot;&gt;</span><br><span class="line">&lt;/li&gt;</span><br><span class="line">//获取用户名文本框的数据</span><br><span class="line">var name=$(&apos;.name&apos;).val();</span><br><span class="line">var pass=$(&apos;.pass&apos;).val()</span><br><span class="line">var repass=$(&apos;.repass&apos;).val()</span><br><span class="line">var mobile=$(&apos;.mobile&apos;).val()</span><br></pre></td></tr></table></figure>
+<p>好在JQuery的ajax方法中我们可以使用<code>serialize()</code>方法一次性的获取所有的表单数据并且把数据转化成键值对的形式,让我们方便了太多。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value=$(<span class="string">"#ajaxForm"</span>).serialize();</span><br><span class="line"><span class="built_in">console</span>.log(value);</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240927/o_13.png" alt=" "></p>
+<h3 id="解释二：接口化开发：前后端会事先约定传递的参数格式，以及返回的数据格式。后面的开发都按照着这样约定的格式。"><a href="#解释二：接口化开发：前后端会事先约定传递的参数格式，以及返回的数据格式。后面的开发都按照着这样约定的格式。" class="headerlink" title="解释二：接口化开发：前后端会事先约定传递的参数格式，以及返回的数据格式。后面的开发都按照着这样约定的格式。"></a>解释二：接口化开发：前后端会事先约定传递的参数格式，以及返回的数据格式。后面的开发都按照着这样约定的格式。</h3><p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  $arr = array(</span><br><span class="line">	 &apos;code&apos;=&gt;10001,</span><br><span class="line">	 &apos;msg&apos;=&gt;&apos;注册成功&apos;,</span><br><span class="line">	 &apos;result&apos;=&gt;array(&apos;name&apos;=&gt;&apos;yangying&apos;, &apos;age&apos;=&gt;18)</span><br><span class="line">		);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		$arr = array(</span><br><span class="line">			&apos;code&apos;=&gt;10002,</span><br><span class="line">			&apos;msg&apos;=&gt;&apos;注册失败&apos;,</span><br><span class="line">			&apos;result&apos;=&gt;&apos;一些信息&apos;</span><br><span class="line">		);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>采用接口化开发时，当注册成功时，会发送一些事先约定好的数据，当注册失败时，也会发送一些事先约定好的数据。</p>
+<h3 id="解释三：什么叫做接口"><a href="#解释三：什么叫做接口" class="headerlink" title="解释三：什么叫做接口"></a>解释三：什么叫做接口</h3><p>在该例子中的接口是<code>&#39;regisiter.php&#39;</code>;其实URL地址说得高级一点就是接口。</p>
+<h3 id="解释四：register-php"><a href="#解释四：register-php" class="headerlink" title="解释四：register.php"></a>解释四：register.php</h3><p><code>if($_POST[&#39;name&#39;]) {}</code></p>
+<p>//只要name这个表单项填写了内容，即认为注册成功,</p>
+<p>//不去复杂的判断密码的格式、用户名的格式，减轻服务端的压力</p>
+<p>//但是如果没有填name这个表单项，则认为注册失败。</p>
+<p><code>success:function(data){console.log(data);}</code></p>
+<p>当注册成功时，服务器发送一些成功的信息，当注册失败时，服务器发送一些失败的信息。</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240927/o_14.png" alt=" "></p>
+<p>解释五：</p>
+<p>当我们没有填写用户名时，服务器就会发送失败的信息，我们都知道通过表单验证很容易就知道我们到底有没有填用户名，相当于发送了这个请求是无用的，如果我们发送过多这样的无用的请求，服务器就承受了太大的压力，所以我们必须在发送请求之前拦截一些信息，减轻服务端的压力。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">beforeSend:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>($(<span class="string">'.name'</span>).val()==<span class="string">''</span>)&#123;</span><br><span class="line">		$(<span class="string">'.tips p'</span>).text(<span class="string">'用户名不能为空'</span>).show().delay(<span class="number">1500</span>).fadeOut();</span><br><span class="line">		<span class="comment">//终止请求</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	   &#125;</span><br><span class="line">	&#125;,</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240927/o_15.png" alt=" "></p>
+<p>大家可以从图中看到即使用户名为空，也没有发送post请求，请求<code>register.php</code>，在发送之前已经被拦截了下来，这就是<code>beforeSend</code>函数的作用。</p>
+<p>但是如果我们去掉<code>return false</code>呢，我们可以看下会有什么样的结果？</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240927/o_16.png" alt=" "></p>
+<p>大家会看到还是发送了post请求，相当于根本就没有拦截成功，所以一定要加上return false。</p>
+<h3 id="解释六：注册成功时跳转到一个页面。"><a href="#解释六：注册成功时跳转到一个页面。" class="headerlink" title="解释六：注册成功时跳转到一个页面。"></a>解释六：注册成功时跳转到一个页面。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">success:function(data)&#123;</span><br><span class="line">	//在接口中约定了注册成功的code为10001，注册失败的code为10002</span><br><span class="line">		if(data.code!=10001)&#123;</span><br><span class="line">			alert(&apos;注册失败&apos;);</span><br><span class="line">			return false;</span><br><span class="line">		&#125;else&#123;//注册成功</span><br><span class="line">			location.href=&quot;https://yingy0.github.io/&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="解释七：禁止🚫重复提交"><a href="#解释七：禁止🚫重复提交" class="headerlink" title="解释七：禁止🚫重复提交"></a>解释七：禁止🚫重复提交</h3><p>我们还需要完成一个功能，就是禁止重复提交，当完成了所有的数据验证之后，只允许提交一次就好了，就等待服务器的响应就行了，不然用户老是狂点，也就意味着不断地发起请求，这给服务器会造成很大的压力。也就是说提交按钮只提交一次后就变成禁止状态。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> that=$(<span class="keyword">this</span>);  <span class="comment">//保存当前this指针的引用</span></span><br><span class="line"><span class="keyword">if</span>(that.is(<span class="string">'.disabled'</span>))</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">beforeSend:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>($(<span class="string">'.name'</span>).val()==<span class="string">''</span>)&#123;</span><br><span class="line">		$(<span class="string">'.tips p'</span>).text(<span class="string">'用户名不能为空'</span>).show().delay(<span class="number">1500</span>).fadeOut();</span><br><span class="line">	   &#125;</span><br><span class="line">		<span class="comment">//终止请求</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">that.addClass(<span class="string">"disabled"</span>);</span><br><span class="line">that.val(<span class="string">"正在提交"</span>);</span><br><span class="line">&#125;,</span><br><span class="line">complete:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	that.removeClass(<span class="string">"disabled"</span>);</span><br><span class="line">	that.val(<span class="string">"注册失败请重试"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们应该把<code>disabled</code>类写在<code>beforeSend</code>函数中，原因：假如在发送前数据验证都通过了以后，这个表单就可以提交了，提交了表单之后这个提交按钮就立马要被禁用了，换句话说，在请求的这一瞬间表单就得立马被禁用，不然用户如果狂点的话，请求就还是会被发送。</p>
+<p>但是对于没有注册成功的用户，是需要多次可以注册的，可以多次点击的，也是需要点击多次的，所以就得释放这个禁止的功能，这个要写在<code>complete</code>函数中，因为该函数最后都得执行。</p>
+<p>当点击提交的时候，按钮的内容编程变为正在提交，注册成功时跳到新的页面，当提交失败时按钮的内容变为提交失败请重试。</p>
+<p>注册失败：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240927/o_17.gif" alt=" "></p>
+<p>注册成功：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240927/o_18.gif" alt=" "></p>
+<p>现在该实现发送验证码功能了，其实获取验证码和注册其逻辑是类似的，我就不具体的说了。</p>
+<p>怎么实现倒计时的功能，大家首先需要知道的是这个功能也应该写在<code>beforeSend</code>函数中的。</p>
+<ul>
+<li>index.html</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">//发送验证码功能</span><br><span class="line">	  $(&apos;.verify&apos;).on(&apos;click&apos;,function()&#123;</span><br><span class="line">	    	var that=$(this);</span><br><span class="line">	         if(that.is(&apos;.disabled&apos;)) return;</span><br><span class="line">	    	var val=$(&apos;.mobile&apos;).val();</span><br><span class="line">	    	$.ajax(&#123;</span><br><span class="line">	    		url:&apos;getCode.php&apos;,</span><br><span class="line">	    		type:&apos;post&apos;,</span><br><span class="line">	    		dataType:&apos;json&apos;,</span><br><span class="line">	    		data:&apos;mobile:val&apos;,</span><br><span class="line">	    		beforeSend:function()&#123;</span><br><span class="line">	    			//在发送请求前需要验证</span><br><span class="line">	    	       if(val==&apos;&apos;)&#123;</span><br><span class="line">	    	         $(&apos;.tips p&apos;).text(&apos;请填写手机号&apos;).show().delay(1500).fadeOut();</span><br><span class="line">	    	         //终止请求</span><br><span class="line">		            return false;</span><br><span class="line">	              &#125;</span><br><span class="line">	              that.addClass(&quot;disabled&quot;);</span><br><span class="line">	              var secondes=60;</span><br><span class="line">	              var t=setInterval(function()&#123;</span><br><span class="line">	              	that.val(--secondes+&apos;秒后再次获取&apos;);</span><br><span class="line">	              	if(secondes&lt;=0)&#123;</span><br><span class="line">	              		clearInterval(t);</span><br><span class="line">	              		that.removeClass(&quot;disabled&quot;);</span><br><span class="line">	              	&#125;</span><br><span class="line">	              &#125;,1000)</span><br><span class="line">	    		&#125;,</span><br><span class="line">	    		success:function(data)&#123;&#125;,</span><br><span class="line">	    		error:function()&#123;&#125;,</span><br><span class="line">	    		complete:function()&#123;</span><br><span class="line">	    		&#125;</span><br><span class="line">	    	&#125;)</span><br><span class="line">	    &#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>getCode.php</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$arr = array(<span class="number">341232</span>, <span class="number">564512</span>, <span class="number">876567</span>, <span class="number">321653</span>);</span><br><span class="line">	echo $arr[array_rand($arr)];</span><br><span class="line">	sleep(<span class="number">4</span>);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>源代码见我的github仓库：</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1242272/o_reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/06/09/jQuery常用方法之筛选/" class="pre-post btn btn-default" title='jQuery常用方法之筛选'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">jQuery常用方法之筛选</span>
+        </a>
+    
+    
+        <a href="/2018/06/04/JQuery常用方法之CSS/" class="next-post btn btn-default" title='jQuery常用方法之css'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">jQuery常用方法之css</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JQuery版的表单事件提交"><span class="toc-text">JQuery版的表单事件提交</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ajax-gt-请求"><span class="toc-text">ajax-&gt;请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解释一：beforesend-function-：发送之前执行的函数"><span class="toc-text">解释一：beforesend:function(){}：发送之前执行的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释二：dataType-约束服务器返回的数据格式"><span class="toc-text">解释二：dataType:约束服务器返回的数据格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释三：timeout-3000"><span class="toc-text">解释三：timeout:3000</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释四：complete-function"><span class="toc-text">解释四：complete: function(){}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释五：serialize"><span class="toc-text">解释五：serialize()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释六：-ajaxSetup-：用来全局设置的，类似于全局变量的效果-全局-局部"><span class="toc-text">解释六：$.ajaxSetup()：用来全局设置的，类似于全局变量的效果(全局===局部)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释一：获取表单文本框的值："><span class="toc-text">解释一：获取表单文本框的值：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释二：接口化开发：前后端会事先约定传递的参数格式，以及返回的数据格式。后面的开发都按照着这样约定的格式。"><span class="toc-text">解释二：接口化开发：前后端会事先约定传递的参数格式，以及返回的数据格式。后面的开发都按照着这样约定的格式。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释三：什么叫做接口"><span class="toc-text">解释三：什么叫做接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释四：register-php"><span class="toc-text">解释四：register.php</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释六：注册成功时跳转到一个页面。"><span class="toc-text">解释六：注册成功时跳转到一个页面。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释七：禁止🚫重复提交"><span class="toc-text">解释七：禁止🚫重复提交</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: true || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>js的解析与执行过程 | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="js的解析与执行过程">
+            
+	            js的解析与执行过程
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/博客列表">
+            博客列表
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/预解析过程" title='预解析过程'>
+                        预解析过程
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/07/02</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="1-全局预处理与执行"><a href="#1-全局预处理与执行" class="headerlink" title="1.全局预处理与执行"></a>1.全局预处理与执行</h1><h2 id="1-1-预处理"><a href="#1-1-预处理" class="headerlink" title="1.1.预处理"></a>1.1.预处理</h2><p>1.1.1 引例：</p>
+<p>第一种情况</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xx</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">xx();</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行结果：在控制台输出1</p>
+<p>原因：在<code>xx()</code>函数中可以访问一个全局的变量a,而现在这个全局变量a的值为1,所以输出结果为1。</p>
+<p>第二种情况：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xx</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(a);</span><br><span class="line">	<span class="keyword">var</span> a=<span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line">xx();</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行结果：在控制台输出undefind</p>
+<p>原因：在我们看来输出结果绝对不可能是5,因为浏览器引擎都是按照程序的顺序渲染程序的，那为什么会输出undefind？首先我们需要注意的是该代码在运行的时候并没有报错，而我们一般使用不存在的变量的时候，浏览器都会报错,但是现在不报错，值却是undefined，这个现象就是js内部的解析机制在捣鬼。现在我们就一起来了解一下JS的解析机制。</p>
+<p>1.1.2 预处理阶段</p>
+<p>JS的解析与执行过程主要分为两个阶段：预处理的阶段和执行阶段</p>
+<p>注意：浏览器在解析JS代码的时候，并不是读一行就处理一行代码，它分为两块，第一块就是在正式处理代码之前的预处理阶段<br>，第二块就是执行阶段，现在我人为的将它分为两部分：全局部分和函数部分，如下图所示：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232435/o_0.png" alt=" "></p>
+<p>在预处理阶段分为两部分：</p>
+<p>第一部分：创建一个词法环境对象</p>
+<p>第二部分：扫描你整个JS全局代码中的两个部分</p>
+<ul>
+<li><p>用声明的方式创建的函数</p>
+</li>
+<li><p>用var定义的变量</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//词法环境对象</span></span><br><span class="line">LexicalEnvironment&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>扫描出来以后就把这些变量的名字、函数的名字加到全局的词法环境对象中去。</p>
+<p>举例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="keyword">var</span> a=<span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> b;</span><br><span class="line">c=<span class="number">5</span>;  <span class="comment">//没有var，所以不能加到词法环境中</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xxx</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>词法环境对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LexicalEnvironment &#123;</span><br><span class="line">   a:<span class="literal">undefined</span></span><br><span class="line">   b:<span class="literal">undefined</span></span><br><span class="line">   xxx:对函数的一个引用  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：一定要用声明方式的创建函数，例如像这样<code>var g=function()</code>这样的方式叫做函数表达式，而不是声明的方式。</p>
+<p>举例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">f();</span><br><span class="line">g();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;     <span class="comment">//以声明的方式创建的函数</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'ff'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> g=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">//以函数表达式创建的函数</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'gg'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232435/o_1.png" alt=" "></p>
+<p>原因：f函数会被正常的调用，函数f在词法环境中，g函数的调用会报错，在浏览器在执行过程中，在预处理阶段，将f函数写在词法环境中，是对函数的一个引用，f-&gt;ff，在g函数在词法环境中根本不存在，这里的g代表的是一个普通的变量，在预处理阶段的值为undefined,而不是一个函数，所以调用的时候会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="built_in">console</span>.log(b)</span><br><span class="line"><span class="keyword">var</span> a=<span class="number">5</span>;</span><br><span class="line">b=<span class="number">6</span>;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232435/o_2.png" alt=" "></p>
+<p>原因我就不细说了，相信大家通过上面的例子已经看明白了吧。</p>
+<p>总结：说白了预处理阶段就是分为两种情况</p>
+<ul>
+<li><p>用var声明的变量的时候，变量是存在的，但值为undefined</p>
+</li>
+<li><p>用声明的方式声明的函数的时候，保持着对函数的引用。</p>
+</li>
+</ul>
+<p>1.1.3 全局的词法环境对象就window对象： <code>LexicalEnvironment===window</code></p>
+<h2 id="1-2-命名冲突问题"><a href="#1-2-命名冲突问题" class="headerlink" title="1.2.命名冲突问题"></a>1.2.命名冲突问题</h2><p>1.2.1 引例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="keyword">var</span> f=<span class="number">5</span>;</span><br><span class="line">fucntion f()&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f=<span class="number">6</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>面对这种函数和变量同名的情况，词法环境对象(window对象)会怎么处理呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">window</span>&#123;</span><br><span class="line"></span><br><span class="line">f:可能出现出现两次   <span class="comment">//在JS中是不可能存在的情况，不可能一个名称既代表函数名又代表变量名</span></span><br><span class="line">f:出现一次的策略 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在预处理阶段是JS引擎自己解析的，人为是无法参与的进去的，所以所有的预处理过程是在代码执行之前工作的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">alert(f);</span><br><span class="line"><span class="keyword">var</span> f=<span class="number">5</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'111'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="built_in">console</span>.log(f);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'111'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f=<span class="number">5</span>;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232435/o_3.png" alt=" "></p>
+<p>原因：并不是因为以f命名的函数在靠后的位置，输出结果为函数f的字符串表示，调整变量和函数的位置，输出结果还是相同的，所以并不是简单的顺序的扫描程序，若发生重名冲突的话，以后面的覆盖前面的，而真正的原因是因为JS引擎解决变量和函数的冲突机制。现在我们来一起了解一下吧。</p>
+<p>1.2.2 命名冲突策略：</p>
+<ul>
+<li><p>先扫描函数声明后扫描var声明的变量</p>
+</li>
+<li><p>处理函数声明有冲突，会覆盖</p>
+</li>
+<li><p>处理变量声明有冲突，会忽略</p>
+</li>
+</ul>
+<p>注意：是函数声明的方式而不是函数表达式的方式，我一直在强调这一点。</p>
+<p>所以上述代码的词法环境为(处理变量和函数冲突)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">window</span>&#123;</span><br><span class="line"></span><br><span class="line">  f:指向函数</span><br><span class="line"><span class="comment">// f:undefined   变量声明有冲突，会忽略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>处理函数冲突：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="built_in">console</span>.log(f);</span><br><span class="line"><span class="keyword">var</span> f=<span class="number">5</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'111'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'222'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232435/o_4.png" alt=" "></p>
+<p>这充分的说明了JS引擎在处理函数同名冲突的时候，会覆盖上一个函数。同时也说明了JavaScript中函数是占据十分重要的位置。</p>
+<h2 id="1-3执行阶段"><a href="#1-3执行阶段" class="headerlink" title="1.3执行阶段"></a>1.3执行阶段</h2><p>，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">//会报错，应该注释掉，具体原因看图2所表达的意思</span></span><br><span class="line"><span class="built_in">console</span>.log(f);</span><br><span class="line"><span class="built_in">console</span>.log(g);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a=<span class="number">5</span>;      <span class="comment">//var声明的局部变量</span></span><br><span class="line">b=<span class="number">6</span>;          <span class="comment">//没有var声明的全局变量</span></span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;           <span class="comment">//函数声明形式</span></span><br><span class="line">	consolg.log(<span class="string">'f'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> g=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    <span class="comment">//函数表达式形式</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'g'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(g);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>分析：</p>
+<ul>
+<li>预理阶段:浏览器在运行过程中会扫描用声明的方式创建的函数，用var定义的变量</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f:指向函数</span><br><span class="line">a:<span class="literal">undefined</span></span><br><span class="line">g:<span class="literal">undefined</span>   <span class="comment">//注意：g因为是函数表达式的形式，所以这里代表的是变量,值为undefined而不是函数</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行阶段:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	f:指向函数</span><br><span class="line">	a:<span class="number">5</span></span><br><span class="line">    g:指向函数</span><br><span class="line">	b:<span class="number">6</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以运行结果大家应该很清楚了吧，我把运行结果放着，大家可以参考下。<br>运行结果：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232435/o_5.png" alt=" "></p>
+<p>总结：有var和没有var声明变量最主要的区别，</p>
+<ul>
+<li><p>当有var声明变量时，在预处理阶段变量的值为undefined，在执行阶段变量的值为用户所赋给变量的值。</p>
+</li>
+<li><p>当没有var声明变量时，在预处理阶段变量的没有值，在执行阶段变量的值为用户所赋给变量的值。</p>
+</li>
+</ul>
+<h1 id="2-函数预处理与执行"><a href="#2-函数预处理与执行" class="headerlink" title="2.函数预处理与执行"></a>2.函数预处理与执行</h1><p>注意:全局预处理和函数预处理是人为分的，实际并不存在的，并不是说全局预处理阶段完成后才进入到函数处理阶段</p>
+<h2 id="预处理阶段"><a href="#预处理阶段" class="headerlink" title="预处理阶段"></a>预处理阶段</h2><p>在全局预处理阶段创建的词法环境对象在浏览器中就是window对象，但是在函数预处理中阶段创建的词法环境对象是真实存在，看不见，摸不着的。也就是说，我们是访问不了的，因为这是JS解析器做的事情。</p>
+<p>因为函数是有参数的，所有这个函数的参数已经就是预处理阶段词法环境对象的成员了。在预处理阶段的步骤如下：</p>
+<ul>
+<li>每调用一次，产生一个LexicalEnvironment</li>
+<li>先函数的参数</li>
+<li>内部声明式函数</li>
+<li>内部var变量</li>
+<li>冲突情况与全局处理一样(函数覆盖，变量忽略)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(a,b);</span><br><span class="line">	<span class="keyword">var</span> b=<span class="number">100</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>分析之前先看一个小案例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果声明一个函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">A(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//声明的时候有两个参数，但是调用的时候只有一个参数，那么它所产生的词法环境对象为</span></span><br><span class="line">lexical env&#123;</span><br><span class="line">a:<span class="number">1</span>;</span><br><span class="line">b:<span class="literal">undefined</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>分析:<br>预处理阶段：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lexical env&#123;   <span class="comment">//词法环境对象</span></span><br><span class="line"></span><br><span class="line">    a:<span class="number">1</span></span><br><span class="line">    b:<span class="number">2</span></span><br><span class="line">    arguements:<span class="number">2</span>  <span class="comment">//实际穿的参数的个数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行阶段<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lexical env&#123;   <span class="comment">//词法环境对象</span></span><br><span class="line"></span><br><span class="line">    a:指向函数 <span class="comment">//函数a有冲突，此时现有的函数会覆盖原有的函数</span></span><br><span class="line">    b:<span class="number">2</span>   <span class="comment">//变量b有冲突，会忽略</span></span><br><span class="line">    arguements:<span class="number">2</span>  <span class="comment">//实际穿的参数的个数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行结果:</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232435/o_6.png" alt=" "></p>
+<h2 id="执行阶段"><a href="#执行阶段" class="headerlink" title="执行阶段"></a>执行阶段</h2><p>执行阶段主要有两个作用如下：</p>
+<ul>
+<li>给预处理阶段的成员赋值，参考上一个代码，给预处理阶段的数据成员和成员变量该赋值的赋值、该忽略的忽略、该覆盖的覆盖。视具体的情况而定</li>
+</ul>
+<ul>
+<li>如果没有用var声明的变量，会成为最外部LexicalEnvironment(window,全局)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">g</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		b=<span class="number">100</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	g();</span><br><span class="line">&#125;</span><br><span class="line">f();</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>我们可以发现运行这段代码并没有任何结果，那么大家肯定会有疑问b的值跑去哪里了，这时候没有用var声明的b变成了全局变量，跑到了最外部window对象的词法环境去了，而不是某一个函数的词法环境，所以可以通过<code>window.b</code>去访问它。</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232435/o_7.png" alt=" "></p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1242272/o_reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/07/02/Gulp详解/" class="pre-post btn btn-default" title='Gulp详解'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Gulp详解</span>
+        </a>
+    
+    
+        <a href="/2018/06/30/jQuery-lazyload/" class="next-post btn btn-default" title='jQuery-lazyload'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">jQuery-lazyload</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-全局预处理与执行"><span class="toc-text">1.全局预处理与执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-预处理"><span class="toc-text">1.1.预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-命名冲突问题"><span class="toc-text">1.2.命名冲突问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3执行阶段"><span class="toc-text">1.3执行阶段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-函数预处理与执行"><span class="toc-text">2.函数预处理与执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#预处理阶段"><span class="toc-text">预处理阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行阶段"><span class="toc-text">执行阶段</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: true || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

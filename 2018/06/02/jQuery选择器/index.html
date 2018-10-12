@@ -1,0 +1,596 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>jQuery选择器详解 | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="jQuery选择器详解">
+            
+	            jQuery选择器详解
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/博客列表">
+            博客列表
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/JavaScript框架" title='JavaScript框架'>
+                        JavaScript框架
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/06/02</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>在学习JQuery时，各类选择器是不是已经让你晕头转向，那你就来对地方了，相信大家看了这篇文章之后，一定会对JQuery的各类选择权有较为清晰的认识。</p>
+</blockquote>
+<p>JQuery的选择器可谓是五花八门，让人们傻傻的分不清，这篇文章就来捋一捋吧。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">        &lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">        &lt;style type=<span class="string">"text/css"</span>&gt;</span><br><span class="line">            div,</span><br><span class="line">            span</span><br><span class="line">            &#123;</span><br><span class="line">                width: <span class="number">140</span>px;</span><br><span class="line">                height: <span class="number">140</span>px;</span><br><span class="line">                margin: <span class="number">5</span>px;</span><br><span class="line">                background: #aaa;</span><br><span class="line">                border: #000 1px solid;</span><br><span class="line">                float: left;</span><br><span class="line">                font-size: <span class="number">17</span>px;</span><br><span class="line">                font-family: Verdana;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            div.mini &#123;</span><br><span class="line">                width: <span class="number">55</span>px;</span><br><span class="line">                height: <span class="number">55</span>px;</span><br><span class="line">                background-color: #aaa;</span><br><span class="line">                font-size: <span class="number">12</span>px;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            div.hide &#123;</span><br><span class="line">                display: none;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">        &lt;script type="text/</span>javascript<span class="string">" src="</span>../js/jquery<span class="number">-1.11</span><span class="number">.1</span>.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">        &lt;script type="</span>text/javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            </span></span><br><span class="line"><span class="string">            &#125;)</span></span><br><span class="line"><span class="string">        &lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;/head&gt;</span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="</span>one<span class="string">" id="</span>one<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            id为one,class为one的div</span></span><br><span class="line"><span class="string">            &lt;div class="</span>mini<span class="string">"&gt; class为mini&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="</span>one<span class="string">" id="</span>two<span class="string">" title="</span>test<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            id为two,class为one,title为test的div</span></span><br><span class="line"><span class="string">            &lt;div class="</span>mini<span class="string">" title="</span>other<span class="string">"&gt;class为mini,title为other&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;div class="</span>mini<span class="string">" title="</span>test<span class="string">"&gt;class为mini,title为test&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="</span>one<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            &lt;div class="</span>mini<span class="string">"&gt;class为mini&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;div class="</span>mini<span class="string">"&gt;class为mini&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;div class="</span>mini<span class="string">"&gt;class为mini&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;div class="</span>mini<span class="string">"&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="</span>one<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            &lt;div class="</span>mini<span class="string">"&gt;class为mini&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;div class="</span>mini<span class="string">"&gt;class为mini&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;div class="</span>mini<span class="string">"&gt;class为mini&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;div class="</span>mini<span class="string">" title="</span>tesst<span class="string">"&gt;class为mini,title为tesst&lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div style="</span>display: none;<span class="string">" class="</span>none<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            style的display为"</span>none<span class="string">"的div</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="</span>hide<span class="string">"&gt;class为hide的div&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div&gt;</span></span><br><span class="line"><span class="string">            包含input的type为"</span>hidden<span class="string">"的div</span></span><br><span class="line"><span class="string">            &lt;input type="</span>hidden<span class="string">" size="</span><span class="number">8</span><span class="string">" /&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;span&gt;span标签&lt;/span&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面的代码运行的结果如下图所示，把该图看做是没有任何选择器的默认状态。</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_1.png" alt=" "></p>
+<h2 id="Basics：基本选择器"><a href="#Basics：基本选择器" class="headerlink" title="Basics：基本选择器"></a>Basics：基本选择器</h2><ul>
+<li><code>element</code>：元素选择器：根据给定的元素名匹配元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选择元素名是div的所有元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">$(<span class="string">"div"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_2.png" alt=" "></p>
+<ul>
+<li><code>#id</code>：ID选择器：根据给定的ID匹配一个元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选择id为one的元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </span><br><span class="line">      $(<span class="string">"#one"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_3.png" alt=" "></p>
+<ul>
+<li><code>.class</code>：类选择器：根据给定的类名匹配元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选择class为mini的所有元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </span><br><span class="line">        $(<span class="string">".mini"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_4.png" alt=" "></p>
+<ul>
+<li><code>*</code>：通配符选择器：根据给定的元素名匹配元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选择所有的元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">"*"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">       &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_5.png" alt=" "></p>
+<ul>
+<li><code>selector1,selector2,selectorN</code>：并集选择器：将每一个选择器匹配到的元素合并后一起返回</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选择所有的span元素和id为two的div元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;       </span><br><span class="line">    $(<span class="string">"span,#two"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_6.png" alt=" "></p>
+<ul>
+<li><code>selector1 selector2</code>：交集选择器：将每一个选择器匹配到的元素相交后一起返回</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选择父元素的id为one，子元素的class为mini的元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </span><br><span class="line">    $(<span class="string">"#one, .mini"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_7.png" alt=" "></p>
+<h2 id="Hierarchy：层次选择器"><a href="#Hierarchy：层次选择器" class="headerlink" title="Hierarchy：层次选择器"></a>Hierarchy：层次选择器</h2><ul>
+<li><code>ancestor descendant</code>：后代选择器，会选中标签名是div的下面的元素，不仅可以是一层，也可以是多层。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//改变body内的所有div的背景色</span></span><br><span class="line"></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">     $(<span class="string">"body div"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>)；</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_8.png" alt=" "></p>
+<ul>
+<li><code>parent &gt; child</code>：子元素选择器，选中的必须是子元素，中间不能隔多层。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//改变body内子div元素的背景色</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">"body&gt;div"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_9.png" alt=" "></p>
+<ul>
+<li><code>prev + next</code>：选取紧接在prev元素后的next元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//改变class为one的下一个div的背景色</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;       </span><br><span class="line"></span><br><span class="line">    $(<span class="string">".one+div"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_10.png" alt=" "></p>
+<ul>
+<li><code>prev ~ siblings</code>：选取prev元素之后的索引siblings元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="comment">//改变id为two的元素后面的所有div同辈元素的背景色.</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;       </span><br><span class="line">    $(<span class="string">"#two~div"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_11.png" alt=" "></p>
+<h2 id="Basic-Filters：基本过滤筛选器"><a href="#Basic-Filters：基本过滤筛选器" class="headerlink" title="Basic Filters：基本过滤筛选器"></a>Basic Filters：基本过滤筛选器</h2><ul>
+<li><code>：first</code>：选择第一个div元素.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//改变第一个&lt;div&gt;元素的背景色</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;       </span><br><span class="line">    $(<span class="string">"div:first"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_12.png" alt=" "></p>
+<ul>
+<li><code>：last</code>：选择最后一个div元素.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//改变最后一个&lt;div&gt;元素的背景色</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;       </span><br><span class="line">    $(<span class="string">"div:last"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_13.png" alt=" "></p>
+<ul>
+<li><code>:not(selector)</code>：去除所有与给定选择器匹配的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选择class不为one的所有div元素.</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">"div:not(.one)"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_14.png" alt=" "></p>
+<ul>
+<li><code>:even</code>：选取索引值是偶数的所有元素，索引值从0开始</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//偶数（序号，从零开始）</span></span><br><span class="line"><span class="comment">//选择索引值为偶数 的div元素。</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">"div:even"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_15.png" alt=" "></p>
+<ul>
+<li><code>:odd</code>：选取索引值是基数的所有元素，索引值从0开始</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/奇数（序号，从零开始）</span><br><span class="line"><span class="comment">//选择 索引值为奇数 的div元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </span><br><span class="line"></span><br><span class="line">    $(<span class="string">"div:odd"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);  </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_16.png" alt=" "></p>
+<ul>
+<li><code>:eq(index)</code>：选取索引值等于index的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//等于（序号，从零开始）</span></span><br><span class="line"><span class="comment">//选择索引等于 3 的元素</span></span><br><span class="line">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="string">"div:eq(3)"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_17.png" alt=" "></p>
+<ul>
+<li><code>：gt(index)</code>：选取索引值大于index的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//大于（序号，从零开始）</span></span><br><span class="line"><span class="comment">//选择 索引大于 3 的元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">"div:gt(3)"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">       &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_18.png" alt=" "></p>
+<ul>
+<li><code>:lt(index)</code>：选取索引值小于index的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//小于（序号，从零开始）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//选择索引小于 3 的元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;       </span><br><span class="line">    $(<span class="string">"div:lt(3)"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_19.png" alt=" "></p>
+<ul>
+<li><code>:header</code>：选取所有的标题元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选择所有的标题元素.比如h1, h2, h3等等...</span></span><br><span class="line"></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </span><br><span class="line">    $(<span class="string">":header"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>：animated</code>：选取当前正在执行动画的所有元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//改变当前正在执行动画的元素的背景色. </span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;       </span><br><span class="line">    $(<span class="string">":animated"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>：focus</code>：选取当前获取焦点的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//改变当前获取焦点的元素的背景色</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </span><br><span class="line">        $(<span class="string">":focus"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Content-Filters-：内容过滤选择器"><a href="#Content-Filters-：内容过滤选择器" class="headerlink" title="Content Filters ：内容过滤选择器"></a>Content Filters ：内容过滤选择器</h2><ul>
+<li><code>：contains(text)</code>：选择含有文本内容为”text”的元素。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选取含有文本"di"的div元素.</span></span><br><span class="line">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="string">"div:contains(di)"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_20.png" alt=" "></p>
+<ul>
+<li><code>：empty</code>：选择不包含子元素或者文本的空元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   </span><br><span class="line"><span class="comment">//改变不包含子元素(或者文本元素)的div空元素的背景色.</span></span><br><span class="line">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="string">":empty"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_21.png" alt=" "></p>
+<ul>
+<li><code>：has(selector)</code>：选取含有选择器所匹配的元素的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="comment">//改变含有class为mini元素 的div元素的背景色.</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </span><br><span class="line">    $(<span class="string">"div:has(.mini)"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_22.png" alt=" "></p>
+<ul>
+<li><code>：parent</code>：选取含有子元素或者文本的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line"><span class="comment">//改变含有子元素(或者文本元素)的div元素的背景色.</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;       </span><br><span class="line">    $(<span class="string">"div:parent"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_23.png" alt=" "></p>
+<h2 id="Visibility-Filters：可见性过滤选择器"><a href="#Visibility-Filters：可见性过滤选择器" class="headerlink" title="Visibility Filters：可见性过滤选择器"></a>Visibility Filters：可见性过滤选择器</h2><ul>
+<li><code>：hidden</code>：选取所有不可见的元素包括<code>&lt;input type=&quot;hidden&quot;/&gt;.</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="comment">//显示隐藏的元素并且改变背景色</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;     </span><br><span class="line">        $(<span class="string">"div:hidden"</span>).show(<span class="number">3000</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_24.png" alt=" "></p>
+<ul>
+<li><code>：visible</code>：选取所有可见的元素.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//改变所有可见的&lt;div&gt;元素的背景色</span></span><br><span class="line"></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="string">"div:visible"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_25.png" alt=" "></p>
+<h2 id="Attribute-Filters-：属性过滤选择器"><a href="#Attribute-Filters-：属性过滤选择器" class="headerlink" title="Attribute Filters ：属性过滤选择器"></a>Attribute Filters ：属性过滤选择器</h2><ul>
+<li><code>[attribute]</code>：选取拥有此属性的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选取拥有属性id的div元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;             </span><br><span class="line">$(<span class="string">"div[id]"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_26.png" alt=" "></p>
+<ul>
+<li><code>[attribute=value]</code>：选取属性值为value的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//选取属性title为"test"的div元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;             </span><br><span class="line">       $(<span class="string">"div[title=test]"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_27.png" alt=" "></p>
+<ul>
+<li><code>[attribute!=value]</code>：选取属性值不等于value的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//选取属性title不等于"test"的div元素</span></span><br><span class="line"></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;            </span><br><span class="line">$(<span class="string">"div[title!=test]"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">        &#125;)</span><br><span class="line"><span class="comment">//注意：没有div的元素也会被选取</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_28.png" alt=" "></p>
+<p>下面用一个更详细的例子来说下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head lang=<span class="string">"en"</span>&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">        &lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            div,</span><br><span class="line">            span,</span><br><span class="line">            p &#123;</span><br><span class="line">                width: <span class="number">140</span>px;</span><br><span class="line">                height: <span class="number">140</span>px;</span><br><span class="line">                margin: <span class="number">5</span>px;</span><br><span class="line">                background: #aaa;</span><br><span class="line">                border: #000 1px solid;</span><br><span class="line">                float: left;</span><br><span class="line">                font-size: <span class="number">17</span>px;</span><br><span class="line">                font-family: Verdana;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            div.mini &#123;</span><br><span class="line">                width: <span class="number">55</span>px;</span><br><span class="line">                height: <span class="number">55</span>px;</span><br><span class="line">                background-color: #aaa;</span><br><span class="line">                font-size: <span class="number">12</span>px;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            div.hide &#123;</span><br><span class="line">                display: none;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">        &lt;script type="text/</span>javascript<span class="string">" src="</span>../js/jquery<span class="number">-1.11</span><span class="number">.1</span>.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">        &lt;script type="</span>text/javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            </span></span><br><span class="line"><span class="string">        &lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;/head&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &lt;div title="</span>en<span class="string">"&gt;title为en的div元素&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div title="</span>en-UK<span class="string">"&gt;title为en-UK的div元素&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div title="</span>english<span class="string">"&gt;title为english的div元素&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div title="</span>en uk<span class="string">"&gt;title为en uk的div元素&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div title="</span>uken<span class="string">"&gt;title为uken的div元素&lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>[attribute^=value]</code>：选取属性值以value开头的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选取属性title值以en开始div元素.</span></span><br><span class="line"> $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;     </span><br><span class="line">        $(<span class="string">"div[title^=en]"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">                </span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_29.png" alt=" "></p>
+<ul>
+<li><code>[attribute$=value]</code>：选取属性值以value结束的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选取 属性title值 以en为结尾的div元素.</span></span><br><span class="line">  $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">        $(<span class="string">"div[title$=en]"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>)</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_30.png" alt=" "></p>
+<ul>
+<li><code>[attribute*=value]</code>：选取属性值含有value的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//任意对个，包含的关系</span></span><br><span class="line"><span class="comment">//选取 属性title值 含有 en  的div元素.</span></span><br><span class="line">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            $(<span class="string">"div[title*=en]"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>)</span><br><span class="line">               &#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_31.png" alt=" "></p>
+<ul>
+<li><code>[attribute|=value]</code>：选取属性值等于给定字符串或以该字符串为前缀的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选取属性title等于en或以en为前缀（该字符串后跟一个连字符'-'）的元素</span></span><br><span class="line">  $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">        $(<span class="string">"div[title|=en]"</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>)</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_32.png" alt=" "></p>
+<ul>
+<li><code>[attribute~=value]</code>：选取属性用空格分隔的值中包含一个给定的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//选取属性title用空格分隔的值中包含字符uk的元素.</span></span><br><span class="line"> $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">        $(<span class="string">'div[title~=uk]'</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>) </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_33.png" alt=" "></p>
+<ul>
+<li><code>[attrSel1][attrSel2][attrSelN]</code>：用属性选择器合并成一个复合属性选择器，满足多个条件，每次选择一次，缩小一次范围，既满足第一个，又满足第二个，又满足第三个….</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="comment">//选取拥有属性id,并且属性title以"test"结束的&lt;div&gt;元素</span></span><br><span class="line">  $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="string">'div[id][title=test]'</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_34.png" alt=" "></p>
+<h2 id="Child-Filter-：子元素过滤选择器（索引从1开始）"><a href="#Child-Filter-：子元素过滤选择器（索引从1开始）" class="headerlink" title="Child Filter ：子元素过滤选择器（索引从1开始）"></a>Child Filter ：子元素过滤选择器（索引从1开始）</h2><ul>
+<li><code>:first-child</code>：选取每个父元素下的第一个子元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//改变class为one的&lt;div&gt;父元素下的第一个子元素的背景色</span></span><br><span class="line">  $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   $(<span class="string">'.one :first-child'</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_35.png" alt=" "></p>
+<ul>
+<li><code>:last-child</code>：选取每个父元素下的最后一个子元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="comment">//改变class为one的&lt;div&gt;父元素下的最后一个子元素的背景色</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      $(<span class="string">'.one :last-child'</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_36.png" alt=" "></p>
+<ul>
+<li><p><code>：nth-child</code>：表示的是第几。子元素中的第几个元素</p>
+</li>
+<li><p><code>：nth-child(even)</code>：偶数</p>
+</li>
+<li><p><code>：nth-child(odd)</code>：奇数</p>
+</li>
+<li><p><code>：nth-child(2)</code>：第二个</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//改变每个class为one的&lt;div&gt;父元素下的第二个子元素的背景色</span></span><br><span class="line"> $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;          </span><br><span class="line">        $(<span class="string">'.one :nth-child(2)'</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_37.png" alt=" "></p>
+<ul>
+<li><p><code>：nth-child(2n)</code>：偶数倍</p>
+</li>
+<li><p><code>：nth-child(2n+1)</code>：基数倍</p>
+</li>
+<li><p><code>：only-child</code>：只选中是单独子元素的元素，如果父元素下的仅仅只有一个子元素，那么选中这个子元素</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="comment">//如果class为one的&lt;div&gt;父元素下只有一个子元素，那么则改变这个子元素的背景色</span></span><br><span class="line">  $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">        $(<span class="string">'.one :only-child'</span>).css(<span class="string">"background-color"</span>,<span class="string">"chartreuse"</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232445/t_38.png" alt=" "></p>
+<h2 id="Forms：表单选择器"><a href="#Forms：表单选择器" class="headerlink" title="Forms：表单选择器"></a>Forms：表单选择器</h2><p>$(‘:input’)：选取所有的<code>&lt;input&gt;</code>元素、<code>&lt;textarea&gt;</code>元素、<code>&lt;select&gt;</code>元素、和<code>&lt;button&gt;</code>元素</p>
+<p>$(‘:text’)：选取所有的单行文本框</p>
+<p>$(‘:password’)：选取所有的密码框</p>
+<p>$(‘:radio’)：选取所有的单选框</p>
+<p>$(‘:checkbox’)：选取所有的多选框</p>
+<p>$(‘:submit’)：选取所有的提交按钮</p>
+<p>$(‘:image’)：选取所有的图像按钮</p>
+<p>$(‘:reset’)：选取所有的重置按钮</p>
+<p>$(‘:button’)：选取所有的按钮</p>
+<p>$(‘:file’)：选取所有的上传域</p>
+<p>$(‘:hidden)：选取所有不可见元素</p>
+<h2 id="Form-Filters：表单对象属性过滤选择器"><a href="#Form-Filters：表单对象属性过滤选择器" class="headerlink" title="Form Filters：表单对象属性过滤选择器"></a>Form Filters：表单对象属性过滤选择器</h2><p>$(‘:enabled’)：选取所有可用元素</p>
+<p>$(‘:disabled’)：选取所有不可用元素</p>
+<p>$(‘:checked’)：选取所有被选中的元素（单选框、复选框）</p>
+<p>$(‘:selected’)：选取所有被选中的选项元素（下拉列表）</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1242272/o_reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/06/04/JQuery常用方法之CSS/" class="pre-post btn btn-default" title='jQuery常用方法之css'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">jQuery常用方法之css</span>
+        </a>
+    
+    
+        <a href="/2018/05/20/闭包的作用/" class="next-post btn btn-default" title='闭包的作用'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">闭包的作用</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basics：基本选择器"><span class="toc-text">Basics：基本选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hierarchy：层次选择器"><span class="toc-text">Hierarchy：层次选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Filters：基本过滤筛选器"><span class="toc-text">Basic Filters：基本过滤筛选器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Content-Filters-：内容过滤选择器"><span class="toc-text">Content Filters ：内容过滤选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Visibility-Filters：可见性过滤选择器"><span class="toc-text">Visibility Filters：可见性过滤选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Attribute-Filters-：属性过滤选择器"><span class="toc-text">Attribute Filters ：属性过滤选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Child-Filter-：子元素过滤选择器（索引从1开始）"><span class="toc-text">Child Filter ：子元素过滤选择器（索引从1开始）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Forms：表单选择器"><span class="toc-text">Forms：表单选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Form-Filters：表单对象属性过滤选择器"><span class="toc-text">Form Filters：表单对象属性过滤选择器</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: true || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

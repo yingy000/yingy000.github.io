@@ -1,0 +1,605 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>服务器基础知识 | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="服务器基础知识">
+            
+	            服务器基础知识
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/博客列表">
+            博客列表
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/服务器" title='服务器'>
+                        服务器
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/07/18</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="1-服务器的分类"><a href="#1-服务器的分类" class="headerlink" title="1.服务器的分类"></a>1.服务器的分类</h2><p>服务器的类型按照不同的划分标准，服务可划分为以下类型：</p>
+<ul>
+<li><p>按服务类型可分为：文件服务器、数据库服务器、邮件服务器、Web服务器等。</p>
+</li>
+<li><p>按操作系统可分为：Linux服务器、Windows服务器</p>
+</li>
+<li><p>按应用软件可分为：Apache服务器、Nginx服务器、IIS服务器、Tomcat服务器、Node服务器</p>
+</li>
+</ul>
+<h2 id="2-服务器软件："><a href="#2-服务器软件：" class="headerlink" title="2.服务器软件："></a>2.服务器软件：</h2><p>使计算机具备提供某种服务能力的应用软件，称为服务器软件，通过安装相应的服务软件，然后进行配置后就可以使计算具备了提供某种服务的能力。常见的服务器软件有：</p>
+<ul>
+<li><p>文件服务器：Server-U、FileZilla、VsFTP等；</p>
+</li>
+<li><p>数据库服务器：Oracle、MySQL、PostgreSQL、MSSQL等；</p>
+</li>
+<li><p>邮件服务器：Postfix、Sendmail等；</p>
+</li>
+<li><p>HTTP 服务器：Apache、Nginx、IIS、Tomcat、NodeJS等；</p>
+</li>
+</ul>
+<h2 id="3-HTTP服务器"><a href="#3-HTTP服务器" class="headerlink" title="3.HTTP服务器"></a>3.HTTP服务器</h2><ul>
+<li><p>网站服务器，主要提供文档(文本、图片、视频、音频)浏览服务，一般安装Apache、Nginx服务器软件，HTTP服务器可以结合某一编程语言处理业务逻辑，由此进行的开发，通常称之为服务端开发。</p>
+</li>
+<li><p>常见的运行在服务端的编程语言包括 PHP、Jsp、Asp、Python、Ruby、Perl等。</p>
+</li>
+</ul>
+<h2 id="4-客户端："><a href="#4-客户端：" class="headerlink" title="4.客户端："></a>4.客户端：</h2><ul>
+<li><p>具有向服务器索取服务能力的终端，如比如 手机、电脑等，通过安装不同的客户端软件，可以获取不同的服务，比如通过QQ获得即时通讯服务、通过迅雷获得下载服务等。</p>
+</li>
+<li><p>常见的客户端软件：浏览器、QQ、迅雷、Foxmail等。</p>
+</li>
+<li><p>以浏览器为宿主环境，结合 HTML、CSS、Javascript等技术，而进行的一系列开发，通常称之为前端开发。</p>
+</li>
+</ul>
+<h2 id="5-状态代码"><a href="#5-状态代码" class="headerlink" title="5.状态代码"></a>5.状态代码</h2><h3 id="5-1-成功"><a href="#5-1-成功" class="headerlink" title="5.1.成功"></a>5.1.成功</h3><ul>
+<li><p>200 正常;请求已完成。</p>
+</li>
+<li><p>201 正常;紧接POST命令。</p>
+</li>
+<li><p>202 正常;已接受用于处理，但处理尚未完成。</p>
+</li>
+<li><p>203 正常;部分信息 — 返回的信息只是一部分。</p>
+</li>
+<li><p>204 正常;无响应 — 已接收请求，但不存在要回送的信息。</p>
+</li>
+</ul>
+<h3 id="5-2-重定向"><a href="#5-2-重定向" class="headerlink" title="5.2.重定向"></a>5.2.重定向</h3><ul>
+<li><p>301 永久重定向 — 请求的数据具有新的位置且更改是永久的。</p>
+</li>
+<li><p>302 暂时重定向 — 请求的数据临时具有不同URI。</p>
+</li>
+<li><p>303 请参阅其它 — 可在另一URI下找到对请求的响应，且应使用 GET方法检索此响应。</p>
+</li>
+<li><p>304 未修改 — 未按预期修改文档。</p>
+</li>
+<li><p>305 使用代理 — 必须通过位置字段中提供的代理来访问请求的资源。</p>
+</li>
+<li><p>306 未使用 — 不再使用;保留此代码以便将来使用。</p>
+</li>
+</ul>
+<h3 id="5-3-代码中的错误"><a href="#5-3-代码中的错误" class="headerlink" title="5.3.代码中的错误"></a>5.3.代码中的错误</h3><ul>
+<li><p>400 错误请求 — 请求中有语法问题，或不能满足请求。</p>
+</li>
+<li><p>401 未授权 — 未授权客户机访问数据。</p>
+</li>
+<li><p>402 需要付款 — 表示计费系统已有效。</p>
+</li>
+<li><p>403 禁止— 即使有授权也不需要访问。</p>
+</li>
+<li><p>404 找不到—服务器找不到给予的资源;文档不存在。</p>
+</li>
+<li><p>406 不可接受 — 根据此请求中所发送的“接受”标题，此请求所标识的资源只能生成内容特征为“不可接受”的响应实体。</p>
+</li>
+<li><p>407 代理认证请求 — 客户机首先必须使用代理认证自身。</p>
+</li>
+<li><p>410 请求的网页不存在(永久);</p>
+</li>
+<li><p>415 介质类型不受支持 —服务器拒绝服务请求，因为不支持请求实体的格式。</p>
+</li>
+<li><p>500 内部错误 — 因为意外情况，服务器不能完成请求。</p>
+</li>
+<li><p>501 未执行 —服务器不支持请求的工具。</p>
+</li>
+<li><p>502 错误网关—服务器接收到来自上游服务器的无效响应。</p>
+</li>
+<li><p>503 无法获得服务 — 由于临时过载或维护，服务器无法处理请求。</p>
+</li>
+</ul>
+<h2 id="6-搭建HTTP服务器："><a href="#6-搭建HTTP服务器：" class="headerlink" title="6.搭建HTTP服务器："></a>6.搭建HTTP服务器：</h2><p>Windows + Apache + Mysql + PHP，首字母组合。</p>
+<h3 id="6-1-安装WampServer"><a href="#6-1-安装WampServer" class="headerlink" title="6.1.安装WampServer"></a>6.1.安装WampServer</h3><p>安装wampserver，和普通软件安装无差别，除指定安装路径外，其它默认安装。</p>
+<h3 id="6-2-管理HTTP服务"><a href="#6-2-管理HTTP服务" class="headerlink" title="6.2.管理HTTP服务"></a>6.2.管理HTTP服务</h3><p>任务图标绿色为正常启动状态，通过图形控制台可以启动、重启、停止所有服务</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_1.png" alt=" "></p>
+<p>或者单独启动、重启、停止特定服务</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_2.png" alt=" "></p>
+<p>注意事项：</p>
+<ul>
+<li><p>检查网络是不是通的 ping 对方IP</p>
+</li>
+<li><p>检查防火墙是否开启，如果开启将不能正常被访问</p>
+</li>
+<li><p>检查访问权限是否都为Require all granted而不是Require all denied。</p>
+</li>
+<li><p>理解默认索引(index.php)：在浏览器中输入127.0.0.1时出现的页面。  </p>
+</li>
+<li><p>确保端口没有被其它程序占用</p>
+</li>
+<li><p><code>“#”</code>表示注释</p>
+</li>
+<li><p>修改配置要格外小心，禁止无意修改其它内容</p>
+</li>
+</ul>
+<h3 id="6-3-配置根目录"><a href="#6-3-配置根目录" class="headerlink" title="6.3.配置根目录"></a>6.3.配置根目录</h3><p>网站根目录是Web服务器上存放网站程序的空间，可通过修改配置文件自定义，如<code>E:/www</code>，具体步骤如下：</p>
+<ul>
+<li>打开配置文件，控制台选择：</li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_3.png" alt=" "></p>
+<ul>
+<li><p>或者 wampserver安装目录下<code>bin\apache\Apache2.2.21\conf\httpd.conf</code></p>
+</li>
+<li><p>设定根目录，查找并修改</p>
+</li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_4.png" alt=" "></p>
+<p>例如：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_5.png" alt=" "></p>
+<p>这样就指定了<code>&quot;E:/www/&quot;</code>为存放网站的根目录。</p>
+<ul>
+<li>配置根目录，查找</li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_6.png" alt=" "></p>
+<p>修改成</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_7.png" alt=" "></p>
+<ul>
+<li>修改完后，并不能立即生效，需要重启Apache</li>
+</ul>
+<p>注：可以指定任意目录为根目录</p>
+<h3 id="6-4-网站部署"><a href="#6-4-网站部署" class="headerlink" title="6.4.网站部署"></a>6.4.网站部署</h3><p>将我们制作好的网页拷贝到配置好的根目录下，浏览器访问<code>127.0.0.1</code>即可。</p>
+<h3 id="6-5-配置虚拟主机"><a href="#6-5-配置虚拟主机" class="headerlink" title="6.5. 配置虚拟主机"></a>6.5. 配置虚拟主机</h3><p>在一台Web服务器上，我们可以通过配置虚拟主机，然后分别设定根目录，实现对多个网站的管理。<br>具体步骤如下：</p>
+<ul>
+<li>开启虚拟主机辅配置，在httpd.conf 中找到</li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_8.png" alt=" "></p>
+<p>去掉前面的#号注释，开启虚拟主机配置</p>
+<p>*0配置虚拟主机，打开<code>conf/extra/httpd-vhosts.conf</code></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_9.png" alt=" "></p>
+<p>分别修改以下三项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DocumentRoot &quot;C:\wamp\www\zhimeng&quot;</span><br><span class="line">          ServerName zhimeng.com</span><br><span class="line">          ServerAlias www.zhimeng.com</span><br></pre></td></tr></table></figure>
+<p>其它项无需指定。</p>
+<ul>
+<li>修改DNS（hosts）文件,打开<code>C:\Windows\System32\drivers\etc\hosts</code></li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_10.png" alt=" "></p>
+<p>注：修改hosts文件权限</p>
+<ul>
+<li><p>重启Apache</p>
+</li>
+<li><p>浏览器访问<code>http://www.zhimeng.com/</code></p>
+</li>
+</ul>
+<h2 id="7-关于网络"><a href="#7-关于网络" class="headerlink" title="7.关于网络"></a>7.关于网络</h2><ul>
+<li>ping+网址：查看该网址的IP地址</li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_11.png" alt=" "></p>
+<ul>
+<li>ipconfig：查看本地主机的ip地址 </li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_12.png" alt=" "></p>
+<ul>
+<li>查看不同端口的占用情况：<code>netstat -an4.C/S与B/S</code></li>
+</ul>
+<p>C/S结构===客户端与服务器通信</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_13.png" alt=" "></p>
+<p>在C/S结构的情况下，不同的服务需要安装不同的客户端软件，比如QQ、迅雷、Foxmail这种情况下安装的软件会越来越多，同时也有许多弊端，比如A出差，需要在B电脑上查收邮件，但是B电脑并未安装Foxmail等类似的客户端软件，这样不得不先去下载Foxmail，非常不方便。</p>
+<p>B/S结构===浏览器与服务器通信  </p>
+<p>B/S（即Broswer、Server）解决了C/S所带来的不便，将所有的服务都可以通过浏览器来完成（因为基本所有浏览器都安装了浏览器），但B/S也有一些不利，比如操作稳定性、流畅度等方面相对较弱。</p>
+<p>注意：B/S结构是C/S结构的一个特例</p>
+<h2 id="8-关于HTTP协议"><a href="#8-关于HTTP协议" class="headerlink" title="8.关于HTTP协议"></a>8.关于HTTP协议</h2><p>超文本传输协议，网站是基于HTTP协议的，例如网站的图片、CSS、JS等都是基于HTTP协议进行传输的。HTTP协议对由从客户机到服务器的请求(Request)和从服务器到客户机的响应(Response)进行了约束和规范。即HTTP协议主要由请求和响应构成。</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_14.png" alt=" "></p>
+<p>常用请求方法 POST、GET、PUT、DELETE</p>
+<h3 id="8-1-请求-请求报文"><a href="#8-1-请求-请求报文" class="headerlink" title="8.1.请求/请求报文"></a>8.1.请求/请求报文</h3><p>请求由客户端发起，其规范格式为：请求行、请求头、请求主体。</p>
+<p>Get请求：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_15.png" alt=" "></p>
+<p>对应于浏览器：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_16.png" alt=" "></p>
+<p>Post请求：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_17.png" alt=" "></p>
+<ul>
+<li>请求行：</li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_18.png" alt=" "><br>由请求方式、请求URL和协议版本构成</p>
+<ul>
+<li>请求头</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host：localhost请求的主机</span><br><span class="line">Cache-Control：max-age=0控制缓存</span><br><span class="line">Accept：*/* 接受的文档MIME类型</span><br><span class="line">User-Agent：用户代理很重要</span><br><span class="line">Referer：从哪个URL跳转过来的</span><br><span class="line">Accept-Encoding：可接受的压缩格式</span><br><span class="line">Content-Type：资源的MIME类型，Post的请求方式有，而Get的请求方式没有。</span><br><span class="line">If-None-Match：记录服务器响应的ETag值，用于控制缓存</span><br><span class="line">If-Modified-Since：记录服务器响应的Last-Modified值</span><br></pre></td></tr></table></figure>
+<ul>
+<li>请求主体：即传递给服务端的数据</li>
+</ul>
+<p>注意：当以post形式提交表单的时候，请求头里会设置<code>Content-Type:application/x-www-form-urlencoded</code>，以get形式时不需要请求主体。</p>
+<h3 id="8-2-响应-响应报文"><a href="#8-2-响应-响应报文" class="headerlink" title="8.2.响应/响应报文"></a>8.2.响应/响应报文</h3><p>响应由服务器发出，其规范格式为：状态行、响应头、响应主体。</p>
+<p>Get请求的响应：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_19.png" alt=" "></p>
+<p>Post请求的响应：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_20.png" alt=" "></p>
+<ul>
+<li>状态行：</li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_21.png" alt=" "><br>由协议版本号、状态码和状态信息构成</p>
+<ul>
+<li>响应头</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Date：响应时间</span><br><span class="line">Server：服务器信息</span><br><span class="line">Last-Modified：资源最后修改时间</span><br><span class="line">ETag：资源修改后生成的唯一标识</span><br><span class="line">Content-Length：响应主体长度</span><br><span class="line">Content-Type：响应资源的MIME类型，MIME是标识文件类型的，文件后缀并不能正确无误的标识文件的类型。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>响应主体：即服务端返回给客户端的内容</li>
+</ul>
+<p>注：关于响应码通常由3位数字组成，分别以1、2、3、4、5开始分成5组，每组具有不同的意义，具体参考下文：</p>
+<p>1xx：信息、2xx：成功、3xx：重定向、4xx：客户端错误、5xx：服务器错误。</p>
+<p>常见的有200代表成功、304文档未修改、403没有权限、404未找到、500服务器错误。</p>
+<h3 id="8-3-调试工具"><a href="#8-3-调试工具" class="headerlink" title="8.3.调试工具"></a>8.3.调试工具</h3><p>利用HTTP抓包工具在开发中可以帮我们进行调试，常用抓包工具HttpWatch、Fiddler、Charles、FireBug等</p>
+<h3 id="8-4-浏览器插件"><a href="#8-4-浏览器插件" class="headerlink" title="8.4.浏览器插件"></a>8.4.浏览器插件</h3><p>Firebug、HttpWatch、chrome dev tools</p>
+<h3 id="8-5-代理软件"><a href="#8-5-代理软件" class="headerlink" title="8.5.代理软件"></a>8.5.代理软件</h3><p>Charles、Fiddler</p>
+<h3 id="8-6-协商缓存"><a href="#8-6-协商缓存" class="headerlink" title="8.6.协商缓存"></a>8.6.协商缓存</h3><p>前端性能优化雅虎35条：<a href="https://www.tuicool.com/articles/J3uyaa" target="_blank" rel="noopener">https://www.tuicool.com/articles/J3uyaa</a></p>
+<p>利用浏览器的缓存机制，可以有效的减少HTTP的请求，提高页面加载速度，增强用户体验，同时也能极大的减轻服务器的负担，结合HTTP协议，缓存协商就是根据HTTP协议实现缓存控制的一种机制。</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_22.png" alt=" "></p>
+<h2 id="9-查看端口占用情况"><a href="#9-查看端口占用情况" class="headerlink" title="9.查看端口占用情况"></a>9.查看端口占用情况</h2><p>命令：<code>netstat -ano</code></p>
+<ul>
+<li><p>win+R打开cmd窗口</p>
+</li>
+<li><p>netstat -ano列出所有端口的情况，找到被占用的端口</p>
+</li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_24.png" alt=" "></p>
+<ul>
+<li>输入命令<code>netstat -aon|findstr &quot;8080&quot;</code>找对应的PID</li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_25.png" alt=" "></p>
+<ul>
+<li>输入命令<code>tasklist|findstr &quot;21548&quot;</code>查找具体的占用进程</li>
+</ul>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_26.png" alt=" "></p>
+<p>5、打开资源管理器，找到PID是21548的进程（没有PID这一列的话可以右击列添加PID列）</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1240722/o_27.png" alt=" "></p>
+<p>6、如果想结束进程，可以使用：<code>taskkill /f /t /im</code>进程名</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1242272/o_reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/07/20/常见的浏览器的内核/" class="pre-post btn btn-default" title='常见的浏览器内核'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">常见的浏览器内核</span>
+        </a>
+    
+    
+        <a href="/2018/07/15/封装的ajax()函数/" class="next-post btn btn-default" title='ajax()函数的封装'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">ajax()函数的封装</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-服务器的分类"><span class="toc-text">1.服务器的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-服务器软件："><span class="toc-text">2.服务器软件：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-HTTP服务器"><span class="toc-text">3.HTTP服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-客户端："><span class="toc-text">4.客户端：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-状态代码"><span class="toc-text">5.状态代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-成功"><span class="toc-text">5.1.成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-重定向"><span class="toc-text">5.2.重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-代码中的错误"><span class="toc-text">5.3.代码中的错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-搭建HTTP服务器："><span class="toc-text">6.搭建HTTP服务器：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-安装WampServer"><span class="toc-text">6.1.安装WampServer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-管理HTTP服务"><span class="toc-text">6.2.管理HTTP服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-配置根目录"><span class="toc-text">6.3.配置根目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-网站部署"><span class="toc-text">6.4.网站部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-配置虚拟主机"><span class="toc-text">6.5. 配置虚拟主机</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-关于网络"><span class="toc-text">7.关于网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-关于HTTP协议"><span class="toc-text">8.关于HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-请求-请求报文"><span class="toc-text">8.1.请求/请求报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-响应-响应报文"><span class="toc-text">8.2.响应/响应报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-调试工具"><span class="toc-text">8.3.调试工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-浏览器插件"><span class="toc-text">8.4.浏览器插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-代理软件"><span class="toc-text">8.5.代理软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-6-协商缓存"><span class="toc-text">8.6.协商缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-查看端口占用情况"><span class="toc-text">9.查看端口占用情况</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: true || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
