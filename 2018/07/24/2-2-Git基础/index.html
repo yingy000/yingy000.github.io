@@ -1,0 +1,368 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>2-2-Git基础 | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="2-2-Git基础">
+            
+	            2-2-Git基础
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/博客列表">
+            博客列表
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Git" title='Git'>
+                        Git
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/07/24</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="2-5-忽略文件"><a href="#2-5-忽略文件" class="headerlink" title="2.5.忽略文件"></a>2.5.忽略文件</h3><p>一般我们总会有些文件无需放入Git管理，也不希望它们总出现在未跟踪文件列表，这时我们可以创建一个<br><code>.gitignore</code>的文件，列出要忽略的文件模式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">touch .gitignore</span><br><span class="line">*.[oa]</span><br><span class="line">*~</span><br></pre></td></tr></table></figure>
+<p>第一行告诉Git忽略所有以<code>.o</code>或<code>.a</code>结尾的文件</p>
+<p>第二行告诉Git忽略所有以波浪符<code>（~）</code>结尾的文件</p>
+<p>文件<code>.gitignore</code>的格式规范如下：</p>
+<ul>
+<li><p>所有空行或者以<code>＃</code>开头的行都会被Git忽略。</p>
+</li>
+<li><p>可以使用标准的glob模式匹配(正则表达式)。</p>
+</li>
+<li><p>匹配模式可以以<code>（/）</code>开头防止递归。</p>
+</li>
+<li><p>匹配模式可以以<code>（/）</code>结尾指定目录。</p>
+</li>
+<li><p>要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号<code>（!）</code>。</p>
+</li>
+</ul>
+<p>参考链接：<a href="https://github.com/github/gitignore" target="_blank" rel="noopener">https://github.com/github/gitignore</a></p>
+<h3 id="2-6-查看已暂存和未暂存的修改"><a href="#2-6-查看已暂存和未暂存的修改" class="headerlink" title="2.6.查看已暂存和未暂存的修改"></a>2.6.查看已暂存和未暂存的修改</h3><p>假如我们再次修改README.md文件后暂存，然后编辑five.html文件后先不暂存，我们可以看下当前的状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">        modified:   README.md</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        modified:   five.html</span><br></pre></td></tr></table></figure>
+<p>如果你想知道具体修改了什么地方，<code>git status</code>命令的输出的结果太过模糊，我们可以使用<code>git diff</code>命令。通过该命令我们可以知道：</p>
+<ul>
+<li><p>当前做的哪些更新还没有暂存？</p>
+</li>
+<li><p>有哪些更新已经暂存起来准备好了下次提交？</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">diff --git a/five.html b/five.html</span><br><span class="line">index 59a5ccd..a4e2f77 100644</span><br><span class="line">--- a/five.html</span><br><span class="line">+++ b/five.html</span><br><span class="line">@@ -55,7 +55,6 @@</span><br><span class="line">&lt;h3&gt;效益&lt;/h3&gt;</span><br><span class="line">&lt;p&gt;为什么要参加？为了识别、灵感和资源，我们都可以向人们展示&lt;/p&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;requirements&quot; id=&quot;zen-requirements&quot; role=&quot;article&quot;&gt;</span><br><span class="line">&lt;h3&gt;要求&lt;/h3&gt;</span><br><span class="line">&lt;p&gt;在可能的情况下,实用的而不是2%的浏览公众最新的流血技巧。我们唯一的真正要求是您的验证&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p><code>git diff</code>命令比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化内容。</p>
+<p>我们可以使用<code>git diff --cached</code>查看已暂存的将要添加到下次提交里的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$ git diff --cached</span><br><span class="line">diff --git a/five.html b/five.html</span><br><span class="line">index e231252..59a5ccd 100644</span><br><span class="line">--- a/five.html</span><br><span class="line">+++ b/five.html</span><br><span class="line">@@ -4,17 +4,14 @@</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;title&gt;CSS禅意花园:CSS设计之美&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body id=&quot;css-zen-garden&quot;&gt;</span><br><span class="line">&lt;div class=&quot;page-wrapper&quot;&gt;</span><br><span class="line">&lt;section class=&quot;intro&quot; id=&quot;zen-intro&quot;&gt;</span><br><span class="line"> &lt;header role=&quot;banner&quot;&gt;</span><br><span class="line"> &lt;h1&gt;CSS Zen Garden&lt;/h1&gt;</span><br><span class="line">@@ -35,7 +32,6 @@</span><br><span class="line">&lt;p&gt;CSS禅园邀请你放松和沉思大师们的重要课程&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br><span class="line">@@ -43,12 +39,10 @@</span><br><span class="line">&lt;div class=&quot;participation&quot; id=&quot;zen-participation&quot; role=&quot;article&quot;&gt;</span><br><span class="line">&lt;h3&gt;参与&lt;/h3&gt;</span><br><span class="line">&lt;p&gt;您可以按照您希望的任何方式修改样式表&lt;/p&gt;</span><br><span class="line">&lt;p&gt;下载示例和</span><br><span class="line">@@ -129,7 +123,6 @@</span><br><span class="line"> &lt;/ul&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-7-提交更新"><a href="#2-7-提交更新" class="headerlink" title="2.7.提交更新"></a>2.7.提交更新</h3><p>在提交之前，一定要确认还有没有什么修改过的或新建的文件还没有<code>git add</code>过，否则提交的时候不会记录这些还没暂存起来的变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></table></figure>
+<p><code>git commit</code>命令会启动文本编辑器以便输入本次提交的说明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Please enter the commit message for your changes. Lines starting</span><br><span class="line"># with &apos;#&apos; will be ignored, and an empty message aborts the commit.</span><br><span class="line"># On branch master</span><br><span class="line"># Changes to be committed:</span><br><span class="line"># new file: README.md</span><br><span class="line"># modified: five.html</span><br><span class="line">#</span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+<p>我们可以看出，默认的提交消息包含最后一次运行<code>git status</code>的输出，全都放在注释行中。</p>
+<p>我们大多数的用法是在commit命令后面添加-m选项，将提交信息与命令放在同一行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &apos;first-commit&apos;</span><br><span class="line">[master 4f38a76] first-commit</span><br><span class="line"> 3 files changed, 3 insertions(+), 10 deletions(-)</span><br><span class="line"> create mode 100644 README.md</span><br><span class="line"> create mode 100644 five.html</span><br></pre></td></tr></table></figure>
+<p>至此，我们已经完成了第一个提交，提交之后会显示当前在哪个分支提交的，本次提交的完整SHA-1校验和是4f38a76，以及在本次提交中，有多少文件修订过，多少行添加和修改过。</p>
+<h3 id="2-8-跳过使用暂存区域"><a href="#2-8-跳过使用暂存区域" class="headerlink" title="2.8.跳过使用暂存区域"></a>2.8.跳过使用暂存区域</h3><p>我们可以将<code>git add</code>和<code>git commit</code>命令的功能合并成为一个命令，那就是<code>git commit -a</code>。</p>
+<p> 该命令就是跳过使用暂存区域，也就是说Git会自动把所有已跟踪过的文件暂存起来一并提交。这个基本不太使用，大家了解一下就好。</p>
+<h3 id="2-9-移除文件"><a href="#2-9-移除文件" class="headerlink" title="2.9.移除文件"></a>2.9.移除文件</h3><p><code>git rm</code>命令:从已跟踪文件清单中移除某个文件，更明确地说是从暂存区域移除，也就是说从暂存区域并连带从工作目录中删除指定文件，这样以后就不会出现在未跟踪文件清单中了。</p>
+<p>如果只是从工作目录删除文件，运行<code>git status</code>时所删除的文件就会在<code>&quot;Changes not staged for commit&quot;</code>部分(未暂存清单)中看到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ rm README.md</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        deleted:    README.md</span><br></pre></td></tr></table></figure>
+<p>我们可以使用<code>git rm</code>命令删除文件看下与普通的删除文件的区别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git rm README.md</span><br><span class="line">rm README.md</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        deleted:   README.md</span><br></pre></td></tr></table></figure>
+<p>从暂存区域并连带从工作目录中删除了README.md文件，也就意味着该文件就不在纳入版本管理了。</p>
+<p>如果我们想把文件从Git仓库中删除(从暂存区域移除)，但仍然希望保留在当前工作目录中。也就是说，想让文件保留在磁盘，但是并不想让Git继续跟踪(.gitignore文件的作用)。可以在上添加<code>git rm</code>命令上添加<code>--cached</code>选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached README.md</span><br></pre></td></tr></table></figure>
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="../img/reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/07/26/2-3-Git基础/" class="pre-post btn btn-default" title='2-3-Git基础'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">2-3-Git基础</span>
+        </a>
+    
+    
+        <a href="/2018/07/24/2-1-Git基础/" class="next-post btn btn-default" title='2-1-Git基础'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">2-1-Git基础</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-忽略文件"><span class="toc-text">2.5.忽略文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-查看已暂存和未暂存的修改"><span class="toc-text">2.6.查看已暂存和未暂存的修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-提交更新"><span class="toc-text">2.7.提交更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-跳过使用暂存区域"><span class="toc-text">2.8.跳过使用暂存区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-9-移除文件"><span class="toc-text">2.9.移除文件</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
