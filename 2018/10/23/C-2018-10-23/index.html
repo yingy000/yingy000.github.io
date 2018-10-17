@@ -203,25 +203,25 @@
     <div class="post-body post-content">
         <h2 id="1-图像bayer格式介绍"><a href="#1-图像bayer格式介绍" class="headerlink" title="1.图像bayer格式介绍　"></a>1.图像bayer格式介绍　</h2><p>bayer格式图片是柯达公司科学家Bryce Bayer发明的，Bryce Bayer所发明的拜耳阵列被广泛运用数字图像。</p>
 <h3 id="1-1-拜耳矩阵的由来"><a href="#1-1-拜耳矩阵的由来" class="headerlink" title="1.1.拜耳矩阵的由来"></a>1.1.拜耳矩阵的由来</h3><p>截止目前为止，光电传感器只能够记录光的强度，而无法分辨光的颜色。</p>
-<p>图9</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_9.png" alt=" "></p>
 <h6 id="如何在有限的条件下想尽办法，去尽可能的获得色彩"><a href="#如何在有限的条件下想尽办法，去尽可能的获得色彩" class="headerlink" title="如何在有限的条件下想尽办法，去尽可能的获得色彩?"></a>如何在有限的条件下想尽办法，去尽可能的获得色彩?</h6><p>　<br>对于彩色图像，需要采集多种最基本的颜色，如RGB三种颜色，最简单的方法就是用滤镜的方法，红色的滤镜透过红色的波长，绿色的滤镜透过绿色的波长，蓝色的滤镜透过蓝色的波长，这时就需要三块滤镜。</p>
-<p>图10</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_10.png" alt=" "></p>
 <p>如果要采集RGB三个基本色，则需要三块滤镜，这样价格昂贵，且不好制造，无法轻易地在一个像素里造进去三个滤镜和感光元件，即使可以做到，价格也十分昂贵，无法商业化。</p>
 <p>在随后的日子里，Bayer又尝试了各种方法，最后，发明了一种基于单个颜色微小滤镜的影像传感器系统，就是现在被人们称为<code>拜尔阵列</code>的传感器系统。</p>
-<p>图11</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_11.png" alt=" "></p>
 <p>用一块图像传感器，就解决了颜色的识别，具体的做法是在图像传感器前面，设置一个滤光层（Color filter array），上面布满了一个个滤光点，与下层的像素一一对应，每个滤光点只能通过红、绿、蓝之中的一种颜色，这意味着在它下层的像素点只可能有三种颜色：红、绿、蓝，或者什么也没有，也就是黑颜色。　　</p>
 <p>bayer色彩滤波阵列，由一半的G，1/4的R，1/4的B组成，也就是说，每个绿点的四周，分布着2个红点、2个蓝点、4个绿点。这意味着，整体上，绿点的数量是其他两种颜色点的两倍，因为研究显示人眼对绿色最敏感，所以滤光层的绿点最多。</p>
-<p>图1</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_1.png" alt=" "></p>
 <h3 id="1-2-raw图"><a href="#1-2-raw图" class="headerlink" title="1.2..raw图"></a>1.2.<code>.raw图</code></h3><p>当按下拍照键，于是光线经过镜头，被传感器上的滤镜分解成一个个单色的光，由传感器记录下每个点的光强度数值，这就得到了RAW数据，可以把RAW的灰度值转换成图像。</p>
-<p>图12</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_12.png" alt=" "></p>
 <p>Bayer格式是相机内部的原始图片, 一般后缀名为<code>.raw</code>，我们相机拍照下来存储在存储卡上的<code>.jpeg</code>或其它格式的图片, 都是从<code>.raw</code>格式转化过来的。</p>
 <h3 id="1-3-猜色-去马赛克"><a href="#1-3-猜色-去马赛克" class="headerlink" title="1.3.猜色(去马赛克)"></a>1.3.猜色(去马赛克)</h3><h6 id="如果一个像素只可能有三种颜色，那么怎么能拍出彩色照片？"><a href="#如果一个像素只可能有三种颜色，那么怎么能拍出彩色照片？" class="headerlink" title="如果一个像素只可能有三种颜色，那么怎么能拍出彩色照片？"></a>如果一个像素只可能有三种颜色，那么怎么能拍出彩色照片？</h6><p>每个滤光点周围有<code>&quot;规律&quot;</code>地分布其他颜色的滤光点，那么就有可能结合它们的值，判断出光线本来的颜色。</p>
 <p>举例：对于黄光来说，它由红光和绿光混合而成，那么通过滤光层以后，红点和绿点下面的像素都会有值，但是蓝点下面的像素没有值，也就是说，只需要看每一个一个像素周围的颜色分布，如果有红色和绿色，但是没有蓝色，就可以大胆的推测出来这个像素点的本来颜色应该是黄色。</p>
-<p>图13</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_13.png" alt=" "></p>
 <h2 id="2-bayer格式图像传感器硬件"><a href="#2-bayer格式图像传感器硬件" class="headerlink" title="2.bayer格式图像传感器硬件　　"></a>2.bayer格式图像传感器硬件　　</h2><p>图像传感器的结构如下所示，每一个感光像素之间都有金属隔离层，光纤通过显微镜头，在色彩滤波器过滤之后，投射到相应的漏洞式硅的感光元件上。</p>
-<p>图2</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_2.png" alt=" "></p>
 <p>当Image Sensor往外逐行输出数据时，像素的序列为GRGRGR…/BGBGBG…（顺序RGB）。这样阵列的Sensor设计，使得RGB传感器减少到了全色传感器的1/3，如下所示。</p>
-<p>图3</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_3.png" alt=" "></p>
 <h2 id="3-Bayer-CAF型颜色插值算法"><a href="#3-Bayer-CAF型颜色插值算法" class="headerlink" title="3.Bayer CAF型颜色插值算法"></a>3.Bayer CAF型颜色插值算法</h2><p>目前的数字成像装置主要采用两种感光元件：</p>
 <ul>
 <li><p>CCD观光元件</p>
@@ -230,26 +230,26 @@
 </li>
 </ul>
 <p>这两种图像传感器在一个像素上只能采集RGB颜色的一个分量，为了获得最佳的图像效果，需要用3个图像传感器分别采集不同的颜色分量，这样做增加产品的成品以及设计的复杂性，普遍的数字成像设备用一个传感器在表面覆盖颜色滤波矩阵(Color filter)来采集图像。</p>
-<p>图14<br>经光学镜头采集到的图像通过一个颜色滤波阵列滤波后在图像传感器上感光，得到的图像数据每个像素点表示RGB中的一种颜色，对该数据进行颜色插值可获得带采集的彩色图像。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_14.png" alt=" "><br>经光学镜头采集到的图像通过一个颜色滤波阵列滤波后在图像传感器上感光，得到的图像数据每个像素点表示RGB中的一种颜色，对该数据进行颜色插值可获得带采集的彩色图像。</p>
 <p>目前存在着多种类型的颜色滤波阵列，Bayer型颜色滤波阵列有很好的彩色信号敏感特性和彩色恢复特性。</p>
-<p>图15<br>绿点的数量是其他两种颜色点的两倍，因为研究显示人眼对绿色最敏感。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_15.png" alt=" "><br>绿点的数量是其他两种颜色点的两倍，因为研究显示人眼对绿色最敏感。</p>
 <h3 id="3-1-颜色插值的目的"><a href="#3-1-颜色插值的目的" class="headerlink" title="3.1.颜色插值的目的"></a>3.1.颜色插值的目的</h3><p>颜色插值的目的就是通过相邻像素点采集到的色彩数据估计当前点值为0的颜色的值。</p>
 <h3 id="3-2-双线性插值算法"><a href="#3-2-双线性插值算法" class="headerlink" title="3.2.双线性插值算法"></a>3.2.双线性插值算法</h3><p>R和B通过线性领域插值，但这有四种不同的分布，如下图所示：</p>
-<p>图4</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_4.png" alt=" "></p>
 <ul>
 <li><p>在（a）与（b）中，R和B分别取邻域的平均值</p>
 </li>
 <li><p>在（c）与（d）中，取领域的4个B或R的均值作为中间像素的B值</p>
 </li>
 </ul>
-<h3 id="3-3-边缘导向插值算法"><a href="#3-3-边缘导向插值算法" class="headerlink" title="3.3.边缘导向插值算法"></a>3.3.边缘导向插值算法</h3><h3 id="3-4-适应性颜色层插值算法"><a href="#3-4-适应性颜色层插值算法" class="headerlink" title="3.4.适应性颜色层插值算法"></a>3.4.适应性颜色层插值算法</h3><h3 id="3-5-中值滤波插值算法"><a href="#3-5-中值滤波插值算法" class="headerlink" title="3.5.中值滤波插值算法"></a>3.5.中值滤波插值算法</h3><h3 id="3-6-色彩平滑插值算法"><a href="#3-6-色彩平滑插值算法" class="headerlink" title="3.6.色彩平滑插值算法"></a>3.6.色彩平滑插值算法</h3><h3 id="3-7-算法比较"><a href="#3-7-算法比较" class="headerlink" title="3.7.算法比较"></a>3.7.算法比较</h3><h2 id="4-bayer格式插值绿算法实现"><a href="#4-bayer格式插值绿算法实现" class="headerlink" title="4.bayer格式插值绿算法实现　　"></a>4.bayer格式插值绿算法实现　　</h2><p>图5</p>
+<h3 id="3-3-边缘导向插值算法"><a href="#3-3-边缘导向插值算法" class="headerlink" title="3.3.边缘导向插值算法"></a>3.3.边缘导向插值算法</h3><h3 id="3-4-适应性颜色层插值算法"><a href="#3-4-适应性颜色层插值算法" class="headerlink" title="3.4.适应性颜色层插值算法"></a>3.4.适应性颜色层插值算法</h3><h3 id="3-5-中值滤波插值算法"><a href="#3-5-中值滤波插值算法" class="headerlink" title="3.5.中值滤波插值算法"></a>3.5.中值滤波插值算法</h3><h3 id="3-6-色彩平滑插值算法"><a href="#3-6-色彩平滑插值算法" class="headerlink" title="3.6.色彩平滑插值算法"></a>3.6.色彩平滑插值算法</h3><h3 id="3-7-算法比较"><a href="#3-7-算法比较" class="headerlink" title="3.7.算法比较"></a>3.7.算法比较</h3><h2 id="4-bayer格式插值绿算法实现"><a href="#4-bayer格式插值绿算法实现" class="headerlink" title="4.bayer格式插值绿算法实现　　"></a>4.bayer格式插值绿算法实现　　</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_5.png" alt=" "></p>
 <p>由于人眼对绿光反应最敏感，对紫光和红光则反应较弱，因此为了达到更好的画质，需要对G特殊照顾。</p>
 <p>在图（c）与（d）中，扩展开来就是图（e）与（f）中间像素G的取值，两者有一定的算法要求，不同的算法效果上会有差异　</p>
 <p>（e）中间像素G值的算法如下： 　　</p>
-<p>图6</p>
-<p>（f）中间像素G值的算法如下：　<br>　<br>图7</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_6.png" alt=" "></p>
+<p>（f）中间像素G值的算法如下：　<br>　<br><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_7.png" alt=" "></p>
 <p>CMOS摄像头这部分转换是在内部用ISP完成的，生产商为了降低成本必然会使得图像失真。当然用外部处理器来实现转换，如果处理器的速度足够NB，能够胜任像素的操作，用上面的算法来进行转换，皆大欢喜。不过上述算法将直接成倍提高了算法的复杂度，速度上将会有所限制。因此为了平衡速度与质量之间的关系，可以直接通过来4领域G取均值来中间像素的G值，将会降低一倍的速率，而在性能上差之甚微，算法如下：</p>
-<p>图8</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321572/o_8.png" alt=" "></p>
 <p>如果能够通过损失图像的质量，来达到更快的速度，还可以取G1、G2的均值来实现，但是这样的做法会导致边沿以及跳变部分的失真。</p>
 
     </div>

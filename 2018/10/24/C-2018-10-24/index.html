@@ -211,7 +211,7 @@
 <h3 id="1-2-YUV各分量的含义"><a href="#1-2-YUV各分量的含义" class="headerlink" title="1.2.YUV各分量的含义"></a>1.2.YUV各分量的含义</h3><p>YUV，分为三个分量，<code>&quot;Y&quot;</code>表示明亮度（Luminance或Luma），也就是灰度值；而<code>&quot;U&quot;</code>和<code>&quot;V&quot;</code>表示的则是色度（Chrominance或Chroma），作用是描述影像色彩及饱和度，用于指定像素的颜色。</p>
 <p>与我们熟知的RGB类似，YUV也是一种颜色编码方法，主要用于电视系统以及模拟视频领域，它将亮度信息（Y）与色彩信息（UV）分离，没有UV信息一样可以显示完整的图像，只不过是黑白的，这样的设计很好地解决了彩色电视机与黑白电视的兼容问题。并且，YUV不像RGB那样要求三个独立的视频信号同时传输，所以用YUV方式传送占用极少的频宽。</p>
 <h3 id="1-3-YUV码流的采样方式"><a href="#1-3-YUV码流的采样方式" class="headerlink" title="1.3.YUV码流的采样方式"></a>1.3.YUV码流的采样方式</h3><p>YUV码流的存储格式与其采样的方式密切相关，主流的采样方式有三种，YUV4:4:4，YUV4:2:2，YUV4:2:0，</p>
-<p>图1</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321573/o_1.jpg" alt=" "></p>
 <p>以黑点表示采样该像素点的Y分量，以空心圆圈表示采用该像素点的UV分量。</p>
 <h6 id="重点："><a href="#重点：" class="headerlink" title="重点："></a>重点：</h6><ul>
 <li><p>YUV 4:4:4采样，每一个Y对应一组UV分量。</p>
@@ -221,15 +221,15 @@
 <li><p>YUV 4:2:0采样，每四个Y共用一组UV分量。</p>
 </li>
 </ul>
-<h2 id="2-存储方式"><a href="#2-存储方式" class="headerlink" title="2.存储方式"></a>2.存储方式</h2><h3 id="2-1-YUVY-格式（属于YUV422）"><a href="#2-1-YUVY-格式（属于YUV422）" class="headerlink" title="2.1.YUVY 格式（属于YUV422）"></a>2.1.YUVY 格式（属于YUV422）</h3><p>图2</p>
+<h2 id="2-存储方式"><a href="#2-存储方式" class="headerlink" title="2.存储方式"></a>2.存储方式</h2><h3 id="2-1-YUVY-格式（属于YUV422）"><a href="#2-1-YUVY-格式（属于YUV422）" class="headerlink" title="2.1.YUVY 格式（属于YUV422）"></a>2.1.YUVY 格式（属于YUV422）</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321573/o_2.jpg" alt=" "></p>
 <p>YUYV为YUV422采样的存储格式中的一种，相邻的两个Y共用其相邻的两个Cb、Cr，分析，对于像素点Y’00、Y’01 而言，其Cb、Cr的值均为 Cb00、Cr00，其他的像素点的YUV取值依次类推。</p>
-<h3 id="2-2-UYVY-格式（属于YUV422）"><a href="#2-2-UYVY-格式（属于YUV422）" class="headerlink" title="2.2.UYVY 格式（属于YUV422）"></a>2.2.UYVY 格式（属于YUV422）</h3><p>图3</p>
+<h3 id="2-2-UYVY-格式（属于YUV422）"><a href="#2-2-UYVY-格式（属于YUV422）" class="headerlink" title="2.2.UYVY 格式（属于YUV422）"></a>2.2.UYVY 格式（属于YUV422）</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321573/o_3.jpg" alt=" "></p>
 <p>UYVY格式也是YUV422采样的存储格式中的一种，只不过与YUYV不同的是UV的排列顺序不一样而已，还原其每个像素点的YUV值的方法与上面一样。</p>
-<h3 id="2-3-YUV422P（属于YUV422）"><a href="#2-3-YUV422P（属于YUV422）" class="headerlink" title="2.3.YUV422P（属于YUV422）"></a>2.3.YUV422P（属于YUV422）</h3><p>图4</p>
+<h3 id="2-3-YUV422P（属于YUV422）"><a href="#2-3-YUV422P（属于YUV422）" class="headerlink" title="2.3.YUV422P（属于YUV422）"></a>2.3.YUV422P（属于YUV422）</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321573/o_4.jpg" alt=" "></p>
 <p>YUV422P也属于YUV422的一种，它是一种planar模式（平面模式），并不是将YUV数据交错存储，而是先存放所有的Y分量，然后存储所有的U（Cb）分量，最后存储所有的V（Cr）分量，每一个像素点的YUV值提取方法也是遵循YUV422格式的最基本提取方法，即两个Y共用一个UV。比如，对于像素点Y’00、Y’01 而言，其Cb、Cr的值均为 Cb00、Cr00。</p>
-<h3 id="2-4-YV12和YU12格式（属于YUV420）"><a href="#2-4-YV12和YU12格式（属于YUV420）" class="headerlink" title="2.4.YV12和YU12格式（属于YUV420）"></a>2.4.YV12和YU12格式（属于YUV420）</h3><p>图5</p>
+<h3 id="2-4-YV12和YU12格式（属于YUV420）"><a href="#2-4-YV12和YU12格式（属于YUV420）" class="headerlink" title="2.4.YV12和YU12格式（属于YUV420）"></a>2.4.YV12和YU12格式（属于YUV420）</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321573/o_5.jpg" alt=" "></p>
 <p>YU12和YV12属于YUV420格式，也是一种Plane模式，将Y、U、V分量分别打包，依次存储。其每一个像素点的YUV数据提取遵循YUV420格式的提取方式，即4个Y分量共用一组UV。Y’00、Y’01、Y’10、Y’11共用Cr00、Cb00，其他依次类推。</p>
-<h3 id="2-5-NV12、NV21（属于YUV420）"><a href="#2-5-NV12、NV21（属于YUV420）" class="headerlink" title="2.5.NV12、NV21（属于YUV420）"></a>2.5.NV12、NV21（属于YUV420）</h3><p>图6</p>
+<h3 id="2-5-NV12、NV21（属于YUV420）"><a href="#2-5-NV12、NV21（属于YUV420）" class="headerlink" title="2.5.NV12、NV21（属于YUV420）"></a>2.5.NV12、NV21（属于YUV420）</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321573/o_6.jpg" alt=" "></p>
 <p>NV12和NV21属于YUV420格式，是一种two-plane模式，即Y和UV分为两个Plane，但是UV（CbCr）为交错存储，而不是分为三个plane。其提取方式与上一种类似，即Y’00、Y’01、Y’10、Y’11共用Cr00、Cb00。</p>
 <h3 id="3-YUV420-planar数据存储"><a href="#3-YUV420-planar数据存储" class="headerlink" title="3.YUV420 planar数据存储"></a>3.YUV420 planar数据存储</h3><h6 id="以720×488大小图象YUV420-planar为例"><a href="#以720×488大小图象YUV420-planar为例" class="headerlink" title="以720×488大小图象YUV420 planar为例"></a>以720×488大小图象YUV420 planar为例</h6><p>存储格式：共大小为(720×480×3&gt;&gt;1)字节，分为三个部分:</p>
 <ul>
@@ -248,8 +248,8 @@
 </li>
 </ul>
 <p>在YUV420中，一个像素点对应一个Y，一个4X4的小方块对应一个U和V。对于所有YUV420图像，它们的Y值排列是完全相同的，因为只有Y的图像就是灰度图像。YUV420sp与YUV420p的数据格式它们的UV排列在原理上是完全不同的。420p它是先把U存放完后，再存放V，也就是说UV它们是连续的。而420sp它是UV、UV这样交替存放的。</p>
-<h6 id="假设一个分辨率为8X4的YUV图像"><a href="#假设一个分辨率为8X4的YUV图像" class="headerlink" title="假设一个分辨率为8X4的YUV图像"></a>假设一个分辨率为8X4的YUV图像</h6><p>图7<br>YUV420sp格式图</p>
-<p>图8<br>YUV420p数据格式如下图</p>
+<h6 id="假设一个分辨率为8X4的YUV图像"><a href="#假设一个分辨率为8X4的YUV图像" class="headerlink" title="假设一个分辨率为8X4的YUV图像"></a>假设一个分辨率为8X4的YUV图像</h6><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321573/o_7.jpg" alt=" "><br>YUV420sp格式图</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1321573/o_8.jpg" alt=" "><br>YUV420p数据格式如下图</p>
 <p>这时就可以准确的计算出一个YUV420在内存中存放的大小：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">width * hight =Y（总和） U = Y / 4  V = Y / 4</span><br></pre></td></tr></table></figure>
 <p>所以YUV420数据在内存中的长度是<code>width * hight * 3 / 2</code>。</p>
