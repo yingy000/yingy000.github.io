@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>MT6575(2) | 天使在人间の博客</title>
+<title>MT6575之AE原理 | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="MT6575(2)">
+        <h1 id="MT6575之AE原理">
             
-	            MT6575(2)
+	            MT6575之AE原理
             
         </h1>
         <div class="post-meta">
@@ -201,7 +201,28 @@
     </div>
     
     <div class="post-body post-content">
-        
+        <h2 id="3-AE-Theory"><a href="#3-AE-Theory" class="headerlink" title="3.AE Theory"></a>3.AE Theory</h2><h3 id="3-1-目的"><a href="#3-1-目的" class="headerlink" title="3.1.目的"></a>3.1.目的</h3><p>AE的基本目的，就是控制Sensor的曝光和ISO，使影像的亮度正常，不过暗或过亮。</p>
+<h3 id="3-2-Exposure（曝光）"><a href="#3-2-Exposure（曝光）" class="headerlink" title="3.2.Exposure（曝光）"></a>3.2.Exposure（曝光）</h3><p>控制sensor了累积电子讯号的时间，越长的累积时间，影像就越亮，这仅仅适合拍摄静止的物体，对于运动的物体，可能会有拖影现象，也就是说对于运动的物体，曝光时间越短越好，对于静止的物体，曝光时间越长越好。</p>
+<h3 id="3-3-ISO-Sensor-Gain"><a href="#3-3-ISO-Sensor-Gain" class="headerlink" title="3.3.ISO(Sensor Gain)"></a>3.3.ISO(Sensor Gain)</h3><p>控制sensor累积电子讯号之后的放大倍率，放大倍率越大，影像越宽，但是杂讯就越严重</p>
+<h3 id="3-4-一个AE流程"><a href="#3-4-一个AE流程" class="headerlink" title="3.4.一个AE流程"></a>3.4.一个AE流程</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_65.png" alt=" "></p>
+<h3 id="3-4-1-AE-Smooth"><a href="#3-4-1-AE-Smooth" class="headerlink" title="3.4.1.AE Smooth"></a>3.4.1.AE Smooth</h3><ul>
+<li><p>当环境亮度剧烈发生变化时，曝光时间与ISO相对应的变化也会发生相当剧烈。</p>
+</li>
+<li><p>曝光时间与ISO若是剧烈改变，且在同一个Frame全部生效，画面亮度的改变会相当迅速，视觉观感较差，但若AE收敛的过程太久，视觉观感一样不好。</p>
+</li>
+<li><p>AE Smooth的目的在控制AE收敛的速度，以得到较好的视觉观感。</p>
+</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_66.png" alt=" "></p>
+<h3 id="3-5-AE-Mode（测光模式）"><a href="#3-5-AE-Mode（测光模式）" class="headerlink" title="3.5.AE Mode（测光模式）"></a>3.5.AE Mode（测光模式）</h3><p>测光模式分成Spot Mode、Center Mode和Average Mode，三种Mode的差别在于AE Window的权重</p>
+<h4 id="3-5-1-Spot-Mode"><a href="#3-5-1-Spot-Mode" class="headerlink" title="3.5.1.Spot Mode"></a>3.5.1.Spot Mode</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_67.png" alt=" "></p>
+<p>权重完全集中在中间一点，当光源在中心时，AE收敛效果极佳，但当光源不在中心时，AE收敛效果极差。</p>
+<h4 id="3-5-2-Center-Mode"><a href="#3-5-2-Center-Mode" class="headerlink" title="3.5.2.Center Mode"></a>3.5.2.Center Mode</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_68.png" alt=" "></p>
+<p>权重集中在中间九点，除非光源在影像四周（权重=0），否则基本上都能兼顾光源和背景亮度。</p>
+<h4 id="3-5-3-Average-Mode"><a href="#3-5-3-Average-Mode" class="headerlink" title="3.5.3.Average Mode"></a>3.5.3.Average Mode</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_69.png" alt=" "><br>权重平均分布在25个点，光源的位置不影响测光结果，但光源较小的场景可能会发生过曝。</p>
+<h3 id="3-6-AE的处理过程"><a href="#3-6-AE的处理过程" class="headerlink" title="3.6.AE的处理过程"></a>3.6.AE的处理过程</h3><p>不同的测光模式改变ISP，因此得到的Sensor亮度。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_70.png" alt=" "><br>在相同的期望亮度下，如果使用Spot Mode，会得到较高的现在亮度，AE就会设定较弱的曝光时间和ISO来拉低亮度</p>
+
     </div>
     
         <div class="reward">
@@ -283,7 +304,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <p>暂无目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-AE-Theory"><span class="toc-text">3.AE Theory</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-目的"><span class="toc-text">3.1.目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Exposure（曝光）"><span class="toc-text">3.2.Exposure（曝光）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-ISO-Sensor-Gain"><span class="toc-text">3.3.ISO(Sensor Gain)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-一个AE流程"><span class="toc-text">3.4.一个AE流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-AE-Smooth"><span class="toc-text">3.4.1.AE Smooth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-AE-Mode（测光模式）"><span class="toc-text">3.5.AE Mode（测光模式）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-1-Spot-Mode"><span class="toc-text">3.5.1.Spot Mode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-2-Center-Mode"><span class="toc-text">3.5.2.Center Mode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-3-Average-Mode"><span class="toc-text">3.5.3.Average Mode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-AE的处理过程"><span class="toc-text">3.6.AE的处理过程</span></a></li></ol></li></ol>
         
     </div>
 </aside>
