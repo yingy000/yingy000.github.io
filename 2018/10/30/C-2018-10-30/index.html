@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>MT6575(3) | 天使在人间の博客</title>
+<title>MT6575之ISP部分 | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="MT6575(3)">
+        <h1 id="MT6575之ISP部分">
             
-	            MT6575(3)
+	            MT6575之ISP部分
             
         </h1>
         <div class="post-meta">
@@ -201,7 +201,85 @@
     </div>
     
     <div class="post-body post-content">
-        
+        <p>ISP部分包括以下方面：</p>
+<ul>
+<li><p>DM(De-mosaic算法)：去马赛克</p>
+</li>
+<li><p>DP(Defect Pixel Correction)：坏点</p>
+</li>
+<li><p>CR(Color Reproduction)：色彩复现</p>
+</li>
+<li><p>EE(Edge Enhancement)：边缘增强</p>
+</li>
+<li><p>NR(Noise Reduction)：噪音消减</p>
+</li>
+</ul>
+<h2 id="1-De-mosaic算法（去马赛克）"><a href="#1-De-mosaic算法（去马赛克）" class="headerlink" title="1.De-mosaic算法（去马赛克）"></a>1.De-mosaic算法（去马赛克）</h2><p>每个Pixel(像素)都有RGB三原色的值，但是Sensor得到的影像(Bayer Format[拜耳矩阵])，每个Pixel(像素)只有一个颜色(R|G|B)，利用De-mosaic算法，可以让每个Pixel同时拥有RGB三个色彩。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_71.png" alt=" "></p>
+<h2 id="2-Defect-Pixel-Correction（坏点）"><a href="#2-Defect-Pixel-Correction（坏点）" class="headerlink" title="2.Defect Pixel Correction（坏点）"></a>2.Defect Pixel Correction（坏点）</h2><p>Sensor制造过程中，无可避免会产生坏点，坏点分为暗点及亮点(上电后：暗点always暗，亮点always亮)。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_72.png" alt=" "><br>Sensor上电后对全暗场景（亮点对全暗场景）</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_73.png" alt=" "><br>Sensor上电后对全亮场景（暗点对全亮场景）</p>
+<h3 id="2-1-坏点侦测"><a href="#2-1-坏点侦测" class="headerlink" title="2.1.坏点侦测"></a>2.1.坏点侦测</h3><p>方法：比对相邻点的Pixel亮度，若是差异过大就可以判断是坏点</p>
+<ul>
+<li><p>亮度高于相邻点判断是亮点</p>
+</li>
+<li><p>亮度低于相邻点判断是暗点</p>
+</li>
+</ul>
+<h3 id="2-2-坏点校正"><a href="#2-2-坏点校正" class="headerlink" title="2.2.坏点校正"></a>2.2.坏点校正</h3><p>找到坏点后，利用相邻的Pixel进行内插校正补偿。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_74.png" alt=" "></p>
+<h2 id="3-Color-Reproduction（色彩复现）"><a href="#3-Color-Reproduction（色彩复现）" class="headerlink" title="3.Color Reproduction（色彩复现）"></a>3.Color Reproduction（色彩复现）</h2><p>数位感光元件在将电子讯号处理成影像时，在色彩上会和原始影像有些出入。</p>
+<ul>
+<li><p>Sensor本身特性</p>
+</li>
+<li><p>Module影像</p>
+</li>
+<li><p>讯号处理方式不同</p>
+</li>
+</ul>
+<p>ISP会利用数位讯号处理技术，来还原甚至加强原始影像的色彩。</p>
+<ul>
+<li><p>色域转换：为了方便色彩的处理，将颜色由RGB转换到YcbCr或者是H.S.V.</p>
+</li>
+<li><p>色调转换：改变色彩的属性，比如说，红色-&gt;橙色-&gt;黄色</p>
+</li>
+<li><p>饱和度转换：让色彩变的更鲜艳或是较不鲜艳</p>
+</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_75.png" alt=" "></p>
+<h3 id="3-1-YcbCr"><a href="#3-1-YcbCr" class="headerlink" title="3.1.YcbCr"></a>3.1.YcbCr</h3><p>Y为颜色的亮度(luma)成分、而CB和CR则为蓝色和红色的浓度偏移量成份。</p>
+<p>在YUV家族中，YCbCr是在计算机系统中应用最多的成员，其应用领域很广泛，JPEG、MPEG均采用此格式。</p>
+<h3 id="3-2-RGB-Domain-Color-Processing"><a href="#3-2-RGB-Domain-Color-Processing" class="headerlink" title="3.2.RGB Domain Color Processing"></a>3.2.RGB Domain Color Processing</h3><h4 id="3-2-1-优点"><a href="#3-2-1-优点" class="headerlink" title="3.2.1.优点"></a>3.2.1.优点</h4><ul>
+<li><p>颜色调整是整体性的，因此不会出现颜色不连续的现象</p>
+</li>
+<li><p>能够快速调整整体色彩趋近目标色彩，因此效率较高。</p>
+</li>
+</ul>
+<h4 id="3-2-2-缺点"><a href="#3-2-2-缺点" class="headerlink" title="3.2.2.缺点"></a>3.2.2.缺点</h4><p>每个颜色都是由RGB三原色组成，因此无法单独只调整特定颜色。</p>
+<h3 id="3-3-YUV-Domain-Color-Processing"><a href="#3-3-YUV-Domain-Color-Processing" class="headerlink" title="3.3.YUV Domain Color Processing"></a>3.3.YUV Domain Color Processing</h3><h4 id="3-3-1-优点"><a href="#3-3-1-优点" class="headerlink" title="3.3.1.优点"></a>3.3.1.优点</h4><p>能够精准的调整单一色彩，而不影像其他颜色。</p>
+<h4 id="3-3-2-缺点"><a href="#3-3-2-缺点" class="headerlink" title="3.3.2.缺点"></a>3.3.2.缺点</h4><ul>
+<li><p>由于可精准调整单一颜色，因此可能会出现过度调整，导致颜色不连续现象。</p>
+</li>
+<li><p>调整较花时间</p>
+</li>
+</ul>
+<h2 id="4-Edge-Enhancement（边缘增强）"><a href="#4-Edge-Enhancement（边缘增强）" class="headerlink" title="4.Edge Enhancement（边缘增强）"></a>4.Edge Enhancement（边缘增强）</h2><h3 id="4-1-Edge-Enhancement（边缘增强）的效果"><a href="#4-1-Edge-Enhancement（边缘增强）的效果" class="headerlink" title="4.1.Edge Enhancement（边缘增强）的效果"></a>4.1.Edge Enhancement（边缘增强）的效果</h3><ul>
+<li><p>可以强化影像的Edge和Texture（结构），让影像看起来更加锐利。</p>
+</li>
+<li><p>如果过度加强Edge，可能因为过强会导致物体轮廓出现白边。</p>
+</li>
+<li><p>如果过度加强Texture，会同步加强噪音的难度。</p>
+</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_76.png" alt=" "></p>
+<h6 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h6><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_77.png" alt=" "></p>
+<h2 id="5-Noise-Reduction（噪音消减）"><a href="#5-Noise-Reduction（噪音消减）" class="headerlink" title="5.Noise Reduction（噪音消减）"></a>5.Noise Reduction（噪音消减）</h2><p>数位影像一定会有噪点，是无法完全克服的，噪音最常见的情形时Power Noise和Sensor Noise。</p>
+<h3 id="5-1-Power-Noise（电源噪音）"><a href="#5-1-Power-Noise（电源噪音）" class="headerlink" title="5.1.Power Noise（电源噪音）"></a>5.1.Power Noise（电源噪音）</h3><p>Power Noise（电源噪音）也就是FPN（固定图像噪声）是画面中随机但频繁出现的横线，由于Power Noise是连续的Pixel，因此无法靠ISP清除。</p>
+<h3 id="5-2-Sensor-Noise（传感器噪音）"><a href="#5-2-Sensor-Noise（传感器噪音）" class="headerlink" title="5.2.Sensor Noise（传感器噪音）"></a>5.2.Sensor Noise（传感器噪音）</h3><p>Sensor Noise（传感器噪音）是画面中随机出现的噪点，当Sensor Gain越高，噪点就会越严重，可以使用De-Noise算法改善。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_78.PNG" alt=" "></p>
+<p>降低噪点，可能同时会伴随着Edge和Texture的损失</p>
+<h6 id="举例：-1"><a href="#举例：-1" class="headerlink" title="举例："></a>举例：</h6><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_79.png" alt=" "></p>
+
     </div>
     
         <div class="reward">
@@ -278,7 +356,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <p>暂无目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-De-mosaic算法（去马赛克）"><span class="toc-text">1.De-mosaic算法（去马赛克）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Defect-Pixel-Correction（坏点）"><span class="toc-text">2.Defect Pixel Correction（坏点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-坏点侦测"><span class="toc-text">2.1.坏点侦测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-坏点校正"><span class="toc-text">2.2.坏点校正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Color-Reproduction（色彩复现）"><span class="toc-text">3.Color Reproduction（色彩复现）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-YcbCr"><span class="toc-text">3.1.YcbCr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-RGB-Domain-Color-Processing"><span class="toc-text">3.2.RGB Domain Color Processing</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-优点"><span class="toc-text">3.2.1.优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-缺点"><span class="toc-text">3.2.2.缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-YUV-Domain-Color-Processing"><span class="toc-text">3.3.YUV Domain Color Processing</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-优点"><span class="toc-text">3.3.1.优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-缺点"><span class="toc-text">3.3.2.缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Edge-Enhancement（边缘增强）"><span class="toc-text">4.Edge Enhancement（边缘增强）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Edge-Enhancement（边缘增强）的效果"><span class="toc-text">4.1.Edge Enhancement（边缘增强）的效果</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#举例："><span class="toc-text">举例：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Noise-Reduction（噪音消减）"><span class="toc-text">5.Noise Reduction（噪音消减）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Power-Noise（电源噪音）"><span class="toc-text">5.1.Power Noise（电源噪音）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Sensor-Noise（传感器噪音）"><span class="toc-text">5.2.Sensor Noise（传感器噪音）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#举例：-1"><span class="toc-text">举例：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
