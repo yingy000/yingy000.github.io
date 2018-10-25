@@ -222,16 +222,25 @@
 <p><code>曝光量=照度*时间</code>，照度由光圈决定，时间由快门控制，也就是说曝光量由光圈和快门共同决定。</p>
 <h3 id="11-2-目的"><a href="#11-2-目的" class="headerlink" title="11.2.目的"></a>11.2.目的</h3><p>测试拍照系统的Noise程度</p>
 <h3 id="11-3-所需要的工具"><a href="#11-3-所需要的工具" class="headerlink" title="11.3.所需要的工具"></a>11.3.所需要的工具</h3><p>24色卡、大光源、色温照度计</p>
-<h3 id="11-4-信噪比的计算方法"><a href="#11-4-信噪比的计算方法" class="headerlink" title="11.4.信噪比的计算方法"></a>11.4.信噪比的计算方法</h3><h4 id="11-4-1-第一种方法"><a href="#11-4-1-第一种方法" class="headerlink" title="11.4.1.第一种方法"></a>11.4.1.第一种方法</h4><p>将拍摄到的24色卡的图片导入Imatest软件，选择按钮[Colorcheck]之后，根据客户的要求设置一些参数值，Imatest软件自动分析，我们从结果中可以得到需求的值。</p>
+<h3 id="11-4-信噪比的计算方法"><a href="#11-4-信噪比的计算方法" class="headerlink" title="11.4.信噪比的计算方法"></a>11.4.信噪比的计算方法</h3><h4 id="11-4-1-第一种方法"><a href="#11-4-1-第一种方法" class="headerlink" title="11.4.1.第一种方法"></a>11.4.1.第一种方法</h4><p>将拍摄到的15739色卡的图片导入Imatest软件，选择按钮[Stepchart按钮]之后，或者将拍摄到的24色卡的图片导入Imatest软件，选择按钮[Colorcheck]都可以得到相同的结果，根据客户的要求设置一些参数值，Imatest软件自动分析，我们从结果中可以得到需求的值。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1299108/o_51.png" alt=" "></p>
+<p>上边的图显示了灰度色块的平均密度，下边的图显示了每个色块R，G，B，Y(Luminance)的均方根误差。</p>
 <p>注意：如果想要得到信噪比的值，必须在导入图片之后出现的弹出框中做一下设置。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1299108/o_52.png" alt=" "></p>
 <h4 id="11-4-2-第二种方法"><a href="#11-4-2-第二种方法" class="headerlink" title="11.4.2.第二种方法"></a>11.4.2.第二种方法</h4><p>SNR=20㏒10((S19-S24)/N22)</p>
 <p>S19、S24分别表示为第19，第24灰阶块的信号亮度值，而N22表示第22灰阶块的噪声值。</p>
 <h3 id="11-5-信噪比判断标准"><a href="#11-5-信噪比判断标准" class="headerlink" title="11.5.信噪比判断标准"></a>11.5.信噪比判断标准</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1299108/o_57.png" alt=" "></p>
 <h2 id="12-TV-Distortion-畸变-测试"><a href="#12-TV-Distortion-畸变-测试" class="headerlink" title="12. TV Distortion(畸变)测试"></a>12. TV Distortion(畸变)测试</h2><h2 id="12-1-定义"><a href="#12-1-定义" class="headerlink" title="12.1.定义"></a>12.1.定义</h2><p>畸变是一种可以把直线变成曲线的像差，广角镜头、变焦镜头，远距镜头容易造成严重的畸变，在图像的边缘切线尤其的明显。</p>
+<p>畸变主要有两种形式：</p>
+<ul>
+<li><p>Barrel(桶形畸变)</p>
+</li>
+<li><p>Pincushion(枕形畸变)</p>
+</li>
+</ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1299108/o_53.png" alt=" "></p>
-<h3 id="12-2-目的"><a href="#12-2-目的" class="headerlink" title="12.2.目的"></a>12.2.目的</h3><p>测试拍照系统成像是否发生畸变。</p>
+<p>总的来说，畸变越小越好，对于一般用户来说其实不太关注畸变的问题，但是对于建筑摄影来说，是非常关键的。</p>
+<h3 id="12-2-目的"><a href="#12-2-目的" class="headerlink" title="12.2.目的"></a>12.2.目的</h3><p>测试拍照系统成像是否发生畸变</p>
 <h3 id="12-3-所需要的工具"><a href="#12-3-所需要的工具" class="headerlink" title="12.3.所需要的工具"></a>12.3.所需要的工具</h3><p>大光源、色温照度计、棋盘格</p>
 <h3 id="12-4-畸变的测试方法"><a href="#12-4-畸变的测试方法" class="headerlink" title="12.4.畸变的测试方法"></a>12.4.畸变的测试方法</h3><h4 id="12-4-1-第一种方法"><a href="#12-4-1-第一种方法" class="headerlink" title="12.4.1.第一种方法"></a>12.4.1.第一种方法</h4><p>将拍摄到的棋盘格 charts的图片导入Imatest软件，选择按钮[Distortion]之后，选择自己感兴趣的区域，根据客户的要求设置一些参数值，Imatest软件自动分析，我们从结果中可以得到需求的值。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1299108/o_54.png" alt=" "><br>青色和红色的线表示校正后的水平和垂直线，青色和红色的箭头示意畸变方向</p>
