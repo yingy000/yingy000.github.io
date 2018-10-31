@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>Debug Parser | 天使在人间の博客</title>
+<title>Camera tuning之AF Gen Table | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Debug Parser">
+        <h1 id="Camera tuning之AF Gen Table">
             
-	            Debug Parser
+	            Camera tuning之AF Gen Table
             
         </h1>
         <div class="post-meta">
@@ -165,8 +165,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/工具">
-            工具
+        <a href="/categories/Camera">
+            Camera
         </a>
     </span>
     
@@ -177,8 +177,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/Debug Parser" title='Debug Parser'>
-                        Debug Parser
+                    <a href="/tags/Camera-tuning" title='Camera-tuning'>
+                        Camera-tuning
                     </a>
                 
             
@@ -190,7 +190,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/10/31</span>
+            <span class="date-meta">2018/11/01</span>
         </span>
         
     
@@ -201,34 +201,35 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-目的"><a href="#1-目的" class="headerlink" title="1.目的"></a>1.目的</h2><p>查询图片中的Camera Info（信息）</p>
-<h2 id="2-提供功能"><a href="#2-提供功能" class="headerlink" title="2.提供功能"></a>2.提供功能</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_5.PNG" alt=" "></p>
-<ul>
-<li><p>AE：</p>
+        <h2 id="1-名词解释"><a href="#1-名词解释" class="headerlink" title="1.名词解释"></a>1.名词解释</h2><h3 id="1-1-Focus-Value"><a href="#1-1-Focus-Value" class="headerlink" title="1.1.Focus Value"></a>1.1.Focus Value</h3><p>Focus Value：表示Contrast Value，用对比值来量化主体的清晰度</p>
+<h3 id="1-2-DOF"><a href="#1-2-DOF" class="headerlink" title="1.2.DOF"></a>1.2.DOF</h3><p>DOF：表示Deep of Field(景深)，代表物距清晰的范围，景深长，代表物距前后清晰的范围广，景深浅，代表物距前后清晰的范围短。</p>
+<h3 id="1-3-Focus-Position和Focus-Value"><a href="#1-3-Focus-Position和Focus-Value" class="headerlink" title="1.3.Focus Position和Focus Value"></a>1.3.Focus Position和Focus Value</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_9.png" alt=" "></p>
+<p>Focus Position表示X轴，Focus Value表示Y轴，上图为Focus Value Curve(曲线)的基本原型</p>
+<h2 id="2-AF-Search-Table"><a href="#2-AF-Search-Table" class="headerlink" title="2.AF Search Table"></a>2.AF Search Table</h2><h3 id="2-1-AF-Search-Table原理"><a href="#2-1-AF-Search-Table原理" class="headerlink" title="2.1.AF Search Table原理"></a>2.1.AF Search Table原理</h3><p>利用DOF的概念，控制AF Search Table每一个Search Step之间的间隔小于一定值，确保使用AF Search Table找到的Focus Position，和最佳的Focus Position（Focus Value最大的位置），距离不超过DOF，这样就可以保证主体清晰。</p>
+<h3 id="2-2-AF-Search-Table方法"><a href="#2-2-AF-Search-Table方法" class="headerlink" title="2.2.AF Search Table方法"></a>2.2.AF Search Table方法</h3><ul>
+<li><p>第一步：找出各个不同距离的Focus Value Curve(曲线)，并求得DOF的大小。</p>
 </li>
-<li><p>AF：</p>
-</li>
-<li><p>AWB</p>
-</li>
-<li><p>AWBV</p>
-</li>
-<li><p>Strobe</p>
-</li>
-<li><p>ISP</p>
-</li>
-<li><p>AF Table Gen</p>
+<li><p>第二步：由于AF在搜寻Max Focus Value Position时，会使用Curve Fitting(曲线拟合)，也就是利用曲线方程式求得最佳解，以提高AF Search的精度，所以AF Search Table的Step，可以在超过DOF的前提下，仍然保证影像的清晰。</p>
 </li>
 </ul>
-<h2 id="3-ISP-Info"><a href="#3-ISP-Info" class="headerlink" title="3.ISP Info"></a>3.ISP Info</h2><h3 id="3-1-ISP-Index"><a href="#3-1-ISP-Index" class="headerlink" title="3.1.ISP Index"></a>3.1.ISP Index</h3><p>ISP Index：显示ISP的index</p>
-<h3 id="3-2-ISP-Slider-Position"><a href="#3-2-ISP-Slider-Position" class="headerlink" title="3.2.ISP Slider Position"></a>3.2.ISP Slider Position</h3><p>ISP Slider Position：显示ISP Slider的段数</p>
-<h3 id="3-3-ISP-Value"><a href="#3-3-ISP-Value" class="headerlink" title="3.3.ISP Value"></a>3.3.ISP Value</h3><p>3*3 Color Correction Matrix（色彩校正矩阵）</p>
-<h2 id="4-Strobe-Info"><a href="#4-Strobe-Info" class="headerlink" title="4.Strobe Info"></a>4.Strobe Info</h2><h2 id="5-AE-Info"><a href="#5-AE-Info" class="headerlink" title="5.AE Info"></a>5.AE Info</h2><h2 id="6-AWB-Info"><a href="#6-AWB-Info" class="headerlink" title="6.AWB Info"></a>6.AWB Info</h2><h2 id="7-AWBV"><a href="#7-AWBV" class="headerlink" title="7.AWBV"></a>7.AWBV</h2><h3 id="7-1-第一个功能"><a href="#7-1-第一个功能" class="headerlink" title="7.1.第一个功能"></a>7.1.第一个功能</h3><p>显示AWB算法判断画面中各个色块的色温</p>
-<p>点击按钮[AWBV]，然后选择按钮[Light Source],就会显示AWB算法判断画面中各个色块的色温。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_6.PNG" alt=" "></p>
-<h3 id="7-2-第二个功能"><a href="#7-2-第二个功能" class="headerlink" title="7.2.第二个功能"></a>7.2.第二个功能</h3><p>显示AWB算法判断画面中各个色块白点的落点</p>
-<p>点击按钮[AWBV]，然后选择按钮[XY Distribution],会显示AWB算法判断画面中各个色块的色彩和色温。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_7.png" alt=" "></p>
-
+<h2 id="3-Gen-AF-Search-Table的流程"><a href="#3-Gen-AF-Search-Table的流程" class="headerlink" title="3.Gen AF Search Table的流程"></a>3.Gen AF Search Table的流程</h2><ul>
+<li>1.利用各个距离的Focus Value Curve，产生DOF Table(a,b,c……j)</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_9.png" alt=" "></p>
+<ul>
+<li>2.利用Curve Fitting方程式，分析在各个距离，满足Focus Position误差&lt;DOF的最大Step(A,B,C…K)</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_10.PNG" alt=" "></p>
+<ul>
+<li>3.利用满足Focus Position误差&lt;DOF的最大Step(A,B,C…K)，产生全行程的AF Search Table。</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_11.PNG" alt=" "></p>
+<h2 id="4-AF-Gen-Search-Table"><a href="#4-AF-Gen-Search-Table" class="headerlink" title="4.AF Gen Search Table"></a>4.AF Gen Search Table</h2><h3 id="4-1-工具"><a href="#4-1-工具" class="headerlink" title="4.1.工具"></a>4.1.工具</h3><p>CCT AF Page</p>
+<h3 id="4-2-流程"><a href="#4-2-流程" class="headerlink" title="4.2.流程"></a>4.2.流程</h3><p>1.进入Engineer Mode，设定好AF及Capture Type</p>
+<p>2.距离主体3m开始拍照，一路拍到5cm</p>
+<p>3.使用DP开放照片，开始Gen Table</p>
+<p>4.完成</p>
+<h3 id="4-3-Start-Capture"><a href="#4-3-Start-Capture" class="headerlink" title="4.3.Start Capture"></a>4.3.Start Capture</h3><h3 id="4-4-Analysis-Data"><a href="#4-4-Analysis-Data" class="headerlink" title="4.4.Analysis Data"></a>4.4.Analysis Data</h3>
     </div>
     
         <div class="reward">
@@ -259,15 +260,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/11/01/C-2018-11-01/" class="pre-post btn btn-default" title='Camera tuning之AF Gen Table'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">Camera tuning之AF Gen Table</span>
-        </a>
     
-    
-        <a href="/2018/10/30/C-2018-10-30/" class="next-post btn btn-default" title='MT6575之ISP部分'>
+        <a href="/2018/10/31/C-2018-10-31/" class="next-post btn btn-default" title='Debug Parser'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">MT6575之ISP部分</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">Debug Parser</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -310,7 +306,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-目的"><span class="toc-text">1.目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-提供功能"><span class="toc-text">2.提供功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-ISP-Info"><span class="toc-text">3.ISP Info</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-ISP-Index"><span class="toc-text">3.1.ISP Index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-ISP-Slider-Position"><span class="toc-text">3.2.ISP Slider Position</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-ISP-Value"><span class="toc-text">3.3.ISP Value</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Strobe-Info"><span class="toc-text">4.Strobe Info</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-AE-Info"><span class="toc-text">5.AE Info</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-AWB-Info"><span class="toc-text">6.AWB Info</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-AWBV"><span class="toc-text">7.AWBV</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-第一个功能"><span class="toc-text">7.1.第一个功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-第二个功能"><span class="toc-text">7.2.第二个功能</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-名词解释"><span class="toc-text">1.名词解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Focus-Value"><span class="toc-text">1.1.Focus Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-DOF"><span class="toc-text">1.2.DOF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Focus-Position和Focus-Value"><span class="toc-text">1.3.Focus Position和Focus Value</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-AF-Search-Table"><span class="toc-text">2.AF Search Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-AF-Search-Table原理"><span class="toc-text">2.1.AF Search Table原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-AF-Search-Table方法"><span class="toc-text">2.2.AF Search Table方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Gen-AF-Search-Table的流程"><span class="toc-text">3.Gen AF Search Table的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-AF-Gen-Search-Table"><span class="toc-text">4.AF Gen Search Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-工具"><span class="toc-text">4.1.工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-流程"><span class="toc-text">4.2.流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Start-Capture"><span class="toc-text">4.3.Start Capture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-Analysis-Data"><span class="toc-text">4.4.Analysis Data</span></a></li></ol></li></ol>
         
     </div>
 </aside>
