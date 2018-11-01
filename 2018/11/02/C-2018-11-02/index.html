@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>Camera tuning之AF Gen Table | 天使在人间の博客</title>
+<title>不同地点的亮度均匀度测试 | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Camera tuning之AF Gen Table">
+        <h1 id="不同地点的亮度均匀度测试">
             
-	            Camera tuning之AF Gen Table
+	            不同地点的亮度均匀度测试
             
         </h1>
         <div class="post-meta">
@@ -190,7 +190,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/11/01</span>
+            <span class="date-meta">2018/11/02</span>
         </span>
         
     
@@ -201,35 +201,34 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-名词解释"><a href="#1-名词解释" class="headerlink" title="1.名词解释"></a>1.名词解释</h2><h3 id="1-1-Focus-Value"><a href="#1-1-Focus-Value" class="headerlink" title="1.1.Focus Value"></a>1.1.Focus Value</h3><p>Focus Value：表示Contrast Value，用对比值来量化主体的清晰度</p>
-<h3 id="1-2-DOF"><a href="#1-2-DOF" class="headerlink" title="1.2.DOF"></a>1.2.DOF</h3><p>DOF：表示Deep of Field(景深)，代表物距清晰的范围，景深长，代表物距前后清晰的范围广，景深浅，代表物距前后清晰的范围短。</p>
-<h3 id="1-3-Focus-Position和Focus-Value"><a href="#1-3-Focus-Position和Focus-Value" class="headerlink" title="1.3.Focus Position和Focus Value"></a>1.3.Focus Position和Focus Value</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_9.png" alt=" "></p>
-<p>Focus Position表示X轴，Focus Value表示Y轴，上图为Focus Value Curve(曲线)的基本原型</p>
-<h2 id="2-AF-Search-Table"><a href="#2-AF-Search-Table" class="headerlink" title="2.AF Search Table"></a>2.AF Search Table</h2><h3 id="2-1-AF-Search-Table原理"><a href="#2-1-AF-Search-Table原理" class="headerlink" title="2.1.AF Search Table原理"></a>2.1.AF Search Table原理</h3><p>利用DOF的概念，控制AF Search Table每一个Search Step之间的间隔小于一定值，确保使用AF Search Table找到的Focus Position，和最佳的Focus Position（Focus Value最大的位置），距离不超过DOF，这样就可以保证主体清晰。</p>
-<h3 id="2-2-AF-Search-Table方法"><a href="#2-2-AF-Search-Table方法" class="headerlink" title="2.2.AF Search Table方法"></a>2.2.AF Search Table方法</h3><ul>
-<li><p>第一步：找出各个不同距离的Focus Value Curve(曲线)，并求得DOF的大小。</p>
-</li>
-<li><p>第二步：由于AF在搜寻Max Focus Value Position时，会使用Curve Fitting(曲线拟合)，也就是利用曲线方程式求得最佳解，以提高AF Search的精度，所以AF Search Table的Step，可以在超过DOF的前提下，仍然保证影像的清晰。</p>
-</li>
-</ul>
-<h2 id="3-Gen-AF-Search-Table的流程"><a href="#3-Gen-AF-Search-Table的流程" class="headerlink" title="3.Gen AF Search Table的流程"></a>3.Gen AF Search Table的流程</h2><ul>
-<li>1.利用各个距离的Focus Value Curve，产生DOF Table(a,b,c……j)</li>
-</ul>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_9.png" alt=" "></p>
-<ul>
-<li>2.利用Curve Fitting方程式，分析在各个距离，满足Focus Position误差&lt;DOF的最大Step(A,B,C…K)</li>
-</ul>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_10.PNG" alt=" "></p>
-<ul>
-<li>3.利用满足Focus Position误差&lt;DOF的最大Step(A,B,C…K)，产生全行程的AF Search Table。</li>
-</ul>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_11.PNG" alt=" "></p>
-<h2 id="4-AF-Gen-Search-Table"><a href="#4-AF-Gen-Search-Table" class="headerlink" title="4.AF Gen Search Table"></a>4.AF Gen Search Table</h2><h3 id="4-1-工具"><a href="#4-1-工具" class="headerlink" title="4.1.工具"></a>4.1.工具</h3><p>CCT AF Page</p>
-<h3 id="4-2-流程"><a href="#4-2-流程" class="headerlink" title="4.2.流程"></a>4.2.流程</h3><p>1.进入Engineer Mode，设定好AF及Capture Type</p>
-<p>2.距离主体3m开始拍照，一路拍到5cm</p>
-<p>3.使用DP开放照片，开始Gen Table</p>
-<p>4.完成</p>
-<h3 id="4-3-Start-Capture"><a href="#4-3-Start-Capture" class="headerlink" title="4.3.Start Capture"></a>4.3.Start Capture</h3><h3 id="4-4-Analysis-Data"><a href="#4-4-Analysis-Data" class="headerlink" title="4.4.Analysis Data"></a>4.4.Analysis Data</h3>
+        <h2 id="1-测试方案"><a href="#1-测试方案" class="headerlink" title="1.测试方案"></a>1.测试方案</h2><h3 id="1-1-第一种测试方案"><a href="#1-1-第一种测试方案" class="headerlink" title="1.1.第一种测试方案"></a>1.1.第一种测试方案</h3><p>测试在下D65、TL84、A光源400 Lux的亮度均匀度以及色温值</p>
+<p>亮度均匀度的测试方法：分别测量灰板四周的亮度以及中心的亮度，然后用四周的亮度除以中心的亮度，便可以得到亮度均匀度的值。</p>
+<h3 id="1-2-第二种测试方案"><a href="#1-2-第二种测试方案" class="headerlink" title="1.2.第二种测试方案"></a>1.2.第二种测试方案</h3><p>南京测试下客观指标；然后测试用的这支手机，寄送到上海，上海使用该手机同样也测客观指标。两者间的数据做对比。</p>
+<h2 id="2-第一种测试方案结果及结论"><a href="#2-第一种测试方案结果及结论" class="headerlink" title="2.第一种测试方案结果及结论"></a>2.第一种测试方案结果及结论</h2><p>灰板的面积：105cm x 98cm</p>
+<h3 id="2-1-上海采用第一种测试方案的结果"><a href="#2-1-上海采用第一种测试方案的结果" class="headerlink" title="2.1.上海采用第一种测试方案的结果"></a>2.1.上海采用第一种测试方案的结果</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_1.png" alt=" "></p>
+<h3 id="2-2-南京采用第一种测试方案的结果"><a href="#2-2-南京采用第一种测试方案的结果" class="headerlink" title="2.2.南京采用第一种测试方案的结果"></a>2.2.南京采用第一种测试方案的结果</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_2.jpg" alt=" "></p>
+<h3 id="2-3-结论"><a href="#2-3-结论" class="headerlink" title="2.3.结论"></a>2.3.结论</h3><p>上海的亮度均匀度不好但是南京的四周与中心的亮度均匀度很均匀，上海大光源的色温较准确，但是南京那边的大光源的色温差的比较大。</p>
+<p>标准的光源的种类：</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_3.png" alt=" "></p>
+<h3 id="2-4-解决办法"><a href="#2-4-解决办法" class="headerlink" title="2.4.解决办法"></a>2.4.解决办法</h3><p>上海这边关于亮度均匀度问题不作为，南京那边关于色温的问题联系厂商过来解决色温的问题</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_4.jpg" alt=" "></p>
+<h2 id="3-第二种测试方案结果及结论"><a href="#3-第二种测试方案结果及结论" class="headerlink" title="3.第二种测试方案结果及结论"></a>3.第二种测试方案结果及结论</h2><p>摄像头（后摄）客观测试标准如下所示：</p>
+<p>颜色准确性和饱和度的客观标准</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_5.png" alt=" "></p>
+<p>白平衡的客观标准</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_6.png" alt=" "></p>
+<p>shading的客观标准</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_7.png" alt=" "></p>
+<h3 id="3-1-上海采用第二种测试方案的结果"><a href="#3-1-上海采用第二种测试方案的结果" class="headerlink" title="3.1.上海采用第二种测试方案的结果"></a>3.1.上海采用第二种测试方案的结果</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_8.png" alt=" "></p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_8..png" alt=" "></p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_8...png" alt=" "></p>
+<h3 id="2-2-南京采用第二种测试方案的结果"><a href="#2-2-南京采用第二种测试方案的结果" class="headerlink" title="2.2.南京采用第二种测试方案的结果"></a>2.2.南京采用第二种测试方案的结果</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_9.png" alt=" "></p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_9..png" alt=" "></p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_9...png" alt=" "></p>
+<h3 id="2-3-结论-1"><a href="#2-3-结论-1" class="headerlink" title="2.3.结论"></a>2.3.结论</h3><p>南京那边边在低亮度（10Lux）下的Saturation(饱和度)太低，上海这边拍照的取景范围75%左右，而我拍的照片只有10%左右</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1332174/o_10.png" alt=" "></p>
+<h3 id="2-4-解决办法-1"><a href="#2-4-解决办法-1" class="headerlink" title="2.4.解决办法"></a>2.4.解决办法</h3><p>南京那边暂时不作为，上海这边重新拍照片，重新check一下，测试相同的客观数据。</p>
+
     </div>
     
         <div class="reward">
@@ -260,15 +259,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/11/02/C-2018-11-02/" class="pre-post btn btn-default" title='不同地点的亮度均匀度测试'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">不同地点的亮度均匀度测试</span>
-        </a>
     
-    
-        <a href="/2018/10/31/C-2018-10-31/" class="next-post btn btn-default" title='Debug Parser'>
+        <a href="/2018/11/01/C-2018-11-01/" class="next-post btn btn-default" title='Camera tuning之AF Gen Table'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">Debug Parser</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">Camera tuning之AF Gen Table</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -311,7 +305,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-名词解释"><span class="toc-text">1.名词解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Focus-Value"><span class="toc-text">1.1.Focus Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-DOF"><span class="toc-text">1.2.DOF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Focus-Position和Focus-Value"><span class="toc-text">1.3.Focus Position和Focus Value</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-AF-Search-Table"><span class="toc-text">2.AF Search Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-AF-Search-Table原理"><span class="toc-text">2.1.AF Search Table原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-AF-Search-Table方法"><span class="toc-text">2.2.AF Search Table方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Gen-AF-Search-Table的流程"><span class="toc-text">3.Gen AF Search Table的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-AF-Gen-Search-Table"><span class="toc-text">4.AF Gen Search Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-工具"><span class="toc-text">4.1.工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-流程"><span class="toc-text">4.2.流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Start-Capture"><span class="toc-text">4.3.Start Capture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-Analysis-Data"><span class="toc-text">4.4.Analysis Data</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-测试方案"><span class="toc-text">1.测试方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-第一种测试方案"><span class="toc-text">1.1.第一种测试方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-第二种测试方案"><span class="toc-text">1.2.第二种测试方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-第一种测试方案结果及结论"><span class="toc-text">2.第一种测试方案结果及结论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-上海采用第一种测试方案的结果"><span class="toc-text">2.1.上海采用第一种测试方案的结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-南京采用第一种测试方案的结果"><span class="toc-text">2.2.南京采用第一种测试方案的结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-结论"><span class="toc-text">2.3.结论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-解决办法"><span class="toc-text">2.4.解决办法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-第二种测试方案结果及结论"><span class="toc-text">3.第二种测试方案结果及结论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-上海采用第二种测试方案的结果"><span class="toc-text">3.1.上海采用第二种测试方案的结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-南京采用第二种测试方案的结果"><span class="toc-text">2.2.南京采用第二种测试方案的结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-结论-1"><span class="toc-text">2.3.结论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-解决办法-1"><span class="toc-text">2.4.解决办法</span></a></li></ol></li></ol>
         
     </div>
 </aside>
