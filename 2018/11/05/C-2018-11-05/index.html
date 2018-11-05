@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>Camera tuning֮AWB | 天使在人间の博客</title>
+<title>Camera tuning之AWB | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Camera tuning֮AWB">
+        <h1 id="Camera tuning之AWB">
             
-	            Camera tuning֮AWB
+	            Camera tuning之AWB
             
         </h1>
         <div class="post-meta">
@@ -201,72 +201,72 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-�l�����λ��"><a href="#1-�l�����λ��" class="headerlink" title="1.�ļ�����λ��"></a>1.�ļ�����λ��</h2><p>�ļ�����λ�ã�<code>alps\mediatek\cunstom\Project\hal\camera\camera\awb_tuning_custom.cpp</code></p>
-<h2 id="2-����"><a href="#2-����" class="headerlink" title="2.����"></a>2.����</h2><ul>
-<li><p>1.�������Ȩ�ص���</p>
+        <h2 id="1-文件所在位置"><a href="#1-文件所在位置" class="headerlink" title="1.文件所在位置"></a>1.文件所在位置</h2><p>文件所在位置：<code>alps\mediatek\cunstom\Project\hal\camera\camera\awb_tuning_custom.cpp</code></p>
+<h2 id="2-功能"><a href="#2-功能" class="headerlink" title="2.功能"></a>2.功能</h2><ul>
+<li><p>1.混光亮度权重调整</p>
 </li>
-<li><p>2.��һ��Դ���չ�����Ȩ�ص���</p>
+<li><p>2.单一光源和日光亮度权重调整</p>
 </li>
-<li><p>3.AWB�����ٶȵ���</p>
+<li><p>3.AWB收敛速度调整</p>
 </li>
-<li><p>4.Capture AWB������������</p>
+<li><p>4.Capture AWB收敛参数调整</p>
 </li>
-<li><p>5.Parent BlockȨ�ص���</p>
+<li><p>5.Parent Block权重调整</p>
 </li>
-<li><p>6.Neutral Parent Block�ٽ�ֵ����</p>
+<li><p>6.Neutral Parent Block临界值调整</p>
 </li>
-<li><p>7.ͳ��ֵ�����������</p>
+<li><p>7.统计值计算区间调整</p>
 </li>
-<li><p>8.AWB Cycle����</p>
+<li><p>8.AWB Cycle调整</p>
 </li>
 </ul>
-<h3 id="2-1-�������E�ص���"><a href="#2-1-�������E�ص���" class="headerlink" title="2.1.�������Ȩ�ص���"></a>2.1.�������Ȩ�ص���</h3><h4 id="2-1-1-����"><a href="#2-1-1-����" class="headerlink" title="2.1.1.����"></a>2.1.1.����</h4><p>������ɫ��Ϊ�����Դ��϶��ɣ�AWB����ݴ�table��������ɫ�µı���</p>
-<h4 id="2-1-2-�޸�ʱ��"><a href="#2-1-2-�޸�ʱ��" class="headerlink" title="2.1.2.�޸�ʱ��"></a>2.1.2.�޸�ʱ��</h4><p>��AWB�жϹ�Դ���󣬿��޸�Ԥ��Ȩ�أ����ʹ����Դ��ռ�ı���</p>
-<h4 id="2-1-3-����"><a href="#2-1-3-����" class="headerlink" title="2.1.3.����"></a>2.1.3.����</h4><p>����Daylight��������������ΪLV12������Ƭ���죺</p>
+<h3 id="2-1-混光亮度权重调整"><a href="#2-1-混光亮度权重调整" class="headerlink" title="2.1.混光亮度权重调整"></a>2.1.混光亮度权重调整</h3><h4 id="2-1-1-意义"><a href="#2-1-1-意义" class="headerlink" title="2.1.1.意义"></a>2.1.1.意义</h4><p>当环境色温为多组光源混合而成，AWB会根据此table，决定各色温的比重</p>
+<h4 id="2-1-2-修改时机"><a href="#2-1-2-修改时机" class="headerlink" title="2.1.2.修改时机"></a>2.1.2.修改时机</h4><p>当AWB判断光源错误，可修改预设权重，降低错误光源所占的比例</p>
+<h4 id="2-1-3-举例"><a href="#2-1-3-举例" class="headerlink" title="2.1.3.举例"></a>2.1.3.举例</h4><p>当在Daylight环境，环境亮度为LV12，且照片发红：</p>
 <ul>
-<li>1.��DP��֪AWB���ջ���</li>
+<li>1.由DP得知AWB最终机率</li>
 </ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_12.PNG" alt=" "></p>
 <ul>
-<li>2.��DP��֪Shade��LV12���Ȩ��Ϊ66���޸�Table������ShadeȨ�ء�</li>
+<li>2.由DP得知Shade在LV12混光权重为66，修改Table，降低Shade权重。</li>
 </ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_13.PNG" alt=" "></p>
-<h3 id="2-2-��һ��Դ���չ�����E�ص���"><a href="#2-2-��һ��Դ���չ�����E�ص���" class="headerlink" title="2.2.��һ��Դ���չ�����Ȩ�ص���"></a>2.2.��һ��Դ���չ�����Ȩ�ص���</h3><h4 id="2-2-1-����"><a href="#2-2-1-����" class="headerlink" title="2.2.1.����"></a>2.2.1.����</h4><p>���ֹ�Դ���к�������ȷ�Χ������Դ���ȳ����˷�Χ����WB Gain��Daylight Default Gain�����Ի��</p>
-<h4 id="2-2-2-�޸�ʱ��"><a href="#2-2-2-�޸�ʱ��" class="headerlink" title="2.2.2.�޸�ʱ��"></a>2.2.2.�޸�ʱ��</h4><p>��AWB��Դ�ж���ȷ�����ַ���ɫƫ����ȷ���Ƿ�ΪDaylight Default Gain���</p>
-<h4 id="2-2-3-����1"><a href="#2-2-3-����1" class="headerlink" title="2.2.3.����1"></a>2.2.3.����1</h4><p>��Preference�Ĺ�Դ��Strobe/Fluorescent/CWF/Daylight/Daylight Fluorescent��</p>
-<p>����CWF��Դ�£���������ΪLV10.AWBƫ��</p>
+<h3 id="2-2-单一光源和日光亮度权重调整"><a href="#2-2-单一光源和日光亮度权重调整" class="headerlink" title="2.2.单一光源和日光亮度权重调整"></a>2.2.单一光源和日光亮度权重调整</h3><h4 id="2-2-1-意义"><a href="#2-2-1-意义" class="headerlink" title="2.2.1.意义"></a>2.2.1.意义</h4><p>各种光源都有合理的亮度范围，当光源亮度超过此范围，则WB Gain和Daylight Default Gain做线性混合</p>
+<h4 id="2-2-2-修改时机"><a href="#2-2-2-修改时机" class="headerlink" title="2.2.2.修改时机"></a>2.2.2.修改时机</h4><p>当AWB光源判断正确，欲又发生色偏，可确认是否为Daylight Default Gain造成</p>
+<h4 id="2-2-3-举例1"><a href="#2-2-3-举例1" class="headerlink" title="2.2.3.举例1"></a>2.2.3.举例1</h4><p>无Preference的光源（Strobe/Fluorescent/CWF/Daylight/Daylight Fluorescent）</p>
+<p>当在CWF光源下，环境亮度为LV10.AWB偏红</p>
 <ul>
-<li>1.CWF��Daylight Fluorescent�Ļ������</li>
+<li>1.CWF和Daylight Fluorescent的混合条件</li>
 </ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_14.png" alt=" "></p>
 <ul>
-<li>2.�޸�Table</li>
+<li>2.修改Table</li>
 </ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_15.png" alt=" "></p>
-<h4 id="2-2-4-����2"><a href="#2-2-4-����2" class="headerlink" title="2.2.4.����2"></a>2.2.4.����2</h4><p>��Preference�Ĺ�Դ��Strobe/Fluorescent/CWF/Daylight/Daylight Fluorescent��</p>
-<p>����Tungsten��Դ�£���������ΪLV12.AWBƫ��</p>
+<h4 id="2-2-4-举例2"><a href="#2-2-4-举例2" class="headerlink" title="2.2.4.举例2"></a>2.2.4.举例2</h4><p>有Preference的光源（Strobe/Fluorescent/CWF/Daylight/Daylight Fluorescent）</p>
+<p>当在Tungsten光源下，环境亮度为LV12.AWB偏红</p>
 <ul>
-<li>1.Tungsten��Daylight Fluorescent�Ļ������</li>
+<li>1.Tungsten和Daylight Fluorescent的混合条件</li>
 </ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_16.png" alt=" "></p>
 <ul>
-<li>2.�޸�Table</li>
+<li>2.修改Table</li>
 </ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_17.png" alt=" "></p>
-<h3 id="2-3-AWB�����ٶȵ���"><a href="#2-3-AWB�����ٶȵ���" class="headerlink" title="2.3.AWB�����ٶȵ���"></a>2.3.AWB�����ٶȵ���</h3><h4 id="2-3-1-����"><a href="#2-3-1-����" class="headerlink" title="2.3.1.����"></a>2.3.1.����</h4><p>����AWB�������ٶȺ������</p>
-<h4 id="2-3-2-�޸�ʱ��"><a href="#2-3-2-�޸�ʱ��" class="headerlink" title="2.3.2.�޸�ʱ��"></a>2.3.2.�޸�ʱ��</h4><p>��AWB�����ٶȹ�������ڻ�����Դ�仯������ȹ���</p>
-<h4 id="2-3-3-��ز���"><a href="#2-3-3-��ز���" class="headerlink" title="2.3.3.��ز���"></a>2.3.3.��ز���</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_18.PNG" alt=" "></p>
-<p>iSpeed��AWBÿFrame�����İٷֱȣ���Խ������Խ��</p>
-<p>i4StableThr��AWB�ж��Ƿ�����������ȣ���ԽСԽ����</p>
-<h3 id="2-4-Capture-AWB������������"><a href="#2-4-Capture-AWB������������" class="headerlink" title="2.4.Capture AWB������������"></a>2.4.Capture AWB������������</h3><h4 id="2-4-1-����"><a href="#2-4-1-����" class="headerlink" title="2.4.1.����"></a>2.4.1.����</h4><p>���ݻ������ȣ���������ʱʹ��Preview��Capture��WB Gain������˲����������WBƫɫ</p>
-<h4 id="2-4-2-�޸�ʱ����"><a href="#2-4-2-�޸�ʱ����" class="headerlink" title="2.4.2.�޸�ʱ����"></a>2.4.2.�޸�ʱ����</h4><p>���������գ�����AWB���ȶ�ʱ</p>
-<h4 id="2-4-3-��ز���"><a href="#2-4-3-��ز���" class="headerlink" title="2.4.3.��ز���"></a>2.4.3.��ز���</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_19.PNG" alt=" "></p>
-<p>bSmooth���Ƿ񿪷Ŵ˻���</p>
-<p>LV1.0��</p>
-<p>LV5.0��</p>
-<h3 id="2-5-Parent-BlockE�ص���"><a href="#2-5-Parent-BlockE�ص���" class="headerlink" title="2.5.Parent BlockȨ�ص���"></a>2.5.Parent BlockȨ�ص���</h3><h4 id="2-5-1-����"><a href="#2-5-1-����" class="headerlink" title="2.5.1.����"></a>2.5.1.����</h4><p>����AWB����ɫ���飬�Ƿ��������ȼ�Ȩ</p>
-<h4 id="2-5-2-�޸�ʱ��"><a href="#2-5-2-�޸�ʱ��" class="headerlink" title="2.5.2.�޸�ʱ��"></a>2.5.2.�޸�ʱ��</h4><p>��AWB��������ɫ�£���ϣ���Ը�����Ϊ���������Դ������Ϊ��</p>
-<h4 id="2-5-3-��ز���"><a href="#2-5-3-��ز���" class="headerlink" title="2.5.3.��ز���"></a>2.5.3.��ز���</h4><h3 id="2-6-Neutral-Parent-Block�ٽ�ֵ����"><a href="#2-6-Neutral-Parent-Block�ٽ�ֵ����" class="headerlink" title="2.6.Neutral Parent Block�ٽ�ֵ����"></a>2.6.Neutral Parent Block�ٽ�ֵ����</h3><h4 id="2-6-1-����"><a href="#2-6-1-����" class="headerlink" title="2.6.1.����"></a>2.6.1.����</h4><h4 id="2-6-2-�޸�ʱ��"><a href="#2-6-2-�޸�ʱ��" class="headerlink" title="2.6.2.�޸�ʱ��"></a>2.6.2.�޸�ʱ��</h4><h4 id="2-6-3-����"><a href="#2-6-3-����" class="headerlink" title="2.6.3.����"></a>2.6.3.����</h4><h3 id="2-7-ͳ��ֵ�����������"><a href="#2-7-ͳ��ֵ�����������" class="headerlink" title="2.7.ͳ��ֵ�����������"></a>2.7.ͳ��ֵ�����������</h3><h4 id="2-7-1-����"><a href="#2-7-1-����" class="headerlink" title="2.7.1.����"></a>2.7.1.����</h4><h4 id="2-7-2-�޸�ʱ��"><a href="#2-7-2-�޸�ʱ��" class="headerlink" title="2.7.2.�޸�ʱ��"></a>2.7.2.�޸�ʱ��</h4><h4 id="2-7-3-����"><a href="#2-7-3-����" class="headerlink" title="2.7.3.����"></a>2.7.3.����</h4><h3 id="2-8-AWB-Cycle����"><a href="#2-8-AWB-Cycle����" class="headerlink" title="2.8.AWB Cycle����"></a>2.8.AWB Cycle����</h3><h4 id="2-8-1-����"><a href="#2-8-1-����" class="headerlink" title="2.8.1.����"></a>2.8.1.����</h4><h4 id="2-8-2-�޸�ʱ��"><a href="#2-8-2-�޸�ʱ��" class="headerlink" title="2.8.2.�޸�ʱ��"></a>2.8.2.�޸�ʱ��</h4><h4 id="2-8-3-����"><a href="#2-8-3-����" class="headerlink" title="2.8.3.����"></a>2.8.3.����</h4>
+<h3 id="2-3-AWB收敛速度调整"><a href="#2-3-AWB收敛速度调整" class="headerlink" title="2.3.AWB收敛速度调整"></a>2.3.AWB收敛速度调整</h3><h4 id="2-3-1-意义"><a href="#2-3-1-意义" class="headerlink" title="2.3.1.意义"></a>2.3.1.意义</h4><p>决定AWB的收敛速度和灵敏度</p>
+<h4 id="2-3-2-修改时机"><a href="#2-3-2-修改时机" class="headerlink" title="2.3.2.修改时机"></a>2.3.2.修改时机</h4><p>当AWB收敛速度过慢或对于环境光源变化的灵敏度过低</p>
+<h4 id="2-3-3-相关参数"><a href="#2-3-3-相关参数" class="headerlink" title="2.3.3.相关参数"></a>2.3.3.相关参数</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_18.PNG" alt=" "></p>
+<p>iSpeed：AWB每Frame收敛的百分比，设越高收敛越快</p>
+<p>i4StableThr：AWB判断是否收敛的灵敏度，设越小越灵敏</p>
+<h3 id="2-4-Capture-AWB收敛参数调整"><a href="#2-4-Capture-AWB收敛参数调整" class="headerlink" title="2.4.Capture AWB收敛参数调整"></a>2.4.Capture AWB收敛参数调整</h3><h4 id="2-4-1-意义"><a href="#2-4-1-意义" class="headerlink" title="2.4.1.意义"></a>2.4.1.意义</h4><p>根据环境亮度，决定拍照时使用Preview或Capture的WB Gain，避免瞬间的噪音造成WB偏色</p>
+<h4 id="2-4-2-修改时机、"><a href="#2-4-2-修改时机、" class="headerlink" title="2.4.2.修改时机、"></a>2.4.2.修改时机、</h4><p>当暗处拍照，发现AWB不稳定时</p>
+<h4 id="2-4-3-相关参数"><a href="#2-4-3-相关参数" class="headerlink" title="2.4.3.相关参数"></a>2.4.3.相关参数</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_19.PNG" alt=" "></p>
+<p>bSmooth：是否开放此机制</p>
+<p>LV1.0：</p>
+<p>LV5.0：</p>
+<h3 id="2-5-Parent-Block权重调整"><a href="#2-5-Parent-Block权重调整" class="headerlink" title="2.5.Parent Block权重调整"></a>2.5.Parent Block权重调整</h3><h4 id="2-5-1-意义"><a href="#2-5-1-意义" class="headerlink" title="2.5.1.意义"></a>2.5.1.意义</h4><p>决定AWB中性色区块，是否依照亮度加权</p>
+<h4 id="2-5-2-修改时机"><a href="#2-5-2-修改时机" class="headerlink" title="2.5.2.修改时机"></a>2.5.2.修改时机</h4><p>当AWB最终收敛色温，不希望以高亮区为主，而是以大面积区为主</p>
+<h4 id="2-5-3-相关参数"><a href="#2-5-3-相关参数" class="headerlink" title="2.5.3.相关参数"></a>2.5.3.相关参数</h4><h3 id="2-6-Neutral-Parent-Block临界值调整"><a href="#2-6-Neutral-Parent-Block临界值调整" class="headerlink" title="2.6.Neutral Parent Block临界值调整"></a>2.6.Neutral Parent Block临界值调整</h3><h4 id="2-6-1-意义"><a href="#2-6-1-意义" class="headerlink" title="2.6.1.意义"></a>2.6.1.意义</h4><h4 id="2-6-2-修改时机"><a href="#2-6-2-修改时机" class="headerlink" title="2.6.2.修改时机"></a>2.6.2.修改时机</h4><h4 id="2-6-3-举例"><a href="#2-6-3-举例" class="headerlink" title="2.6.3.举例"></a>2.6.3.举例</h4><h3 id="2-7-统计值计算区间调整"><a href="#2-7-统计值计算区间调整" class="headerlink" title="2.7.统计值计算区间调整"></a>2.7.统计值计算区间调整</h3><h4 id="2-7-1-意义"><a href="#2-7-1-意义" class="headerlink" title="2.7.1.意义"></a>2.7.1.意义</h4><h4 id="2-7-2-修改时机"><a href="#2-7-2-修改时机" class="headerlink" title="2.7.2.修改时机"></a>2.7.2.修改时机</h4><h4 id="2-7-3-举例"><a href="#2-7-3-举例" class="headerlink" title="2.7.3.举例"></a>2.7.3.举例</h4><h3 id="2-8-AWB-Cycle调整"><a href="#2-8-AWB-Cycle调整" class="headerlink" title="2.8.AWB Cycle调整"></a>2.8.AWB Cycle调整</h3><h4 id="2-8-1-意义"><a href="#2-8-1-意义" class="headerlink" title="2.8.1.意义"></a>2.8.1.意义</h4><h4 id="2-8-2-修改时机"><a href="#2-8-2-修改时机" class="headerlink" title="2.8.2.修改时机"></a>2.8.2.修改时机</h4><h4 id="2-8-3-举例"><a href="#2-8-3-举例" class="headerlink" title="2.8.3.举例"></a>2.8.3.举例</h4>
     </div>
     
         <div class="reward">
@@ -343,7 +343,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-�l�����λ��"><span class="toc-text">1.�ļ�����λ��</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-����"><span class="toc-text">2.����</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-�������E�ص���"><span class="toc-text">2.1.�������Ȩ�ص���</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-����"><span class="toc-text">2.1.1.����</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-�޸�ʱ��"><span class="toc-text">2.1.2.�޸�ʱ��</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-����"><span class="toc-text">2.1.3.����</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-��һ��Դ���չ�����E�ص���"><span class="toc-text">2.2.��һ��Դ���չ�����Ȩ�ص���</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-����"><span class="toc-text">2.2.1.����</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-�޸�ʱ��"><span class="toc-text">2.2.2.�޸�ʱ��</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-����1"><span class="toc-text">2.2.3.����1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-4-����2"><span class="toc-text">2.2.4.����2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-AWB�����ٶȵ���"><span class="toc-text">2.3.AWB�����ٶȵ���</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-����"><span class="toc-text">2.3.1.����</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-�޸�ʱ��"><span class="toc-text">2.3.2.�޸�ʱ��</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-��ز���"><span class="toc-text">2.3.3.��ز���</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Capture-AWB������������"><span class="toc-text">2.4.Capture AWB������������</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-����"><span class="toc-text">2.4.1.����</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-�޸�ʱ����"><span class="toc-text">2.4.2.�޸�ʱ����</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-3-��ز���"><span class="toc-text">2.4.3.��ز���</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Parent-BlockE�ص���"><span class="toc-text">2.5.Parent BlockȨ�ص���</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-����"><span class="toc-text">2.5.1.����</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-2-�޸�ʱ��"><span class="toc-text">2.5.2.�޸�ʱ��</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-3-��ز���"><span class="toc-text">2.5.3.��ز���</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-Neutral-Parent-Block�ٽ�ֵ����"><span class="toc-text">2.6.Neutral Parent Block�ٽ�ֵ����</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-1-����"><span class="toc-text">2.6.1.����</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-2-�޸�ʱ��"><span class="toc-text">2.6.2.�޸�ʱ��</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-3-����"><span class="toc-text">2.6.3.����</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-ͳ��ֵ�����������"><span class="toc-text">2.7.ͳ��ֵ�����������</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-1-����"><span class="toc-text">2.7.1.����</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-2-�޸�ʱ��"><span class="toc-text">2.7.2.�޸�ʱ��</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-3-����"><span class="toc-text">2.7.3.����</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-AWB-Cycle����"><span class="toc-text">2.8.AWB Cycle����</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-1-����"><span class="toc-text">2.8.1.����</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-2-�޸�ʱ��"><span class="toc-text">2.8.2.�޸�ʱ��</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-3-����"><span class="toc-text">2.8.3.����</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-文件所在位置"><span class="toc-text">1.文件所在位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-功能"><span class="toc-text">2.功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-混光亮度权重调整"><span class="toc-text">2.1.混光亮度权重调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-意义"><span class="toc-text">2.1.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-修改时机"><span class="toc-text">2.1.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-举例"><span class="toc-text">2.1.3.举例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-单一光源和日光亮度权重调整"><span class="toc-text">2.2.单一光源和日光亮度权重调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-意义"><span class="toc-text">2.2.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-修改时机"><span class="toc-text">2.2.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-举例1"><span class="toc-text">2.2.3.举例1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-4-举例2"><span class="toc-text">2.2.4.举例2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-AWB收敛速度调整"><span class="toc-text">2.3.AWB收敛速度调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-意义"><span class="toc-text">2.3.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-修改时机"><span class="toc-text">2.3.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-相关参数"><span class="toc-text">2.3.3.相关参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Capture-AWB收敛参数调整"><span class="toc-text">2.4.Capture AWB收敛参数调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-意义"><span class="toc-text">2.4.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-修改时机、"><span class="toc-text">2.4.2.修改时机、</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-3-相关参数"><span class="toc-text">2.4.3.相关参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Parent-Block权重调整"><span class="toc-text">2.5.Parent Block权重调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-意义"><span class="toc-text">2.5.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-2-修改时机"><span class="toc-text">2.5.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-3-相关参数"><span class="toc-text">2.5.3.相关参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-Neutral-Parent-Block临界值调整"><span class="toc-text">2.6.Neutral Parent Block临界值调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-1-意义"><span class="toc-text">2.6.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-2-修改时机"><span class="toc-text">2.6.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-3-举例"><span class="toc-text">2.6.3.举例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-统计值计算区间调整"><span class="toc-text">2.7.统计值计算区间调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-1-意义"><span class="toc-text">2.7.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-2-修改时机"><span class="toc-text">2.7.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-3-举例"><span class="toc-text">2.7.3.举例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-AWB-Cycle调整"><span class="toc-text">2.8.AWB Cycle调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-1-意义"><span class="toc-text">2.8.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-2-修改时机"><span class="toc-text">2.8.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-3-举例"><span class="toc-text">2.8.3.举例</span></a></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
