@@ -291,7 +291,23 @@
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1299108/o_90.png" alt=" "></p>
 <p>AWB Light Source Area-New</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1299108/o_91.png" alt=" "></p>
-<h2 id="5-重要的文件"><a href="#5-重要的文件" class="headerlink" title="5.重要的文件"></a>5.重要的文件</h2><h3 id="5-1-Camera-tuning-para-sensor-h"><a href="#5-1-Camera-tuning-para-sensor-h" class="headerlink" title="5.1.Camera_tuning_para_sensor.h"></a>5.1.Camera_tuning_para_sensor.h</h3><h3 id="5-2-Camera-tuning-para-sensor-h"><a href="#5-2-Camera-tuning-para-sensor-h" class="headerlink" title="5.2.Camera_tuning_para_sensor.h"></a>5.2.Camera_tuning_para_sensor.h</h3>
+<h2 id="5-重要的文件"><a href="#5-重要的文件" class="headerlink" title="5.重要的文件"></a>5.重要的文件</h2><h3 id="5-1-Camera-tuning-para-sensor-h"><a href="#5-1-Camera-tuning-para-sensor-h" class="headerlink" title="5.1.Camera_tuning_para_sensor.h"></a>5.1.Camera_tuning_para_sensor.h</h3><ul>
+<li><p>AWB Calibration Data</p>
+</li>
+<li><p>AWB XY Domain Info</p>
+</li>
+<li><p>AWB Light Source Area</p>
+</li>
+<li><p>PWB Light Source Area</p>
+</li>
+<li><p>PWB Default Gain</p>
+</li>
+<li><p>AWB Preference Gain</p>
+</li>
+<li><p>CCT Estimation：各光源的估计色温</p>
+</li>
+</ul>
+
     </div>
     
         <div class="reward">
@@ -373,7 +389,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AWB-Tuning"><span class="toc-text">1.AWB Tuning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-MTK-CCT-AWB-Tuning提供的功能"><span class="toc-text">1.1.MTK CCT AWB Tuning提供的功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CCT-AWB-Tuning-Flow"><span class="toc-text">2.CCT AWB Tuning Flow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Preference-Tuning-偏好调试"><span class="toc-text">3.Preference Tuning(偏好调试)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-提供三条Silder进行特定光源下色偏程度的控制"><span class="toc-text">3.1.提供三条Silder进行特定光源下色偏程度的控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-提供Preference-Gain，进行各种光源下Preference-Gain的设定"><span class="toc-text">3.2.提供Preference Gain，进行各种光源下Preference  Gain的设定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-实际应用举例"><span class="toc-text">4.实际应用举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-问题一"><span class="toc-text">4.1.问题一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-问题二"><span class="toc-text">4.2.问题二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-重要的文件"><span class="toc-text">5.重要的文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Camera-tuning-para-sensor-h"><span class="toc-text">5.1.Camera_tuning_para_sensor.h</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Camera-tuning-para-sensor-h"><span class="toc-text">5.2.Camera_tuning_para_sensor.h</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AWB-Tuning"><span class="toc-text">1.AWB Tuning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-MTK-CCT-AWB-Tuning提供的功能"><span class="toc-text">1.1.MTK CCT AWB Tuning提供的功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CCT-AWB-Tuning-Flow"><span class="toc-text">2.CCT AWB Tuning Flow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Preference-Tuning-偏好调试"><span class="toc-text">3.Preference Tuning(偏好调试)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-提供三条Silder进行特定光源下色偏程度的控制"><span class="toc-text">3.1.提供三条Silder进行特定光源下色偏程度的控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-提供Preference-Gain，进行各种光源下Preference-Gain的设定"><span class="toc-text">3.2.提供Preference Gain，进行各种光源下Preference  Gain的设定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-实际应用举例"><span class="toc-text">4.实际应用举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-问题一"><span class="toc-text">4.1.问题一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-问题二"><span class="toc-text">4.2.问题二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-重要的文件"><span class="toc-text">5.重要的文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Camera-tuning-para-sensor-h"><span class="toc-text">5.1.Camera_tuning_para_sensor.h</span></a></li></ol></li></ol>
         
     </div>
 </aside>

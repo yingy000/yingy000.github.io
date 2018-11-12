@@ -201,13 +201,13 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-AE-Gen-Pline-Table-生成AE-Pline表格"><a href="#1-AE-Gen-Pline-Table-生成AE-Pline表格" class="headerlink" title="1.AE Gen Pline Table(生成AE Pline表格)"></a>1.AE Gen Pline Table(生成AE Pline表格)</h2><h3 id="1-1-了解AE-Pline-Table"><a href="#1-1-了解AE-Pline-Table" class="headerlink" title="1.1.了解AE Pline Table"></a>1.1.了解AE Pline Table</h3><p>图片的亮度，由Shutter(曝光时间)、ISO(Gain值)、Aperture(光圈)和环境亮度决定。</p>
+        <h2 id="1-AE-Gen-Pline-Table-生成AE-Pline-Table"><a href="#1-AE-Gen-Pline-Table-生成AE-Pline-Table" class="headerlink" title="1.AE Gen Pline Table(生成AE Pline Table)"></a>1.AE Gen Pline Table(生成AE Pline Table)</h2><h3 id="1-1-了解AE-Pline-Table"><a href="#1-1-了解AE-Pline-Table" class="headerlink" title="1.1.了解AE Pline Table"></a>1.1.了解AE Pline Table</h3><p>图片的亮度，由Shutter(曝光时间)、ISO(Gain值)、Aperture(光圈)和环境亮度决定。</p>
 <p>AE Pline Table的用途：决定特定环境亮度，使用多少的Shutter(曝光时间)和ISO。</p>
 <p>AE Pline Table差异的目的：适用于不同的场景</p>
-<h3 id="1-2-Sport-Mode-运动模型-amp-amp-Candle-Mode-静态模型"><a href="#1-2-Sport-Mode-运动模型-amp-amp-Candle-Mode-静态模型" class="headerlink" title="1.2.Sport Mode(运动模型) &amp;&amp; Candle Mode(静态模型)"></a>1.2.Sport Mode(运动模型) &amp;&amp; Candle Mode(静态模型)</h3><ul>
-<li><p>Sport Mode：物体移动迅速，因此当环境亮度降低时，不延长曝光时间，而是先加大ISO(物体移动时，曝光时间长会导致残影)</p>
+<h3 id="1-2-Sport-Mode-运动物体-amp-amp-Candle-Mode-静态物体"><a href="#1-2-Sport-Mode-运动物体-amp-amp-Candle-Mode-静态物体" class="headerlink" title="1.2.Sport Mode(运动物体) &amp;&amp; Candle Mode(静态物体)"></a>1.2.Sport Mode(运动物体) &amp;&amp; Candle Mode(静态物体)</h3><ul>
+<li><p>Sport Mode：物体移动迅速，因此当环境亮度降低时，不延长曝光时间，而是先加大ISO(物体移动时，曝光时间长会导致拖影现象)</p>
 </li>
-<li><p>Candle Mode：静态物体，当环境亮度降低时，先延长曝光时间，之后再考虑增大ISO(长时间曝光对静态物体无残影问题，为了避免Noise加大所以先延长曝光，ISO增大的同时会导致Noise增加)</p>
+<li><p>Candle Mode：静态物体，当环境亮度降低时，先延长曝光时间，之后再考虑增大ISO(长时间曝光对静态物体无拖影现象，为了避免Noise加大所以先延长曝光，ISO增大的同时会导致Noise增加)</p>
 </li>
 </ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_1.png" alt=" "></p>
@@ -218,13 +218,13 @@
 <p>u4MinilSOGain：Sensor Gain为1024时的ISO</p>
 <p>u4GainStepUnitInTotalRange：Sensor Gain的最小单位</p>
 <p>u4PreviewExposureLineUnit：Preview曝光时间最小单位</p>
-<p>u4PreviewMaxFrameRate：Preview的最高FrameRate</p>
+<p>u4PreviewMaxFrameRate：Preview的最高Frame Rate(最高帧率)</p>
 <p>u4VideoExposureLineUnit：Video曝光时间最小单位</p>
-<p>u4VideoMaxFrameRate：Video的最高Frame Rate</p>
-<p>u4VideoToPreviewSensitivityRatio：Video感光度和Preview感光度的比例</p>
+<p>u4VideoMaxFrameRate：Video的最高Frame Rate(最高帧率)</p>
+<p>u4VideoToPreviewSensitivityRatio：Video感光度和Preview感光度的比例=&gt;原因：会有这个Ratio的原因是目前AE只在Preview中，在Video中会使用Preview估算出来的AE</p>
 <p>u4CaptureExposureLineUnit：Capture曝光时间最小单位</p>
 <p>u4CaptureMaxFrameRate：Capture的最高FrameRate</p>
-<p>u4CaptureToPreviewSensitivityRatio：Capture感光度和Preview感光度的比例</p>
+<p>u4CaptureToPreviewSensitivityRatio：Capture感光度和Preview感光度的比例=&gt;原因：会有这个Ratio的原因是目前AE只在Preview中，在Capture中会使用Preview估算出来的AE</p>
 <p>Fno：光圈值</p>
 <p>Gain Step：Sensor Gain的最小单位</p>
 <p>Period Pixel Number：影响着横轴X的Size(Preview/Capture/Video)</p>
@@ -264,7 +264,7 @@
 <h3 id="4-1-主界面的介绍"><a href="#4-1-主界面的介绍" class="headerlink" title="4.1.主界面的介绍"></a>4.1.主界面的介绍</h3><ul>
 <li><p>Sensor Mode：Sensor Output选择Preview，Capture或者Video。</p>
 </li>
-<li><p>Select AE Table：选择目前的AE mode(AETABLE_RPEVIEW_AUTO)。</p>
+<li><p>Select AE Table：选择目前的AE mode(AETABLE_RPEVIEW_AUTO)，希望指定的AE Table。</p>
 </li>
 <li><p>Scene Mode：AE_SCENC_AUTO。</p>
 </li>
@@ -272,19 +272,19 @@
 </li>
 <li><p>AE Table：列出每个AE Mode，Mapping到的AE Table。</p>
 </li>
-<li><p>Table_Preview：点选可看到AE Table的Behaviour。</p>
+<li><p>Table_Preview：点选可看到所选的AE Table的Behaviour。</p>
 </li>
-<li><p>Update to Mapping Table：点选可将目前AE Mode与AE Table Mapping的关系记录下来。</p>
+<li><p>Update to Mapping Table：点选可将目前AE Scene与AE Table Mapping的关系记录下来=&gt;因为一个AE Table同时对应好几个AE Scene，也就是说Preview或是Capture可能同时使用一个AE Table，但是一个AE Table不能同时更新多个AE Scene，需要将它们的Mapping关系记录下来。</p>
 </li>
 <li><p>Import form P-line：点选可从外部import每一组AE Table的Behavior。</p>
 </li>
-<li><p>Export to P-line Info：点选可将母亲AE Table Behavior Export为CSV文件。</p>
+<li><p>Export to P-line Info：点选可将目前AE Table Behavior Export为CSV文件。</p>
 </li>
 </ul>
 <h3 id="4-2-常用的功能"><a href="#4-2-常用的功能" class="headerlink" title="4.2.常用的功能"></a>4.2.常用的功能</h3><h4 id="4-2-1-更新AE-Scene与AE-Table的Mapping关系"><a href="#4-2-1-更新AE-Scene与AE-Table的Mapping关系" class="headerlink" title="4.2.1.更新AE Scene与AE Table的Mapping关系"></a>4.2.1.更新AE Scene与AE Table的Mapping关系</h4><ul>
-<li><p>Sensor Mode下拉式选单中，选择希望设定的AE Mode。</p>
+<li><p>Scene Mode下拉式选单中，选择希望设定的Scene Mode=&gt;AE_SCENE_AUTO</p>
 </li>
-<li><p>Select AE Table下拉式选单中，选择希望设定的AE Table。</p>
+<li><p>Select AE Table下拉式选单中，选择希望设定的AE Table=&gt;AETABLE_RPEVIEW_AUTO</p>
 </li>
 <li><p>按下Update to Mapping Table按钮更新Mapping。</p>
 </li>
@@ -313,18 +313,21 @@
 </li>
 </ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1299108/o_97.png" alt=" "></p>
-<p>AE Table Behavior满足公式<code>AV+TV=EV=BV+SV</code>。</p>
-<p>过高的EV，AE无法收敛而过曝。</p>
-<p>过低的EV，AE无法收敛而过暗。</p>
+<p>图中的Min Ex…(第一段)代表Min Export to P-line，Max Ex…(第二段)代表Max Export to P-line，第三段代表Min Gain，第四段代表Max Gain。</p>
+<p>一般来说，先改变Shutter的值，Gain的值一般保持不变，第一段表示Shutter(曝光时间)由1/3000(s)提升到1/30(s)，Gain(ISO)保持1195不变，第二段表示Shutter保持不变，Gain的值由1195提升到20480，如下图所示。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1299108/o_98.png" alt=" "></p>
-<h4 id="4-2-5-定义各环境亮度-BV-下，使用ISO与Shutter-曝光时间-的组合"><a href="#4-2-5-定义各环境亮度-BV-下，使用ISO与Shutter-曝光时间-的组合" class="headerlink" title="4.2.5.定义各环境亮度 (BV)下，使用ISO与Shutter (曝光时间)的组合"></a>4.2.5.定义各环境亮度 (BV)下，使用ISO与Shutter (曝光时间)的组合</h4><p>a.环境亮度由BV10降到BV3</p>
+<p>AE Table Behavior满足公式<code>AV+TV=EV=BV+SV</code>。</p>
+<p>过高的EV，AE无法收敛而过曝=&gt;A。</p>
+<p>过低的EV，AE无法收敛而过暗=&gt;B。</p>
+<h4 id="4-2-5-定义各环境亮度-BV-下，使用ISO与Shutter-曝光时间-的组合"><a href="#4-2-5-定义各环境亮度-BV-下，使用ISO与Shutter-曝光时间-的组合" class="headerlink" title="4.2.5.定义各环境亮度 (BV)下，使用ISO与Shutter (曝光时间)的组合"></a>4.2.5.定义各环境亮度 (BV)下，使用ISO与Shutter (曝光时间)的组合</h4><p>a.环境亮度由BV10降到BV3=&gt;改变Shutter的值，Gain的值保持不变。</p>
 <ul>
 <li><p>Shutter(曝光时间)由1/3000(s)提升到1/30(s)</p>
 </li>
 <li><p>Gain(ISO)保持1195不变(Minimum Saturation Gain)</p>
 </li>
 </ul>
-<p>b.环境亮度由BV3降到BV-1</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1299108/o_98.png" alt=" "></p>
+<p>b.环境亮度由BV3降到BV-1=&gt;改变Gain的值，shutter的值保持不变。</p>
 <ul>
 <li><p>Shutter(曝光时间)保持1/30(s)</p>
 </li>
@@ -423,7 +426,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AE-Gen-Pline-Table-生成AE-Pline表格"><span class="toc-text">1.AE Gen Pline Table(生成AE Pline表格)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-了解AE-Pline-Table"><span class="toc-text">1.1.了解AE Pline Table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Sport-Mode-运动模型-amp-amp-Candle-Mode-静态模型"><span class="toc-text">1.2.Sport Mode(运动模型) &amp;&amp; Candle Mode(静态模型)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Sensor-Device-Info"><span class="toc-text">2.Sensor Device Info</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-Sensor-Device-Info的内容"><span class="toc-text">2.1.2.Sensor Device Info的内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-APEC：用来衡量曝光条件的公式"><span class="toc-text">3.APEC：用来衡量曝光条件的公式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-AV-TV-EV"><span class="toc-text">3.1. AV + TV=EV</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-AV：光圈值的级数"><span class="toc-text">3.1.1.AV：光圈值的级数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-TV：快门值的级数"><span class="toc-text">3.1.2.TV：快门值的级数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-3-AV-TV：光圈量的总和"><span class="toc-text">3.1.3.AV+TV：光圈量的总和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-4-EV：用来衡量光通量的总和"><span class="toc-text">3.1.4.EV：用来衡量光通量的总和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-5-结论"><span class="toc-text">3.1.5.结论</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-BV-SV"><span class="toc-text">3.2. BV + SV</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-BV-SV：光需求的总和"><span class="toc-text">3.2.1.BV+SV：光需求的总和</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-APEC（曝光公式）"><span class="toc-text">3.3. APEC（曝光公式）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-CCT-AE-Pline-Table"><span class="toc-text">4.CCT-AE Pline Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-主界面的介绍"><span class="toc-text">4.1.主界面的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-常用的功能"><span class="toc-text">4.2.常用的功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-更新AE-Scene与AE-Table的Mapping关系"><span class="toc-text">4.2.1.更新AE Scene与AE Table的Mapping关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-导入AE-Table-Behavior"><span class="toc-text">4.2.2.导入AE Table Behavior</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-导出AE-Table-Behavior"><span class="toc-text">4.2.3.导出AE Table Behavior</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-4-更新AE-Table-Behavior"><span class="toc-text">4.2.4.更新AE Table Behavior</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-5-定义各环境亮度-BV-下，使用ISO与Shutter-曝光时间-的组合"><span class="toc-text">4.2.5.定义各环境亮度 (BV)下，使用ISO与Shutter (曝光时间)的组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-实例-尝试在现有的AE-Table新增段数"><span class="toc-text">4.3.实例(尝试在现有的AE Table新增段数)</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AE-Gen-Pline-Table-生成AE-Pline-Table"><span class="toc-text">1.AE Gen Pline Table(生成AE Pline Table)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-了解AE-Pline-Table"><span class="toc-text">1.1.了解AE Pline Table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Sport-Mode-运动物体-amp-amp-Candle-Mode-静态物体"><span class="toc-text">1.2.Sport Mode(运动物体) &amp;&amp; Candle Mode(静态物体)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Sensor-Device-Info"><span class="toc-text">2.Sensor Device Info</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-Sensor-Device-Info的内容"><span class="toc-text">2.1.2.Sensor Device Info的内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-APEC：用来衡量曝光条件的公式"><span class="toc-text">3.APEC：用来衡量曝光条件的公式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-AV-TV-EV"><span class="toc-text">3.1. AV + TV=EV</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-AV：光圈值的级数"><span class="toc-text">3.1.1.AV：光圈值的级数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-TV：快门值的级数"><span class="toc-text">3.1.2.TV：快门值的级数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-3-AV-TV：光圈量的总和"><span class="toc-text">3.1.3.AV+TV：光圈量的总和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-4-EV：用来衡量光通量的总和"><span class="toc-text">3.1.4.EV：用来衡量光通量的总和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-5-结论"><span class="toc-text">3.1.5.结论</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-BV-SV"><span class="toc-text">3.2. BV + SV</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-BV-SV：光需求的总和"><span class="toc-text">3.2.1.BV+SV：光需求的总和</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-APEC（曝光公式）"><span class="toc-text">3.3. APEC（曝光公式）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-CCT-AE-Pline-Table"><span class="toc-text">4.CCT-AE Pline Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-主界面的介绍"><span class="toc-text">4.1.主界面的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-常用的功能"><span class="toc-text">4.2.常用的功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-更新AE-Scene与AE-Table的Mapping关系"><span class="toc-text">4.2.1.更新AE Scene与AE Table的Mapping关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-导入AE-Table-Behavior"><span class="toc-text">4.2.2.导入AE Table Behavior</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-导出AE-Table-Behavior"><span class="toc-text">4.2.3.导出AE Table Behavior</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-4-更新AE-Table-Behavior"><span class="toc-text">4.2.4.更新AE Table Behavior</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-5-定义各环境亮度-BV-下，使用ISO与Shutter-曝光时间-的组合"><span class="toc-text">4.2.5.定义各环境亮度 (BV)下，使用ISO与Shutter (曝光时间)的组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-实例-尝试在现有的AE-Table新增段数"><span class="toc-text">4.3.实例(尝试在现有的AE Table新增段数)</span></a></li></ol></li></ol>
         
     </div>
 </aside>
