@@ -208,103 +208,89 @@
 </li>
 </ul>
 <h3 id="1-2-AE-Tuning模拟特殊场景"><a href="#1-2-AE-Tuning模拟特殊场景" class="headerlink" title="1.2.AE Tuning模拟特殊场景"></a>1.2.AE Tuning模拟特殊场景</h3><ul>
-<li><p>背光环境，若是仍然只用整体平均亮度当做目标，会导致主题过暗。</p>
+<li><p>逆光环境，若是仍然只用整体平均亮度当做目标，会导致主题过暗=&gt;也就是说，当拍摄逆光的场景时，镜头往往需要更多的进光量。</p>
 </li>
-<li><p>亮色纯色环境，若是仍然只用整体平均亮度当做目标，会导致感觉主题过暗(亮色场景通常会期望亮度高些)</p>
+<li><p>亮色纯色环境，若是仍然只用整体平均亮度当做目标，会导致感觉主题过暗=&gt;亮色场景通常会期望亮度高些</p>
 </li>
 </ul>
-<h3 id="1-3-调试方法"><a href="#1-3-调试方法" class="headerlink" title="1.3.调试方法"></a>1.3.调试方法</h3><h4 id="1-3-1-调整Flare-Offset"><a href="#1-3-1-调整Flare-Offset" class="headerlink" title="1.3.1.调整Flare Offset"></a>1.3.1.调整Flare Offset</h4><p>控制ISP和Flare的数值，可以调整成像的对比度(但是可能牺牲暗部细节)</p>
+<h3 id="1-3-调试方法"><a href="#1-3-调试方法" class="headerlink" title="1.3.调试方法"></a>1.3.调试方法</h3><h4 id="1-3-1-调整Flare-Offset"><a href="#1-3-1-调整Flare-Offset" class="headerlink" title="1.3.1.调整Flare Offset"></a>1.3.1.调整Flare Offset</h4><p>控制ISP和Flare的数值，可以调整成像的对比度(但是可能牺牲暗部细节)=&gt;Flare是指杂光、鬼影等，调整Flare Offset的值是指适当的扣掉暗階的一些细节，以提高成像的对比度。</p>
 <p>补充：ISP的主要作用是对前端图像传感器输出信号做后期处理，主要功能有线性纠正、噪声去除、坏点去除、白平衡、自动曝光控制等，ISP技术在很大程度上决定了相机的成像质量。</p>
 <h4 id="1-3-2-调整AE-Target"><a href="#1-3-2-调整AE-Target" class="headerlink" title="1.3.2.调整AE Target"></a>1.3.2.调整AE Target</h4><p>控制AE Target，可以调整最后整体平均亮度(控制整体平均亮度的做法，无法适用于所有场景)</p>
 <h4 id="1-3-3-调整AE-Mode-Condition"><a href="#1-3-3-调整AE-Mode-Condition" class="headerlink" title="1.3.3.调整AE Mode Condition"></a>1.3.3.调整AE Mode Condition</h4><p>根据目前场景，动态改变AE Target，可使多数场景的曝光符合期待(可能仍有少数场景的曝光亮度不符预期)</p>
-<h2 id="2-AE-Tuning-Page的基本操作"><a href="#2-AE-Tuning-Page的基本操作" class="headerlink" title="2.AE Tuning Page的基本操作"></a>2.AE Tuning Page的基本操作</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_5.png" alt=" "></p>
+<h2 id="2-AE-Tuning-Page的基本操作"><a href="#2-AE-Tuning-Page的基本操作" class="headerlink" title="2.AE Tuning Page的基本操作"></a>2.AE Tuning Page的基本操作</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_5..png" alt=" "></p>
 <h3 id="2-1-Pline-initial-ldx"><a href="#2-1-Pline-initial-ldx" class="headerlink" title="2.1.Pline initial ldx"></a>2.1.Pline initial ldx</h3><p>Pline initial ldx：AE收敛的起点。</p>
 <p>越低代表从越高环境亮度开始收敛，也就是说，若调的值过低，则刚进Camera时，亮度会较暗，然后收敛。</p>
 <p>越高，代表从越低环境亮度开始收敛，也就是说，若调的值过高，则刚进Camera时，亮度会较亮，然后收敛。</p>
 <h3 id="2-2-Target-mean：AE收敛的目标"><a href="#2-2-Target-mean：AE收敛的目标" class="headerlink" title="2.2.Target mean：AE收敛的目标"></a>2.2.Target mean：AE收敛的目标</h3><p>越低代表最后收敛的亮度越暗，越高代表最后收敛的亮度越亮。</p>
 <h3 id="2-3-AE-Mode-Tuning"><a href="#2-3-AE-Mode-Tuning" class="headerlink" title="2.3.AE Mode Tuning"></a>2.3.AE Mode Tuning</h3><p>微调这四种AE Mode的条件Back ligth/Histogram stretch/Night Mode/Auto-over exposure用来和AE Target一起决定最后的收敛亮度。</p>
-<h3 id="2-4-Ev-value-calibration"><a href="#2-4-Ev-value-calibration" class="headerlink" title="2.4.Ev value calibration"></a>2.4.Ev value calibration</h3><p>calibration AE估算的LV和实际LV的差异，主要是AWB演算法使用。</p>
+<h3 id="2-4-Ev-value-calibration"><a href="#2-4-Ev-value-calibration" class="headerlink" title="2.4.Ev value calibration"></a>2.4.Ev value calibration</h3><p>calibration AE估算的LV（环境亮度）和实际LV（环境亮度）的差异，也就是记录下来真正的LV（环境亮度），主要是AWB演算法使用。</p>
+<p>举例：比如说当前的环境亮度为LV10，因为Target LV的值是以10为Base，那么此处的空就填上100，然后点击按钮<code>Calibration EV offset</code>。</p>
 <h3 id="2-5-Parameter的基本操作"><a href="#2-5-Parameter的基本操作" class="headerlink" title="2.5.Parameter的基本操作"></a>2.5.Parameter的基本操作</h3><p>Read NVRAM/Apply/Save to NVRAM</p>
 <h2 id="3-AE-Tuning—Flare-Tuning"><a href="#3-AE-Tuning—Flare-Tuning" class="headerlink" title="3.AE Tuning—Flare Tuning"></a>3.AE Tuning—Flare Tuning</h2><h3 id="3-1-了解Flare-Tuning"><a href="#3-1-了解Flare-Tuning" class="headerlink" title="3.1.了解Flare Tuning"></a>3.1.了解Flare Tuning</h3><ul>
-<li><p>Fix Flare(固定的Flare)：Raw File的Pixel扣固定的数值=&gt;Linear Domain中，整体亮度减去固定的数值。</p>
+<li><p>Fix Flare(固定的Flare)：Raw File的Pixel扣固定的数值=&gt;Linear Domain中，整体亮度减去固定的数值（Capture和Preview都可Config成Fix Flare）。</p>
 </li>
-<li><p>Dynamic Flare(动态的Flare)：</p>
-</li>
-</ul>
-<p>Raw File的Pixel根据Histogram的分布，动态的扣不固定的Flare数值。</p>
-<p>由于Preview和Capture必须一致，所以Capture选择Dynamic Flare时，Preview也会自动切换成Dynamic Flare。</p>
-<ul>
-<li>Flare Value：89 Fix Flare是12(bit)。</li>
-</ul>
-<h3 id="3-2-Flare-Tuning-Page"><a href="#3-2-Flare-Tuning-Page" class="headerlink" title="3.2.Flare Tuning Page"></a>3.2.Flare Tuning Page</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_6.png" alt=" "></p>
-<h4 id="3-2-1-第一部分"><a href="#3-2-1-第一部分" class="headerlink" title="3.2.1.第一部分"></a>3.2.1.第一部分</h4><p>设定Preview，Capture，Video，Strobe是否要开放Dynamic Flare。</p>
-<h4 id="3-2-2-第二部分"><a href="#3-2-2-第二部分" class="headerlink" title="3.2.2.第二部分"></a>3.2.2.第二部分</h4><p>设定Preview，Capture，Video，Strobe扣得Flare，offset为Fix Flare，Threshold为Dynamic Flare。</p>
-<h4 id="3-2-3-第三部分"><a href="#3-2-3-第三部分" class="headerlink" title="3.2.3.第三部分"></a>3.2.3.第三部分</h4><p>设定Preview，Video Flare的最大值和最小值。</p>
-<h4 id="3-2-4-第四部分-操作方法"><a href="#3-2-4-第四部分-操作方法" class="headerlink" title="3.2.4.第四部分(操作方法)"></a>3.2.4.第四部分(操作方法)</h4><p>在<code>&quot;AE Tuning&quot;</code>Page设定Flare</p>
-<ul>
-<li><p>Read NVRAM：读取NVRAM中设定</p>
-</li>
-<li><p>Apply：将设定，写入Register</p>
-</li>
-<li><p>Save to NVRAM：将设定，写入NVRAM</p>
+<li><p>Dynamic Flare(动态的Flare)：Raw File的Pixel根据Histogram的分布，动态的扣不固定的Flare数值（只有Capture能Config成Fix Flare）。</p>
 </li>
 </ul>
-<h3 id="3-3-Flare-Tuning—Fix-Flare"><a href="#3-3-Flare-Tuning—Fix-Flare" class="headerlink" title="3.3.Flare Tuning—Fix Flare"></a>3.3.Flare Tuning—Fix Flare</h3><p>设定Fix Flare(不勾选Threshold)</p>
-<p>设定Fix Flare的数值</p>
-<p>按下<code>&quot;Apply&amp;Save to NVRAM&quot;</code>存储结果。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_7.png" alt=" "></p>
-<p>结果分析：</p>
-<p>Preview Fix Flare扣0~扣19</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_5...png" alt=" "></p>
+<h3 id="3-2-Flare-Tuning—Fix-Flare"><a href="#3-2-Flare-Tuning—Fix-Flare" class="headerlink" title="3.2.Flare Tuning—Fix Flare"></a>3.2.Flare Tuning—Fix Flare</h3><p>a.填入Flare数值</p>
+<p>b.按下按钮<code>&quot;Calibrate flare offset&quot;</code></p>
+<p>c.自动计算出<code>&quot;fixed flare offset&quot;</code>的值=&gt;9</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_6...png" alt=" "></p>
+<p>Preview Fix Flare扣0~扣19的效果如下所示：</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_8.png" alt=" "></p>
-<h3 id="3-4-Flare-Tuning—Dynamic-Flare"><a href="#3-4-Flare-Tuning—Dynamic-Flare" class="headerlink" title="3.4.Flare Tuning—Dynamic Flare"></a>3.4.Flare Tuning—Dynamic Flare</h3><p>设定Dynamic Flare(勾选Threshold)</p>
-<p>设定Fix Flare的数值</p>
-<p>按下<code>&quot;Apply&amp;Save to NVRAM&quot;</code>存储结果。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_7.png" alt=" "></p>
-<p>结果分析：</p>
-<p>Fix Flare会将<code>亮度&lt;Offset</code>的值扣除，Dynamic Flare是将<code>亮度&lt;threshold/10000</code>的值扣除，因此Dynamic Flare在平均较亮的场景Flare扣较高，在平均较暗的场景Flare扣较少。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_9.png" alt=" "></p>
+<h3 id="3-3-Flare-Tuning—Dynamic-Flare"><a href="#3-3-Flare-Tuning—Dynamic-Flare" class="headerlink" title="3.3.Flare Tuning—Dynamic Flare"></a>3.3.Flare Tuning—Dynamic Flare</h3><p>暂时不知道启动Dynamic Flare的步骤是什么？=&gt;知道以后在此添加</p>
+<p>Preview Dynamic Flare扣0~扣19的效果如下所示：</p>
+<p>Fix Flare会将<code>亮度&lt;Offset</code>（9）的值扣除，Dynamic Flare是将<code>亮度&lt;threshold/10000</code>的值扣除，因此Dynamic Flare在平均较亮的场景Flare扣较高，在平均较暗的场景Flare扣较少。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_9..png" alt=" "></p>
+<h3 id="3-4-文件位置"><a href="#3-4-文件位置" class="headerlink" title="3.4.文件位置"></a>3.4.文件位置</h3><p>mt6739\hal\imgsensor\gc2145_mipi_yuv\camera_tuning_para_gc2145mipi_yuv.cpp</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_9....png" alt=" "></p>
 <h2 id="4-AE-Tuning—AE-Target-Tuning"><a href="#4-AE-Tuning—AE-Target-Tuning" class="headerlink" title="4.AE Tuning—AE Target Tuning"></a>4.AE Tuning—AE Target Tuning</h2><h3 id="4-1-了解AE-Target-Tuning"><a href="#4-1-了解AE-Target-Tuning" class="headerlink" title="4.1.了解AE Target Tuning"></a>4.1.了解AE Target Tuning</h3><p>AE Target越高，预览成像亮度越高</p>
 <p>AE Target越低，预览成像亮度越低</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_10.png" alt=" "></p>
 <h3 id="4-2-步骤"><a href="#4-2-步骤" class="headerlink" title="4.2.步骤"></a>4.2.步骤</h3><p>设定<code>&quot;Target mean&quot;</code>的值</p>
 <p>按下”Apply”，存入Register</p>
 <p>按下”Save to NVRAM”</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_11.png" alt=" "></p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_11..png" alt=" "></p>
+<p>这里的<code>&quot;Target mean&quot;</code>的值为什么设置为47？</p>
 <h2 id="5-AE-Tuning—AE-Mode-Tuning"><a href="#5-AE-Tuning—AE-Mode-Tuning" class="headerlink" title="5.AE Tuning—AE Mode Tuning"></a>5.AE Tuning—AE Mode Tuning</h2><h3 id="5-1-了解AE-Mode-Tuning"><a href="#5-1-了解AE-Mode-Tuning" class="headerlink" title="5.1.了解AE Mode Tuning"></a>5.1.了解AE Mode Tuning</h3><p>1.<code>&quot;Target mean&quot;</code>的值为AE的Basic收敛值。</p>
-<p>2.AE算法提供三种AE Mode</p>
+<p>2.AE算法提供四种AE Mode</p>
 <ul>
 <li><p>Anti-Over Exposure：避免过曝</p>
 </li>
 <li><p>Back Light：避免因BackLight情形导致暗部偏暗(以暗部为主拉高亮度)</p>
 </li>
-<li><p>Histogram：当主体对比不高时，拉高整体亮度(以亮部为主拉高亮度)</p>
+<li><p>Histogram stretch：当主体对比不高时，拉高整体亮度(以亮部为主拉高亮度)</p>
 </li>
-<li><p>结论：基本上，AE是先设定一个较低的TargetMean，再by AE Mode拉高亮度。</p>
+<li><p>Night Mode：</p>
 </li>
 </ul>
-<p>3.Final Target Mean为三种AE Mode算出Target Mean的加权</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_13.png" alt=" "></p>
-<h3 id="5-2-AE-Mode-Tuning—Back-Light"><a href="#5-2-AE-Mode-Tuning—Back-Light" class="headerlink" title="5.2.AE Mode Tuning—Back Light"></a>5.2.AE Mode Tuning—Back Light</h3><p>当暗階的部分过暗时，会落入Backlight Condition。</p>
+<p>结论：基本上，AE是先设定一个较低的TargetMean（47），再通过 AE Mode拉高亮度。</p>
+<p>3.Final Target Mean为四种AE Mode算出Target Mean的加权</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_13..png" alt=" "></p>
+<h3 id="5-2-AE-Mode-Basic-Tuning"><a href="#5-2-AE-Mode-Basic-Tuning" class="headerlink" title="5.2.AE Mode Basic Tuning"></a>5.2.AE Mode Basic Tuning</h3><p>要启动特定AE Mode，则打钩，如果没有打钩，就算满足AE Mode的条件，也不会启动。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_7..png" alt=" "></p>
+<h3 id="5-3-AE-Mode-Advance-Tuning"><a href="#5-3-AE-Mode-Advance-Tuning" class="headerlink" title="5.3.AE Mode Advance Tuning"></a>5.3.AE Mode Advance Tuning</h3><p>分别微调AE Mode的<code>&quot;符合条件&quot;</code>和<code>&quot;加强强度&quot;</code>，如下图所示。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_14...png" alt=" "></p>
+<h3 id="5-4-AE-Mode-Tuning-Back-Light"><a href="#5-4-AE-Mode-Tuning-Back-Light" class="headerlink" title="5.4.AE Mode Tuning-Back Light"></a>5.4.AE Mode Tuning-Back Light</h3><p>当暗階的部分过暗时，会落入Backlight Condition。</p>
 <p>当落入Backlight Condition，可调整对应的Thresold来改变亮度。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_14.png" alt=" "></p>
 <p>调高CentralHighBound：可提高BL Condition能拉高亮度的最大值</p>
-<p>调低LowThres，可拉高落入BackLight Condition的概率</p>
 <p>调高BacklightThres：可拉高落入BackLight Condition时预览及成像的亮度</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_12.png" alt=" "><br>图片内容可能不太准确，仅参考</p>
-<h3 id="5-3-AE-Mode-Tuning—Histogram-Stretch"><a href="#5-3-AE-Mode-Tuning—Histogram-Stretch" class="headerlink" title="5.3.AE Mode Tuning—Histogram Stretch"></a>5.3.AE Mode Tuning—Histogram Stretch</h3><p>当亮階的部分不够亮时，会落入Histogram Stretch Condition</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_12..png" alt=" "></p>
+<h3 id="5-5-AE-Mode-Tuning—Histogram-stretch"><a href="#5-5-AE-Mode-Tuning—Histogram-stretch" class="headerlink" title="5.5.AE Mode Tuning—Histogram stretch"></a>5.5.AE Mode Tuning—Histogram stretch</h3><p>当亮階的部分不够亮时，会落入Histogram Stretch Condition</p>
 <p>当落入Histogram Stretch Condition，可调整对应的Thresold来改变亮度。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_15.png" alt=" "></p>
-<p>调高CentralHighBound：可提高Histogram Stretch Condition能拉高高度的最大值</p>
 <p>调高HisStrechThresThres：可拉高落入Histogram Stretch Condition时预览及成像的亮度</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_12.png" alt=" "><br>图片内容可能不太准确，仅参考</p>
-<h3 id="5-4-AE-Mode-Tuning—Anti-Over-Exposure"><a href="#5-4-AE-Mode-Tuning—Anti-Over-Exposure" class="headerlink" title="5.4.AE Mode Tuning—Anti Over Exposure"></a>5.4.AE Mode Tuning—Anti Over Exposure</h3><p>当亮階的部分过亮时，会落入Anti Over Exposure Condition</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_12...png" alt=" "></p>
+<h3 id="5-6-AE-Mode-Tuning—Anti-Over-Exposure"><a href="#5-6-AE-Mode-Tuning—Anti-Over-Exposure" class="headerlink" title="5.6.AE Mode Tuning—Anti Over Exposure"></a>5.6.AE Mode Tuning—Anti Over Exposure</h3><p>当亮階的部分过亮时，会落入Anti Over Exposure Condition</p>
 <p>当落入Anti Over Exposure Condition时，可调整对应的Thresold来改变亮度。</p>
-<p>由于Anti OverExposure条件一开放，容易将大部分场景亮度都拉的过低，因此建议不开放此条件</p>
+<p>由于Anti OverExposure条件一开放，容易将大部分场景亮度都拉的过低，因此建议不开放此条件。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_16..png" alt=" "></p>
-<p>调低CentralLowBound：可降低Anti Over Exposure Condition能拉低亮度的最小值</p>
-<p>调低HighThres，可拉高落入Anti Over Exposure Condition的概率</p>
-<p>调低OverExposureThres：可拉低落入Anti Over Exposure Condition时预览及成像的亮度</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_12.png" alt=" "><br>图片内容可能不太准确，仅参考</p>
+<p>调低AntiOverExpWeight，可拉高落入Anti Over Exposure Condition的概率</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_12.....png" alt=" "></p>
+<p>5.7.AE Mode Tuning—Night Mode</p>
+<p>当暗階部分不够暗时，会落入Night Mode</p>
 
     </div>
     
@@ -387,7 +373,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AE-Tuning"><span class="toc-text">1.AE Tuning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-AE-Tuning的原因"><span class="toc-text">1.1.AE Tuning的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-AE-Tuning模拟特殊场景"><span class="toc-text">1.2.AE Tuning模拟特殊场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-调试方法"><span class="toc-text">1.3.调试方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-调整Flare-Offset"><span class="toc-text">1.3.1.调整Flare Offset</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-调整AE-Target"><span class="toc-text">1.3.2.调整AE Target</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-调整AE-Mode-Condition"><span class="toc-text">1.3.3.调整AE Mode Condition</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-AE-Tuning-Page的基本操作"><span class="toc-text">2.AE Tuning Page的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Pline-initial-ldx"><span class="toc-text">2.1.Pline initial ldx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Target-mean：AE收敛的目标"><span class="toc-text">2.2.Target mean：AE收敛的目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-AE-Mode-Tuning"><span class="toc-text">2.3.AE Mode Tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Ev-value-calibration"><span class="toc-text">2.4.Ev value calibration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Parameter的基本操作"><span class="toc-text">2.5.Parameter的基本操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-AE-Tuning—Flare-Tuning"><span class="toc-text">3.AE Tuning—Flare Tuning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-了解Flare-Tuning"><span class="toc-text">3.1.了解Flare Tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Flare-Tuning-Page"><span class="toc-text">3.2.Flare Tuning Page</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-第一部分"><span class="toc-text">3.2.1.第一部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-第二部分"><span class="toc-text">3.2.2.第二部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-第三部分"><span class="toc-text">3.2.3.第三部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-4-第四部分-操作方法"><span class="toc-text">3.2.4.第四部分(操作方法)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Flare-Tuning—Fix-Flare"><span class="toc-text">3.3.Flare Tuning—Fix Flare</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-Flare-Tuning—Dynamic-Flare"><span class="toc-text">3.4.Flare Tuning—Dynamic Flare</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-AE-Tuning—AE-Target-Tuning"><span class="toc-text">4.AE Tuning—AE Target Tuning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-了解AE-Target-Tuning"><span class="toc-text">4.1.了解AE Target Tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-步骤"><span class="toc-text">4.2.步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-AE-Tuning—AE-Mode-Tuning"><span class="toc-text">5.AE Tuning—AE Mode Tuning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-了解AE-Mode-Tuning"><span class="toc-text">5.1.了解AE Mode Tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-AE-Mode-Tuning—Back-Light"><span class="toc-text">5.2.AE Mode Tuning—Back Light</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-AE-Mode-Tuning—Histogram-Stretch"><span class="toc-text">5.3.AE Mode Tuning—Histogram Stretch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-AE-Mode-Tuning—Anti-Over-Exposure"><span class="toc-text">5.4.AE Mode Tuning—Anti Over Exposure</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AE-Tuning"><span class="toc-text">1.AE Tuning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-AE-Tuning的原因"><span class="toc-text">1.1.AE Tuning的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-AE-Tuning模拟特殊场景"><span class="toc-text">1.2.AE Tuning模拟特殊场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-调试方法"><span class="toc-text">1.3.调试方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-调整Flare-Offset"><span class="toc-text">1.3.1.调整Flare Offset</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-调整AE-Target"><span class="toc-text">1.3.2.调整AE Target</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-调整AE-Mode-Condition"><span class="toc-text">1.3.3.调整AE Mode Condition</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-AE-Tuning-Page的基本操作"><span class="toc-text">2.AE Tuning Page的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Pline-initial-ldx"><span class="toc-text">2.1.Pline initial ldx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Target-mean：AE收敛的目标"><span class="toc-text">2.2.Target mean：AE收敛的目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-AE-Mode-Tuning"><span class="toc-text">2.3.AE Mode Tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Ev-value-calibration"><span class="toc-text">2.4.Ev value calibration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Parameter的基本操作"><span class="toc-text">2.5.Parameter的基本操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-AE-Tuning—Flare-Tuning"><span class="toc-text">3.AE Tuning—Flare Tuning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-了解Flare-Tuning"><span class="toc-text">3.1.了解Flare Tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Flare-Tuning—Fix-Flare"><span class="toc-text">3.2.Flare Tuning—Fix Flare</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Flare-Tuning—Dynamic-Flare"><span class="toc-text">3.3.Flare Tuning—Dynamic Flare</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-文件位置"><span class="toc-text">3.4.文件位置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-AE-Tuning—AE-Target-Tuning"><span class="toc-text">4.AE Tuning—AE Target Tuning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-了解AE-Target-Tuning"><span class="toc-text">4.1.了解AE Target Tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-步骤"><span class="toc-text">4.2.步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-AE-Tuning—AE-Mode-Tuning"><span class="toc-text">5.AE Tuning—AE Mode Tuning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-了解AE-Mode-Tuning"><span class="toc-text">5.1.了解AE Mode Tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-AE-Mode-Basic-Tuning"><span class="toc-text">5.2.AE Mode Basic Tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-AE-Mode-Advance-Tuning"><span class="toc-text">5.3.AE Mode Advance Tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-AE-Mode-Tuning-Back-Light"><span class="toc-text">5.4.AE Mode Tuning-Back Light</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-AE-Mode-Tuning—Histogram-stretch"><span class="toc-text">5.5.AE Mode Tuning—Histogram stretch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-AE-Mode-Tuning—Anti-Over-Exposure"><span class="toc-text">5.6.AE Mode Tuning—Anti Over Exposure</span></a></li></ol></li></ol>
         
     </div>
 </aside>
