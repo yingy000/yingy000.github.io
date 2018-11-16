@@ -221,7 +221,7 @@
 <ul>
 <li><p>Manual ISO（手动设置ISO）</p>
 </li>
-<li><p>ISO Auto </p>
+<li><p>ISO Auto</p>
 </li>
 </ul>
 <h3 id="3-2-Flicker"><a href="#3-2-Flicker" class="headerlink" title="3.2.Flicker"></a>3.2.Flicker</h3><p>Flicker：选择Flicker Mode</p>
@@ -269,18 +269,23 @@
 <li><p>Triple</p>
 </li>
 </ul>
-<h2 id="4-MTK-Enginner-Mode功能之AF"><a href="#4-MTK-Enginner-Mode功能之AF" class="headerlink" title="4.MTK Enginner Mode功能之AF"></a>4.MTK Enginner Mode功能之AF</h2><p>在Enginner Mode中，可以执行各种AF模式，测试Lens Module</p>
+<h2 id="5-MTK-Enginner-Mode功能之AF-Test"><a href="#5-MTK-Enginner-Mode功能之AF-Test" class="headerlink" title="5.MTK Enginner Mode功能之AF Test"></a>5.MTK Enginner Mode功能之AF Test</h2><p>在Enginner Mode中，可以执行各种AF模式，测试Lens Module。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_4.png" alt=" "></p>
-<h3 id="4-1-Auto"><a href="#4-1-Auto" class="headerlink" title="4.1.Auto"></a>4.1.Auto</h3><p>Auto：拍照时，使用Normal AF</p>
-<h3 id="4-2-AF-Bracket"><a href="#4-2-AF-Bracket" class="headerlink" title="4.2.AF Bracket"></a>4.2.AF Bracket</h3><p>AF Bracket：拍照时，对Final AF Pos，进行Bracket Capture</p>
-<p>选择Bracket范围：、<code>0~511</code></p>
-<p>选择Bracket Capture间隔：<code>1/2/4</code></p>
-<h3 id="4-3-Full-Scan"><a href="#4-3-Full-Scan" class="headerlink" title="4.3.Full Scan"></a>4.3.Full Scan</h3><p>Full Scan：拍照时，使用全域搜索AF</p>
-<h3 id="4-4-Through-focus-dump"><a href="#4-4-Through-focus-dump" class="headerlink" title="4.4.Through focus dump"></a>4.4.Through focus dump</h3><p>Through focus dump：拍照时，每格特定Focus Interval拍一张照片</p>
+<h3 id="5-1-Auto"><a href="#5-1-Auto" class="headerlink" title="5.1.Auto"></a>5.1.Auto</h3><p>Auto：拍照时，使用Normal AF。</p>
+<h3 id="5-2-AF-Bracket"><a href="#5-2-AF-Bracket" class="headerlink" title="5.2.AF Bracket"></a>5.2.AF Bracket</h3><p>AF Bracket：拍照时对Final AF Pos进行Bracket Capture。=&gt;也就是说，拍照的时候先做一次Normal AF，Normal AF做完之后，对Final AF Position进行一个Bracket Capture的动作，Bracket Capture是指它会针对Final的Position（位置）的周围的AF Position都各拍一张。</p>
 <ul>
-<li><p>选择搜寻间隔：<code>0~511</code></p>
+<li><p>选择Bracket范围：、<code>0~511</code></p>
 </li>
-<li><p>选择搜寻方向：（Inf to Marco/Marco to Inf/Manual）</p>
+<li><p>选择Bracket Capture间隔：<code>1/2/4</code></p>
+</li>
+</ul>
+<p>举例：如果我们最后拍AF Final Position是500步，假如Bracket的范围选择是10，Bracket Capture间隔是1的话，那么就会从500步这个位置减去10步的位置就是490步，加上10就是510步；也就是说从490步开始每间隔1步拍一张照片一直拍到510步，</p>
+<h3 id="5-3-Full-Scan"><a href="#5-3-Full-Scan" class="headerlink" title="5.3.Full Scan"></a>5.3.Full Scan</h3><p>Full Scan：拍照时，使用全域搜索AF。=&gt;也就是说，在拍照的时候每隔一步就去搜寻一次，它会把整个AF的区域搜索一次，最完整的搜寻方法，产生AF Table的搜寻方式。</p>
+<h3 id="5-4-Through-focus-dump"><a href="#5-4-Through-focus-dump" class="headerlink" title="5.4.Through focus dump"></a>5.4.Through focus dump</h3><p>Through focus dump：拍照时，每隔特定Focus Interval拍一张照片</p>
+<ul>
+<li><p>选择搜寻间隔：<code>0~511</code>步</p>
+</li>
+<li><p>选择搜寻方向：（Inf to Marco（远焦到近焦）/Marco to Inf（近焦到远焦）/Manual（手动做选择））</p>
 </li>
 </ul>
 
@@ -365,7 +370,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-MTK-Camera-Enginner-Mode的功能（MTK平台的工程模式）"><span class="toc-text">1.MTK Camera Enginner Mode的功能（MTK平台的工程模式）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Camera-Engineer-Mode-工程模式-进入方法"><span class="toc-text">2.Camera Engineer Mode(工程模式)进入方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Capture-Setting"><span class="toc-text">3.Capture Setting</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-ISO-Speed"><span class="toc-text">3.1.ISO Speed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Flicker"><span class="toc-text">3.2.Flicker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Strobe-Mode"><span class="toc-text">3.3.Strobe Mode</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-MTK-Enginner-Mode功能之Capture-Mode"><span class="toc-text">4.MTK Enginner Mode功能之Capture Mode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Capture-Size"><span class="toc-text">4.1.Capture Size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Capture-Type"><span class="toc-text">4.2.Capture Type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Capture-Number"><span class="toc-text">4.3.Capture Number</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-MTK-Enginner-Mode功能之AF"><span class="toc-text">4.MTK Enginner Mode功能之AF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Auto"><span class="toc-text">4.1.Auto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-AF-Bracket"><span class="toc-text">4.2.AF Bracket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Full-Scan"><span class="toc-text">4.3.Full Scan</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-Through-focus-dump"><span class="toc-text">4.4.Through focus dump</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-MTK-Camera-Enginner-Mode的功能（MTK平台的工程模式）"><span class="toc-text">1.MTK Camera Enginner Mode的功能（MTK平台的工程模式）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Camera-Engineer-Mode-工程模式-进入方法"><span class="toc-text">2.Camera Engineer Mode(工程模式)进入方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Capture-Setting"><span class="toc-text">3.Capture Setting</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-ISO-Speed"><span class="toc-text">3.1.ISO Speed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Flicker"><span class="toc-text">3.2.Flicker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Strobe-Mode"><span class="toc-text">3.3.Strobe Mode</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-MTK-Enginner-Mode功能之Capture-Mode"><span class="toc-text">4.MTK Enginner Mode功能之Capture Mode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Capture-Size"><span class="toc-text">4.1.Capture Size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Capture-Type"><span class="toc-text">4.2.Capture Type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Capture-Number"><span class="toc-text">4.3.Capture Number</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-MTK-Enginner-Mode功能之AF-Test"><span class="toc-text">5.MTK Enginner Mode功能之AF Test</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Auto"><span class="toc-text">5.1.Auto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-AF-Bracket"><span class="toc-text">5.2.AF Bracket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-Full-Scan"><span class="toc-text">5.3.Full Scan</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-Through-focus-dump"><span class="toc-text">5.4.Through focus dump</span></a></li></ol></li></ol>
         
     </div>
 </aside>
