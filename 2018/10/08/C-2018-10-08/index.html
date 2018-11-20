@@ -201,7 +201,7 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-了解AF"><a href="#1-了解AF" class="headerlink" title="1.了解AF"></a>1.了解AF</h2><p>现在大多数手机的AF都是被动式AF，也就是利用Focus Value Curve来对焦。</p>
+        <h2 id="1-了解AF"><a href="#1-了解AF" class="headerlink" title="1.了解AF"></a>1.了解AF</h2><p>现在大多数手机的AF都是被动式AF，也就是利用Focus Value Curve（曲线方程）来对焦。</p>
 <h3 id="1-1-Focus-Value的理解"><a href="#1-1-Focus-Value的理解" class="headerlink" title="1.1.Focus Value的理解"></a>1.1.Focus Value的理解</h3><p>一般情况下，Focus Value越大代表越Sharp，也就意味着Focus Pos越接近焦点。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_17.png" alt=" "></p>
 <p>特殊情况：</p>
@@ -230,15 +230,18 @@
 </li>
 </ul>
 <p>Single AF(SAF)&amp;&amp;Touch AF(TAF)使用同一组调试参数，其中包括AF搜索的范围、AF Table、AF的精度、AF的速度等，基本上表现都会相同。</p>
-<p>Multi AF(MAF)虽然和SAF&amp;&amp;CAF使用相同的调试参数，但是由于MAF是五个Window同时对焦，且已最近焦的Window，因此Performance和行为表现会和SAF及TAF存在一些差异。</p>
 <p>CAF为了保持对焦过程中画面的Smooth，因此没有使用AF Search Table，而是使用固定的AF Step进行搜索。</p>
-<p>按照Focus Search Table搜索的作法<br><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_18.png" alt=" "></p>
-<p>按照固定步数搜索的作法<br><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_19.png" alt=" "></p>
+<p>Multi AF(MAF)虽然和SAF&amp;&amp;CAF使用相同的调试参数，但是由于MAF是五个Window同时对焦，且已最近焦的Window，因此Performance和行为表现会和SAF及TAF存在一些差异。</p>
+<p>按照Focus Search Table搜索的作法：</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_18.png" alt=" "></p>
+<p>按照固定步数搜索的作法：</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_19.png" alt=" "></p>
 <h2 id="2-AF调试Parameter-参数-Thres"><a href="#2-AF调试Parameter-参数-Thres" class="headerlink" title="2.AF调试Parameter(参数)-Thres"></a>2.AF调试Parameter(参数)-Thres</h2><h3 id="2-1-了解Parameter-参数-Thres"><a href="#2-1-了解Parameter-参数-Thres" class="headerlink" title="2.1.了解Parameter(参数)-Thres"></a>2.1.了解Parameter(参数)-Thres</h3><h4 id="2-1-1-原理"><a href="#2-1-1-原理" class="headerlink" title="2.1.1.原理"></a>2.1.1.原理</h4><p>从理论上来说，AF不需要搜寻整个AF Search Table，才能知道Peak FV Position。只要搜寻过程中FV值下降到一定程度，就可以确认已经找到Peak FV Position。</p>
 <h4 id="2-1-2-举例"><a href="#2-1-2-举例" class="headerlink" title="2.1.2.举例"></a>2.1.2.举例</h4><p>下图中的AF Table共有11个Steps，代表完整的AF Search，需要搜寻11个Step，但是可以看出FV从第7个Step后就开始下降，若是此时停止搜寻，AF可节省4个Step的时间。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_20.png" alt=" "></p>
 <h4 id="2-1-3-特例"><a href="#2-1-3-特例" class="headerlink" title="2.1.3.特例"></a>2.1.3.特例</h4><p>当Focus Value Curve存在双峰现象，过早停止AF就会造成没有找到真正的清晰点，因此AF提前停止的条件必须小心。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_21.png" alt=" "><br>注意:可能发生双峰现象的情形：</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_21.png" alt=" "></p>
+<p>注意:可能发生双峰现象的情形：</p>
 <ul>
 <li><p>AF Window内存在不同焦距的主体</p>
 </li>

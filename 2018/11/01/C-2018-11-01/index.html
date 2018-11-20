@@ -218,7 +218,7 @@
 <li>1.利用不同距离的Focus Value Curve，产生DOF Table(a,b,c……j)</li>
 </ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_9.png" alt=" "></p>
-<p>一般来说选取3m~10公分的距离来生成AF Table，距离越远可以拍摄的间隔较大，距离较近的话拍摄的间隔就要缩小，举例来说，3m~2m之间的间隔可以拍摄1张或者2张照片，1m~10公分之间的间隔需要拍摄多张照片。</p>
+<p>一般来说选取<code>3m~10</code>公分的距离来生成AF Table，距离越远可以拍摄的间隔较大，距离较近的话拍摄的间隔就要缩小，举例来说，<code>3m~2m</code>之间的间隔可以拍摄1张或者2张照片，<code>1m~10</code>公分之间的间隔需要拍摄多张照片。</p>
 <p>这里的DOF指的是镜头的步数，和平时拍照所说的景深并不相同。</p>
 <h6 id="问题：DOF怎么去量化？"><a href="#问题：DOF怎么去量化？" class="headerlink" title="问题：DOF怎么去量化？"></a>问题：DOF怎么去量化？</h6><p>假设最清晰点的FB值为100%，只要是任何一个点它的FB值在最佳点的95%以上，就认为这个距离是可以的，拍摄的主体是清晰的。</p>
 <p>事实上说只要选取足够高频，一般就可以达到最佳点。</p>
@@ -227,20 +227,36 @@
 </ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_10.PNG" alt=" "></p>
 <p>CCT工具会自动估算出最大的Step，从上图中可以看出该Table表最大的Step是A=&gt;原因：当搜寻的点+1，也就是增加一步，它的误差值就会变大，当误差值大于DOF时就不能满足条件，这时回退一步，就找到了最大的Step。</p>
-<p>注意：利用Curve Fitting方程式，可以提高AF Search的准确度，Curve Fitting方程式对于寻找Focus Position误差&lt;DOF的最大Step起到十分重要的作用。</p>
+<p>注意：搭配Curve Fitting方程式时，可以提高AF Search的准确度，也就是说如果在某时刻间距大于DOF时，利用Curve Fitting方程式还是可以找到最理想的值，所以Curve Fitting方程式对于寻找Focus Position误差&lt;DOF的最大Step起到十分重要的作用。</p>
 <h6 id="问题：为什么需要满足Focus-Position误差-lt-DOF所允许的最大Step？"><a href="#问题：为什么需要满足Focus-Position误差-lt-DOF所允许的最大Step？" class="headerlink" title="问题：为什么需要满足Focus Position误差&lt;DOF所允许的最大Step？"></a>问题：为什么需要满足Focus Position误差&lt;DOF所允许的最大Step？</h6><p>在生成AF Search Table的时候，为了要让AF Search的速度越快，那么两点之间的间隔是越大越好，越大的话速度肯定越快找完全部的Step，可是也不能无止境的往上上升，否则的话最后生成的Focus Position与最佳的Focus Position的误差已经超过DOF，就无法保证拍摄的主体是清晰的。</p>
 <ul>
 <li>3.利用满足Focus Position误差&lt;DOF的最大Step(A,B,C…K)，产生全行程的AF Search Table。</li>
 </ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_11.PNG" alt=" "></p>
 <p>首先应该找出一个斜率，确保整个AF Search Table它的每一个搜寻点跟下一个搜寻点之间的距离会小于前面的这个Table（Max allow Step），如果满足这个条件，就可以确保每一个Focus Position去搜寻的Stop最后找出的误差点都会&lt;DOF。</p>
-<p>Search Table是指AF在搜寻过程中它的每一次AF的点都是Table上面记录好的点，第一步从0开始找，最大允许的步数为A，所以第二步从A开始找，</p>
+<p>斜率的倾斜程度决定每一个AF Search Table它每一个点的间隔，如果这条线的斜率过高，导致这条线的每一个点没有办法在这之下的话，那么导出来的点就没办法满足error&lt;DOF，只要可以保证这条线的斜率在<code>A~K</code>之下的话，那么导出来的点就可以满足error&lt;DOF，所以需要调整这条线的倾斜程度。</p>
+<p>Search Table是指AF在搜寻过程中它的每一次AF的点都是Table上面记录好的点，第一步从0开始找，最大允许的步数为A，所以第二步从A开始找，以此类推……</p>
 <h2 id="4-AF-Gen-Search-Table"><a href="#4-AF-Gen-Search-Table" class="headerlink" title="4.AF Gen Search Table"></a>4.AF Gen Search Table</h2><h3 id="4-1-工具"><a href="#4-1-工具" class="headerlink" title="4.1.工具"></a>4.1.工具</h3><p>CCT AF Page</p>
-<h3 id="4-2-流程"><a href="#4-2-流程" class="headerlink" title="4.2.流程"></a>4.2.流程</h3><p>1.进入Engineer Mode，设定好AF及Capture Type</p>
+<h3 id="4-2-场景"><a href="#4-2-场景" class="headerlink" title="4.2.场景"></a>4.2.场景</h3><p>高对比场景或者是高频直线圆</p>
+<h3 id="4-3-距离"><a href="#4-3-距离" class="headerlink" title="4.3.距离"></a>4.3.距离</h3><p><code>3m~5m</code>，其中3m代表无穷远，5m代表极近焦。</p>
+<h3 id="4-4-流程"><a href="#4-4-流程" class="headerlink" title="4.4.流程"></a>4.4.流程</h3><p>1.进入Engineer Mode，设定好AF及Capture Type</p>
 <p>2.距离主体3m开始拍照，一路拍到5cm</p>
-<p>3.使用DP开放照片，开始Gen Table</p>
+<p>3.使用Debug Parser开放照片，开始Gen Table</p>
 <p>4.完成</p>
-<h3 id="4-3-Start-Capture"><a href="#4-3-Start-Capture" class="headerlink" title="4.3.Start Capture"></a>4.3.Start Capture</h3><h3 id="4-4-Analysis-Data"><a href="#4-4-Analysis-Data" class="headerlink" title="4.4.Analysis Data"></a>4.4.Analysis Data</h3>
+<h3 id="4-5-Start-Capture"><a href="#4-5-Start-Capture" class="headerlink" title="4.5.Start Capture"></a>4.5.Start Capture</h3><h4 id="4-5-1-目的"><a href="#4-5-1-目的" class="headerlink" title="4.5.1.目的"></a>4.5.1.目的</h4><p>利用AF Full Search，profiling（分析）出各个距离，Focus Value Curve的特性。</p>
+<h4 id="4-5-2-流程"><a href="#4-5-2-流程" class="headerlink" title="4.5.2.流程"></a>4.5.2.流程</h4><p>1.进入<code>&quot;Enigger Mode&quot;</code>设定<code>&quot;AF Full Search&quot;</code></p>
+<p>2.从3m开始，每拉近40cm拍一张，距离1m以内，每拉近10cm拍一张，距离10cm以内，每拉近2cm拍一张</p>
+<p>3.拍完之后，收集所有图片有Debug Parser工具分析</p>
+<h4 id="4-5-3-注意事项"><a href="#4-5-3-注意事项" class="headerlink" title="4.5.3.注意事项"></a>4.5.3.注意事项</h4><p>拍摄主体必须为高对比，Edge清楚的图形</p>
+<p>手机必须完全固定（三脚架）</p>
+<p>光源必须明亮，距离间隔越近，产生出的AF Table准确度越高。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_23..png" alt=" "></p>
+<h3 id="4-6-Analysis-Data"><a href="#4-6-Analysis-Data" class="headerlink" title="4.6.Analysis Data"></a>4.6.Analysis Data</h3><h4 id="4-6-1-目的"><a href="#4-6-1-目的" class="headerlink" title="4.6.1.目的"></a>4.6.1.目的</h4><p>利用各个距离Focus value Curve，找出此颗Module景深的特性，并利用此特性建立Focus Search Table</p>
+<h4 id="4-6-2-流程"><a href="#4-6-2-流程" class="headerlink" title="4.6.2.流程"></a>4.6.2.流程</h4><p>a.利用CCT AF Page开放Full Search AF Picture</p>
+<p>b.去除对焦失败的照片(距离越近，影像过糊)，避免错误的Focus资讯影响Table准确度。</p>
+<p>c.微调Table Search Point（同样的Focus距离，步数越多，AF越精准，但是速度越慢）</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_24.png" alt=" "></p>
+
     </div>
     
         <div class="reward">
@@ -322,7 +338,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-名词解释"><span class="toc-text">1.名词解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Focus-Value"><span class="toc-text">1.1.Focus Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-DOF"><span class="toc-text">1.2.DOF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Focus-Position和Focus-Value"><span class="toc-text">1.3.Focus Position和Focus Value</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-AF-Search-Table"><span class="toc-text">2.AF Search Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-AF-Gen-Table目的"><span class="toc-text">2.1.AF Gen Table目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-AF-Search-Table原理"><span class="toc-text">2.2.AF Search Table原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-AF-Search-Table方法"><span class="toc-text">2.3.AF Search Table方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Gen-AF-Search-Table的流程"><span class="toc-text">3.Gen AF Search Table的流程</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#问题：DOF怎么去量化？"><span class="toc-text">问题：DOF怎么去量化？</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#问题：为什么需要满足Focus-Position误差-lt-DOF所允许的最大Step？"><span class="toc-text">问题：为什么需要满足Focus Position误差&lt;DOF所允许的最大Step？</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-AF-Gen-Search-Table"><span class="toc-text">4.AF Gen Search Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-工具"><span class="toc-text">4.1.工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-流程"><span class="toc-text">4.2.流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Start-Capture"><span class="toc-text">4.3.Start Capture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-Analysis-Data"><span class="toc-text">4.4.Analysis Data</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-名词解释"><span class="toc-text">1.名词解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Focus-Value"><span class="toc-text">1.1.Focus Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-DOF"><span class="toc-text">1.2.DOF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Focus-Position和Focus-Value"><span class="toc-text">1.3.Focus Position和Focus Value</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-AF-Search-Table"><span class="toc-text">2.AF Search Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-AF-Gen-Table目的"><span class="toc-text">2.1.AF Gen Table目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-AF-Search-Table原理"><span class="toc-text">2.2.AF Search Table原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-AF-Search-Table方法"><span class="toc-text">2.3.AF Search Table方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Gen-AF-Search-Table的流程"><span class="toc-text">3.Gen AF Search Table的流程</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#问题：DOF怎么去量化？"><span class="toc-text">问题：DOF怎么去量化？</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#问题：为什么需要满足Focus-Position误差-lt-DOF所允许的最大Step？"><span class="toc-text">问题：为什么需要满足Focus Position误差&lt;DOF所允许的最大Step？</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-AF-Gen-Search-Table"><span class="toc-text">4.AF Gen Search Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-工具"><span class="toc-text">4.1.工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-场景"><span class="toc-text">4.2.场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-距离"><span class="toc-text">4.3.距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-流程"><span class="toc-text">4.4.流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-Start-Capture"><span class="toc-text">4.5.Start Capture</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-1-目的"><span class="toc-text">4.5.1.目的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-2-流程"><span class="toc-text">4.5.2.流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-3-注意事项"><span class="toc-text">4.5.3.注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-Analysis-Data"><span class="toc-text">4.6.Analysis Data</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-1-目的"><span class="toc-text">4.6.1.目的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-2-流程"><span class="toc-text">4.6.2.流程</span></a></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
