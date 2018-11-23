@@ -203,8 +203,8 @@
     <div class="post-body post-content">
         <h2 id="1-目的"><a href="#1-目的" class="headerlink" title="1.目的"></a>1.目的</h2><h2 id="2-可调参数"><a href="#2-可调参数" class="headerlink" title="2.可调参数"></a>2.可调参数</h2><p>所有可调的参数如下图所示：</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_25.png" alt=" "></p>
-<h4 id="2-1-Accuracy"><a href="#2-1-Accuracy" class="headerlink" title="2.1.Accuracy"></a>2.1.Accuracy</h4><p>调高：增加Table的精确度，降低AF的速度，会减小Focus Step，增大Focus Index</p>
-<p>调低：减低Table的精确度，加快AF的速度，会增大Focus Step，减小Focus Index</p>
+<h4 id="2-1-Accuracy"><a href="#2-1-Accuracy" class="headerlink" title="2.1.Accuracy"></a>2.1.Accuracy</h4><p>调高：增加Table的精确度，降低AF的速度，会减小Focus Step，增多Focus Index</p>
+<p>调低：减低Table的精确度，加快AF的速度，会增大Focus Step，减少Focus Index</p>
 <h4 id="2-2-Max-Step"><a href="#2-2-Max-Step" class="headerlink" title="2.2.Max Step"></a>2.2.Max Step</h4><p>Max Step：限制最大的Focus Step，主要目的是避免因Focus Step过大，造成AF精准度不佳，因此增加此限制。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_26.png" alt=" "></p>
 <p>上图中，红点代表每个距离允许的最大Focus Position，如果只放入三个距离AF Full Search的Jpeg，则红点只会有三个，如果放入更多不同距离的AF Full Search Jpeg，可以得到更准确地AF Info。</p>
@@ -222,6 +222,10 @@
 <h4 id="2-6-Offset-Shift"><a href="#2-6-Offset-Shift" class="headerlink" title="2.6.Offset Shift"></a>2.6.Offset Shift</h4><p>文件位置：<code>mt6759\hal\lens\fm50af\lens_para_FM50AF.h</code></p>
 <p>Offset Shift：决定AF Table的起始点（Offset），Offset为AF Search真正的起始点。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_30.png" alt=" "></p>
+<p>整个Table从168开始搜寻，第一个是168+0，第二个是168+29，第三个是197+64，依次往后推……</p>
+<p>最清晰的点一般是由Curve(曲线)得到的，如果第一个点就是从Curve(曲线)做出来的，也就是从最清晰的点开始搜寻的话，肯定就是个单调下降的曲线，不可能搜寻到正确的结果，为了避免这种情况，可以设置Offset Shift的值，</p>
+<p>从图中可以看出，Offset Shift值设置为20，所以真正的起点是从148开始，Offset Shift越小，Offset越大，Offset Shift越大，Offset越小。</p>
+<p>不同Lens的无穷远并不相同，并且差异还比较大，Offset Shift的作用就是简单的控制Search Table真正的起点，削弱这种差异带来的影响。</p>
 
     </div>
     

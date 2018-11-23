@@ -236,7 +236,7 @@
 <p>首先应该找出一个斜率，确保整个AF Search Table它的每一个搜寻点跟下一个搜寻点之间的距离会小于前面的这个Table（Max allow Step），如果满足这个条件，就可以确保每一个Focus Position去搜寻的Stop最后找出的误差点都会&lt;DOF。</p>
 <p>斜率的倾斜程度决定每一个AF Search Table它每一个点的间隔，如果这条线的斜率过高，导致这条线的每一个点没有办法在这之下的话，那么导出来的点就没办法满足error&lt;DOF，只要可以保证这条线的斜率在<code>A~K</code>之下的话，那么导出来的点就可以满足error&lt;DOF，所以需要调整这条线的倾斜程度。</p>
 <p>Search Table是指AF在搜寻过程中它的每一次AF的点都是Table上面记录好的点，第一步从0开始找，最大允许的步数为A，所以第二步从A开始找，以此类推……</p>
-<h2 id="4-AF-Gen-Search-Table"><a href="#4-AF-Gen-Search-Table" class="headerlink" title="4.AF Gen Search Table"></a>4.AF Gen Search Table</h2><h3 id="4-1-工具"><a href="#4-1-工具" class="headerlink" title="4.1.工具"></a>4.1.工具</h3><p>CCT AF Page</p>
+<h2 id="4-AF-Gen-Search-Table"><a href="#4-AF-Gen-Search-Table" class="headerlink" title="4.AF Gen Search Table"></a>4.AF Gen Search Table</h2><h3 id="4-1-工具"><a href="#4-1-工具" class="headerlink" title="4.1.工具"></a>4.1.工具</h3><p>CCT AF Page和Camera Enigger Mode（工程模式）</p>
 <h3 id="4-2-场景"><a href="#4-2-场景" class="headerlink" title="4.2.场景"></a>4.2.场景</h3><p>高对比场景或者是高频直线圆</p>
 <h3 id="4-3-距离"><a href="#4-3-距离" class="headerlink" title="4.3.距离"></a>4.3.距离</h3><p><code>3m~5m</code>，其中3m代表无穷远，5m代表极近焦。</p>
 <h3 id="4-4-流程"><a href="#4-4-流程" class="headerlink" title="4.4.流程"></a>4.4.流程</h3><p>1.进入Engineer Mode，设定好AF及Capture Type</p>
