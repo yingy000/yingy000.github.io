@@ -202,8 +202,8 @@
     
     <div class="post-body post-content">
         <h2 id="1-文件所在位置"><a href="#1-文件所在位置" class="headerlink" title="1.文件所在位置"></a>1.文件所在位置</h2><p>文件所在位置：<code>mt6739\hal\camera_3a\isp_tuning_custom.cpp</code></p>
-<h2 id="2-功能"><a href="#2-功能" class="headerlink" title="2.功能"></a>2.功能</h2><p>1.Get 3A与Flash information。</p>
-<p>2.可取得Sensor ID=&gt;getSensorID()</p>
+<h2 id="2-功能"><a href="#2-功能" class="headerlink" title="2.功能"></a>2.功能</h2><p>1.Get 3A与Flash information</p>
+<p>2.可取得Sensor ID=&gt;使用getSensorID()</p>
 <p>3.所有的ISP Module都可以做Refine</p>
 <p>4.修改Menu上的”Image Adjust”Mapping</p>
 <ul>
@@ -218,6 +218,26 @@
 <li><p>对比度</p>
 </li>
 </ul>
+<h3 id="2-1-Get-3A与Flash-information"><a href="#2-1-Get-3A与Flash-information" class="headerlink" title="2.1.Get 3A与Flash information"></a>2.1.Get 3A与Flash information</h3><h4 id="2-1-1-使用时机"><a href="#2-1-1-使用时机" class="headerlink" title="2.1.1.使用时机"></a>2.1.1.使用时机</h4><p>当希望知道Get 3A与Flash run time Info</p>
+<h4 id="2-1-2-方法介绍"><a href="#2-1-2-方法介绍" class="headerlink" title="2.1.2.方法介绍"></a>2.1.2.方法介绍</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_60.png" alt=" "></p>
+<h3 id="2-2-修改Menu上的”锐利度-Adjust”Mapping"><a href="#2-2-修改Menu上的”锐利度-Adjust”Mapping" class="headerlink" title="2.2.修改Menu上的”锐利度 Adjust”Mapping"></a>2.2.修改Menu上的”锐利度 Adjust”Mapping</h3><h4 id="2-2-1-使用时机"><a href="#2-2-1-使用时机" class="headerlink" title="2.2.1.使用时机"></a>2.2.1.使用时机</h4><p>当希望修改camera menu上，+锐利度或者-锐利度的程度</p>
+<h4 id="2-2-2-方法介绍"><a href="#2-2-2-方法介绍" class="headerlink" title="2.2.2.方法介绍"></a>2.2.2.方法介绍</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_61.png" alt=" "></p>
+<h3 id="2-3-修改Menu上的”饱和度-Adjust”Mapping"><a href="#2-3-修改Menu上的”饱和度-Adjust”Mapping" class="headerlink" title="2.3.修改Menu上的”饱和度 Adjust”Mapping"></a>2.3.修改Menu上的”饱和度 Adjust”Mapping</h3><h4 id="2-3-1-使用时机"><a href="#2-3-1-使用时机" class="headerlink" title="2.3.1.使用时机"></a>2.3.1.使用时机</h4><p>当希望修改camera menu上，+饱和度或者-饱和度改变的程度</p>
+<h4 id="2-3-2-方法介绍"><a href="#2-3-2-方法介绍" class="headerlink" title="2.3.2.方法介绍"></a>2.3.2.方法介绍</h4><p>64=1x gain</p>
+<p>增强饱和度（&gt;64）</p>
+<p>降低饱和度（&lt;64）</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_62.png" alt=" "></p>
+<h3 id="2-4-修改Menu上的”色相-Adjust”Mapping"><a href="#2-4-修改Menu上的”色相-Adjust”Mapping" class="headerlink" title="2.4.修改Menu上的”色相 Adjust”Mapping"></a>2.4.修改Menu上的”色相 Adjust”Mapping</h3><h4 id="2-4-1-使用时机"><a href="#2-4-1-使用时机" class="headerlink" title="2.4.1.使用时机"></a>2.4.1.使用时机</h4><p>当希望修改camera menu上，+色相或者-色相改变的程度</p>
+<h4 id="2-4-2-方法介绍"><a href="#2-4-2-方法介绍" class="headerlink" title="2.4.2.方法介绍"></a>2.4.2.方法介绍</h4><p>0：不调整</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_63.png" alt=" "></p>
+<h3 id="2-5-修改Menu上的”亮度-Adjust”Mapping"><a href="#2-5-修改Menu上的”亮度-Adjust”Mapping" class="headerlink" title="2.5.修改Menu上的”亮度 Adjust”Mapping"></a>2.5.修改Menu上的”亮度 Adjust”Mapping</h3><h4 id="2-5-1-使用时机"><a href="#2-5-1-使用时机" class="headerlink" title="2.5.1.使用时机"></a>2.5.1.使用时机</h4><p>当希望修改camera menu上，+亮度或者-亮度改变的程度</p>
+<h4 id="2-5-2-方法介绍"><a href="#2-5-2-方法介绍" class="headerlink" title="2.5.2.方法介绍"></a>2.5.2.方法介绍</h4><p>0：不调整</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_64.png" alt=" "></p>
+<h3 id="2-6-修改Menu上的”对比度-Adjust”Mapping"><a href="#2-6-修改Menu上的”对比度-Adjust”Mapping" class="headerlink" title="2.6.修改Menu上的”对比度 Adjust”Mapping"></a>2.6.修改Menu上的”对比度 Adjust”Mapping</h3><h4 id="2-6-1-使用时机"><a href="#2-6-1-使用时机" class="headerlink" title="2.6.1.使用时机"></a>2.6.1.使用时机</h4><p>当希望修改camera menu上，+对比度或者-对比度改变的程度</p>
+<h4 id="2-6-2-方法介绍"><a href="#2-6-2-方法介绍" class="headerlink" title="2.6.2.方法介绍"></a>2.6.2.方法介绍</h4><p>64=1x gain</p>
+<p>增强对比（&gt;64）</p>
+<p>降低对比（&lt;64）</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_65.png" alt=" "></p>
 
     </div>
     
@@ -249,15 +269,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/11/12/C-2018-11-12/" class="pre-post btn btn-default" title='MT6589_Advance之Fine-tune AF Search table'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">MT6589_Advance之Fine-tune AF Search table</span>
-        </a>
     
-    
-        <a href="/2018/11/08/C-2018-11-08/" class="next-post btn btn-default" title='MT6589_Advance之Flare'>
+        <a href="/2018/11/08/C-2018-11-08/" class="next-post btn btn-default" title='MT6589_Advance之AF和Flare'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">MT6589_Advance之Flare</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">MT6589_Advance之AF和Flare</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -300,7 +315,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-文件所在位置"><span class="toc-text">1.文件所在位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-功能"><span class="toc-text">2.功能</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-文件所在位置"><span class="toc-text">1.文件所在位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-功能"><span class="toc-text">2.功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Get-3A与Flash-information"><span class="toc-text">2.1.Get 3A与Flash information</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-使用时机"><span class="toc-text">2.1.1.使用时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-方法介绍"><span class="toc-text">2.1.2.方法介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-修改Menu上的”锐利度-Adjust”Mapping"><span class="toc-text">2.2.修改Menu上的”锐利度 Adjust”Mapping</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-使用时机"><span class="toc-text">2.2.1.使用时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-方法介绍"><span class="toc-text">2.2.2.方法介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-修改Menu上的”饱和度-Adjust”Mapping"><span class="toc-text">2.3.修改Menu上的”饱和度 Adjust”Mapping</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-使用时机"><span class="toc-text">2.3.1.使用时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-方法介绍"><span class="toc-text">2.3.2.方法介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-修改Menu上的”色相-Adjust”Mapping"><span class="toc-text">2.4.修改Menu上的”色相 Adjust”Mapping</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-使用时机"><span class="toc-text">2.4.1.使用时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-方法介绍"><span class="toc-text">2.4.2.方法介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-修改Menu上的”亮度-Adjust”Mapping"><span class="toc-text">2.5.修改Menu上的”亮度 Adjust”Mapping</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-使用时机"><span class="toc-text">2.5.1.使用时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-2-方法介绍"><span class="toc-text">2.5.2.方法介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-修改Menu上的”对比度-Adjust”Mapping"><span class="toc-text">2.6.修改Menu上的”对比度 Adjust”Mapping</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-1-使用时机"><span class="toc-text">2.6.1.使用时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-2-方法介绍"><span class="toc-text">2.6.2.方法介绍</span></a></li></ol></li></ol></li></ol>
         
     </div>
 </aside>

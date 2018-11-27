@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>MT6589_Advance之AE | 天使在人间の博客</title>
+<title>MT6589_Advance之AWB | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="MT6589_Advance之AE">
+        <h1 id="MT6589_Advance之AWB">
             
-	            MT6589_Advance之AE
+	            MT6589_Advance之AWB
             
         </h1>
         <div class="post-meta">
@@ -201,25 +201,92 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-文件所在位置"><a href="#1-文件所在位置" class="headerlink" title="1.文件所在位置"></a>1.文件所在位置</h2><p>文件所在位置：<code>mt6739\hal\camera_3a\ae_tuning_custom.cpp</code></p>
+        <h2 id="1-文件所在位置"><a href="#1-文件所在位置" class="headerlink" title="1.文件所在位置"></a>1.文件所在位置</h2><p>文件所在位置：<code>mt6739\hal\camera_3a\awb_tuning_custom.cpp</code></p>
 <h2 id="2-功能"><a href="#2-功能" class="headerlink" title="2.功能"></a>2.功能</h2><ul>
-<li><p>1.AE行为模式客制化</p>
+<li><p>1.混光亮度权重调整=&gt;调整各个光源所占的可能性是多少（P1的调整）</p>
 </li>
-<li><p>2.AE测光Table权重设定</p>
+<li><p>2.单一光源和日光亮度权重调整（是指AWB中的算法为了避免一个色偏的动作，当环境亮度越高的时候，对特定光源算出来的AWB Gain会跟Daylight的Gain做一个混光的动作，在一般的Daylight环境下会减少误判的产生，如果是在非Daylight情景之下，这种混光就有可能造成色偏的状况）</p>
 </li>
-<li><p>3.AF&amp;预闪加速设定</p>
+<li><p>3.AWB收敛速度调整（调整AWB收敛速度和敏感度）</p>
 </li>
-<li><p>4.Strobe Trigger设定</p>
+<li><p>4.Capture AWB收敛参数调整（暗处Sensor的不稳定性，造成AWB不稳定性的调整）</p>
 </li>
-<li><p>5.EV Bios Mapping设定</p>
+<li><p>5.Parent Block权重调整（AWB的行为模式的调整）</p>
 </li>
-<li><p>6.AE Moving Table</p>
+<li><p>6.Neutral Parent Block临界值调整（为了统计调整多少的中心色的点代表这个光源是可以信赖的，一般来说有个Default值，也就是说当中心色的点多到某个程度才可以信赖，Neutral Parent Block临界值调整是指，我们可以调整AWB的算法是否要参考Daylight Default Gain的条件）</p>
 </li>
-<li><p>7.Touch/Face收敛范围</p>
+<li><p>7.统计值计算区间调整</p>
 </li>
-<li><p>8.Dynamic Flare参数调整</p>
+<li><p>8.AWB Cycle调整</p>
 </li>
 </ul>
+<h3 id="2-1-混光亮度权重调整"><a href="#2-1-混光亮度权重调整" class="headerlink" title="2.1.混光亮度权重调整"></a>2.1.混光亮度权重调整</h3><h4 id="2-1-1-意义"><a href="#2-1-1-意义" class="headerlink" title="2.1.1.意义"></a>2.1.1.意义</h4><p>当环境色温为多组光源混合而成，AWB会根据此table，决定各色温的比重</p>
+<h4 id="2-1-2-修改时机"><a href="#2-1-2-修改时机" class="headerlink" title="2.1.2.修改时机"></a>2.1.2.修改时机</h4><p>当AWB判断光源错误，可修改预设权重，降低错误光源所占的比例</p>
+<h4 id="2-1-3-举例"><a href="#2-1-3-举例" class="headerlink" title="2.1.3.举例"></a>2.1.3.举例</h4><p>当在Daylight环境，环境亮度为LV12，且照片发红：</p>
+<ul>
+<li>1.由DP得知AWB最终机率</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_12.PNG" alt=" "></p>
+<ul>
+<li>2.由DP得知Shade在LV12混光权重为66，修改Table，降低Shade权重。</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_13.PNG" alt=" "></p>
+<h3 id="2-2-单一光源和日光亮度权重调整"><a href="#2-2-单一光源和日光亮度权重调整" class="headerlink" title="2.2.单一光源和日光亮度权重调整"></a>2.2.单一光源和日光亮度权重调整</h3><h4 id="2-2-1-意义"><a href="#2-2-1-意义" class="headerlink" title="2.2.1.意义"></a>2.2.1.意义</h4><p>各种光源都有合理的亮度范围，当光源亮度超过此范围，则把AWB Gain和Daylight Default Gain做线性混合</p>
+<h4 id="2-2-2-修改时机"><a href="#2-2-2-修改时机" class="headerlink" title="2.2.2.修改时机"></a>2.2.2.修改时机</h4><p>当AWB光源判断正确，欲又发生色偏，可确认是否为Daylight Default Gain造成</p>
+<h4 id="2-2-3-举例1"><a href="#2-2-3-举例1" class="headerlink" title="2.2.3.举例1"></a>2.2.3.举例1</h4><p>无Preference的光源（比如说，Strobe/Fluorescent/CWF/Daylight/Daylight Fluorescent）</p>
+<p>当在CWF光源下，环境亮度为LV10.AWB偏红</p>
+<ul>
+<li>1.CWF和Daylight Fluorescent的混合条件</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_14.png" alt=" "></p>
+<h6 id="解决问题的思路："><a href="#解决问题的思路：" class="headerlink" title="解决问题的思路："></a>解决问题的思路：</h6><p>当环境亮度大于LV9的时候，CWF算出来的Gain会跟Default Gain进行线性的内插，当环境亮度大于LV12的时候就完全使用Default Gain，CWF算出来的Gain就完全不被采用，所以我们知道AWB偏红是由于与Default Gain做线性混合造成的，这时修改Table表格，也就是修改混合的条件。</p>
+<ul>
+<li>2.修改Table</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_15.png" alt=" "></p>
+<h4 id="2-2-4-举例2"><a href="#2-2-4-举例2" class="headerlink" title="2.2.4.举例2"></a>2.2.4.举例2</h4><p>有Preference的光源（Tungsten/Warm Fluorescent/Shade）</p>
+<p>当在Tungsten光源下，环境亮度为LV12.AWB偏红</p>
+<ul>
+<li>1.Tungsten和Daylight Fluorescent的混合条件</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_16..png" alt=" "></p>
+<h6 id="解决问题的思路：-1"><a href="#解决问题的思路：-1" class="headerlink" title="解决问题的思路："></a>解决问题的思路：</h6><p>不能使用混合光源的Gain值，需要修改Table表格为单一光源的Gain值</p>
+<ul>
+<li>2.修改Table</li>
+</ul>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_17..png" alt=" "></p>
+<h3 id="2-3-AWB收敛速度调整"><a href="#2-3-AWB收敛速度调整" class="headerlink" title="2.3.AWB收敛速度调整"></a>2.3.AWB收敛速度调整</h3><h4 id="2-3-1-意义"><a href="#2-3-1-意义" class="headerlink" title="2.3.1.意义"></a>2.3.1.意义</h4><p>决定AWB的收敛速度和灵敏度</p>
+<h4 id="2-3-2-修改时机"><a href="#2-3-2-修改时机" class="headerlink" title="2.3.2.修改时机"></a>2.3.2.修改时机</h4><p>当AWB收敛速度过慢或对于环境光源变化的灵敏度过低</p>
+<h4 id="2-3-3-相关参数"><a href="#2-3-3-相关参数" class="headerlink" title="2.3.3.相关参数"></a>2.3.3.相关参数</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_18.PNG" alt=" "></p>
+<p>iSpeed：AWB每Frame收敛的百分比，设越高收敛越快=&gt;从图中可以得知，每Frame收敛10Part。</p>
+<p>i4StableThr：AWB判断是否收敛的灵敏度，设越小越灵敏</p>
+<h3 id="2-4-Capture-AWB收敛参数调整"><a href="#2-4-Capture-AWB收敛参数调整" class="headerlink" title="2.4.Capture AWB收敛参数调整"></a>2.4.Capture AWB收敛参数调整</h3><h4 id="2-4-1-意义"><a href="#2-4-1-意义" class="headerlink" title="2.4.1.意义"></a>2.4.1.意义</h4><p>根据环境亮度，决定拍照时使用Preview或Capture的WB Gain，避免瞬间的噪音造成WB偏色</p>
+<h4 id="2-4-2-修改时机、"><a href="#2-4-2-修改时机、" class="headerlink" title="2.4.2.修改时机、"></a>2.4.2.修改时机、</h4><p>当暗处拍照，发现AWB不稳定时</p>
+<h4 id="2-4-3-相关参数"><a href="#2-4-3-相关参数" class="headerlink" title="2.4.3.相关参数"></a>2.4.3.相关参数</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_19.PNG" alt=" "></p>
+<p>bSmooth：是否开放此机制</p>
+<p>LV1.0：当环境亮度低于此亮度，Capture AWB完全使用Preview WB Gain</p>
+<p>LV5.0：当环境亮度高于此亮度，Capture AWB完全使用Capture WB Gain</p>
+<p>当环境亮度介于<code>LV1.0~LV5.0</code>之间，Capture采用内插。</p>
+<h3 id="2-5-Parent-Block权重调整"><a href="#2-5-Parent-Block权重调整" class="headerlink" title="2.5.Parent Block权重调整"></a>2.5.Parent Block权重调整</h3><h4 id="2-5-1-意义"><a href="#2-5-1-意义" class="headerlink" title="2.5.1.意义"></a>2.5.1.意义</h4><p>决定AWB中性色区块，是否依照亮度加权</p>
+<h4 id="2-5-2-修改时机"><a href="#2-5-2-修改时机" class="headerlink" title="2.5.2.修改时机"></a>2.5.2.修改时机</h4><p>当AWB最终收敛色温，不希望以高亮区为主，而是以大面积区为主</p>
+<h4 id="2-5-3-相关参数"><a href="#2-5-3-相关参数" class="headerlink" title="2.5.3.相关参数"></a>2.5.3.相关参数</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_31.png" alt=" "></p>
+<p>bEnable：启动此功能</p>
+<p>i4ScalingFactor：预设为6，当AWB不希望以高亮区为主，而是以大面积区为主，将此值增大。</p>
+<p>从图中可以看出，预设值为6，也就是说AWB是以高亮区为主。</p>
+<h3 id="2-6-Neutral-Parent-Block临界值调整"><a href="#2-6-Neutral-Parent-Block临界值调整" class="headerlink" title="2.6.Neutral Parent Block临界值调整"></a>2.6.Neutral Parent Block临界值调整</h3><h4 id="2-6-1-意义"><a href="#2-6-1-意义" class="headerlink" title="2.6.1.意义"></a>2.6.1.意义</h4><p>当画面中白点过少，AWB计算结果不可信赖，AWB Gain会参考Default Gain，这个参数修改白点的判断条件。</p>
+<h4 id="2-6-2-修改时机"><a href="#2-6-2-修改时机" class="headerlink" title="2.6.2.修改时机"></a>2.6.2.修改时机</h4><p>当AWB计算正确，但因白点过少而启动保护机制，导致色偏。</p>
+<p>在暗处的时候白点就会比较少，此时判断会发现它的色温是正确的，但是白点较少，这时就会启用Daylight Default Gain，由于Daylight Default Gain是处于高色温的场景，使用的R-Gain就会比较红，所以整个画面就会比较红，这时就需要修改Table表。</p>
+<h4 id="2-6-3-相关参数"><a href="#2-6-3-相关参数" class="headerlink" title="2.6.3.相关参数"></a>2.6.3.相关参数</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_32.png" alt=" "></p>
+<p>m_i4NeutralParentBlkNumThr（%）:各环境亮度下，AWB不参考Default Gain，白点的下限值</p>
+<p>m_i4NeutralParentBlkNumThr_CWF（%）：各环境亮度下，AWB不参考Default Gain，白点的下限值（CWF）</p>
+<p>m_i4NeutralParentBlkNumThr_DF（%）:各环境亮度下，AWB不参考Default Gain，白点的下限值（DF）</p>
+<p>Table表中，如果值设置的越小，白点的判断条件就越宽松。</p>
+<h3 id="2-7-统计值计算区间调整"><a href="#2-7-统计值计算区间调整" class="headerlink" title="2.7.统计值计算区间调整"></a>2.7.统计值计算区间调整</h3><h4 id="2-7-1-意义"><a href="#2-7-1-意义" class="headerlink" title="2.7.1.意义"></a>2.7.1.意义</h4><p>决定参与计算的画素上限与下限（过亮与过暗的画素不参与AWB统计）</p>
+<h4 id="2-7-2-修改时机"><a href="#2-7-2-修改时机" class="headerlink" title="2.7.2.修改时机"></a>2.7.2.修改时机</h4><p>不建议修改</p>
+<h4 id="2-7-3-参数介绍"><a href="#2-7-3-参数介绍" class="headerlink" title="2.7.3.参数介绍"></a>2.7.3.参数介绍</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_33.png" alt=" "></p>
+<h3 id="2-8-AWB-Cycle调整"><a href="#2-8-AWB-Cycle调整" class="headerlink" title="2.8.AWB Cycle调整"></a>2.8.AWB Cycle调整</h3><h4 id="2-8-1-意义"><a href="#2-8-1-意义" class="headerlink" title="2.8.1.意义"></a>2.8.1.意义</h4><p>决定AWB几个Frame收敛一次（预设每个Frame都会做一次收敛）</p>
+<h4 id="2-8-2-修改时机"><a href="#2-8-2-修改时机" class="headerlink" title="2.8.2.修改时机"></a>2.8.2.修改时机</h4><p>当AWB收敛速度过慢</p>
+<h4 id="2-8-3-参数介绍"><a href="#2-8-3-参数介绍" class="headerlink" title="2.8.3.参数介绍"></a>2.8.3.参数介绍</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_34.png" alt=" "></p>
 
     </div>
     
@@ -251,15 +318,15 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/11/07/C-2018-11-07/" class="pre-post btn btn-default" title='MT6589_Advance之AF'>
+        <a href="/2018/11/07/C-2018-11-07/" class="pre-post btn btn-default" title='MT6589_Advance之AE'>
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">MT6589_Advance之AF</span>
+            <span class="hidden-xs">MT6589_Advance之AE</span>
         </a>
     
     
-        <a href="/2018/11/05/C-2018-11-05/" class="next-post btn btn-default" title='MT6589_Advance之AWB'>
+        <a href="/2018/11/05/C-2018-11-05/" class="next-post btn btn-default" title='不同地点的亮度均匀度测试'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">MT6589_Advance之AWB</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">不同地点的亮度均匀度测试</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -302,7 +369,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-文件所在位置"><span class="toc-text">1.文件所在位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-功能"><span class="toc-text">2.功能</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-文件所在位置"><span class="toc-text">1.文件所在位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-功能"><span class="toc-text">2.功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-混光亮度权重调整"><span class="toc-text">2.1.混光亮度权重调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-意义"><span class="toc-text">2.1.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-修改时机"><span class="toc-text">2.1.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-举例"><span class="toc-text">2.1.3.举例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-单一光源和日光亮度权重调整"><span class="toc-text">2.2.单一光源和日光亮度权重调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-意义"><span class="toc-text">2.2.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-修改时机"><span class="toc-text">2.2.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-举例1"><span class="toc-text">2.2.3.举例1</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#解决问题的思路："><span class="toc-text">解决问题的思路：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-4-举例2"><span class="toc-text">2.2.4.举例2</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#解决问题的思路：-1"><span class="toc-text">解决问题的思路：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-AWB收敛速度调整"><span class="toc-text">2.3.AWB收敛速度调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-意义"><span class="toc-text">2.3.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-修改时机"><span class="toc-text">2.3.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-相关参数"><span class="toc-text">2.3.3.相关参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Capture-AWB收敛参数调整"><span class="toc-text">2.4.Capture AWB收敛参数调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-意义"><span class="toc-text">2.4.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-修改时机、"><span class="toc-text">2.4.2.修改时机、</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-3-相关参数"><span class="toc-text">2.4.3.相关参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Parent-Block权重调整"><span class="toc-text">2.5.Parent Block权重调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-意义"><span class="toc-text">2.5.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-2-修改时机"><span class="toc-text">2.5.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-3-相关参数"><span class="toc-text">2.5.3.相关参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-Neutral-Parent-Block临界值调整"><span class="toc-text">2.6.Neutral Parent Block临界值调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-1-意义"><span class="toc-text">2.6.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-2-修改时机"><span class="toc-text">2.6.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-3-相关参数"><span class="toc-text">2.6.3.相关参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-统计值计算区间调整"><span class="toc-text">2.7.统计值计算区间调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-1-意义"><span class="toc-text">2.7.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-2-修改时机"><span class="toc-text">2.7.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-3-参数介绍"><span class="toc-text">2.7.3.参数介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-AWB-Cycle调整"><span class="toc-text">2.8.AWB Cycle调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-1-意义"><span class="toc-text">2.8.1.意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-2-修改时机"><span class="toc-text">2.8.2.修改时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-3-参数介绍"><span class="toc-text">2.8.3.参数介绍</span></a></li></ol></li></ol></li></ol>
         
     </div>
 </aside>

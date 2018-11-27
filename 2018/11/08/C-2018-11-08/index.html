@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>MT6589_Advance之Flare | 天使在人间の博客</title>
+<title>MT6589_Advance之AF和Flare | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="MT6589_Advance之Flare">
+        <h1 id="MT6589_Advance之AF和Flare">
             
-	            MT6589_Advance之Flare
+	            MT6589_Advance之AF和Flare
             
         </h1>
         <div class="post-meta">
@@ -201,16 +201,32 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-优点"><a href="#1-优点" class="headerlink" title="1.优点"></a>1.优点</h2><ul>
+        <h2 id="1-MT6589-Advance之AF"><a href="#1-MT6589-Advance之AF" class="headerlink" title="1.MT6589_Advance之AF"></a>1.MT6589_Advance之AF</h2><h3 id="1-1-文件所在位置"><a href="#1-1-文件所在位置" class="headerlink" title="1.1.文件所在位置"></a>1.1.文件所在位置</h3><p>文件所在位置：<code>mt6739\hal\camera_3a\af_tuning_custom.cpp</code></p>
+<h3 id="1-2-功能"><a href="#1-2-功能" class="headerlink" title="1.2.功能"></a>1.2.功能</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_20.png" alt=" "></p>
+<h2 id="2-MT6589-Advance之Flare"><a href="#2-MT6589-Advance之Flare" class="headerlink" title="2.MT6589_Advance之Flare"></a>2.MT6589_Advance之Flare</h2><h3 id="2-1-优点"><a href="#2-1-优点" class="headerlink" title="2.1.优点"></a>2.1.优点</h3><ul>
 <li><p>近距离不过曝</p>
 </li>
 <li><p>保留背景细节</p>
 </li>
 </ul>
+<h3 id="2-2-文件所在位置"><a href="#2-2-文件所在位置" class="headerlink" title="2.2.文件所在位置"></a>2.2.文件所在位置</h3><p>文件所在位置：</p>
+<p><code>mt6739\hal\flashlight\flash_tuning_custom_cct.cpp</code></p>
+<p><code>mt6739\hal\flashlight\flash_tuning_custom.cpp</code></p>
+<h3 id="2-3-参数"><a href="#2-3-参数" class="headerlink" title="2.3.参数"></a>2.3.参数</h3><ul>
+<li>coolingTM：主闪完要休息多久（单位：倍数）</li>
+</ul>
+<h6 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h6><p>coolingTM=5，主闪时间=200ms</p>
+<p>主闪完，至少要休息<code>5*200</code>=1000ms=1sec</p>
+<ul>
+<li>timOutMs：限制最长打卡时间（单位：ms）</li>
+</ul>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_21.png" alt=" "></p>
-<h2 id="2-文件所在位置"><a href="#2-文件所在位置" class="headerlink" title="2.文件所在位置"></a>2.文件所在位置</h2><p>文件所在位置：<code>mt6739\hal\flashlight\flash_tuning_custom.cpp</code></p>
-<h3 id="3-功能"><a href="#3-功能" class="headerlink" title="3.功能"></a>3.功能</h3><p>1.Smart Flash的喜好度设定</p>
+<h3 id="2-4-功能"><a href="#2-4-功能" class="headerlink" title="2.4.功能"></a>2.4.功能</h3><p>1.Smart Flash的喜好度设定</p>
 <p>2.针对不同的Scene Mode设定喜好度</p>
+<h4 id="2-4-1-Smart-Flash的喜好度设定"><a href="#2-4-1-Smart-Flash的喜好度设定" class="headerlink" title="2.4.1.Smart Flash的喜好度设定"></a>2.4.1.Smart Flash的喜好度设定</h4><h5 id="2-4-1-1-修改时机"><a href="#2-4-1-1-修改时机" class="headerlink" title="2.4.1.1.修改时机"></a>2.4.1.1.修改时机</h5><p>希望改变Smart Flash的表现</p>
+<h5 id="2-4-1-2-参数介绍"><a href="#2-4-1-2-参数介绍" class="headerlink" title="2.4.1.2.参数介绍"></a>2.4.1.2.参数介绍</h5><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_59.png" alt=" "></p>
+<h4 id="2-4-2-Flash-Scene-Mode设定喜好度"><a href="#2-4-2-Flash-Scene-Mode设定喜好度" class="headerlink" title="2.4.2.Flash Scene Mode设定喜好度"></a>2.4.2.Flash Scene Mode设定喜好度</h4><h5 id="2-4-2-1-修改时机"><a href="#2-4-2-1-修改时机" class="headerlink" title="2.4.2.1.修改时机"></a>2.4.2.1.修改时机</h5><p>可针对不同的Scene Mode，分别设定不同的Flash Parameter</p>
+<h5 id="2-4-2-2-参数介绍"><a href="#2-4-2-2-参数介绍" class="headerlink" title="2.4.2.2.参数介绍"></a>2.4.2.2.参数介绍</h5><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_58.png" alt=" "></p>
 
     </div>
     
@@ -248,9 +264,9 @@
         </a>
     
     
-        <a href="/2018/11/07/C-2018-11-07/" class="next-post btn btn-default" title='MT6589_Advance之AF'>
+        <a href="/2018/11/07/C-2018-11-07/" class="next-post btn btn-default" title='MT6589_Advance之AE'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">MT6589_Advance之AF</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">MT6589_Advance之AE</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -293,7 +309,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-优点"><span class="toc-text">1.优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-文件所在位置"><span class="toc-text">2.文件所在位置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-功能"><span class="toc-text">3.功能</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-MT6589-Advance之AF"><span class="toc-text">1.MT6589_Advance之AF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-文件所在位置"><span class="toc-text">1.1.文件所在位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-功能"><span class="toc-text">1.2.功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-MT6589-Advance之Flare"><span class="toc-text">2.MT6589_Advance之Flare</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-优点"><span class="toc-text">2.1.优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-文件所在位置"><span class="toc-text">2.2.文件所在位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-参数"><span class="toc-text">2.3.参数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#举例："><span class="toc-text">举例：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-功能"><span class="toc-text">2.4.功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-Smart-Flash的喜好度设定"><span class="toc-text">2.4.1.Smart Flash的喜好度设定</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-1-1-修改时机"><span class="toc-text">2.4.1.1.修改时机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-1-2-参数介绍"><span class="toc-text">2.4.1.2.参数介绍</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-Flash-Scene-Mode设定喜好度"><span class="toc-text">2.4.2.Flash Scene Mode设定喜好度</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-2-1-修改时机"><span class="toc-text">2.4.2.1.修改时机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-2-2-参数介绍"><span class="toc-text">2.4.2.2.参数介绍</span></a></li></ol></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
