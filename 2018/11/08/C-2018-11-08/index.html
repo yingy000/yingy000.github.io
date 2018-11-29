@@ -203,7 +203,9 @@
     <div class="post-body post-content">
         <h2 id="1-MT6589-Advance之AF"><a href="#1-MT6589-Advance之AF" class="headerlink" title="1.MT6589_Advance之AF"></a>1.MT6589_Advance之AF</h2><h3 id="1-1-文件所在位置"><a href="#1-1-文件所在位置" class="headerlink" title="1.1.文件所在位置"></a>1.1.文件所在位置</h3><p>文件所在位置：<code>mt6739\hal\camera_3a\af_tuning_custom.cpp</code></p>
 <h3 id="1-2-功能"><a href="#1-2-功能" class="headerlink" title="1.2.功能"></a>1.2.功能</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_20.png" alt=" "></p>
-<h2 id="2-MT6589-Advance之Flare"><a href="#2-MT6589-Advance之Flare" class="headerlink" title="2.MT6589_Advance之Flare"></a>2.MT6589_Advance之Flare</h2><h3 id="2-1-优点"><a href="#2-1-优点" class="headerlink" title="2.1.优点"></a>2.1.优点</h3><ul>
+<h2 id="2-MT6589-Advance之Smart-Flare"><a href="#2-MT6589-Advance之Smart-Flare" class="headerlink" title="2.MT6589_Advance之Smart Flare"></a>2.MT6589_Advance之Smart Flare</h2><p>MT6589上Smart Flare是指闪光灯不止有两段（强的主闪和弱的主闪），能够提供更多段的变化，也就是说闪光灯可以动态调整最佳的强度，所以可以做到近距离不过曝和同时保留一些背景细节。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_41.png" alt=" "></p>
+<h3 id="2-1-优点"><a href="#2-1-优点" class="headerlink" title="2.1.优点"></a>2.1.优点</h3><ul>
 <li><p>近距离不过曝</p>
 </li>
 <li><p>保留背景细节</p>
@@ -213,14 +215,17 @@
 <p><code>mt6739\hal\flashlight\flash_tuning_custom_cct.cpp</code></p>
 <p><code>mt6739\hal\flashlight\flash_tuning_custom.cpp</code></p>
 <h3 id="2-3-参数"><a href="#2-3-参数" class="headerlink" title="2.3.参数"></a>2.3.参数</h3><ul>
-<li>coolingTM：主闪完要休息多久（单位：倍数）</li>
+<li>coolingTM：主闪完要休息多久（单位：倍数）=&gt;闪光灯在休息期间不能供电流。</li>
 </ul>
 <h6 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h6><p>coolingTM=5，主闪时间=200ms</p>
 <p>主闪完，至少要休息<code>5*200</code>=1000ms=1sec</p>
+<p>这样做的原因是当闪光灯经过一个大电流激发后，温度会升高，此时如果持续的供电让闪光灯工作，闪光灯可能会坏掉，所以就有一个冷却机制，让闪光灯适当的休息。</p>
 <ul>
-<li>timOutMs：限制最长打卡时间（单位：ms）</li>
+<li>timOutMs：限制最长打闪时间（单位：ms）</li>
 </ul>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_21.png" alt=" "></p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_21...png" alt=" "></p>
+<p>闪光灯使用最大亮度去打闪，不能长时间维持这个亮度，如果长时间维持这个亮度，闪光灯极有可能被烧毁，所以闪光灯的打闪时间必须做限制。</p>
+<p>使用5段Table来存放16段闪光灯强度保护参数，tabId[0] Mapping到的强度是第0段，tabId[1] Mapping到的强度是第2段，tabId[2] Mapping到的强度是第6段，tabId[3] Mapping到的强度是第12段，tabId[4] Mapping到的强度是第16段，如果闪光灯的强度为10，那么就是在第6段到第12段之间，所以它对应的就是tabId[2]~tabId[3]，这样做的目的是用比较少的Parameter模拟16段的保护参数</p>
 <h3 id="2-4-功能"><a href="#2-4-功能" class="headerlink" title="2.4.功能"></a>2.4.功能</h3><p>1.Smart Flash的喜好度设定</p>
 <p>2.针对不同的Scene Mode设定喜好度</p>
 <h4 id="2-4-1-Smart-Flash的喜好度设定"><a href="#2-4-1-Smart-Flash的喜好度设定" class="headerlink" title="2.4.1.Smart Flash的喜好度设定"></a>2.4.1.Smart Flash的喜好度设定</h4><h5 id="2-4-1-1-修改时机"><a href="#2-4-1-1-修改时机" class="headerlink" title="2.4.1.1.修改时机"></a>2.4.1.1.修改时机</h5><p>希望改变Smart Flash的表现</p>
@@ -309,7 +314,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-MT6589-Advance之AF"><span class="toc-text">1.MT6589_Advance之AF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-文件所在位置"><span class="toc-text">1.1.文件所在位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-功能"><span class="toc-text">1.2.功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-MT6589-Advance之Flare"><span class="toc-text">2.MT6589_Advance之Flare</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-优点"><span class="toc-text">2.1.优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-文件所在位置"><span class="toc-text">2.2.文件所在位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-参数"><span class="toc-text">2.3.参数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#举例："><span class="toc-text">举例：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-功能"><span class="toc-text">2.4.功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-Smart-Flash的喜好度设定"><span class="toc-text">2.4.1.Smart Flash的喜好度设定</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-1-1-修改时机"><span class="toc-text">2.4.1.1.修改时机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-1-2-参数介绍"><span class="toc-text">2.4.1.2.参数介绍</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-Flash-Scene-Mode设定喜好度"><span class="toc-text">2.4.2.Flash Scene Mode设定喜好度</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-2-1-修改时机"><span class="toc-text">2.4.2.1.修改时机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-2-2-参数介绍"><span class="toc-text">2.4.2.2.参数介绍</span></a></li></ol></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-MT6589-Advance之AF"><span class="toc-text">1.MT6589_Advance之AF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-文件所在位置"><span class="toc-text">1.1.文件所在位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-功能"><span class="toc-text">1.2.功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-MT6589-Advance之Smart-Flare"><span class="toc-text">2.MT6589_Advance之Smart Flare</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-优点"><span class="toc-text">2.1.优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-文件所在位置"><span class="toc-text">2.2.文件所在位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-参数"><span class="toc-text">2.3.参数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#举例："><span class="toc-text">举例：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-功能"><span class="toc-text">2.4.功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-Smart-Flash的喜好度设定"><span class="toc-text">2.4.1.Smart Flash的喜好度设定</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-1-1-修改时机"><span class="toc-text">2.4.1.1.修改时机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-1-2-参数介绍"><span class="toc-text">2.4.1.2.参数介绍</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-Flash-Scene-Mode设定喜好度"><span class="toc-text">2.4.2.Flash Scene Mode设定喜好度</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-2-1-修改时机"><span class="toc-text">2.4.2.1.修改时机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-2-2-参数介绍"><span class="toc-text">2.4.2.2.参数介绍</span></a></li></ol></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
