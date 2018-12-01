@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>CCT6589_Basic之CCM Tuning | 天使在人间の博客</title>
+<title>CCT6589_Basic之PCA Tuning | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="CCT6589_Basic之CCM Tuning">
+        <h1 id="CCT6589_Basic之PCA Tuning">
             
-	            CCT6589_Basic之CCM Tuning
+	            CCT6589_Basic之PCA Tuning
             
         </h1>
         <div class="post-meta">
@@ -190,7 +190,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/11/12</span>
+            <span class="date-meta">2018/11/13</span>
         </span>
         
     
@@ -201,42 +201,73 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-简单了解"><a href="#1-简单了解" class="headerlink" title="1.简单了解"></a>1.简单了解</h2><p>CCM（Color Correction Matrix）是指MTK提供的RGB Domain校正Color Correction的方法。</p>
-<p>CCM为<code>3*3</code>的Matrix，目的为改变色彩饱和度与降低整体Color Error。</p>
-<p>正常的CCM并不会改变中性色，也就是说，灰色经过CCM还是灰色。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_66.png" alt=" "></p>
-<h2 id="2-调试步骤"><a href="#2-调试步骤" class="headerlink" title="2.调试步骤"></a>2.调试步骤</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_67.png" alt=" "></p>
-<p>1.Import Target（可以选择CVS or Jpeg）</p>
-<p>2.Import Gamma（目前使用的Gamma）</p>
-<p>3.Import Source（Pure Raw）</p>
-<p>4.Saturation（选择Saturation）</p>
-<p>5.Dynamic CCM tuning</p>
-<p>6.Manual AWB Gain</p>
-<p>7.DNG Setting</p>
-<p>8.Save to NVRAM（存入NVRAM）</p>
-<h3 id="2-1-Import-Target（可以选择CVS-or-Jpeg）"><a href="#2-1-Import-Target（可以选择CVS-or-Jpeg）" class="headerlink" title="2.1.Import Target（可以选择CVS or Jpeg）"></a>2.1.Import Target（可以选择CVS or Jpeg）</h3><p>Import Jpeg后，将24色框选中，然后按Auto Select</p>
-<p>Tool会询问是否重新选取，若已经正确选取，点NO</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_68.png" alt=" "></p>
-<h3 id="2-2-Import-Source"><a href="#2-2-Import-Source" class="headerlink" title="2.2.Import Source"></a>2.2.Import Source</h3><p>Import Raw后，将24色框选中，然后按Auto Select</p>
-<p>Tool会询问是否重新选取，若已经正确选取，点NO</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_69.png" alt=" "></p>
-<h3 id="2-3-Dynamic-CCM-tuning"><a href="#2-3-Dynamic-CCM-tuning" class="headerlink" title="2.3.Dynamic CCM tuning"></a>2.3.Dynamic CCM tuning</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_70.png" alt=" "></p>
-<h3 id="2-4-改变饱和度"><a href="#2-4-改变饱和度" class="headerlink" title="2.4.改变饱和度"></a>2.4.改变饱和度</h3><p>改变饱和度，重新Optimize</p>
-<p>饱和度越小，CCM的对角线数值越小</p>
-<h3 id="2-5-设定COST-Func"><a href="#2-5-设定COST-Func" class="headerlink" title="2.5.设定COST Func"></a>2.5.设定COST Func</h3><p>设定最佳化的方程式</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_71.png" alt=" "></p>
-<h3 id="2-6-设定Constrain"><a href="#2-6-设定Constrain" class="headerlink" title="2.6.设定Constrain"></a>2.6.设定Constrain</h3><p>设定最佳化的条件</p>
-<p>可以设定Hue和Chroma</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_71.png" alt=" "></p>
-<h2 id="3-两种手动微调的最佳化方式"><a href="#3-两种手动微调的最佳化方式" class="headerlink" title="3.两种手动微调的最佳化方式"></a>3.两种手动微调的最佳化方式</h2><h3 id="3-1-拖曳Target"><a href="#3-1-拖曳Target" class="headerlink" title="3.1.拖曳Target"></a>3.1.拖曳Target</h3><p>拖曳Target到期望的Lab Domain位置</p>
-<h6 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h6><p>无法保证CCM一定能使结果趋近新的Target</p>
-<p>指定色块接近原本Target后，可能导致其他色块远离原本target</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_72.png" alt=" "></p>
-<h3 id="3-2-设定Constrain"><a href="#3-2-设定Constrain" class="headerlink" title="3.2.设定Constrain"></a>3.2.设定Constrain</h3><p>针对特定的Patch，设定Constrain，可以限制Result和Target的距离在一定的范围之内。</p>
-<p>Constrain可设定Hue Range，Chroma Range，设定完成后按Set，然后再下方的Enable Patch勾选</p>
-<h6 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h6><p>无法保证CCM一定能使结果落在Constrain中，只能尽量趋近</p>
-<p>指定色块接近Target后，其他色块可能远离原本Target</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_73.png" alt=" "></p>
+        <h2 id="1-Color-Domain"><a href="#1-Color-Domain" class="headerlink" title="1.Color Domain"></a>1.Color Domain</h2><h3 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1.基本概念"></a>1.1.基本概念</h3><p>每个颜色（RGB）在HSV Domain上都有对应的坐标，使用HSV Domain调整颜色，原因是因为比较直觉，可分别对色调和饱和度做调整，结果容易预测。</p>
+<p>HSV Color Domain坐标轴的物理意义为</p>
+<ul>
+<li><p>H：Hue.色调</p>
+</li>
+<li><p>S：Sat.饱和度</p>
+</li>
+<li><p>V：Lum.亮度</p>
+</li>
+</ul>
+<p>注意：调整颜色喜好度，建议只改动Hue和Saturation，使用PCA调整Luminance，容易出现Artifact（方块效应）。</p>
+<h3 id="1-2-调试方法"><a href="#1-2-调试方法" class="headerlink" title="1.2.调试方法"></a>1.2.调试方法</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_74.png" alt=" "></p>
+<h2 id="2-HSV-Analysis"><a href="#2-HSV-Analysis" class="headerlink" title="2.HSV Analysis"></a>2.HSV Analysis</h2><h3 id="2-1-主界面精准"><a href="#2-1-主界面精准" class="headerlink" title="2.1.主界面精准"></a>2.1.主界面精准</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_75.png" alt=" "></p>
+<h3 id="2-2-HSV-Analysis"><a href="#2-2-HSV-Analysis" class="headerlink" title="2.2.HSV Analysis"></a>2.2.HSV Analysis</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_76.png" alt=" "></p>
+<h3 id="2-3-结论"><a href="#2-3-结论" class="headerlink" title="2.3.结论"></a>2.3.结论</h3><p>先利用First Page，框Target File中希望趋近的颜色，ROI中的颜色越单纯越好（比较精准）</p>
+<p>得到目标的平均Hue和平均Sat</p>
+<p>利用First Page，框Current File中希望改变的颜色，ROI中的颜色一样越单纯越好</p>
+<p>得到目前影像的平均Hue和平均Sat</p>
+<p>比对目前影像的平均Hue和平均Sat，找出改变的方向</p>
+<p>进入Second Page，建立PCA Table，使目前影像的特定颜色趋近目标的特定颜色</p>
+<h2 id="3-Gen-PCA-Table"><a href="#3-Gen-PCA-Table" class="headerlink" title="3.Gen PCA Table"></a>3.Gen PCA Table</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_77.png" alt=" "></p>
+<h3 id="3-1-利用PCA-GenTable-xlsx产生PCA-Table"><a href="#3-1-利用PCA-GenTable-xlsx产生PCA-Table" class="headerlink" title="3.1.利用PCA_GenTable.xlsx产生PCA Table"></a>3.1.利用PCA_GenTable.xlsx产生PCA Table</h3><p>1.开放CCT Folder中的PCA_GenTable.xlsx</p>
+<p>2.在<code>&quot;PCA Table&quot;</code>block改动H(Hue)，S(Sat)的Table</p>
+<p>3.产生的PCA Table在<code>&quot;Gen Table&quot;</code>的Block</p>
+<p>4.将PCA Table复制下来，贴在新增的<code>*.csv</code>中</p>
+<p>5.可使用CCT import此PCA Table，Apply进register或Save to NVRAM</p>
+<h3 id="3-2-举例"><a href="#3-2-举例" class="headerlink" title="3.2.举例"></a>3.2.举例</h3><ul>
+<li>利用PCA Page1，分析目前色彩和Target的色彩HSV的差异</li>
+</ul>
+<p>紫色希望偏蓝一点，饱和度要高一点====&gt;紫色的bin落在20，桃红的bin落在0，得知要趋近Target Color，紫色部分的Hue必须减少</p>
+<ul>
+<li>利用PCA_GenTable.xlsx产生PCA Table</li>
+</ul>
+<p>改动<code>&quot;PCA Table</code>block处的Data</p>
+<p>H从bin0~bin20递减，再从bin20~bin39递增（Value&gt;127时为负数，Value’=-(256-Value)）</p>
+<p>S从bin0~bin20递增，再从bin20~bin39递减</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_78.png" alt=" "></p>
+<ul>
+<li>复制<code>&quot;Gen Table&quot;</code>block</li>
+</ul>
+<p>复制<code>10*54</code>的block，并贴入另外一个CVS中</p>
+<p>完成PCA Table，如果测试效果不佳，再进行微调</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_79.png" alt=" "></p>
+<h3 id="3-3-FW-Control"><a href="#3-3-FW-Control" class="headerlink" title="3.3.FW Control"></a>3.3.FW Control</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_80.png" alt=" "></p>
+<p>FW中，PCA共有三组Table（HI-D65,MD-CWF,LO-TL84）</p>
+<p>Tool中产生PCA Table，一定要选Apply para，Table才会在FW生效</p>
+<p>Tool产生的Table若是希望存储起来</p>
+<ul>
+<li><p>Export Table：CVS File</p>
+</li>
+<li><p>Save to NVRAM，再Gen Code：CPP</p>
+</li>
+</ul>
+<h3 id="3-4-使用流程"><a href="#3-4-使用流程" class="headerlink" title="3.4.使用流程"></a>3.4.使用流程</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_81.png" alt=" "></p>
+<p>1.产生PCA Table并Import</p>
+<p>2.选择色温-a</p>
+<p>3.将Table设入FW-b</p>
+<p>4.开放PCA-c===&gt;可在Preview及Capture看到改变</p>
+<p>5.存储Table-d</p>
+<ul>
+<li><p>Export</p>
+</li>
+<li><p>NVRAM</p>
+</li>
+</ul>
+<h2 id="4-文件所在位置"><a href="#4-文件所在位置" class="headerlink" title="4.文件所在位置"></a>4.文件所在位置</h2><p>文件所在位置：<code>mt6739\hal\imgsensor\hi545_mipi_raw\camera_isp_pca_hi545mipiraw.h</code></p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_82.png" alt=" "></p>
 
     </div>
     
@@ -268,15 +299,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/11/13/C-2018-11-13/" class="pre-post btn btn-default" title='CCT6589_Basic之PCA Tuning'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">CCT6589_Basic之PCA Tuning</span>
-        </a>
     
-    
-        <a href="/2018/11/09/C-2018-11-09/" class="next-post btn btn-default" title='MT6589_Advance之ISP'>
+        <a href="/2018/11/12/C-2018-11-12/" class="next-post btn btn-default" title='CCT6589_Basic之CCM Tuning'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">MT6589_Advance之ISP</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">CCT6589_Basic之CCM Tuning</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -319,7 +345,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-简单了解"><span class="toc-text">1.简单了解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-调试步骤"><span class="toc-text">2.调试步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Import-Target（可以选择CVS-or-Jpeg）"><span class="toc-text">2.1.Import Target（可以选择CVS or Jpeg）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Import-Source"><span class="toc-text">2.2.Import Source</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Dynamic-CCM-tuning"><span class="toc-text">2.3.Dynamic CCM tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-改变饱和度"><span class="toc-text">2.4.改变饱和度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-设定COST-Func"><span class="toc-text">2.5.设定COST Func</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-设定Constrain"><span class="toc-text">2.6.设定Constrain</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-两种手动微调的最佳化方式"><span class="toc-text">3.两种手动微调的最佳化方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-拖曳Target"><span class="toc-text">3.1.拖曳Target</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#注意"><span class="toc-text">注意</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-设定Constrain"><span class="toc-text">3.2.设定Constrain</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#注意-1"><span class="toc-text">注意</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Color-Domain"><span class="toc-text">1.Color Domain</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-基本概念"><span class="toc-text">1.1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-调试方法"><span class="toc-text">1.2.调试方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-HSV-Analysis"><span class="toc-text">2.HSV Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-主界面精准"><span class="toc-text">2.1.主界面精准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-HSV-Analysis"><span class="toc-text">2.2.HSV Analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-结论"><span class="toc-text">2.3.结论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Gen-PCA-Table"><span class="toc-text">3.Gen PCA Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-利用PCA-GenTable-xlsx产生PCA-Table"><span class="toc-text">3.1.利用PCA_GenTable.xlsx产生PCA Table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-举例"><span class="toc-text">3.2.举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-FW-Control"><span class="toc-text">3.3.FW Control</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-使用流程"><span class="toc-text">3.4.使用流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-文件所在位置"><span class="toc-text">4.文件所在位置</span></a></li></ol>
         
     </div>
 </aside>
