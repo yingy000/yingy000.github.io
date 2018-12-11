@@ -203,7 +203,7 @@
     <div class="post-body post-content">
         <h2 id="1-了解AF"><a href="#1-了解AF" class="headerlink" title="1.了解AF"></a>1.了解AF</h2><p>现在大多数手机的AF都是被动式AF，也就是利用Focus Value Curve（曲线方程）来对焦。</p>
 <h3 id="1-1-Focus-Value的理解"><a href="#1-1-Focus-Value的理解" class="headerlink" title="1.1.Focus Value的理解"></a>1.1.Focus Value的理解</h3><p>一般情况下，Focus Value越大代表越Sharp，也就意味着Focus Pos越接近焦点。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_17.png" alt=" "></p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_17..png" alt=" "></p>
 <p>特殊情况：</p>
 <ul>
 <li><p>若亮度太低，Gain太大，会导致Noise影响Focus Value。</p>
@@ -213,94 +213,71 @@
 </ul>
 <h3 id="1-2-被动式AF的目标"><a href="#1-2-被动式AF的目标" class="headerlink" title="1.2.被动式AF的目标"></a>1.2.被动式AF的目标</h3><p>找到Focus Value Curve，Focus Value最大的Focus Position。</p>
 <ul>
-<li><p>如何在最短的时间内找到Peak Focus Value Position(AF的速度)</p>
+<li><p>如何在最短的时间内找到Peak Focus Value Position(AF的速度)=&gt;峰值点</p>
 </li>
-<li><p>如何找到最准确的Peak Focus Value Position(AF的精度)</p>
+<li><p>如何找到最准确的Peak Focus Value Position(AF的精准度)=&gt;峰值点</p>
 </li>
 </ul>
-<p>注意：速度和精度这两个特性很难同时满足，必须要依靠Trade-Off(平衡性)来取得最佳平衡。</p>
+<p>注意：速度和精度这两个特性很难同时满足，必须要依靠Trade-Off(平衡性)来取得最佳平衡=&gt;原因：如果要求搜寻速度要快，那么Focus的间隔必须要大，这样搜寻的精准度势必不会好，同理如果要求搜寻的精准度高，搜寻的间隔肯定要小，搜寻的速度肯定会慢下来，这两者其实是相互矛盾的。</p>
 <h3 id="1-3-被动式AF的动作"><a href="#1-3-被动式AF的动作" class="headerlink" title="1.3.被动式AF的动作"></a>1.3.被动式AF的动作</h3><ul>
-<li><p>Single AF(SAF)：单按对焦键时，对中心的AF Window执行一次AF</p>
+<li><p>Single AF(SAF)：单按对焦键时，对中心的AF Window执行一次AF（永远对画面中心对焦）</p>
 </li>
-<li><p>Touch AF(TAF)：单按荧幕时，对荧幕触点的位置执行一次AF</p>
-</li>
-<li><p>Multi AF(MAF)：单按对焦键时，对中心的五块AF Window执行一次AF。</p>
-</li>
-<li><p>Continuous AF(CAF)：AF演算法持续对荧幕中心进行监控，当中心场景改变时，自动进行AF。</p>
+<li><p>Touch AF(TAF)：单按屏幕时，对屏幕触点的位置执行一次AF（对触摸的位置对焦）</p>
 </li>
 </ul>
-<p>Single AF(SAF)&amp;&amp;Touch AF(TAF)使用同一组调试参数，其中包括AF搜索的范围、AF Table、AF的精度、AF的速度等，基本上表现都会相同。</p>
+<p>Single AF(SAF)和Touch AF(TAF)使用同一组调试参数，其中包括AF搜索的范围、AF Table、AF的精度、AF的速度等，基本上表现都会相同。=&gt;只是对焦的主体不相同</p>
+<ul>
+<li>Multi AF(MAF)：单按对焦键时，对中心的五块AF Window执行一次AF（最终选取最近焦的Window来当做主要的对焦点）</li>
+</ul>
+<p>Multi AF(MAF)虽然和SAF&amp;&amp;CAF使用相同的调试参数，但是由于MAF是五个Window同时对焦，且已最近焦的Window，因此Performance和行为表现会和SAF及TAF存在一些差异</p>
+<p>最终选取最近焦的Window来当做主要的对焦点，这也就是说其中有四个对焦是对在无穷远处，有一个是对焦在30公分左右，这时会以最近焦的点作为主要的对焦点。</p>
+<ul>
+<li>Continuous AF(CAF)：AF演算法持续对屏幕中心进行监控，当中心场景改变时，自动进行AF。</li>
+</ul>
 <p>CAF为了保持对焦过程中画面的Smooth，因此没有使用AF Search Table，而是使用固定的AF Step进行搜索。</p>
-<p>Multi AF(MAF)虽然和SAF&amp;&amp;CAF使用相同的调试参数，但是由于MAF是五个Window同时对焦，且已最近焦的Window，因此Performance和行为表现会和SAF及TAF存在一些差异。</p>
 <p>按照Focus Search Table搜索的作法：</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_18.png" alt=" "></p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_18..png" alt=" "></p>
 <p>按照固定步数搜索的作法：</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_19.png" alt=" "></p>
-<h2 id="2-AF调试Parameter-参数-Thres"><a href="#2-AF调试Parameter-参数-Thres" class="headerlink" title="2.AF调试Parameter(参数)-Thres"></a>2.AF调试Parameter(参数)-Thres</h2><h3 id="2-1-了解Parameter-参数-Thres"><a href="#2-1-了解Parameter-参数-Thres" class="headerlink" title="2.1.了解Parameter(参数)-Thres"></a>2.1.了解Parameter(参数)-Thres</h3><h4 id="2-1-1-原理"><a href="#2-1-1-原理" class="headerlink" title="2.1.1.原理"></a>2.1.1.原理</h4><p>从理论上来说，AF不需要搜寻整个AF Search Table，才能知道Peak FV Position。只要搜寻过程中FV值下降到一定程度，就可以确认已经找到Peak FV Position。</p>
-<h4 id="2-1-2-举例"><a href="#2-1-2-举例" class="headerlink" title="2.1.2.举例"></a>2.1.2.举例</h4><p>下图中的AF Table共有11个Steps，代表完整的AF Search，需要搜寻11个Step，但是可以看出FV从第7个Step后就开始下降，若是此时停止搜寻，AF可节省4个Step的时间。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_20.png" alt=" "></p>
-<h4 id="2-1-3-特例"><a href="#2-1-3-特例" class="headerlink" title="2.1.3.特例"></a>2.1.3.特例</h4><p>当Focus Value Curve存在双峰现象，过早停止AF就会造成没有找到真正的清晰点，因此AF提前停止的条件必须小心。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_21.png" alt=" "></p>
-<p>注意:可能发生双峰现象的情形：</p>
-<ul>
-<li><p>AF Window内存在不同焦距的主体</p>
-</li>
-<li><p>Noise(噪音)</p>
-</li>
-</ul>
-<h3 id="2-2-AF调试Parameter-参数-Thres"><a href="#2-2-AF调试Parameter-参数-Thres" class="headerlink" title="2.2.AF调试Parameter(参数)-Thres"></a>2.2.AF调试Parameter(参数)-Thres</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">THRES_MAIN：AF搜索过程中，当</span><br><span class="line"></span><br><span class="line">THRES_SUB：(Max FV-Current_FV-THRES_OFFSET)/Max FV*100&gt;THRES_MAIN且</span><br><span class="line">            (Max FV-First_FV-THRES_OFFSET)/Max FV*100&gt;&gt;THRES_SUB</span><br><span class="line"></span><br><span class="line">THRES_OFFSET：AF停止搜索</span><br></pre></td></tr></table></figure>
-<h4 id="2-2-1-Current-FV-gt-First-FV"><a href="#2-2-1-Current-FV-gt-First-FV" class="headerlink" title="2.2.1.Current_FV&gt;First_FV"></a>2.2.1.Current_FV&gt;First_FV</h4><p>当Current_FV&gt;First_FV，AF提前停止公式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(Max FV-Current_FV-THRES_OFFSET)/Max FV*100&gt;THRES_SUB且</span><br><span class="line"></span><br><span class="line">(Max FV-First_FV-THRES_OFFSET)/Max FV*100&gt;&gt;THRES_MAI</span><br></pre></td></tr></table></figure>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_22.png" alt=" "></p>
-<h4 id="2-2-2-Current-FV-gt-First-FV"><a href="#2-2-2-Current-FV-gt-First-FV" class="headerlink" title="2.2.2.Current_FV&gt;First_FV"></a>2.2.2.Current_FV&gt;First_FV</h4><p>当Current_FV&lt;First_FV，AF提前停止公式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(Max FV-Current_FV-THRES_OFFSET)/Max FV*100&gt;THRES_MAIN且</span><br><span class="line"></span><br><span class="line">(Max FV-First_FV-THRES_OFFSET)/Max FV*100&gt;&gt;THRES_SUB</span><br></pre></td></tr></table></figure>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_23.png" alt=" "></p>
-<h3 id="2-3-AF-Tuning的介绍"><a href="#2-3-AF-Tuning的介绍" class="headerlink" title="2.3.AF Tuning的介绍"></a>2.3.AF Tuning的介绍</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_24.png" alt=" "></p>
-<h4 id="2-3-1-AF-Search-Range"><a href="#2-3-1-AF-Search-Range" class="headerlink" title="2.3.1.AF Search Range"></a>2.3.1.AF Search Range</h4><p>决定AF最近及最远的搜寻范围(优先权高于SearchTable)</p>
-<h4 id="2-3-2-AF-Search-Table"><a href="#2-3-2-AF-Search-Table" class="headerlink" title="2.3.2.AF Search Table"></a>2.3.2.AF Search Table</h4><p>决定sAF，ZSDAF，VCAF的搜寻位置</p>
-<h4 id="2-3-3-AF-Tuning-Parameter"><a href="#2-3-3-AF-Tuning-Parameter" class="headerlink" title="2.3.3.AF Tuning Parameter"></a>2.3.3.AF Tuning Parameter</h4><p>AF的调试参数</p>
-<h4 id="2-3-4-Get-FV"><a href="#2-3-4-Get-FV" class="headerlink" title="2.3.4.Get FV"></a>2.3.4.Get FV</h4><p>做完一次AF后，在FV的栏位中显示刚刚的FV</p>
-<h4 id="2-3-5-Clear-FV"><a href="#2-3-5-Clear-FV" class="headerlink" title="2.3.5.Clear FV"></a>2.3.5.Clear FV</h4><p>清理上一次AF的FV</p>
-<h3 id="2-4-AF调试Parameter"><a href="#2-4-AF调试Parameter" class="headerlink" title="2.4.AF调试Parameter"></a>2.4.AF调试Parameter</h3><h4 id="2-4-1-重要的文件"><a href="#2-4-1-重要的文件" class="headerlink" title="2.4.1.重要的文件"></a>2.4.1.重要的文件</h4><p>AF Tuning File</p>
-<h4 id="2-4-2-AF调试Parameter-参数"><a href="#2-4-2-AF调试Parameter-参数" class="headerlink" title="2.4.2.AF调试Parameter(参数)"></a>2.4.2.AF调试Parameter(参数)</h4><ul>
-<li>选择Level1时，可调整Commom的基本Parameter(参数)</li>
-</ul>
+<h2 id="2-AF-Tuning的介绍"><a href="#2-AF-Tuning的介绍" class="headerlink" title="2.AF Tuning的介绍"></a>2.AF Tuning的介绍</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_24..png" alt=" "></p>
+<h3 id="2-1-AF-Search-Range"><a href="#2-1-AF-Search-Range" class="headerlink" title="2.1.AF Search Range"></a>2.1.AF Search Range</h3><p>决定AF最近及最远的搜寻范围(优先权高于SearchTable)</p>
+<h3 id="2-2-AF-Search-Table"><a href="#2-2-AF-Search-Table" class="headerlink" title="2.2.AF Search Table"></a>2.2.AF Search Table</h3><p>决定sAF，ZSDAF，VCAF的搜寻位置=&gt;Gen AF Table时不同的Step（步数）填入此处</p>
+<p>sAF是single AF</p>
+<p>ZSD AF是ZSD模式下的AF</p>
+<p>VCAF是video模式下的continus AF</p>
+<h3 id="2-3-AF-Tuning-Parameter"><a href="#2-3-AF-Tuning-Parameter" class="headerlink" title="2.3.AF Tuning Parameter"></a>2.3.AF Tuning Parameter</h3><p>AF的调试参数</p>
+<h3 id="2-4-Get-FV"><a href="#2-4-Get-FV" class="headerlink" title="2.4.Get FV"></a>2.4.Get FV</h3><p>做完一次AF后，在FV的栏位中显示刚刚的FV</p>
+<p>当我们在CCT中按下拍照键，就会做一次AF，这时可以按下Get FV这个按钮，就会在<code>2.2的区域</code>（AF Search Table）中显示刚刚搜寻过程中Gen的FV值，用途是为了更好的适用于特殊场景。</p>
+<h6 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h6><p>某个场景可能发现在normal Mode里面怎么对焦都对不到，并且AWB偏红黄，这时较为简单的做法就是连接上CCT，在该场景下直接改变Parameter的值，然后重新做AF，生成新的FV值，这时就很容易方便的查看修改的参数产生的影响，复杂的做法就是直接从Code中改变Parameter，然后再BuildSo文件，接着将<code>&quot;so文件&quot;</code>push到机器中，验证修改的参数有没有生效。</p>
+<h3 id="2-5-Clear-FV"><a href="#2-5-Clear-FV" class="headerlink" title="2.5.Clear FV"></a>2.5.Clear FV</h3><p>清理上一次AF的FV</p>
+<h2 id="3-AF调试Parameter"><a href="#3-AF调试Parameter" class="headerlink" title="3.AF调试Parameter"></a>3.AF调试Parameter</h2><h3 id="3-1-文件所在位置"><a href="#3-1-文件所在位置" class="headerlink" title="3.1.文件所在位置"></a>3.1.文件所在位置</h3><p><code>mt6739\hal\lens\lc898217af\lens_para_LC898217AF.cpp</code></p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_24...png" alt=" "></p>
+<h2 id="4-AF调试Parameter-参数"><a href="#4-AF调试Parameter-参数" class="headerlink" title="4.AF调试Parameter(参数)"></a>4.AF调试Parameter(参数)</h2><h3 id="4-1-Level1"><a href="#4-1-Level1" class="headerlink" title="4.1.Level1"></a>4.1.Level1</h3><p>选择<code>Level1</code>时，可调整Commom的基本Parameter(参数)</p>
+<h6 id="解释Commom（公用的）"><a href="#解释Commom（公用的）" class="headerlink" title="解释Commom（公用的）"></a>解释Commom（公用的）</h6><p>MT6589的AF的Parameter基本上可以分成三组，这三组分别用在三个不同的Scenario，每一组都有一套AF的Parameter，让使用者根据不同的Scenario去设定不同的Parameter，也就是说可以有三套参数去使用，Commom部分的参数就是独立于这三套的Parameter，属于行为模式的部分，也就是公用的意思。</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_25.png" alt=" "></p>
-<p>VAFC_FALL_CNT_DELTA：Video CAF专用，当搜寻方向改变超过此次次数时，停止Video CAF，并将Lens停在最佳Pos。</p>
-<p>LV_THRES：Video CAF专用，当环境过暗时，不进行Video CAF，并将Lens停在最佳Pos。</p>
+<p>VAFC_FALL_CNT_DELTA：Video CAF专用，当搜寻方向改变超过此次次数时，停止Video CAF，并将Lens停在最佳Pos。=&gt;当Video CAF搜寻找不到AF时，会来回的搜寻，但是如果次数过多的话，造成用户体验不好，所以这里会设置一个来回搜寻次数的上限值，也就是说就算找不到真正的峰值点，但如果搜寻次数超过设定的上限值，也会停止搜寻的动作。</p>
+<p>LV_THRES：Video CAF专用，当环境过暗时，不进行Video CAF，并将Lens停在最佳Pos。=&gt;当环境过暗时，AF的意义不大，并且容易找错，还不如停留在最佳的Position。</p>
 <p>SPOT_PERCENT_W：CAF Window位置</p>
 <p>SPOT_PERCENT_H：CAF Window位置</p>
 <p>InPos：infinity Mode的无穷尽位置</p>
-<p>AFC_STEP_SIZE：Video CAF允许的最大一次移动步数。</p>
-<p>BackJumpPos：当AF找到的Target Pos&lt;BackJumpPos，则分段前往Target Pos(为了避免撞击声)</p>
+<p>AFC_STEP_SIZE：Video CAF允许的最大一次移动步数。=&gt;如果步数过大，可能会造成移动的时候AF不够Smooth，利用这个限制来阻挡这种不够Smooth的情况发生。</p>
+<p>BackJumpPos：当AF找到的Target Pos&lt;BackJumpPos，则分段前往Target Pos(为了避免撞击声)=&gt;为了避免因为惯性而产生的撞击声，当AF往回缩的时候，很有可能因为惯性导致镜头撞击而发出声响</p>
 <p>FDWinPercent：为了避免人脸框过大，框到不必要的资讯，因此照此百分比将人脸框內缩。</p>
 <p>FDSizeDiff：当人脸的Size改变大于此数值时，会触发CAF重新对焦。</p>
 <p>StatGain：HW Output的AF Value，先乘上此数值，才是最后FW使用的AF Value。</p>
-<ul>
-<li>选择sAF_Coef时，AF按照下列三组Scenario(情况)区分Parameter</li>
-</ul>
+<h3 id="4-2-tAF-Coef"><a href="#4-2-tAF-Coef" class="headerlink" title="4.2.tAF_Coef"></a>4.2.tAF_Coef</h3><p>选择<code>tAF_Coef</code>时，AF按照下列三组Scenario(情况)区分Parameter</p>
 <p>sAF_Coef：SAF Parameter(用于非ZSD的SAF&amp;CAF)</p>
 <p>sZSD_AF_Coef：ZSD AF Parameter(用于非ZSD的SAF&amp;CAF)</p>
 <p>sVAFC_Coef：Video CAF(用于Video CAF)</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_26.png" alt=" "></p>
 <p>THERS_MAIN：判断AF停止搜寻&amp;合焦的主要条件</p>
 <p>THERS_SUB：判断AF停止搜寻&amp;合焦的次要条件</p>
 <p>INIT_WAIT：为了避免Lens缩回时发出撞击声，将Lens分段移动，最多分为五段(默认值为1)</p>
 <p>DONE_WAIT：CAF完成之后，等待多少Frame之后，才Get新的FV当做Reference(默认值是0)</p>
 <p>FALL_POS：AF失败时的Lens Default位置(默认值是0)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FALL_POS=-1：停在FV最大的位置</span><br><span class="line"></span><br><span class="line">FALL_POS=Others：停在AF_Table[0]+FALL_POS的位置</span><br></pre></td></tr></table></figure>
-<p>FRAME_TIME：最短一个Frame的时间(Default是33，用来计算change count的数目)</p>
-<p>当目前曝光时间长，Change count就少，当目前曝光时间短，Change count就多</p>
+<p>FRAME_TIME：最短一个Frame的时间(Default是33，用来计算change count的数目)=&gt;当目前曝光时间长，Change count就少，当目前曝光时间短，Change count就多</p>
 <p>FIRST_FV_WAIT：第一次进Camera，要等几个Frame才开始Get FV</p>
-<h4 id="2-4-3-AF算法参数-AFC灵敏度"><a href="#2-4-3-AF算法参数-AFC灵敏度" class="headerlink" title="2.4.3.AF算法参数-AFC灵敏度"></a>2.4.3.AF算法参数-AFC灵敏度</h4><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_27.png" alt=" "></p>
-<h6 id="取参数值："><a href="#取参数值：" class="headerlink" title="取参数值："></a>取参数值：</h6><p>在前次对焦成功后，会等N个Frame，才会取FirstFV供scene change detection用。</p>
-<p><code>N=(First_FV_WAIT*FRAME_TIME)/current_frame_time+CHANGE_CNT_DELTA</code></p>
-<h6 id="检测变化："><a href="#检测变化：" class="headerlink" title="检测变化："></a>检测变化：</h6><p>连续ChangeCnt个frame的亮度或FV的变化超过TH，则判定为scene change。</p>
-<p>ChangeCnt会依设定的Change_Cnt与current frame time调整</p>
-<p><code>TH=MAX(FirstFV*THRES,CHANGE_OFFSET)</code></p>
-<h6 id="确认稳定："><a href="#确认稳定：" class="headerlink" title="确认稳定："></a>确认稳定：</h6><p>并在FV值Stable后，开始才可重新进行对焦</p>
-<p>此机制与1st time camera launch相同，但有独立参数。</p>
-<h4 id="2-4-4-AF调试Parameter-参数"><a href="#2-4-4-AF调试Parameter-参数" class="headerlink" title="2.4.4.AF调试Parameter(参数)"></a>2.4.4.AF调试Parameter(参数)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if(ABS(Reference FV-Current FV)&gt;FV_CHANGE_THRES_FINAL)</span><br><span class="line">             FV_CNT++;</span><br><span class="line">if(ABS(Reference GS-Current GS)&gt;GS_CHANGE_THRES_FINAL)</span><br><span class="line">             GS_CNT++;</span><br><span class="line">if(FV_CNT&gt;FV_CHANGE_CNT||GS_CNT&gt;GS_CHANGE_CNT)</span><br><span class="line">             CAF Trigger;</span><br><span class="line"></span><br><span class="line">FV_CHANGE_THRES_FINAL=Max(Reference FV*FV_CHANGE_THRES,FV_CHANGE_OFFSET)</span><br><span class="line"></span><br><span class="line">GS_CHANGE_THRES_FINAL=Max(Reference GS*GS_CHANGE_THRES,GS_CHANGE_OFFSET)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if(ABS(Reference FV-Current FV)&gt;FV_CHANGE_THRES_FINAL)</span><br><span class="line">             FV_CNT++;</span><br><span class="line">if(ABS(Reference GS-Current GS)&gt;GS_CHANGE_THRES_FINAL)</span><br><span class="line">             GS_CNT++;</span><br><span class="line">if(FV_CNT&gt;FV_CHANGE_CNT||GS_CNT&gt;GS_CHANGE_CNT)</span><br><span class="line">             CAF Trigger;</span><br><span class="line"></span><br><span class="line">FV_CHANGE_THRES_FINAL=Max(Reference FV*FV_CHANGE_THRES,FV_CHANGE_OFFSET)</span><br><span class="line"></span><br><span class="line">GS_CHANGE_THRES_FINAL=Max(Reference GS*GS_CHANGE_THRES,GS_CHANGE_OFFSET)</span><br></pre></td></tr></table></figure>
 <p>FV_CHANGE_THRES：FV判断CAF启动的条件(FV变化决定CAF启动)，越低越灵敏(默认是45)</p>
 <p>FV_CHANGE_OFFSET：FV判断CAF启动的条件(FV变化决定CAF启动)，越低越灵敏(默认是10000)</p>
 <p>FV_CHANGE_CNT：FV判断CAF启动的条件(FV变化决定CAF启动)，越低越灵敏(默认是12)</p>
@@ -317,6 +294,13 @@
 <p>FV_1ST_STABLE_NUM：第一次进入相机之后，CAF第一次启动的条件，Value越大，手机需越稳定CAF才作动。</p>
 <p>FV_1ST_STABLE_CNT：第一次进入相机之后，CAF第一次启动的条件，Value越大，手机需越稳定CAF才作动。</p>
 <p>在STABLE_NUM+1个frame中，检查是达到标准的次数是否超过STABLE_CNT。</p>
+<h3 id="4-3-SAF"><a href="#4-3-SAF" class="headerlink" title="4.3.SAF"></a>4.3.SAF</h3><p>Stable的Parameter,目的是利用OTP中的Calibration Data，对UNIT的AF Table进行微调。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_26.png" alt=" "></p>
+<p>Offset：AF Search Table的起始Position</p>
+<p>NormalNum：AF为Normal Mode时，AF Table最大的Index</p>
+<p>MacroNum：AF为Macro Mode时，AF Table最大的Index</p>
+<p>InfldxOffset：利用OTP的远焦Calibration值，校正AF的Inf Position。</p>
+<p>MacroIdxOffset：利用OTP中的近焦Calibration值，校正AF的Macro Position。</p>
 
     </div>
     
@@ -399,7 +383,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-了解AF"><span class="toc-text">1.了解AF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Focus-Value的理解"><span class="toc-text">1.1.Focus Value的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-被动式AF的目标"><span class="toc-text">1.2.被动式AF的目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-被动式AF的动作"><span class="toc-text">1.3.被动式AF的动作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-AF调试Parameter-参数-Thres"><span class="toc-text">2.AF调试Parameter(参数)-Thres</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-了解Parameter-参数-Thres"><span class="toc-text">2.1.了解Parameter(参数)-Thres</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-原理"><span class="toc-text">2.1.1.原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-举例"><span class="toc-text">2.1.2.举例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-特例"><span class="toc-text">2.1.3.特例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-AF调试Parameter-参数-Thres"><span class="toc-text">2.2.AF调试Parameter(参数)-Thres</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-Current-FV-gt-First-FV"><span class="toc-text">2.2.1.Current_FV&gt;First_FV</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-Current-FV-gt-First-FV"><span class="toc-text">2.2.2.Current_FV&gt;First_FV</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-AF-Tuning的介绍"><span class="toc-text">2.3.AF Tuning的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-AF-Search-Range"><span class="toc-text">2.3.1.AF Search Range</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-AF-Search-Table"><span class="toc-text">2.3.2.AF Search Table</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-AF-Tuning-Parameter"><span class="toc-text">2.3.3.AF Tuning Parameter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-4-Get-FV"><span class="toc-text">2.3.4.Get FV</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-5-Clear-FV"><span class="toc-text">2.3.5.Clear FV</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-AF调试Parameter"><span class="toc-text">2.4.AF调试Parameter</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-重要的文件"><span class="toc-text">2.4.1.重要的文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-AF调试Parameter-参数"><span class="toc-text">2.4.2.AF调试Parameter(参数)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-3-AF算法参数-AFC灵敏度"><span class="toc-text">2.4.3.AF算法参数-AFC灵敏度</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#取参数值："><span class="toc-text">取参数值：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#检测变化："><span class="toc-text">检测变化：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#确认稳定："><span class="toc-text">确认稳定：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-4-AF调试Parameter-参数"><span class="toc-text">2.4.4.AF调试Parameter(参数)</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-了解AF"><span class="toc-text">1.了解AF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Focus-Value的理解"><span class="toc-text">1.1.Focus Value的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-被动式AF的目标"><span class="toc-text">1.2.被动式AF的目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-被动式AF的动作"><span class="toc-text">1.3.被动式AF的动作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-AF-Tuning的介绍"><span class="toc-text">2.AF Tuning的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-AF-Search-Range"><span class="toc-text">2.1.AF Search Range</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-AF-Search-Table"><span class="toc-text">2.2.AF Search Table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-AF-Tuning-Parameter"><span class="toc-text">2.3.AF Tuning Parameter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Get-FV"><span class="toc-text">2.4.Get FV</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#举例"><span class="toc-text">举例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Clear-FV"><span class="toc-text">2.5.Clear FV</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-AF调试Parameter"><span class="toc-text">3.AF调试Parameter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-文件所在位置"><span class="toc-text">3.1.文件所在位置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-AF调试Parameter-参数"><span class="toc-text">4.AF调试Parameter(参数)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Level1"><span class="toc-text">4.1.Level1</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#解释Commom（公用的）"><span class="toc-text">解释Commom（公用的）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-tAF-Coef"><span class="toc-text">4.2.tAF_Coef</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-SAF"><span class="toc-text">4.3.SAF</span></a></li></ol></li></ol>
         
     </div>
 </aside>
