@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>CCT6589_Basic之ISP Tuning（2） | 天使在人间の博客</title>
+<title>直方图的了解 | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="CCT6589_Basic之ISP Tuning（2）">
+        <h1 id="直方图的了解">
             
-	            CCT6589_Basic之ISP Tuning（2）
+	            直方图的了解
             
         </h1>
         <div class="post-meta">
@@ -165,8 +165,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/工具">
-            工具
+        <a href="/categories/Camera">
+            Camera
         </a>
     </span>
     
@@ -177,8 +177,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/CCT" title='CCT'>
-                        CCT
+                    <a href="/tags/直方图" title='直方图'>
+                        直方图
                     </a>
                 
             
@@ -190,7 +190,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/11/15</span>
+            <span class="date-meta">2018/11/16</span>
         </span>
         
     
@@ -201,40 +201,42 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-NR-Setting-CFA"><a href="#1-NR-Setting-CFA" class="headerlink" title="1.NR Setting-CFA"></a>1.NR Setting-CFA</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_88.png" alt=" "></p>
-<p>Noise Reduction的第一道关卡（RGB Domai的NR）</p>
-<h3 id="1-1-Parameter功用"><a href="#1-1-Parameter功用" class="headerlink" title="1.1.Parameter功用"></a>1.1.Parameter功用</h3><h4 id="1-1-1-Noise"><a href="#1-1-1-Noise" class="headerlink" title="1.1.1.Noise"></a>1.1.1.Noise</h4><p>代表Noise的程度，越高代表Noise越大，NR越强，此值必须以Module在特定ISO下的Noise为基准而设置，否则会因为砍过强而砍去Singnal，或砍过弱而看不到Noise。</p>
-<h4 id="1-1-2-Texture"><a href="#1-1-2-Texture" class="headerlink" title="1.1.2.Texture"></a>1.1.2.Texture</h4><p>代表Texture的程度，越高代表保留较多的Texture</p>
-<h2 id="2-NR-Setting-ANR"><a href="#2-NR-Setting-ANR" class="headerlink" title="2.NR Setting-ANR"></a>2.NR Setting-ANR</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_89.png" alt=" "></p>
-<p>Noise Reduction的第二道关卡（YUV Domain的NR，效果&gt;CFA）</p>
-<h3 id="2-1-Parameter功用"><a href="#2-1-Parameter功用" class="headerlink" title="2.1.Parameter功用"></a>2.1.Parameter功用</h3><h4 id="2-1-1-Noise-Level"><a href="#2-1-1-Noise-Level" class="headerlink" title="2.1.1.Noise Level"></a>2.1.1.Noise Level</h4><p>代表Noise的程度，越高代表Noise越大，NR越强，此值必须以Module在特定ISO下的Noise为基准而设置，否则会因为砍过强而砍去Singnal，或砍过弱而看不到Noise。</p>
-<h4 id="2-1-2-Strength"><a href="#2-1-2-Strength" class="headerlink" title="2.1.2.Strength"></a>2.1.2.Strength</h4><p>代表NR的强度，开越强，Noise就越少，但是画面越模糊</p>
-<h4 id="2-1-3-建议"><a href="#2-1-3-建议" class="headerlink" title="2.1.3.建议"></a>2.1.3.建议</h4><ul>
-<li><p>固定Noise Level，调整Strength</p>
-</li>
-<li><p>若Strength调最强了，仍不满意Noise表现，再动Noise Level。</p>
-</li>
-</ul>
-<h2 id="3-Color-Setting-CCR"><a href="#3-Color-Setting-CCR" class="headerlink" title="3.Color Setting-CCR"></a>3.Color Setting-CCR</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_90.png" alt=" "></p>
-<p>控制Color Saturation（减少）</p>
-<h3 id="3-1-Parameter功用"><a href="#3-1-Parameter功用" class="headerlink" title="3.1.Parameter功用"></a>3.1.Parameter功用</h3><h4 id="3-1-1-Chroma-Reduction"><a href="#3-1-1-Chroma-Reduction" class="headerlink" title="3.1.1.Chroma Reduction"></a>3.1.1.Chroma Reduction</h4><p>Slider越大，Saturation越低</p>
-<p>非Global降低Saturation，而是控制<code>&quot;低饱和色&quot;</code>的饱和度</p>
-<h2 id="4-Sharpness-Setting-EE"><a href="#4-Sharpness-Setting-EE" class="headerlink" title="4.Sharpness Setting-EE"></a>4.Sharpness Setting-EE</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_91.png" alt=" "></p>
-<h3 id="4-1-Parameter功用"><a href="#4-1-Parameter功用" class="headerlink" title="4.1.Parameter功用"></a>4.1.Parameter功用</h3><h4 id="4-1-1-Strength"><a href="#4-1-1-Strength" class="headerlink" title="4.1.1.Strength"></a>4.1.1.Strength</h4><p>代表Sharpness强度，开越强，Sharpness越高，但画面越Noisy</p>
-<h4 id="4-1-2-Noise"><a href="#4-1-2-Noise" class="headerlink" title="4.1.2.Noise"></a>4.1.2.Noise</h4><p>代表Noise的程度，越高代表Noise越大</p>
-<p>Sharpness的目的是加强Noise以外的Edge，因此Noise越高，Sharpness加强的部分就越少</p>
-<p>此值必须以Module在特定ISO下的Noise为基准而设置，否则会因为设过强而导致Singnal都被误认为是Noise，或砍过弱导致Noise被误认为是Singnal。</p>
-<h4 id="4-1-3-Fine-Texture"><a href="#4-1-3-Fine-Texture" class="headerlink" title="4.1.3.Fine Texture"></a>4.1.3.Fine Texture</h4><p>代表Signal强度，开越强，Signal越高，但画面越Noisy</p>
-<h4 id="4-1-4-建议"><a href="#4-1-4-建议" class="headerlink" title="4.1.4.建议"></a>4.1.4.建议</h4><ul>
-<li><p>Sharpness基本上为三组Parameter的综合结果</p>
-</li>
-<li><p>若Strength调最强了仍不满意Sharpness表现，再微调Noise和Fine Texture</p>
-</li>
-</ul>
-<h2 id="5-Saturation-Setting-PCA"><a href="#5-Saturation-Setting-PCA" class="headerlink" title="5.Saturation Setting-PCA"></a>5.Saturation Setting-PCA</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_92.png" alt=" "></p>
-<h3 id="5-1-Parameter功用"><a href="#5-1-Parameter功用" class="headerlink" title="5.1.Parameter功用"></a>5.1.Parameter功用</h3><h4 id="5-1-1-Saturation"><a href="#5-1-1-Saturation" class="headerlink" title="5.1.1.Saturation"></a>5.1.1.Saturation</h4><p>当Saturation=10,PCA Table的Saturation所有Bin均加上10</p>
-<p>PCA Saturation Table和Saturation Gain的关系：</p>
-<p>Saturation Gain=1+(Saturation/127)</p>
+        <h2 id="1-如何理解直方图计算代价较小"><a href="#1-如何理解直方图计算代价较小" class="headerlink" title="1.如何理解直方图计算代价较小"></a>1.如何理解直方图计算代价较小</h2><p>原因：例如一个1024x1024的图像，当转换成直方图时会进行其分组，列如分为255组，那么这1024x124个像素会被叠加分到这255组中去，也就是说，处理时虽然值变大了，但是像素点变少了，不需要去拆分RGB三色，不需要单步计算等额外的工作，只需要通过特定的算法对这255组进行计算即可，所以说代价是较小的。</p>
+<h2 id="2-如何读懂直方图"><a href="#2-如何读懂直方图" class="headerlink" title="2.如何读懂直方图"></a>2.如何读懂直方图</h2><p>直方图的显示方式是左暗右亮，左边用于描述图像的暗度，右边用于描述图像的亮度</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_1.png" alt=" "></p>
+<h2 id="3-直方图的基本概念"><a href="#3-直方图的基本概念" class="headerlink" title="3.直方图的基本概念"></a>3.直方图的基本概念</h2><p>横向代表亮度等级，也就是灰度等级，如256级（0-255），纵向代表对应某一灰度等级的像素数量。</p>
+<p>首先分析出照片中所有像素的亮度，然后计算出具体数值，再把它们映射到横轴上。这样的话，越高，这个亮度（灰度等级）上的像素就越多。</p>
+<p>直方图的观看规则就是“左黑右白”，左边代表暗部，右边代表亮部，而中间则代表中间调。横轴上各点所对应的山脉状图形的高度就是分布在这个亮度上的像素。像素密集程度越高，山脉状图形也就越高，山脉状图形高的地方被叫做“山峰”，接地的地方（紧挨方框下边线的地方）被称为“山脚”。</p>
+<p>暗部的“山脚”，我们称之为“暗脚”，与此对应，亮部的“山脚”为“亮脚”。</p>
+<h2 id="4-概念的简化"><a href="#4-概念的简化" class="headerlink" title="4.概念的简化"></a>4.概念的简化</h2><p>一般相机的测光原理，是将画面分割成许多区块，分别进行测光后加总，最后计算出最为理想的测光值；</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_2.png" alt=" "></p>
+<p>单纯将明暗区分开来，依照从左到右，由暗到亮进行排列；</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_3.png" alt=" "></p>
+<p>最后的结果会是这个样子，这就是曝光直方图的原理；</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_4.png" alt=" "></p>
+<p>直方图除了有两侧的边界值（0,255）以外，还有中间值：它显示了亮度值范围内的中间值，图像的色调越亮，它的中间值越高。</p>
+<p>5、直方图的判断标准</p>
+<p>满而不溢，重心均衡，换句话说就是人眼适合观察的图片。</p>
+<p>5.1.满而不溢。</p>
+<p>满，就是照片上各种灰度等级都有，直方图充满明暗两边的边界。 没有大量的“真空”地带。</p>
+<p>不溢，就是明暗两个“山脚”没有出各自的边界（左右边界）。双脚都在界内。</p>
+<p>举例：</p>
+<p>右侧亮部大量真空地带，像素在左侧暗部大量堆积，曝光不足</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_5.png" alt=" "></p>
+<p>左侧暗部大量真空地带，像素在右侧亮部大量堆积，曝光过度。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_6.png" alt=" "></p>
+<p>左右两侧均有大量真空地带，像素在中部大量堆积，整体画面发灰。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_7.png" alt=" "></p>
+<p>暗部溢出，即“暗脚”出边界，或称“暗脚被砍”，画面出现大量没有细节的死黑区域。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_8.png" alt=" "></p>
+<p>亮部溢出，即“亮脚”出边界，或称“亮脚被砍”，画面出现大量没有细节的死白区域。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_9.png" alt=" "></p>
+<p>亮部暗部两端均溢出，两脚出边界，或称“双脚被砍”，画面出现大量没有细节的死白死黑区域。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_10.png" alt=" "></p>
+<p>5.2.重心均衡。</p>
+<p>就是直方图形成的山峰两侧均衡稳定，尽量不偏左或偏右。</p>
+<p>虽然色阶分布“满而不溢”，但分布不均，“山形”不正，整个画面偏暗。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_11.png" alt=" "></p>
 
     </div>
     
@@ -266,15 +268,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/11/16/C-2018-11-16/" class="pre-post btn btn-default" title='直方图的了解'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">直方图的了解</span>
-        </a>
     
-    
-        <a href="/2018/11/14/C-2018-11-14/" class="next-post btn btn-default" title='CCT6589_Basic之ISP Tuning（1）'>
+        <a href="/2018/11/15/C-2018-11-15/" class="next-post btn btn-default" title='CCT6589_Basic之ISP Tuning（2）'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">CCT6589_Basic之ISP Tuning（1）</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">CCT6589_Basic之ISP Tuning（2）</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -317,7 +314,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-NR-Setting-CFA"><span class="toc-text">1.NR Setting-CFA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Parameter功用"><span class="toc-text">1.1.Parameter功用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-Noise"><span class="toc-text">1.1.1.Noise</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-Texture"><span class="toc-text">1.1.2.Texture</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-NR-Setting-ANR"><span class="toc-text">2.NR Setting-ANR</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Parameter功用"><span class="toc-text">2.1.Parameter功用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-Noise-Level"><span class="toc-text">2.1.1.Noise Level</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-Strength"><span class="toc-text">2.1.2.Strength</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-建议"><span class="toc-text">2.1.3.建议</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Color-Setting-CCR"><span class="toc-text">3.Color Setting-CCR</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Parameter功用"><span class="toc-text">3.1.Parameter功用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-Chroma-Reduction"><span class="toc-text">3.1.1.Chroma Reduction</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Sharpness-Setting-EE"><span class="toc-text">4.Sharpness Setting-EE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Parameter功用"><span class="toc-text">4.1.Parameter功用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-Strength"><span class="toc-text">4.1.1.Strength</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-Noise"><span class="toc-text">4.1.2.Noise</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-Fine-Texture"><span class="toc-text">4.1.3.Fine Texture</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-4-建议"><span class="toc-text">4.1.4.建议</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Saturation-Setting-PCA"><span class="toc-text">5.Saturation Setting-PCA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Parameter功用"><span class="toc-text">5.1.Parameter功用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-1-Saturation"><span class="toc-text">5.1.1.Saturation</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-如何理解直方图计算代价较小"><span class="toc-text">1.如何理解直方图计算代价较小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-如何读懂直方图"><span class="toc-text">2.如何读懂直方图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-直方图的基本概念"><span class="toc-text">3.直方图的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-概念的简化"><span class="toc-text">4.概念的简化</span></a></li></ol>
         
     </div>
 </aside>
