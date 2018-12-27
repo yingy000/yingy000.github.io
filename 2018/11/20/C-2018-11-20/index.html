@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>CCM的了解 | 天使在人间の博客</title>
+<title>MT6771之AE Tuning（1） | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="CCM的了解">
+        <h1 id="MT6771之AE Tuning（1）">
             
-	            CCM的了解
+	            MT6771之AE Tuning（1）
             
         </h1>
         <div class="post-meta">
@@ -177,8 +177,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/CCM" title='CCM'>
-                        CCM
+                    <a href="/tags/Camera-tuning" title='Camera-tuning'>
+                        Camera-tuning
                     </a>
                 
             
@@ -190,7 +190,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/11/19</span>
+            <span class="date-meta">2018/11/20</span>
         </span>
         
     
@@ -201,47 +201,14 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><h3 id="1-1-CCD"><a href="#1-1-CCD" class="headerlink" title="1.1.CCD"></a>1.1.CCD</h3><p>CCD是Charge Coupled Device：电荷耦合器件图像传感器</p>
-<h3 id="1-2-CMOS"><a href="#1-2-CMOS" class="headerlink" title="1.2.CMOS"></a>1.2.CMOS</h3><p>CMOS是Complementary Metal Oxide Semiconductor：互补金属氧化物半导体</p>
-<p>常见的摄像头传感器类型主要有两种，一种是CCD传感器，另一种是CMOS传感器。</p>
-<h3 id="1-3-CCM"><a href="#1-3-CCM" class="headerlink" title="1.3.CCM"></a>1.3.CCM</h3><p>CCM是CMOS Camera Module：互补金属氧化物半导体摄像模组</p>
-<h3 id="1-4-CCM的使用范围"><a href="#1-4-CCM的使用范围" class="headerlink" title="1.4.CCM的使用范围"></a>1.4.CCM的使用范围</h3><ul>
-<li><p>PC Camera</p>
-</li>
-<li><p>低阶数位相机</p>
-</li>
-<li><p>PDA,手机</p>
-</li>
-<li><p>玩具,倒车系统</p>
-</li>
-<li><p>安全监控</p>
-</li>
-<li><p>影像电话，指纹辨识器</p>
-</li>
-</ul>
-<h2 id="2-CMOS-Sensor成像原理"><a href="#2-CMOS-Sensor成像原理" class="headerlink" title="2.CMOS Sensor成像原理"></a>2.CMOS Sensor成像原理</h2><p>景物通过镜头(Lens)生成的光学图像投射到图像传感器(Sensor)表面上，然后转换成电信号，经过A/D(模数转换)转变后变成数字图像信号，再送到数字信号处理(DSP)中加工处理，再通过USB接口传输到电脑中处理，通过显示器就可以看到图像了。</p>
-<h2 id="3-CMOS-Sensor的分辨率"><a href="#3-CMOS-Sensor的分辨率" class="headerlink" title="3.CMOS Sensor的分辨率"></a>3.CMOS Sensor的分辨率</h2><ul>
-<li><p>CIF：<code>352*288</code>=&gt;10万</p>
-</li>
-<li><p>VGA：<code>640*480</code>=&gt;30万</p>
-</li>
-<li><p>SVGA：<code>800*600</code>=&gt;48万</p>
-</li>
-<li><p>SXGA：<code>1280*1024</code>=&gt;130万</p>
-</li>
-<li><p>UXGA：<code>1600*1200</code>=&gt;200万</p>
-</li>
-<li><p>QXGA：<code>2048*1536</code>=&gt;300万</p>
-</li>
-</ul>
-<h2 id="4-Lens相关参数"><a href="#4-Lens相关参数" class="headerlink" title="4.Lens相关参数"></a>4.Lens相关参数</h2><h3 id="4-1-光圈"><a href="#4-1-光圈" class="headerlink" title="4.1.光圈"></a>4.1.光圈</h3><p>F/N：镜头的光圈(F=f/D),其中f是指镜头的有效焦距，D是指镜头的透光孔直径。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_12.png" alt=" "></p>
-<h3 id="4-2-EFL有效焦距"><a href="#4-2-EFL有效焦距" class="headerlink" title="4.2.EFL有效焦距"></a>4.2.EFL有效焦距</h3><p>定义为Lens为等效单片透镜的中心点到Sensor表面的距离</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_13.png" alt=" "></p>
-<h3 id="4-3-BFL有效焦距"><a href="#4-3-BFL有效焦距" class="headerlink" title="4.3.BFL有效焦距"></a>4.3.BFL有效焦距</h3><p>定义为镜头的最后一透镜的凸起部分到Sensor表面的距离</p>
-<h3 id="4-4-TTL"><a href="#4-4-TTL" class="headerlink" title="4.4.TTL"></a>4.4.TTL</h3><p>TTL（Total Track Length）：定义为镜头表面到Sensor表面的距离</p>
-<h3 id="4-5-OTTL"><a href="#4-5-OTTL" class="headerlink" title="4.5.OTTL"></a>4.5.OTTL</h3><p>Lens中第一片透镜中心到Sensor表面的距离</p>
-<h3 id="4-6-MTTL"><a href="#4-6-MTTL" class="headerlink" title="4.6.MTTL"></a>4.6.MTTL</h3><p>定义为镜头表面到Sensor表面的距离</p>
+        <h2 id="1-AE-tuning之前的准备工作"><a href="#1-AE-tuning之前的准备工作" class="headerlink" title="1.AE tuning之前的准备工作"></a>1.AE tuning之前的准备工作</h2><p>1.确定shutter/gain线性度pass</p>
+<p>2.确定shading有Calibration pass</p>
+<p>3.确认EV offset正确性</p>
+<p>4.确认最小帧率和最大ISO</p>
+<h2 id="2-为什么要调试AE"><a href="#2-为什么要调试AE" class="headerlink" title="2.为什么要调试AE"></a>2.为什么要调试AE</h2><p>因为环境的亮度是可以被人眼所适应，所以人眼看到的亮度总是合适的;</p>
+<p>Camera的亮度取决于曝光设置，除非曝光改变到合适的曝光设置，否则Camera的亮度是不合适的;</p>
+<p>AE是指自动修改合适的曝光值;</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_14.png" alt=" "></p>
 
     </div>
     
@@ -273,15 +240,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/11/20/C-2018-11-20/" class="pre-post btn btn-default" title='MT6771之AE Tuning（1）'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">MT6771之AE Tuning（1）</span>
-        </a>
     
-    
-        <a href="/2018/11/16/C-2018-11-16/" class="next-post btn btn-default" title='直方图的了解'>
+        <a href="/2018/11/19/C-2018-11-19/" class="next-post btn btn-default" title='CCM的了解'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">直方图的了解</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">CCM的了解</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -324,7 +286,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-基本概念"><span class="toc-text">1.基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-CCD"><span class="toc-text">1.1.CCD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-CMOS"><span class="toc-text">1.2.CMOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-CCM"><span class="toc-text">1.3.CCM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-CCM的使用范围"><span class="toc-text">1.4.CCM的使用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CMOS-Sensor成像原理"><span class="toc-text">2.CMOS Sensor成像原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-CMOS-Sensor的分辨率"><span class="toc-text">3.CMOS Sensor的分辨率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Lens相关参数"><span class="toc-text">4.Lens相关参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-光圈"><span class="toc-text">4.1.光圈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-EFL有效焦距"><span class="toc-text">4.2.EFL有效焦距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-BFL有效焦距"><span class="toc-text">4.3.BFL有效焦距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-TTL"><span class="toc-text">4.4.TTL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-OTTL"><span class="toc-text">4.5.OTTL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-MTTL"><span class="toc-text">4.6.MTTL</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AE-tuning之前的准备工作"><span class="toc-text">1.AE tuning之前的准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-为什么要调试AE"><span class="toc-text">2.为什么要调试AE</span></a></li></ol>
         
     </div>
 </aside>
