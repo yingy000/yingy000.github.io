@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>直方图的了解 | 天使在人间の博客</title>
+<title>CCM的了解 | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="直方图的了解">
+        <h1 id="CCM的了解">
             
-	            直方图的了解
+	            CCM的了解
             
         </h1>
         <div class="post-meta">
@@ -177,8 +177,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/直方图" title='直方图'>
-                        直方图
+                    <a href="/tags/CCM" title='CCM'>
+                        CCM
                     </a>
                 
             
@@ -190,7 +190,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/11/16</span>
+            <span class="date-meta">2018/11/19</span>
         </span>
         
     
@@ -201,42 +201,47 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-如何理解直方图计算代价较小"><a href="#1-如何理解直方图计算代价较小" class="headerlink" title="1.如何理解直方图计算代价较小"></a>1.如何理解直方图计算代价较小</h2><p>原因：例如一个1024x1024的图像，当转换成直方图时会进行其分组，列如分为255组，那么这1024x124个像素会被叠加分到这255组中去，也就是说，处理时虽然值变大了，但是像素点变少了，不需要去拆分RGB三色，不需要单步计算等额外的工作，只需要通过特定的算法对这255组进行计算即可，所以说代价是较小的。</p>
-<h2 id="2-如何读懂直方图"><a href="#2-如何读懂直方图" class="headerlink" title="2.如何读懂直方图"></a>2.如何读懂直方图</h2><p>直方图的显示方式是左暗右亮，左边用于描述图像的暗度，右边用于描述图像的亮度</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_1.png" alt=" "></p>
-<h2 id="3-直方图的基本概念"><a href="#3-直方图的基本概念" class="headerlink" title="3.直方图的基本概念"></a>3.直方图的基本概念</h2><p>横向代表亮度等级，也就是灰度等级，如256级（0-255），纵向代表对应某一灰度等级的像素数量。</p>
-<p>首先分析出照片中所有像素的亮度，然后计算出具体数值，再把它们映射到横轴上。这样的话，越高，这个亮度（灰度等级）上的像素就越多。</p>
-<p>直方图的观看规则就是“左黑右白”，左边代表暗部，右边代表亮部，而中间则代表中间调。横轴上各点所对应的山脉状图形的高度就是分布在这个亮度上的像素。像素密集程度越高，山脉状图形也就越高，山脉状图形高的地方被叫做“山峰”，接地的地方（紧挨方框下边线的地方）被称为“山脚”。</p>
-<p>暗部的“山脚”，我们称之为“暗脚”，与此对应，亮部的“山脚”为“亮脚”。</p>
-<h2 id="4-概念的简化"><a href="#4-概念的简化" class="headerlink" title="4.概念的简化"></a>4.概念的简化</h2><p>一般相机的测光原理，是将画面分割成许多区块，分别进行测光后加总，最后计算出最为理想的测光值；</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_2.png" alt=" "></p>
-<p>单纯将明暗区分开来，依照从左到右，由暗到亮进行排列；</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_3.png" alt=" "></p>
-<p>最后的结果会是这个样子，这就是曝光直方图的原理；</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_4.png" alt=" "></p>
-<p>直方图除了有两侧的边界值（0,255）以外，还有中间值：它显示了亮度值范围内的中间值，图像的色调越亮，它的中间值越高。</p>
-<p>5、直方图的判断标准</p>
-<p>满而不溢，重心均衡，换句话说就是人眼适合观察的图片。</p>
-<p>5.1.满而不溢。</p>
-<p>满，就是照片上各种灰度等级都有，直方图充满明暗两边的边界。 没有大量的“真空”地带。</p>
-<p>不溢，就是明暗两个“山脚”没有出各自的边界（左右边界）。双脚都在界内。</p>
-<p>举例：</p>
-<p>右侧亮部大量真空地带，像素在左侧暗部大量堆积，曝光不足</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_5..png" alt=" "></p>
-<p>左侧暗部大量真空地带，像素在右侧亮部大量堆积，曝光过度。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_6.png" alt=" "></p>
-<p>左右两侧均有大量真空地带，像素在中部大量堆积，整体画面发灰。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_7.png" alt=" "></p>
-<p>暗部溢出，即“暗脚”出边界，或称“暗脚被砍”，画面出现大量没有细节的死黑区域。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_8.png" alt=" "></p>
-<p>亮部溢出，即“亮脚”出边界，或称“亮脚被砍”，画面出现大量没有细节的死白区域。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_9.png" alt=" "></p>
-<p>亮部暗部两端均溢出，两脚出边界，或称“双脚被砍”，画面出现大量没有细节的死白死黑区域。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_10.png" alt=" "></p>
-<p>5.2.重心均衡。</p>
-<p>就是直方图形成的山峰两侧均衡稳定，尽量不偏左或偏右。</p>
-<p>虽然色阶分布“满而不溢”，但分布不均，“山形”不正，整个画面偏暗。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_11.png" alt=" "></p>
+        <h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><h3 id="1-1-CCD"><a href="#1-1-CCD" class="headerlink" title="1.1.CCD"></a>1.1.CCD</h3><p>CCD是Charge Coupled Device：电荷耦合器件图像传感器</p>
+<h3 id="1-2-CMOS"><a href="#1-2-CMOS" class="headerlink" title="1.2.CMOS"></a>1.2.CMOS</h3><p>CMOS是Complementary Metal Oxide Semiconductor：互补金属氧化物半导体</p>
+<p>常见的摄像头传感器类型主要有两种，一种是CCD传感器，另一种是CMOS传感器。</p>
+<h3 id="1-3-CCM"><a href="#1-3-CCM" class="headerlink" title="1.3.CCM"></a>1.3.CCM</h3><p>CCM是CMOS Camera Module：互补金属氧化物半导体摄像模组</p>
+<h3 id="1-4-CCM的使用范围"><a href="#1-4-CCM的使用范围" class="headerlink" title="1.4.CCM的使用范围"></a>1.4.CCM的使用范围</h3><ul>
+<li><p>PC Camera</p>
+</li>
+<li><p>低阶数位相机</p>
+</li>
+<li><p>PDA,手机</p>
+</li>
+<li><p>玩具,倒车系统</p>
+</li>
+<li><p>安全监控</p>
+</li>
+<li><p>影像电话，指纹辨识器</p>
+</li>
+</ul>
+<h2 id="2-CMOS-Sensor成像原理"><a href="#2-CMOS-Sensor成像原理" class="headerlink" title="2.CMOS Sensor成像原理"></a>2.CMOS Sensor成像原理</h2><p>景物通过镜头(Lens)生成的光学图像投射到图像传感器(Sensor)表面上，然后转换成电信号，经过A/D(模数转换)转变后变成数字图像信号，再送到数字信号处理(DSP)中加工处理，再通过USB接口传输到电脑中处理，通过显示器就可以看到图像了。</p>
+<h2 id="3-CMOS-Sensor的分辨率"><a href="#3-CMOS-Sensor的分辨率" class="headerlink" title="3.CMOS Sensor的分辨率"></a>3.CMOS Sensor的分辨率</h2><ul>
+<li><p>CIF：<code>352*288</code>=&gt;10万</p>
+</li>
+<li><p>VGA：<code>640*480</code>=&gt;30万</p>
+</li>
+<li><p>SVGA：<code>800*600</code>=&gt;48万</p>
+</li>
+<li><p>SXGA：<code>1280*1024</code>=&gt;130万</p>
+</li>
+<li><p>UXGA：<code>1600*1200</code>=&gt;200万</p>
+</li>
+<li><p>QXGA：<code>2048*1536</code>=&gt;300万</p>
+</li>
+</ul>
+<h2 id="4-Lens相关参数"><a href="#4-Lens相关参数" class="headerlink" title="4.Lens相关参数"></a>4.Lens相关参数</h2><h3 id="4-1-光圈"><a href="#4-1-光圈" class="headerlink" title="4.1.光圈"></a>4.1.光圈</h3><p>F/N：镜头的光圈(F=f/D),其中f是指镜头的有效焦距，D是指镜头的透光孔直径。</p>
+<p>图12</p>
+<h3 id="4-2-EFL有效焦距"><a href="#4-2-EFL有效焦距" class="headerlink" title="4.2.EFL有效焦距"></a>4.2.EFL有效焦距</h3><p>定义为Lens为等效单片透镜的中心点到Sensor表面的距离</p>
+<p>图13</p>
+<h3 id="4-3-BFL有效焦距"><a href="#4-3-BFL有效焦距" class="headerlink" title="4.3.BFL有效焦距"></a>4.3.BFL有效焦距</h3><p>定义为镜头的最后一透镜的凸起部分到Sensor表面的距离</p>
+<h3 id="4-4-TTL"><a href="#4-4-TTL" class="headerlink" title="4.4.TTL"></a>4.4.TTL</h3><p>TTL（Total Track Length）：定义为镜头表面到Sensor表面的距离</p>
+<h3 id="4-5-OTTL"><a href="#4-5-OTTL" class="headerlink" title="4.5.OTTL"></a>4.5.OTTL</h3><p>Lens中第一片透镜中心到Sensor表面的距离</p>
+<h3 id="4-6-MTTL"><a href="#4-6-MTTL" class="headerlink" title="4.6.MTTL"></a>4.6.MTTL</h3><p>定义为镜头表面到Sensor表面的距离</p>
 
     </div>
     
@@ -268,15 +273,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/11/19/C-2018-11-19/" class="pre-post btn btn-default" title='CCM的了解'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">CCM的了解</span>
-        </a>
     
-    
-        <a href="/2018/11/15/C-2018-11-15/" class="next-post btn btn-default" title='CCT6589_Basic之ISP Tuning（2）'>
+        <a href="/2018/11/16/C-2018-11-16/" class="next-post btn btn-default" title='直方图的了解'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">CCT6589_Basic之ISP Tuning（2）</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">直方图的了解</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -319,7 +319,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-如何理解直方图计算代价较小"><span class="toc-text">1.如何理解直方图计算代价较小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-如何读懂直方图"><span class="toc-text">2.如何读懂直方图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-直方图的基本概念"><span class="toc-text">3.直方图的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-概念的简化"><span class="toc-text">4.概念的简化</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-基本概念"><span class="toc-text">1.基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-CCD"><span class="toc-text">1.1.CCD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-CMOS"><span class="toc-text">1.2.CMOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-CCM"><span class="toc-text">1.3.CCM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-CCM的使用范围"><span class="toc-text">1.4.CCM的使用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CMOS-Sensor成像原理"><span class="toc-text">2.CMOS Sensor成像原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-CMOS-Sensor的分辨率"><span class="toc-text">3.CMOS Sensor的分辨率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Lens相关参数"><span class="toc-text">4.Lens相关参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-光圈"><span class="toc-text">4.1.光圈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-EFL有效焦距"><span class="toc-text">4.2.EFL有效焦距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-BFL有效焦距"><span class="toc-text">4.3.BFL有效焦距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-TTL"><span class="toc-text">4.4.TTL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-OTTL"><span class="toc-text">4.5.OTTL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-MTTL"><span class="toc-text">4.6.MTTL</span></a></li></ol></li></ol>
         
     </div>
 </aside>
