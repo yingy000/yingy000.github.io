@@ -209,6 +209,40 @@
 <p>Camera的亮度取决于曝光设置，除非曝光改变到合适的曝光设置，否则Camera的亮度是不合适的;</p>
 <p>AE是指自动修改合适的曝光值;</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_14.png" alt=" "></p>
+<h2 id="3-AE调试的流程图"><a href="#3-AE调试的流程图" class="headerlink" title="3.AE调试的流程图"></a>3.AE调试的流程图</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_15.png" alt=" "></p>
+<h3 id="3-1-Get-Statistics"><a href="#3-1-Get-Statistics" class="headerlink" title="3.1.Get Statistics"></a>3.1.Get Statistics</h3><p>获取亮度信息,直方图信息,Y的信息等;</p>
+<h4 id="3-1-1-AE-Statistics窗口配置"><a href="#3-1-1-AE-Statistics窗口配置" class="headerlink" title="3.1.1.AE Statistics窗口配置"></a>3.1.1.AE Statistics窗口配置</h4><p>Maximum window number：128*128 Windows;</p>
+<p>现在使用的FW配置：120*90 Windows;</p>
+<p>其中Error pixel是指Over-exposed pixel或者Under-exposed pixel;</p>
+<h4 id="3-1-2-AE-Histogram"><a href="#3-1-2-AE-Histogram" class="headerlink" title="3.1.2.AE Histogram"></a>3.1.2.AE Histogram</h4><p>Histogram#0(Flare):40 bins for R,G,and B each,cover 0~39 in 8bit level</p>
+<p>Histogram#1(FullRGB):for RGB mixing(shared bins),cover 0~255 in 8bit level</p>
+<p>Histogram#2(CentralY):for Y of 1/4-central image,cover 0~255 in 8bit level</p>
+<p>Histogram#3(FullY):for Y of full image,cover 0~255 in 8bit level</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_17.png" alt=" "></p>
+<h3 id="3-2-Decide-target-brightness"><a href="#3-2-Decide-target-brightness" class="headerlink" title="3.2.Decide target brightness"></a>3.2.Decide target brightness</h3><p>用多种机制计算最终target brightness处理不同场景;</p>
+<p>计算CWV与target brightnes之间的亮度差，以及是否需要收敛;</p>
+<p>将亮度转换为Final AE index（在3帧后收敛）;</p>
+<h2 id="4-Target-AE的计算公式"><a href="#4-Target-AE的计算公式" class="headerlink" title="4.Target AE的计算公式"></a>4.Target AE的计算公式</h2><p>target=(THD/Y)*CWV</p>
+<p>其中，THD：from parameter;</p>
+<p>Y：直方图亮度值的N%;</p>
+<p>CWV：Centre Weighting Value;</p>
+<h2 id="6-详细的AE调试流程图"><a href="#6-详细的AE调试流程图" class="headerlink" title="6.详细的AE调试流程图"></a>6.详细的AE调试流程图</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_16.png" alt=" "></p>
+<h3 id="6-1-AE-Mean-Target"><a href="#6-1-AE-Mean-Target" class="headerlink" title="6.1.AE Mean Target"></a>6.1.AE Mean Target</h3><p>控制大多数场景的亮度，其中纯色的场景需要压抑亮度，为了避免颜色畸变</p>
+<h4 id="6-1-1-Caculate-weighting-value-MTWV"><a href="#6-1-1-Caculate-weighting-value-MTWV" class="headerlink" title="6.1.1.Caculate weighting value(MTWV)"></a>6.1.1.Caculate weighting value(MTWV)</h4><p>120<em>90的Windows乘以15</em>15 weighting table;</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_20.png" alt=" "></p>
+<p>Color Suppression：避免由于某些颜色通道超过255而造成颜色失真;</p>
+<h4 id="6-1-2-Final-Main-Target"><a href="#6-1-2-Final-Main-Target" class="headerlink" title="6.1.2.Final Main Target"></a>6.1.2.Final Main Target</h4><p>Final Main_Target=CWV*Main_THD/MTWV</p>
+<h3 id="6-2-HS-Target"><a href="#6-2-HS-Target" class="headerlink" title="6.2.HS Target"></a>6.2.HS Target</h3><h4 id="6-2-1-适用场景"><a href="#6-2-1-适用场景" class="headerlink" title="6.2.1.适用场景"></a>6.2.1.适用场景</h4><p>如果只考虑AE target，有时候亮度太低，经过HS之后，最终的final target被拉伸，并且亮度是合适的</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_18.png" alt=" "></p>
+<p>图像中高亮度区域的亮度提高到一定程度</p>
+<p>对于过曝的区域，HS控制highly bright area在一定的区域以避免过曝</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_19.png" alt=" "></p>
+<h4 id="6-2-2-HS-dynamic-range-EV-Diff或者EVD"><a href="#6-2-2-HS-dynamic-range-EV-Diff或者EVD" class="headerlink" title="6.2.2.HS dynamic range(EV Diff或者EVD)"></a>6.2.2.HS dynamic range(EV Diff或者EVD)</h4><p>亮部与暗部之间的亮度差意味着HS的动态范围</p>
+<p>用于确定直方图是否均匀分布</p>
+<p>蓝天场景的动态范围较小（BVD），环境亮度较大（BV）</p>
+<h4 id="6-2-3-HS-Target"><a href="#6-2-3-HS-Target" class="headerlink" title="6.2.3.HS_Target"></a>6.2.3.HS_Target</h4><p>HS_Target=CWV*HS_THD/HS_Y</p>
+<p>将HS_Y的值向右拉,表示往高处拉;将HS_Y的值向左拉，表示往暗处拉;</p>
+<h4 id="6-2-4-Green-Suppress"><a href="#6-2-4-Green-Suppress" class="headerlink" title="6.2.4.Green Suppress"></a>6.2.4.Green Suppress</h4><p>用于降低大面积绿色场景的亮度</p>
 
     </div>
     
@@ -286,7 +320,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AE-tuning之前的准备工作"><span class="toc-text">1.AE tuning之前的准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-为什么要调试AE"><span class="toc-text">2.为什么要调试AE</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AE-tuning之前的准备工作"><span class="toc-text">1.AE tuning之前的准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-为什么要调试AE"><span class="toc-text">2.为什么要调试AE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-AE调试的流程图"><span class="toc-text">3.AE调试的流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Get-Statistics"><span class="toc-text">3.1.Get Statistics</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-AE-Statistics窗口配置"><span class="toc-text">3.1.1.AE Statistics窗口配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-AE-Histogram"><span class="toc-text">3.1.2.AE Histogram</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Decide-target-brightness"><span class="toc-text">3.2.Decide target brightness</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Target-AE的计算公式"><span class="toc-text">4.Target AE的计算公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-详细的AE调试流程图"><span class="toc-text">6.详细的AE调试流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-AE-Mean-Target"><span class="toc-text">6.1.AE Mean Target</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-1-Caculate-weighting-value-MTWV"><span class="toc-text">6.1.1.Caculate weighting value(MTWV)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-2-Final-Main-Target"><span class="toc-text">6.1.2.Final Main Target</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-HS-Target"><span class="toc-text">6.2.HS Target</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-1-适用场景"><span class="toc-text">6.2.1.适用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-2-HS-dynamic-range-EV-Diff或者EVD"><span class="toc-text">6.2.2.HS dynamic range(EV Diff或者EVD)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-3-HS-Target"><span class="toc-text">6.2.3.HS_Target</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-4-Green-Suppress"><span class="toc-text">6.2.4.Green Suppress</span></a></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
