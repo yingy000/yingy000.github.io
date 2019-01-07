@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>设计模式之原型模式 | 天使在人间の博客</title>
+<title>PDAF Sensor的基本原理 | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="设计模式之原型模式">
+        <h1 id="PDAF Sensor的基本原理">
             
-	            设计模式之原型模式
+	            PDAF Sensor的基本原理
             
         </h1>
         <div class="post-meta">
@@ -165,8 +165,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/前端">
-            前端
+        <a href="/categories/Camera">
+            Camera
         </a>
     </span>
     
@@ -177,8 +177,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/设计模式" title='设计模式'>
-                        设计模式
+                    <a href="/tags/AF" title='AF'>
+                        AF
                     </a>
                 
             
@@ -190,7 +190,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/03/03</span>
+            <span class="date-meta">2018/11/23</span>
         </span>
         
     
@@ -198,42 +198,31 @@
 
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>309</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
         <blockquote>
-<p> 原型模式</p>
+<p>在自动对焦的时候如果发现图像不清楚，lens应该向前还是向后移动呢？总是要前后移动lens一下才知道，这种方式指的是普通的<code>Contrast AF(反差对焦)</code>，PDAF的出现就是为了解决这个lens移动的问题，我们可以根据图像，预判lens运动的方向。</p>
 </blockquote>
-<p>1.1定义：通过给出一个原型对象来指明所有创建的对象的类型，然后用复制这个原型对象的办法创建出更多同类型的对象。这就是选型模式的用意。</p>
-<p>1.2结构图<br><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232443/o_48.png" alt=" "><br>图 48</p>
-<ul>
-<li>客户(Client)角色：客户类提出创建对象的请求。</li>
-<li>抽象原型(Prototype)角色：这是一个抽象角色，通常由一个Java接口或Java抽象类实现。此角色给出所有的具体原型类所需的接口。</li>
-<li>具体原型（Concrete Prototype）角色：被复制的对象。此角色需要实现抽象的原型角色所要求的接口。</li>
-</ul>
-<p>①　原型模式要求对象实现一个可以“克隆”自身的接口，这样就可以通过复制一个实例对象本身来创建一个新的实例。这样一来，通过原型实例创建新的对象，就不再需要关心这个实例本身的类型，只要实现了克隆自身的方法，就可以通过这个方法来获取新的对象，而无须再去通过new来创建。</p>
-<p>②　原型模式有两种表现形式：（1）简单形式、（2）登记形式，这两种表现形式仅仅是原型模式的不同实现。<br><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232443/o_49.png" alt=" "><br>图 49<br>③　作为原型模式的第二种形式，它多了一个原型管理器(PrototypeManager)角色，该角色的作用是：创建具体原型类的对象，并记录每一个被创建的对象。</p>
-<p>④　简单形式和登记形式的原型模式各有其长处和短处：如果需要创建的原型对象数目较少而且比较固定的话，可以采取第一种形式。在这种情况下，原型对象的引用可以由客户端自己保存。如果要创建的原型对象数目不固定的话，可以采取第二种形式。在这种情况下，客户端不保存对原型对象的引用，这个任务被交给管理员对象。在复制一个原型对象之前，客户端可以查看管理员对象是否已经有一个满足要求的原型对象。如果有，可以直接从管理员类取得这个对象引用；如果没有，客户端就需要自行复制此原型对象。</p>
-<p>1.3适用场景</p>
-<ul>
-<li>当一个系统应该独立于它的产品创建，构成和表示时；</li>
-<li>当要实例化的类是在运行时刻指定时，例如，通过动态装载；</li>
-<li>为了避免创建一个与产品类层次平行的工厂类层次时；</li>
-<li>当一个类的实例只能有几个不同状态组合中的一种时。建立相应数目的原型并克隆它们可能比每次用合适的状态手工实例化该类更方便一些。</li>
-</ul>
-<p>1.4优缺点</p>
-<ul>
-<li>原型模式允许在运行时动态改变具体的实现类型。原型模式可以在运行期间，由客户来注册符合原型接口的实现类型，也可以动态地改变具体的实现类型，看起来接口没有任何变化，但其实运行的已经是另外一个类实例了。因为克隆一个原型就类似于实例化一个类。</li>
-<li>（缺点）　原型模式最主要的缺点是每一个类都必须配备一个克隆方法。配备克隆方法需要对类的功能进行通盘考虑，这对于全新的类来说不是很难，而对于已经有的类不一定很容易，特别是当一个类引用不支持序列化的间接对象，或者引用含有循环结构的时候。</li>
-</ul>
-<p>1.5实例<br>现要求实现一个能够自动生成求职简历的程序，简历的基本内容包括求职者的姓名、性别、年龄及工作经历。希望每份简历中的工作经历有所不同，并尽量减少程序中的重复代码。现采用原型模式(Prototype)来实现上述要求，得到如图50所示的类图。<br><img src="http://images.cnblogs.com/cnblogs_com/cliy-10/1232443/o_50.png" alt=" "><br>图50</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># include＜string＞</span><br><span class="line">    Using namespace std;</span><br><span class="line">    Class Clonealole&#123;</span><br><span class="line">    Public:</span><br><span class="line">    virtual Cloneable*Clone()=<span class="number">0</span>;</span><br><span class="line">    Class WorkExperience:public Cloneable&#123;    <span class="comment">//经历</span></span><br><span class="line">    Private:</span><br><span class="line">        <span class="built_in">String</span> workDate;</span><br><span class="line">        <span class="built_in">String</span> company;</span><br><span class="line">    Public:</span><br><span class="line">      Cloneable*Clone()&#123;</span><br><span class="line">    WorkExperience *obj=<span class="keyword">new</span> WorkExperience();</span><br><span class="line">    Obj-＞workDate=<span class="keyword">this</span>-＞workDate;</span><br><span class="line">    Obj-＞company=<span class="keyword">this</span>-＞company;</span><br><span class="line">    Return obj;</span><br><span class="line">        &#125;                                                    <span class="comment">//其余代码省略</span></span><br><span class="line">      &#125;;</span><br><span class="line">    Class Resume:public Cloneable&#123;                     <span class="comment">//简历</span></span><br><span class="line">    Private:</span><br><span class="line">    <span class="built_in">String</span> name; string sex; string age;</span><br><span class="line">    WorkExperience*work;</span><br><span class="line">    Resume(WorkExperience*work)&#123;</span><br><span class="line">        This-＞work=( WorkExperience*)work-&gt;clone();</span><br><span class="line">    Public:</span><br><span class="line">    Resume(string name)&#123;  <span class="comment">/*实现省略*/</span>  &#125;</span><br><span class="line">    Void  SetPersonallnfo(string sex, string age)&#123;  <span class="comment">/*实现省略*/</span>  &#125;</span><br><span class="line">        Void setWorkExperience(string   workDate,string company) &#123;  <span class="comment">/*实现省略*/</span>  &#125;</span><br><span class="line">        Cloneable*Clone()&#123;</span><br><span class="line">    Resume *obj=<span class="keyword">new</span> Resume();</span><br><span class="line">    obj-＞name=<span class="keyword">this</span>-＞name;</span><br><span class="line">    obj-＞sex=<span class="keyword">this</span>-＞sex;</span><br><span class="line">    <span class="number">0</span>bj-＞age=<span class="keyword">this</span>-＞age;</span><br><span class="line">    Return obj;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    Int main()&#123;</span><br><span class="line">    Resume*a=<span class="keyword">new</span> Resrune(<span class="string">"张三"</span>);</span><br><span class="line">    A-＞SetPersonalInfo(<span class="string">"男"</span>, <span class="string">"29"</span>);</span><br><span class="line">    A-＞SetWorkExperience(<span class="string">"1998～2000"</span>, <span class="string">"XXX公司"</span>);</span><br><span class="line">    Resume*b=(Reasume*)a-&gt;Clone();</span><br><span class="line">    B-＞SetWorkExperience(<span class="string">"2001～2006"</span>,<span class="string">"YYY公司"</span>);</span><br><span class="line">    Return <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>1.6总结<br>Prototype模式同工厂模式，同样对客户隐藏了对象的创建工作，但是，与通过对一个类进行实例化来构造新对象不同的是，原型模式是通过拷贝一个现有对象生成新对象的，达到了“隔离类对象的使用者和具体类型（易变类）之间的耦合关系”的目的。</p>
-<p>完整源代码见：<a href="https://github.com/255255255255/design-mode" target="_blank" rel="noopener">https://github.com/255255255255/design-mode</a></p>
+<h2 id="1-PDAF-Sensor的实现原理"><a href="#1-PDAF-Sensor的实现原理" class="headerlink" title="1.PDAF Sensor的实现原理"></a>1.PDAF Sensor的实现原理</h2><p>以轴上点为例，紫色光线代表经过上半部分透镜的光线，而蓝色代表经过下半部分透镜的光线，可以看到，当CCD在焦前的时候，上半部分的CCD接收到的是上半部分的光线，而下半部分的CCD则接收到的是下半部分的光线，反之，在焦后的时候恰好相反。那么如果我们可以区分光线是来自透镜的上半部分还是下半部分，我们就可以知道是焦前还是焦后了。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_25.png" alt=" "></p>
+<p>不难发现，CCD越接近理想成像面，两色光线在CCD上所成像越接近，当恰好成像清晰时，两色光线是重合成一点的。</p>
+<p>PDAF sensor的一种实现如下图所示，在CMOS上面一半的位置加了金属遮盖，这样，被遮住左边一半的像素点就只能接受左边来的光，同理，pair的被遮住右边一般的像素点就只能接受右边来的光。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_26.png" alt=" "></p>
+<p>一般来说在CMOS中，遮住左边和遮住右边的像素点是在相邻位置会成对出现。</p>
+<p>按照这种原理，我们就可以知道，上图的轴上点发出的光在位于焦前的CCD上所成像应如下图所示。横坐标为pixel的x轴坐标，以光轴中心为0，纵坐标是像素接收到的光强。可以看到，左边遮挡的像素（L）和右边遮挡的像素（R）所得到的图像是关于光轴对称的。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_27.png" alt=" "></p>
+<p>所以，我们可以通过求自相关得到两个图像的shift，进而求得sensor需要移动的距离（通过tunning获得这样的对应关系）。</p>
+<h2 id="2-PDAF的影响"><a href="#2-PDAF的影响" class="headerlink" title="2.PDAF的影响"></a>2.PDAF的影响</h2><h3 id="2-1-Camera的光圈F"><a href="#2-1-Camera的光圈F" class="headerlink" title="2.1.Camera的光圈F"></a>2.1.Camera的光圈F</h3><p>光圈越小，PDAF的效果越精确，光圈越小，景深越小，那么在物体离焦时，得到的弥散斑越大，L和R的shift越大；</p>
+<h3 id="2-2-Camera的曝光时间"><a href="#2-2-Camera的曝光时间" class="headerlink" title="2.2.Camera的曝光时间"></a>2.2.Camera的曝光时间</h3><p>相机的曝光时间理论上不影响PDAF的效果，但是如果曝光时间过短，图像噪点过大，是会造成pdaf的L和R shift不准确的；</p>
+<h3 id="2-3-Camera的距离"><a href="#2-3-Camera的距离" class="headerlink" title="2.3.Camera的距离"></a>2.3.Camera的距离</h3><p>物体距离相机越近，pdaf的效果越精确。物体距离相机越近，物体移动相同距离的shift比在物距远时要大，这个跟景深是吻合的；</p>
+<h3 id="2-4-物体的pattern"><a href="#2-4-物体的pattern" class="headerlink" title="2.4.物体的pattern"></a>2.4.物体的pattern</h3><p>物体的pattern，当物体的pattern呈某种特定形状，会使得pdaf的像素检测不到shift，比如纯色或重复的pattern；</p>
+<h3 id="2-5-精度问题"><a href="#2-5-精度问题" class="headerlink" title="2.5.精度问题"></a>2.5.精度问题</h3><p>轴外点的精度低于轴上点。同样的离焦情况下，轴上点的shift比轴外点要大；</p>
+<h3 id="2-6-物体本身颜色"><a href="#2-6-物体本身颜色" class="headerlink" title="2.6.物体本身颜色"></a>2.6.物体本身颜色</h3><p>物体本身的颜色。当pdaf的像素都是G时，如果物体本身的颜色为R或者B，则会导致pdaf接收到的光能过小，从而影响pdaf的准确性；</p>
+<h2 id="3-PDAF的具体应用"><a href="#3-PDAF的具体应用" class="headerlink" title="3.PDAF的具体应用"></a>3.PDAF的具体应用</h2><p>利用相位差技术估算物体距离，进行快速对焦</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_28.png" alt=" "></p>
+<p>通过比较左右PD pixel形成的两张图像，PDAF算法会计算出当前物体到手机的距离，推动lens到合适的位置。</p>
+<p>一般来说，准焦时，左右pixel影像重合，不准焦时，远焦和近焦影像相位差方向不一样，离准焦越远，相位差越大。</p>
 
     </div>
     
@@ -265,11 +254,11 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/03/05/设计模式之命令模式/" class="pre-post btn btn-default" title='设计模式之命令模式'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">设计模式之命令模式</span>
-        </a>
     
+        <a href="/2018/11/22/C-2018-11-22/" class="next-post btn btn-default" title='Camera ISP的了解'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Camera ISP的了解</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
     
 </div>
 
@@ -311,7 +300,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <p>暂无目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-PDAF-Sensor的实现原理"><span class="toc-text">1.PDAF Sensor的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-PDAF的影响"><span class="toc-text">2.PDAF的影响</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Camera的光圈F"><span class="toc-text">2.1.Camera的光圈F</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Camera的曝光时间"><span class="toc-text">2.2.Camera的曝光时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Camera的距离"><span class="toc-text">2.3.Camera的距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-物体的pattern"><span class="toc-text">2.4.物体的pattern</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-精度问题"><span class="toc-text">2.5.精度问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-物体本身颜色"><span class="toc-text">2.6.物体本身颜色</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-PDAF的具体应用"><span class="toc-text">3.PDAF的具体应用</span></a></li></ol>
         
     </div>
 </aside>
