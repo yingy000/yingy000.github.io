@@ -220,19 +220,21 @@
 <h3 id="2-2-Import-Source"><a href="#2-2-Import-Source" class="headerlink" title="2.2.Import Source"></a>2.2.Import Source</h3><p>Import Raw后，将24色框选中，然后按Auto Select</p>
 <p>Tool会询问是否重新选取，若已经正确选取，点NO</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_69.png" alt=" "></p>
-<h3 id="2-3-Dynamic-CCM-tuning"><a href="#2-3-Dynamic-CCM-tuning" class="headerlink" title="2.3.Dynamic CCM tuning"></a>2.3.Dynamic CCM tuning</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_70.png" alt=" "></p>
-<h3 id="2-4-改变饱和度"><a href="#2-4-改变饱和度" class="headerlink" title="2.4.改变饱和度"></a>2.4.改变饱和度</h3><p>改变饱和度，重新Optimize</p>
+<h3 id="2-3-改变饱和度"><a href="#2-3-改变饱和度" class="headerlink" title="2.3.改变饱和度"></a>2.3.改变饱和度</h3><p>改变饱和度，重新Optimize</p>
 <p>饱和度越小，CCM的对角线数值越小</p>
-<h3 id="2-5-设定COST-Func"><a href="#2-5-设定COST-Func" class="headerlink" title="2.5.设定COST Func"></a>2.5.设定COST Func</h3><p>设定最佳化的方程式</p>
+<h3 id="2-4-设定COST-Func"><a href="#2-4-设定COST-Func" class="headerlink" title="2.4.设定COST Func"></a>2.4.设定COST Func</h3><p>设定最佳化的方程式</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_71.png" alt=" "></p>
-<h3 id="2-6-设定Constrain"><a href="#2-6-设定Constrain" class="headerlink" title="2.6.设定Constrain"></a>2.6.设定Constrain</h3><p>设定最佳化的条件</p>
+<h3 id="2-5-设定Constrain"><a href="#2-5-设定Constrain" class="headerlink" title="2.5.设定Constrain"></a>2.5.设定Constrain</h3><p>设定Constrain代表怎么去设定单一色块的落点的条件</p>
+<p>设定最佳化的条件</p>
 <p>可以设定Hue和Chroma</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_71.png" alt=" "></p>
+<p>其中Hue指的是旋转的角度，Chroma指的是距离中心原点的半径</p>
+<p>CCM其实是<code>3*3</code>的矩阵，如果说要趋近某个色块的话，就会有很高的机率造成其他色块与Target偏离，<code>CSTR</code>设置的值越大，就越难找到一个最佳落点的结果，一般来说，<code>CSTR</code>的值设置1~2个即可。</p>
 <h2 id="3-两种手动微调的最佳化方式"><a href="#3-两种手动微调的最佳化方式" class="headerlink" title="3.两种手动微调的最佳化方式"></a>3.两种手动微调的最佳化方式</h2><h3 id="3-1-拖曳Target"><a href="#3-1-拖曳Target" class="headerlink" title="3.1.拖曳Target"></a>3.1.拖曳Target</h3><p>拖曳Target到期望的Lab Domain位置</p>
 <h6 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h6><p>无法保证CCM一定能使结果趋近新的Target</p>
 <p>指定色块接近原本Target后，可能导致其他色块远离原本target</p>
 <p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_72.png" alt=" "></p>
-<h3 id="3-2-设定Constrain"><a href="#3-2-设定Constrain" class="headerlink" title="3.2.设定Constrain"></a>3.2.设定Constrain</h3><p>针对特定的Patch，设定Constrain，可以限制Result和Target的距离在一定的范围之内。</p>
+<h3 id="3-2-设定Constrain"><a href="#3-2-设定Constrain" class="headerlink" title="3.2.设定Constrain"></a>3.2.设定Constrain</h3><p>针对特定的Patch（某一个具体的色块），设定Constrain，可以限制Result和Target的距离在一定的范围之内。</p>
 <p>Constrain可设定Hue Range，Chroma Range，设定完成后按Set，然后再下方的Enable Patch勾选</p>
 <h6 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h6><p>无法保证CCM一定能使结果落在Constrain中，只能尽量趋近</p>
 <p>指定色块接近Target后，其他色块可能远离原本Target</p>
@@ -319,7 +321,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-简单了解"><span class="toc-text">1.简单了解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-调试步骤"><span class="toc-text">2.调试步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Import-Target（可以选择CVS-or-Jpeg）"><span class="toc-text">2.1.Import Target（可以选择CVS or Jpeg）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Import-Source"><span class="toc-text">2.2.Import Source</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Dynamic-CCM-tuning"><span class="toc-text">2.3.Dynamic CCM tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-改变饱和度"><span class="toc-text">2.4.改变饱和度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-设定COST-Func"><span class="toc-text">2.5.设定COST Func</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-设定Constrain"><span class="toc-text">2.6.设定Constrain</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-两种手动微调的最佳化方式"><span class="toc-text">3.两种手动微调的最佳化方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-拖曳Target"><span class="toc-text">3.1.拖曳Target</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#注意"><span class="toc-text">注意</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-设定Constrain"><span class="toc-text">3.2.设定Constrain</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#注意-1"><span class="toc-text">注意</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-简单了解"><span class="toc-text">1.简单了解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-调试步骤"><span class="toc-text">2.调试步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Import-Target（可以选择CVS-or-Jpeg）"><span class="toc-text">2.1.Import Target（可以选择CVS or Jpeg）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Import-Source"><span class="toc-text">2.2.Import Source</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-改变饱和度"><span class="toc-text">2.3.改变饱和度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-设定COST-Func"><span class="toc-text">2.4.设定COST Func</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-设定Constrain"><span class="toc-text">2.5.设定Constrain</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-两种手动微调的最佳化方式"><span class="toc-text">3.两种手动微调的最佳化方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-拖曳Target"><span class="toc-text">3.1.拖曳Target</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#注意"><span class="toc-text">注意</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-设定Constrain"><span class="toc-text">3.2.设定Constrain</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#注意-1"><span class="toc-text">注意</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
