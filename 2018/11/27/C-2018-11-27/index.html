@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>MT6771之AF Tuning（1） | 天使在人间の博客</title>
+<title>MT6771之AF Tuning（2） | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="MT6771之AF Tuning（1）">
+        <h1 id="MT6771之AF Tuning（2）">
             
-	            MT6771之AF Tuning（1）
+	            MT6771之AF Tuning（2）
             
         </h1>
         <div class="post-meta">
@@ -190,7 +190,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/11/26</span>
+            <span class="date-meta">2018/11/27</span>
         </span>
         
     
@@ -201,29 +201,42 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-AF的概念"><a href="#1-AF的概念" class="headerlink" title="1.AF的概念"></a>1.AF的概念</h2><p>ISP Control Lens move to proper position to get clear image,this action called AF.</p>
-<p>其中ISP主要分为<code>Pre-ISP</code>和<code>Post-ISP</code>,其中<code>Pre-ISP</code>主要针对ADC转换后传出的数字数据（Raw data），进行影像坏点修补、白平衡、gamma校正、锐利度、颜色插值等;Post-ISP虽然也称为后端影响处理,但其与成像相关的工作不多,主要负责数据压缩与后端接口界面控制,以及数据传输、控制等工作，其中还包括LCD影像预览、镜头对焦控制、使用界面等。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_29.png" alt=" "></p>
-<h2 id="2-Contrast-AF"><a href="#2-Contrast-AF" class="headerlink" title="2.Contrast AF"></a>2.Contrast AF</h2><p>当Lens从Pos[0]移动到Pos[1023],并且从每个Focus Position获得Focus Value时，这时我们就可以得到Focus Value Curve.</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_30.png" alt=" "></p>
-<p>目的：找到<code>&quot;Focus Position&quot;</code>的<code>&quot;Largest Focus Value&quot;</code></p>
-<h2 id="3-PDAF"><a href="#3-PDAF" class="headerlink" title="3.PDAF"></a>3.PDAF</h2><p>利用相位差技术估算物体距离，进行快速对焦.</p>
-<p>通过比较左右PD pixel形成的两张图像，PDAF算法会计算出当前物体到手机的距离，推动lens到合适的位置。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_28.png" alt=" "></p>
-<p>一般来说，准焦时，左右pixel影像重合，不准焦时，远焦和近焦影像相位差方向不一样，离准焦越远，相位差越大。</p>
-<h2 id="4-AF-Pre-check"><a href="#4-AF-Pre-check" class="headerlink" title="4.AF Pre-check"></a>4.AF Pre-check</h2><p>Pre-check之前,必须确认客户与模组厂的driver设定是否相同。</p>
-<p>测试的项目包括测试模块变异性和VCM（音圈马达）稳定时间确认</p>
-<p>一般来说，VCM的稳定时间越小越好。</p>
-<h2 id="5-Zoom-effect"><a href="#5-Zoom-effect" class="headerlink" title="5.Zoom effect"></a>5.Zoom effect</h2><p>当Camera改变focus distance(在lens和image Sensor之间)，视场角FOV会发生变化，image Preview会显示Zoom in/out的效果</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_31.png" alt=" "></p>
-<p>Zoom effect is happened while focusing</p>
-<h2 id="6-Temperature-Calibration"><a href="#6-Temperature-Calibration" class="headerlink" title="6.Temperature Calibration"></a>6.Temperature Calibration</h2><h3 id="6-1-原因"><a href="#6-1-原因" class="headerlink" title="6.1.原因"></a>6.1.原因</h3><p>如果Lens的温度不同，那么lens focus diopter是不同的，这将会导致AF OTP position不准确。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_32.png" alt=" "></p>
-<p>如果当前Lens的温度低于OTP calibration,AF Table可能会脱离远焦的位置，使得AF搜寻错误。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_33.png" alt=" "></p>
-<h2 id="7-PLAF"><a href="#7-PLAF" class="headerlink" title="7. PLAF"></a>7. PLAF</h2><p>PLAF(Point Light AF)是指在该场景中，光源只有一个小点</p>
-<h3 id="7-1-如何判断是否是点光场景"><a href="#7-1-如何判断是否是点光场景" class="headerlink" title="7.1.如何判断是否是点光场景"></a>7.1.如何判断是否是点光场景</h3><p>如何判断是否是点光场景=&gt;观察过曝区光点的变化来区分</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_34.png" alt=" "></p>
+        <h2 id="1-Hybrid-AF"><a href="#1-Hybrid-AF" class="headerlink" title="1.Hybrid AF"></a>1.Hybrid AF</h2><p>HAF(Hybrid AF)是指混合式自动对焦，就是相位/对比度混合检测AF，其中对比度检测就是指CAF(contrast AF)，相位检测就是指PDAF。</p>
+<p>具体地来说，HAF就是指首先通过感光元件上的专用像素进行相位检测，然后在对焦镜组接近合焦位置时，再切换到对比度检测进行精确对焦。</p>
+<h3 id="1-1-优点"><a href="#1-1-优点" class="headerlink" title="1.1.优点"></a>1.1.优点</h3><ul>
+<li><p>对焦范围灵活</p>
+</li>
+<li><p>合焦精度高</p>
+</li>
+<li><p>可在弱光下合焦</p>
+</li>
+<li><p>响应速度快</p>
+</li>
+<li><p>不影响画质</p>
+</li>
+</ul>
+<h3 id="1-2-缺点"><a href="#1-2-缺点" class="headerlink" title="1.2.缺点"></a>1.2.缺点</h3><ul>
+<li><p>对焦速度慢</p>
+</li>
+<li><p>对画质有一定影响</p>
+</li>
+<li><p>对焦位置不灵活</p>
+</li>
+<li><p>对焦范围有限</p>
+</li>
+<li><p>存在跑焦风险</p>
+</li>
+</ul>
+<h2 id="2-Face-AF"><a href="#2-Face-AF" class="headerlink" title="2.Face AF"></a>2.Face AF</h2><p>FD apppear or change,then trigger AF</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_36.png" alt=" "></p>
+<h2 id="3-AF-overall-flow"><a href="#3-AF-overall-flow" class="headerlink" title="3.AF overall flow"></a>3.AF overall flow</h2><p>一个完整的AF overall flow如下图所示。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_35.png" alt=" "></p>
+<h2 id="4-前景-Foreground-和后景-background"><a href="#4-前景-Foreground-和后景-background" class="headerlink" title="4.前景(Foreground)和后景(background)"></a>4.前景(Foreground)和后景(background)</h2><p>光线通过镜头聚焦在感光元件上，只有一个点，是最清晰的，这个点就叫做焦点，在焦点之前和之后分别都有一段人眼容许的清晰范围，这个就叫做景深，在焦点之前的清晰范围就叫前景深，之后就叫做后景深。</p>
+<h3 id="4-1-前景-Foreground"><a href="#4-1-前景-Foreground" class="headerlink" title="4.1.前景(Foreground)"></a>4.1.前景(Foreground)</h3><p>前景深=（光圈<em>弥散圈系数</em>对焦距离的平方）/（镜头焦距的平方+光圈<em>弥散圈系数</em>对焦距离）</p>
+<h3 id="4-2-后景-background"><a href="#4-2-后景-background" class="headerlink" title="4.2.后景(background)"></a>4.2.后景(background)</h3><p>后景深=（光圈<em>弥散圈系数</em>对焦距离的平方）/（镜头焦距的平方-光圈<em>弥散圈系数</em>对焦距离）</p>
+<h3 id="4-3-总结"><a href="#4-3-总结" class="headerlink" title="4.3.总结"></a>4.3.总结</h3><p>景深=前景深+后景深超焦距=镜头焦距的平方/（光圈*弥散圈系数）前景深是肯定小于后景深的，因为光圈、弥散圈系数和对焦距离都不可能是负数，所以不可能存在前景深小于后景深的情况。假如一定说有特例就是指超焦距。超焦距是指在某一光圈下，所能获得最大景深时的焦距。比如，当对焦足够远、孔径足够小、焦距足够长时，从某一点开始直到无穷远处，都在“清晰”的范围内，即最大景深。但仍然可以理解为前景深小于后景深（后景深无穷远）。</p>
+<h2 id="5-PD-Window"><a href="#5-PD-Window" class="headerlink" title="5.PD Window"></a>5.PD Window</h2><p>PD Window一般建议为4个block，从PD Window中可以得到我们所需要的一些信息。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_37.png" alt=" "></p>
 
     </div>
     
@@ -255,15 +268,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/11/27/C-2018-11-27/" class="pre-post btn btn-default" title='MT6771之AF Tuning（2）'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">MT6771之AF Tuning（2）</span>
-        </a>
     
-    
-        <a href="/2018/11/23/C-2018-11-23/" class="next-post btn btn-default" title='PDAF Sensor的基本原理'>
+        <a href="/2018/11/26/C-2018-11-26/" class="next-post btn btn-default" title='MT6771之AF Tuning（1）'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">PDAF Sensor的基本原理</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">MT6771之AF Tuning（1）</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -306,7 +314,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AF的概念"><span class="toc-text">1.AF的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Contrast-AF"><span class="toc-text">2.Contrast AF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-PDAF"><span class="toc-text">3.PDAF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-AF-Pre-check"><span class="toc-text">4.AF Pre-check</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Zoom-effect"><span class="toc-text">5.Zoom effect</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Temperature-Calibration"><span class="toc-text">6.Temperature Calibration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-原因"><span class="toc-text">6.1.原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-PLAF"><span class="toc-text">7. PLAF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-如何判断是否是点光场景"><span class="toc-text">7.1.如何判断是否是点光场景</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Hybrid-AF"><span class="toc-text">1.Hybrid AF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-优点"><span class="toc-text">1.1.优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-缺点"><span class="toc-text">1.2.缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Face-AF"><span class="toc-text">2.Face AF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-AF-overall-flow"><span class="toc-text">3.AF overall flow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-前景-Foreground-和后景-background"><span class="toc-text">4.前景(Foreground)和后景(background)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-前景-Foreground"><span class="toc-text">4.1.前景(Foreground)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-后景-background"><span class="toc-text">4.2.后景(background)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-总结"><span class="toc-text">4.3.总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-PD-Window"><span class="toc-text">5.PD Window</span></a></li></ol>
         
     </div>
 </aside>
