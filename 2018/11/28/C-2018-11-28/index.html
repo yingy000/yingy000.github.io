@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>MT6771之AF Tuning（2） | 天使在人间の博客</title>
+<title>Dynamic Gamma | 天使在人间の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
@@ -155,9 +155,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="MT6771之AF Tuning（2）">
+        <h1 id="Dynamic Gamma">
             
-	            MT6771之AF Tuning（2）
+	            Dynamic Gamma
             
         </h1>
         <div class="post-meta">
@@ -177,8 +177,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/Camera-tuning" title='Camera-tuning'>
-                        Camera-tuning
+                    <a href="/tags/Dynamic Gamma" title='Dynamic Gamma'>
+                        Dynamic Gamma
                     </a>
                 
             
@@ -190,7 +190,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/11/27</span>
+            <span class="date-meta">2018/11/28</span>
         </span>
         
     
@@ -201,43 +201,17 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-Hybrid-AF"><a href="#1-Hybrid-AF" class="headerlink" title="1.Hybrid AF"></a>1.Hybrid AF</h2><p>HAF(Hybrid AF)是指混合式自动对焦，就是相位/对比度混合检测AF，其中对比度检测就是指CAF(contrast AF)，相位检测就是指PDAF。</p>
-<p>具体地来说，HAF就是指首先通过感光元件上的专用像素进行相位检测，然后在对焦镜组接近合焦位置时，再切换到对比度检测进行精确对焦。</p>
-<h3 id="1-1-优点"><a href="#1-1-优点" class="headerlink" title="1.1.优点"></a>1.1.优点</h3><ul>
-<li><p>对焦范围灵活</p>
-</li>
-<li><p>合焦精度高</p>
-</li>
-<li><p>可在弱光下合焦</p>
-</li>
-<li><p>响应速度快</p>
-</li>
-<li><p>不影响画质</p>
-</li>
-</ul>
-<h3 id="1-2-缺点"><a href="#1-2-缺点" class="headerlink" title="1.2.缺点"></a>1.2.缺点</h3><ul>
-<li><p>对焦速度慢</p>
-</li>
-<li><p>对画质有一定影响</p>
-</li>
-<li><p>对焦位置不灵活</p>
-</li>
-<li><p>对焦范围有限</p>
-</li>
-<li><p>存在跑焦风险</p>
-</li>
-</ul>
-<h2 id="2-Face-AF"><a href="#2-Face-AF" class="headerlink" title="2.Face AF"></a>2.Face AF</h2><p>FD apppear or change,then trigger AF</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_36.png" alt=" "></p>
-<h2 id="3-AF-overall-flow"><a href="#3-AF-overall-flow" class="headerlink" title="3.AF overall flow"></a>3.AF overall flow</h2><p>一个完整的AF overall flow如下图所示。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_35.png" alt=" "></p>
-<h2 id="4-前景-Foreground-和后景-background"><a href="#4-前景-Foreground-和后景-background" class="headerlink" title="4.前景(Foreground)和后景(background)"></a>4.前景(Foreground)和后景(background)</h2><p>光线通过镜头聚焦在感光元件上，只有一个点，是最清晰的，这个点就叫做焦点，在焦点之前和之后分别都有一段人眼容许的清晰范围，这个就叫做景深，在焦点之前的清晰范围就叫前景深，之后就叫做后景深。</p>
-<h3 id="4-1-前景-Foreground"><a href="#4-1-前景-Foreground" class="headerlink" title="4.1.前景(Foreground)"></a>4.1.前景(Foreground)</h3><p>前景深=（光圈<em>弥散圈系数</em>对焦距离的平方）/（镜头焦距的平方+光圈<em>弥散圈系数</em>对焦距离）</p>
-<h3 id="4-2-后景-background"><a href="#4-2-后景-background" class="headerlink" title="4.2.后景(background)"></a>4.2.后景(background)</h3><p>后景深=（光圈<em>弥散圈系数</em>对焦距离的平方）/（镜头焦距的平方-光圈<em>弥散圈系数</em>对焦距离）</p>
-<h3 id="4-3-总结"><a href="#4-3-总结" class="headerlink" title="4.3.总结"></a>4.3.总结</h3><p>景深=前景深+后景深超焦距=镜头焦距的平方/（光圈*弥散圈系数）前景深是肯定小于后景深的，因为光圈、弥散圈系数和对焦距离都不可能是负数，所以不可能存在前景深小于后景深的情况。假如一定说有特例就是指超焦距。超焦距是指在某一光圈下，所能获得最大景深时的焦距。比如，当对焦足够远、孔径足够小、焦距足够长时，从某一点开始直到无穷远处，都在“清晰”的范围内，即最大景深。但仍然可以理解为前景深小于后景深（后景深无穷远）。</p>
-<h2 id="5-PD-Window"><a href="#5-PD-Window" class="headerlink" title="5.PD Window"></a>5.PD Window</h2><p>PD Window一般建议为4个block，从PD Window中可以得到我们所需要的一些信息。</p>
-<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_37.png" alt=" "></p>
-
+        <h2 id="1-Dynamic-Gamma的了解"><a href="#1-Dynamic-Gamma的了解" class="headerlink" title="1.Dynamic Gamma的了解"></a>1.Dynamic Gamma的了解</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_38.png" alt=" "></p>
+<p>为不同的场景有3个支持的gamma，这样的目的是为了获得良好的亮度。</p>
+<h3 id="1-1-Normal-gamma"><a href="#1-1-Normal-gamma" class="headerlink" title="1.1.Normal gamma"></a>1.1.Normal gamma</h3><p>Normal gamma=&gt;普通场景，实验室场景</p>
+<h3 id="1-2-Outdoor-high-contrast-gamma"><a href="#1-2-Outdoor-high-contrast-gamma" class="headerlink" title="1.2.Outdoor high contrast gamma"></a>1.2.Outdoor high contrast gamma</h3><p>Outdoor high contrast gamma=&gt;户外高动态范围场景</p>
+<h3 id="1-3-Night-scene-gamma"><a href="#1-3-Night-scene-gamma" class="headerlink" title="1.3.Night scene gamma"></a>1.3.Night scene gamma</h3><p>Night scene gamma=&gt;增加动态范围的夜景</p>
+<h2 id="2-Dynamic-Gamma-tune"><a href="#2-Dynamic-Gamma-tune" class="headerlink" title="2.Dynamic Gamma tune"></a>2.Dynamic Gamma tune</h2><h3 id="2-1-Normal-gamma"><a href="#2-1-Normal-gamma" class="headerlink" title="2.1.Normal gamma"></a>2.1.Normal gamma</h3><p>首先确定AE曝光正常</p>
+<p>调整gamma weight table,一定要确保实验室场景完全使用normal gamma。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_39..jpg" alt=" "></p>
+<h3 id="2-2-Outdoor-gamma"><a href="#2-2-Outdoor-gamma" class="headerlink" title="2.2.Outdoor gamma"></a>2.2.Outdoor gamma</h3><p>调整outdoor gamma确保在该场景下，该亮的地方足够的亮，该暗的地方足够的暗。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1361609/o_40.png" alt=" "></p>
+<h3 id="2-3-Night-gamma"><a href="#2-3-Night-gamma" class="headerlink" title="2.3.Night gamma"></a>2.3.Night gamma</h3>
     </div>
     
         <div class="reward">
@@ -268,15 +242,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/11/28/C-2018-11-28/" class="pre-post btn btn-default" title='Dynamic Gamma'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">Dynamic Gamma</span>
-        </a>
     
-    
-        <a href="/2018/11/26/C-2018-11-26/" class="next-post btn btn-default" title='MT6771之AF Tuning（1）'>
+        <a href="/2018/11/27/C-2018-11-27/" class="next-post btn btn-default" title='MT6771之AF Tuning（2）'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">MT6771之AF Tuning（1）</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">MT6771之AF Tuning（2）</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -319,7 +288,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Hybrid-AF"><span class="toc-text">1.Hybrid AF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-优点"><span class="toc-text">1.1.优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-缺点"><span class="toc-text">1.2.缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Face-AF"><span class="toc-text">2.Face AF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-AF-overall-flow"><span class="toc-text">3.AF overall flow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-前景-Foreground-和后景-background"><span class="toc-text">4.前景(Foreground)和后景(background)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-前景-Foreground"><span class="toc-text">4.1.前景(Foreground)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-后景-background"><span class="toc-text">4.2.后景(background)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-总结"><span class="toc-text">4.3.总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-PD-Window"><span class="toc-text">5.PD Window</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Dynamic-Gamma的了解"><span class="toc-text">1.Dynamic Gamma的了解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Normal-gamma"><span class="toc-text">1.1.Normal gamma</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Outdoor-high-contrast-gamma"><span class="toc-text">1.2.Outdoor high contrast gamma</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Night-scene-gamma"><span class="toc-text">1.3.Night scene gamma</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Dynamic-Gamma-tune"><span class="toc-text">2.Dynamic Gamma tune</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Normal-gamma"><span class="toc-text">2.1.Normal gamma</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Outdoor-gamma"><span class="toc-text">2.2.Outdoor gamma</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Night-gamma"><span class="toc-text">2.3.Night gamma</span></a></li></ol></li></ol>
         
     </div>
 </aside>
