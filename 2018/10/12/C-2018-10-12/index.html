@@ -1,0 +1,423 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>Sublime之基本概念 | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Sublime之基本概念">
+            
+	            Sublime之基本概念
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/工具">
+            工具
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Sublime" title='Sublime'>
+                        Sublime
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/10/12</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="1-基本的概念"><a href="#1-基本的概念" class="headerlink" title="1.基本的概念"></a>1.基本的概念</h2><h3 id="1-1-软件包目录"><a href="#1-1-软件包目录" class="headerlink" title="1.1.软件包目录"></a>1.1.软件包目录</h3><p>查看已经安装的软件包目录：<code>Preferences → Browse Packages…</code></p>
+<p>位置：C:\Users\dell\AppData\Roaming\Sublime Text 3\Packages</p>
+<h3 id="1-2-数据目录"><a href="#1-2-数据目录" class="headerlink" title="1.2.数据目录"></a>1.2.数据目录</h3><p>数据目录的位置：<code>%APPDATA%\Sublime Text 3</code></p>
+<h3 id="1-3-用户包目录"><a href="#1-3-用户包目录" class="headerlink" title="1.3.用户包目录"></a>1.3.用户包目录</h3><p>用户目录的位置：<code>Packages/User</code></p>
+<h3 id="1-4-Sublime是可编程的"><a href="#1-4-Sublime是可编程的" class="headerlink" title="1.4.Sublime是可编程的"></a>1.4.Sublime是可编程的</h3><p>Sublime使具有编程技巧的用户能够将自己的功能添加到编辑器中，怎么添加？？？</p>
+<p>Sublime Text通过应用程序编程接口（API）公开其内部，程序员可以使用Python编程语言进行交互。编辑器中包含一个嵌入式Python解释器。嵌入式解释器可用于检查编辑器的设置，并在开发插件时快速测试API调用。</p>
+<h3 id="1-5-控制台"><a href="#1-5-控制台" class="headerlink" title="1.5.控制台"></a>1.5.控制台</h3><p>Sublime将信息输出到控制台，在主菜单中选择<code>View → Show Console</code>可以打开控制台。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_42.png" alt=" "></p>
+<h3 id="1-6-Sublime的配置文件"><a href="#1-6-Sublime的配置文件" class="headerlink" title="1.6.Sublime的配置文件"></a>1.6.Sublime的配置文件</h3><h2 id="2-编辑"><a href="#2-编辑" class="headerlink" title="2.编辑"></a>2.编辑</h2><h3 id="2-1-多个选择"><a href="#2-1-多个选择" class="headerlink" title="2.1.多个选择"></a>2.1.多个选择</h3><p>按住Ctrl+D键</p>
+<h3 id="2-2-将多个选择转换为行"><a href="#2-2-将多个选择转换为行" class="headerlink" title="2.2.将多个选择转换为行"></a>2.2.将多个选择转换为行</h3><p>按住Ctrl+L键</p>
+<h3 id="2-3-列选择"><a href="#2-3-列选择" class="headerlink" title="2.3.列选择"></a>2.3.列选择</h3><p>Ctrl+Alt+向上</p>
+<h2 id="3-搜索和替换"><a href="#3-搜索和替换" class="headerlink" title="3.搜索和替换"></a>3.搜索和替换</h2><h3 id="3-1-搜索-单个文件"><a href="#3-1-搜索-单个文件" class="headerlink" title="3.1.搜索-单个文件"></a>3.1.搜索-单个文件</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_44.png" alt=" "></p>
+<h3 id="3-2-搜索-多个文件"><a href="#3-2-搜索-多个文件" class="headerlink" title="3.2.搜索-多个文件"></a>3.2.搜索-多个文件</h3><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_43.png" alt=" "></p>
+<h3 id="3-2-常用表达"><a href="#3-2-常用表达" class="headerlink" title="3.2.常用表达"></a>3.2.常用表达</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?:Sw|P)i(?:tch|s&#123;2&#125;)\s(?:it\s)?of&#123;2&#125;!</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-在Sublime文本中使用正则表达式"><a href="#3-4-在Sublime文本中使用正则表达式" class="headerlink" title="3.4.在Sublime文本中使用正则表达式"></a>3.4.在Sublime文本中使用正则表达式</h3><p>需要在命令面板中激活一下</p>
+<h2 id="4-构建系统-批处理"><a href="#4-构建系统-批处理" class="headerlink" title="4.构建系统(批处理)"></a>4.构建系统(批处理)</h2><h3 id="4-1-含义"><a href="#4-1-含义" class="headerlink" title="4.1.含义"></a>4.1.含义</h3><p>构建系统(build system)是用来从源代码生成用户可以使用的目标(targets)的自动化工具。目标可以包括库、可执行文件、或者生成的脚本等等。</p>
+<h3 id="4-2-文件格式"><a href="#4-2-文件格式" class="headerlink" title="4.2.文件格式"></a>4.2.文件格式</h3><p>构建系统是JSON文件并具有扩展名<code>.sublime-build</code>。</p>
+<h3 id="4-3-举例"><a href="#4-3-举例" class="headerlink" title="4.3.举例"></a>4.3.举例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;cmd&quot;: [&quot;python&quot;, &quot;-u&quot;, &quot;$file&quot;],</span><br><span class="line">    &quot;file_regex&quot;: &quot;^[ ]*File \&quot;(...*?)\&quot;, line ([0-9]*)&quot;,</span><br><span class="line">    &quot;selector&quot;: &quot;source.python&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-1-cmd"><a href="#4-3-1-cmd" class="headerlink" title="4.3.1.cmd"></a>4.3.1.cmd</h4><p>Required. This option contains the actual command line to be executed:</p>
+<p>此选项包含要执行的实际命令行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -u /path/to/current/file.ext</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-2-file-regex"><a href="#4-3-2-file-regex" class="headerlink" title="4.3.2.file_regex"></a>4.3.2.file_regex</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A Perl-style regular expression to capture error information from an external program’s output. This information is used to help you navigate through error instances with F4.</span><br></pre></td></tr></table></figure>
+<p>翻译：</p>
+<p>Perl样式的正则表达式，用于从外部程序的输出中捕获错误信息，此信息用于帮助您浏览错误实例F4。</p>
+<h4 id="4-3-3-selector"><a href="#4-3-3-selector" class="headerlink" title="4.3.3.selector"></a>4.3.3.selector</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">If the Tools | Build System | Automatic option is set, Sublime Text will automatically find the corresponding build system for the active file by matching selector to the file’s scope.</span><br></pre></td></tr></table></figure>
+<p>翻译：如果 工具| 构建系统| 设置了自动选项，Sublime Text将通过匹配selector文件的范围自动找到活动文件的相应构建系统。</p>
+<h3 id="4-4-存储构建系统的位置"><a href="#4-4-存储构建系统的位置" class="headerlink" title="4.4.存储构建系统的位置"></a>4.4.存储构建系统的位置</h3><p>构建系统必须位于Packages文件夹下的某个位置，许多软件包都包含自己的构建系统，也就是位于<code>Packages/User</code>下。</p>
+<h3 id="4-5-运行构建系统"><a href="#4-5-运行构建系统" class="headerlink" title="4.5.运行构建系统"></a>4.5.运行构建系统</h3><p>可以通过按F7或从Tools → Build来运行构建系统。</p>
+<h2 id="5-文件管理和导航"><a href="#5-文件管理和导航" class="headerlink" title="5.文件管理和导航"></a>5.文件管理和导航</h2><h3 id="5-1-项目"><a href="#5-1-项目" class="headerlink" title="5.1.项目"></a>5.1.项目</h3><p>项目元数据存储在带有<code>.sublime-project</code>扩展名的JSON文件中。只要有<code>.sublime-project</code>文件，也会存在辅助<code>.sublime-workspace</code>文件。</p>
+<h4 id="5-1-1-创建项目"><a href="#5-1-1-创建项目" class="headerlink" title="5.1.1.创建项目"></a>5.1.1.创建项目</h4><p>Project → Save Project As….</p>
+<h4 id="5-1-2-打开项目"><a href="#5-1-2-打开项目" class="headerlink" title="5.1.2.打开项目"></a>5.1.2.打开项目</h4><ul>
+<li><p>Projects → Switch Project…</p>
+</li>
+<li><p>Projects → Open Recent</p>
+</li>
+<li><p>Projects → Quick Switch Project….</p>
+</li>
+</ul>
+<h4 id="5-1-3-项目文件的高级配置"><a href="#5-1-3-项目文件的高级配置" class="headerlink" title="5.1.3.项目文件的高级配置"></a>5.1.3.项目文件的高级配置</h4><h4 id="5-1-4-与侧栏和项目相关的设置"><a href="#5-1-4-与侧栏和项目相关的设置" class="headerlink" title="5.1.4.与侧栏和项目相关的设置"></a>5.1.4.与侧栏和项目相关的设置</h4><p>binary_file_patterns：通配符列表</p>
+<p>位置：Preferences -&gt; Settings - Default</p>
+<p>C:\Users\dell\AppData\Roaming\Sublime Text 3\Packages\User</p>
+<h4 id="5-1-5-工作区"><a href="#5-1-5-工作区" class="headerlink" title="5.1.5.工作区"></a>5.1.5.工作区</h4><p>工作区包含与项目关联的会话数据，其中包括有关已打开文件，窗格布局，查找历史记录等的信息等。</p>
+<p>工作区元数据存储在带有<code>.sublime-workspace</code>扩展名的JSON文件中。</p>
+<h3 id="5-2-文件导航"><a href="#5-2-文件导航" class="headerlink" title="5.2.文件导航"></a>5.2.文件导航</h3><h4 id="5-2-1-Goto-Anything"><a href="#5-2-1-Goto-Anything" class="headerlink" title="5.2.1.Goto Anything"></a>5.2.1.Goto Anything</h4><h4 id="5-2-2-Goto-Anything-Operators"><a href="#5-2-2-Goto-Anything-Operators" class="headerlink" title="5.2.2.Goto Anything Operators"></a>5.2.2.Goto Anything Operators</h4><p>举例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">models:100</span><br><span class="line"></span><br><span class="line">This instructs Sublime Text to first search for a file whose path matches models, and then to go to line 100 in said file.</span><br></pre></td></tr></table></figure>
+<p>翻译：</p>
+<p>这指示Sublime Text首先搜索路径匹配的文件models，然后转到所述文件中的第100行。</p>
+<h4 id="5-2-3-Supported-Operators-支持的运算符"><a href="#5-2-3-Supported-Operators-支持的运算符" class="headerlink" title="5.2.3.Supported Operators(支持的运算符)"></a>5.2.3.Supported Operators(支持的运算符)</h4><ul>
+<li><p>@symbol</p>
+</li>
+<li><p>#item</p>
+</li>
+<li><p>:line_number</p>
+</li>
+</ul>
+<h4 id="5-2-4-Sidebar-侧栏"><a href="#5-2-4-Sidebar-侧栏" class="headerlink" title="5.2.4.Sidebar(侧栏)"></a>5.2.4.Sidebar(侧栏)</h4><p>侧栏通过其上下文菜单提供基本文件管理操作。</p>
+<p>从侧边栏打开的文件会创建半瞬态视图，半瞬态视图显示为新选项卡，半瞬态视图的选项卡标题以斜体显示。在打开新的半瞬态视图之前，同一窗格中的任何其他预先存在的半瞬态视图将自动关闭。</p>
+<p>半瞬态视图和瞬态视图的区别</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1310958/o_45.png" alt=" "></p>
+<h4 id="5-2-5-Panes-窗格"><a href="#5-2-5-Panes-窗格" class="headerlink" title="5.2.5.Panes(窗格)"></a>5.2.5.Panes(窗格)</h4><p>通过<code>View → Layout</code>可以设置多种形式的窗格</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1242272/o_reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/10/15/C-2018-10-15/" class="pre-post btn btn-default" title='Sublime之Customizing Sublime Text'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Sublime之Customizing Sublime Text</span>
+        </a>
+    
+    
+        <a href="/2018/10/11/C-2018-10-11(2)/" class="next-post btn btn-default" title='主观画质评审指南（2）'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">主观画质评审指南（2）</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-基本的概念"><span class="toc-text">1.基本的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-软件包目录"><span class="toc-text">1.1.软件包目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-数据目录"><span class="toc-text">1.2.数据目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-用户包目录"><span class="toc-text">1.3.用户包目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-Sublime是可编程的"><span class="toc-text">1.4.Sublime是可编程的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-控制台"><span class="toc-text">1.5.控制台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-Sublime的配置文件"><span class="toc-text">1.6.Sublime的配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-编辑"><span class="toc-text">2.编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-多个选择"><span class="toc-text">2.1.多个选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-将多个选择转换为行"><span class="toc-text">2.2.将多个选择转换为行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-列选择"><span class="toc-text">2.3.列选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-搜索和替换"><span class="toc-text">3.搜索和替换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-搜索-单个文件"><span class="toc-text">3.1.搜索-单个文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-搜索-多个文件"><span class="toc-text">3.2.搜索-多个文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-常用表达"><span class="toc-text">3.2.常用表达</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-在Sublime文本中使用正则表达式"><span class="toc-text">3.4.在Sublime文本中使用正则表达式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-构建系统-批处理"><span class="toc-text">4.构建系统(批处理)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-含义"><span class="toc-text">4.1.含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-文件格式"><span class="toc-text">4.2.文件格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-举例"><span class="toc-text">4.3.举例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1-cmd"><span class="toc-text">4.3.1.cmd</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-2-file-regex"><span class="toc-text">4.3.2.file_regex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-3-selector"><span class="toc-text">4.3.3.selector</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-存储构建系统的位置"><span class="toc-text">4.4.存储构建系统的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-运行构建系统"><span class="toc-text">4.5.运行构建系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-文件管理和导航"><span class="toc-text">5.文件管理和导航</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-项目"><span class="toc-text">5.1.项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-1-创建项目"><span class="toc-text">5.1.1.创建项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-2-打开项目"><span class="toc-text">5.1.2.打开项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-3-项目文件的高级配置"><span class="toc-text">5.1.3.项目文件的高级配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-4-与侧栏和项目相关的设置"><span class="toc-text">5.1.4.与侧栏和项目相关的设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-5-工作区"><span class="toc-text">5.1.5.工作区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-文件导航"><span class="toc-text">5.2.文件导航</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-1-Goto-Anything"><span class="toc-text">5.2.1.Goto Anything</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-2-Goto-Anything-Operators"><span class="toc-text">5.2.2.Goto Anything Operators</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-3-Supported-Operators-支持的运算符"><span class="toc-text">5.2.3.Supported Operators(支持的运算符)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-4-Sidebar-侧栏"><span class="toc-text">5.2.4.Sidebar(侧栏)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-5-Panes-窗格"><span class="toc-text">5.2.5.Panes(窗格)</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: true || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

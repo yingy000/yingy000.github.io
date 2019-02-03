@@ -1,0 +1,394 @@
+<!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="天使在人间の博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>MT6589_Advance之Debug Parser | 天使在人间の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="天使在人间の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Yang Ying'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">天使在人间の博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Camera/"><i class="fa "></i>Camera</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生活/"><i class="fa "></i>生活</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="MT6589_Advance之Debug Parser">
+            
+	            MT6589_Advance之Debug Parser
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/工具">
+            工具
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Debug Parser" title='Debug Parser'>
+                        Debug Parser
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/10/31</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="1-目的"><a href="#1-目的" class="headerlink" title="1.目的"></a>1.目的</h2><p>查询图片中的Camera Info（信息）</p>
+<h2 id="2-提供功能"><a href="#2-提供功能" class="headerlink" title="2.提供功能"></a>2.提供功能</h2><p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_5..PNG" alt=" "></p>
+<h2 id="3-ISP-Info"><a href="#3-ISP-Info" class="headerlink" title="3.ISP Info"></a>3.ISP Info</h2><h3 id="3-1-ISP-Index"><a href="#3-1-ISP-Index" class="headerlink" title="3.1.ISP Index"></a>3.1.ISP Index</h3><p>ISP Index：显示ISP的index（段数）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ShadingIdx:2  //Shading Table Index，0=低色温，1=中色温，2=高色温=&gt;使用哪个色温的Shading Table</span><br><span class="line">SatIdx:1 //饱和度Index，0=减饱和度，1=饱和度正常，2=加饱和度</span><br><span class="line">IDX_CFA:110 //ISP De-mosaic Index（Mapping可以参考camera_isp_regs_xxx.h）</span><br><span class="line">IDX_ANR:110 //ISP Noise Reduction Index（Mapping可以参考camera_isp_regs_xxx.h）</span><br><span class="line">IDX_CCR:0 //ISP Color Control Index（Mapping可以参考camera_isp_regs_xxx.h）</span><br><span class="line">IDX_PCA:2  //ISP PCA Index，0=低色温，1=中色温，2=高色温</span><br><span class="line">IDX_EE:110 //ISP Edge Enhance Index（Mapping可以参考camera_isp_regs_xxx.h）</span><br></pre></td></tr></table></figure>
+<p>De-mosaic会根据不同的ISO去决定要使用哪一组De-mosaic，所以会有不同的Index。</p>
+<h3 id="3-2-ISP-Value"><a href="#3-2-ISP-Value" class="headerlink" title="3.2.ISP Value"></a>3.2.ISP Value</h3><p>ISP Value是指<code>3*3</code>Color Correction Matrix（色彩校正矩阵）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CAM_G2G_CONV0A:119603686 //0~10位：G2G_CNV_00，16~26位：G2G_CNV_01</span><br><span class="line">CAM_G2G_CONV0B:2041 //表示G2G_CNV_02</span><br><span class="line">CAM_G2G_CONV1A:27592620 //0~10位：G2G_CNV_10，16~26位：G2G_CNV_11</span><br><span class="line">CAM_G2G_CONV1B:1967 //表示G2G_CNV_12</span><br><span class="line">CAM_G2G_CONV2A:118163428 //0~10位：G2G_CNV_20，16~26位：G2G_CNV_21</span><br><span class="line">CAM_G2G_CONV2B:529 //表示G2G_CNV_22</span><br></pre></td></tr></table></figure>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_23...png" alt=" "></p>
+<p>第一行表示对R处理，第二行表示对G处理，第三行表示对B处理……</p>
+<p>G2G_CNV_00~G2G_CNV_22均为正数，表示需经过转换，才能正确显示负数的Element，转换公式如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">256=1x,   //其中，256代表1倍Gain</span><br><span class="line">if(G2G_CNV_XY&lt;1024)G2G_CNV_XY=G2G_CNV_XY</span><br><span class="line">if(G2G_CNV_XY&gt;1024)G2G_CNV_XY=G2G_CNV_XY-2048</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-ISP-Slider-Position"><a href="#3-3-ISP-Slider-Position" class="headerlink" title="3.3.ISP Slider Position"></a>3.3.ISP Slider Position</h3><p>ISP Slider Position：显示ISP Slider的Position（强度）</p>
+<p>CCT可以调试ISP的一些Noise、Texture的强度，也就是说CCT用Slider的方式去调整ISP的强度，CCT调整完这些强度同时它也会记录在图片里面，这时可以利用DebugParser来读出这张照片使用ISP的处理强度是多少，如果说目前的照片不够锐利（Sharpness不足），就可以通过DebugParser读出一些相关的Slider强度是不是已经调到了极限值，如果没有调到极限值，就意味着可以利用CCT继续增大图片的锐利度，反之，如果已经调到了极限值，那就没办法再增大了，只能通过其他的途径来增大图片的锐利程度。</p>
+<h2 id="4-Strobe-Info"><a href="#4-Strobe-Info" class="headerlink" title="4.Strobe Info"></a>4.Strobe Info</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FL_T_IS_FLASH_ON:0  //Capture Flash是否触发</span><br><span class="line">FL_T_ISO:0  //Capture ISO</span><br><span class="line">FL_T_AFE_GAIN:0  //Capture Sensor Gain</span><br><span class="line">FL_T_ISP_GAIN:0  //Capture ISP Gain</span><br><span class="line">FL_T_EXP_TIME:0  //Capture Exposure Gain</span><br><span class="line">FL_T_DUTY:0  //PWM的设定，使用内建PMIC范围是0~31，值越大，代表闪光定的强度越强。</span><br></pre></td></tr></table></figure>
+<h2 id="5-AE-Info"><a href="#5-AE-Info" class="headerlink" title="5.AE Info"></a>5.AE Info</h2><h3 id="5-1-Preview-AE-Setting"><a href="#5-1-Preview-AE-Setting" class="headerlink" title="5.1.Preview AE Setting"></a>5.1.Preview AE Setting</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">AE_TAG_PRV_INDEX:31 //Preview Exposure Index in AE Table，Index越高代表环境越暗</span><br><span class="line">AE_TAG_PRV_SHUTTER_TIME:895 //Preview Sensor Exposure Time(us)</span><br><span class="line">AE_TAG_PRV_SENSOR_GAIN:1152 //Preview Sensor Gain（1024=1x）</span><br><span class="line">AE_TAG_PRV_ISP_GAIN:1056 //Preview ISP Gain（1024=1x）</span><br><span class="line">AE_TAG_PRV_ISO_REAL:116 //Preview ISO</span><br><span class="line">AE_TAG_PRV_FRAME_RATE:2400 //Preview的Sensor Frame Rate（为AE_TAG_PRV_SHUTTER_TIME的倒数）</span><br><span class="line">AE_TAG_PRV_FLARE:12 //Preview时套用的Flare Offset</span><br><span class="line">AE_TAG_PRV_FLARE_GAIN:513 //Preview时套用的Flare Gain</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-AF时AE-Setting"><a href="#5-2-AF时AE-Setting" class="headerlink" title="5.2.AF时AE Setting"></a>5.2.AF时AE Setting</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">AE_TAG_AF_PLINE_EN:0 //AF时是否启动加速Sensor Frame Rate的开关，0为关闭，1为开放</span><br><span class="line">AE_TAG_AF_ZSD_PLINE_EN:0 //当ZSD Mode时，AF是否启动加速Sensor Frame Rate的开关，1为开放</span><br><span class="line">AE_TAG_AF_SHUTTER_TIME:0 //AF时Sensor Exposure Time（us）</span><br><span class="line">AE_TAG_AF_SENSOR_GAIN:0 //AF时Sensor Gain（1024=1x）</span><br><span class="line">AE_TAG_AF_ISP_GAIN:0 //AF时ISP Gain（1024=1x）</span><br><span class="line">AE_TAG_AF_ISO_REAL:0 //AF时ISO</span><br><span class="line">AE_TAG_AF_FRAME_RATE:0 //AF时的Sensor Frame Rate</span><br><span class="line">AE_TAG_AF_FLARE:0 //AF时套用的Flare Offset</span><br><span class="line">AE_TAG_AF_FLARE_GAIN:0 //AF时套用的Flare Gain</span><br></pre></td></tr></table></figure>
+<h3 id="5-3-Capture-AE-Setting"><a href="#5-3-Capture-AE-Setting" class="headerlink" title="5.3.Capture AE Setting"></a>5.3.Capture AE Setting</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">AE_TAG_CAP_INDEX:0 //Capture Exposure Index in AE Table，Index越高代表环境越暗</span><br><span class="line">AE_TAG_CAP_SHUTTER_TIME:0 //Capture Sensor Exposure Time(us)</span><br><span class="line">AE_TAG_CAP_SENSOR_GAIN:0 //Capture Sensor Gain（1024=1x）</span><br><span class="line">AE_TAG_CAP_ISP_GAIN:0 //Capture ISP Gain（1024=1x）</span><br><span class="line">AE_TAG_CAP_ISO_REAL:0 //Capture ISO</span><br><span class="line">AE_TAG_CAP_FRAME_RATE:0 //Capture的Sensor Frame Rate（为AE_TAG_PRV_SHUTTER_TIME的倒数）</span><br><span class="line">AE_TAG_CAP_FLARE:0 //Capture时套用的Flare Offset</span><br><span class="line">AE_TAG_CAP_FLARE_GAIN:0 //Capture时套用的Flare Gain</span><br></pre></td></tr></table></figure>
+<h3 id="5-4-AE-Commom"><a href="#5-4-AE-Commom" class="headerlink" title="5.4.AE Commom"></a>5.4.AE Commom</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">AE_TAG_STROBE_PLINE_EN:1 //预闪时，是否启动缩短预闪时间的机制</span><br><span class="line">AE_TAG_STROBE_ZSD_PLINE_EN:1 //ZSD Mode预闪时，是否启动缩短预闪时间的机制</span><br><span class="line">AE_TAG_ZSD_EN:0 //是否为ZSD Mode</span><br><span class="line">AE_TAG_REALISO_EN:0 //Enginner Mode的ISO如果设定为Manual，此Flag为1</span><br><span class="line">AE_TAG_APERTURE:28 //光圈大小（以10为Base）</span><br><span class="line">AE_TAG_PRV_AETABLE_ID:23 //Preview时使用的AE Table</span><br><span class="line">AE_TAG_CAP_AETABLE_ID:23 //Capture时使用的AE Table</span><br><span class="line">AE_TAG_LV:50 //环境亮度（以10为Base）</span><br><span class="line">AE_TAG_EV_COM:0 //EV补偿的设定</span><br><span class="line">AE_TAG_FLICKER:2 //AE Flicker设定</span><br><span class="line">AE_TAG_FLICKER_AUTO:0 //是否开启自动Flicker功能</span><br><span class="line">AE_TAG_AEMETER:0 //AE测光模式设定</span><br><span class="line">AE_TAG_ISO_SETTING:0 //AE ISO Speed设定</span><br><span class="line"></span><br><span class="line">AE_TAG_MINI_GAIN:1152 //AE Device Info中的设定（Sensor的最小Gain）</span><br><span class="line">AE_TAG_MAX_GAIN:6144//AE Device Info中的设定（Sensor的最大Gain）</span><br><span class="line">AE_TAG_1XGAIN_ISO:100//AE Device Info中的设定（1x Gain对应的ISO Speed）</span><br><span class="line">AE_TAG_PRV_EXP_UINT:26306//AE Device Info中的设定（Preview一条Line的时间）</span><br><span class="line">AE_TAG_VIDEO_EXP_UINT:26306//AE Device Info中的设定（Video一条Line的时间）</span><br><span class="line">AE_TAG_VIDEO_PRV_RATIO:1024//AE Device Info中的设定（Video相对于Preview的感光度，1024为1x）</span><br><span class="line">AE_TAG_CAP_EXP_UINT:26306//AE Device Info中的设定（Capture一条Line的时间）</span><br><span class="line">AE_TAG_CAP_PRV_RATIO:1024//AE Device Info中的设定（Capture相对于Preview的感光度，1024为1x）</span><br><span class="line"></span><br><span class="line">AE_TAG_CWV:67 //Preview 5*5 AE Window中心加权的Y值</span><br><span class="line">AE_TAG_AVG:67 //Preview 5*5 AE Window平均的Y值</span><br><span class="line">AE_TAG_CENTRAL_Y:63 //Preview 5*5 AE Window中心Window的Y值</span><br><span class="line">AE_TAG_CWV_FINAL_TARGET:73 //AE中心曝光权重的期望亮度</span><br><span class="line">AE_TAG_AE_TARGET:47 //AE的期望亮度</span><br><span class="line">AE_TAG_STROBE_TARGET:47 //AE打闪时的期望亮度</span><br><span class="line">AE_TAG_INIT_INDEX:50 /AE Exposure的起始Index</span><br></pre></td></tr></table></figure>
+<h2 id="6-AWB-Info"><a href="#6-AWB-Info" class="headerlink" title="6.AWB Info"></a>6.AWB Info</h2><h3 id="6-1-AWB-Common"><a href="#6-1-AWB-Common" class="headerlink" title="6.1.AWB Common"></a>6.1.AWB Common</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AWB_TAG_GAIN_R:708 //AWB套用的R Gain</span><br><span class="line">AWB_TAG_GAIN_G:512 //AWB套用的G Gain</span><br><span class="line">AWB_TAG_GAIN_B:772 //AWB套用的B Gain</span><br><span class="line">AWB_TAG_RAW_PREGAIN2_R:708 //和AWB_TAG_GAIN_R一样</span><br><span class="line">AWB_TAG_RAW_PREGAIN2_G:512 //和AWB_TAG_GAIN_G一样</span><br><span class="line">AWB_TAG_RAW_PREGAIN2_B:772 //和AWB_TAG_GAIN_B一样</span><br></pre></td></tr></table></figure>
+<h3 id="6-2-AWB-Probability"><a href="#6-2-AWB-Probability" class="headerlink" title="6.2.AWB Probability"></a>6.2.AWB Probability</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">AWB_TAG_P0_STB:0 //AWB闪光灯白点所占的比例</span><br><span class="line">AWB_TAG_P0_T:0 //AWB Tungsten白点所占的比例</span><br><span class="line">AWB_TAG_P0_WF:0 //AWB Warm Fluorescent白点所占的比例</span><br><span class="line">AWB_TAG_P0_F:7 //AWB Fluorescent白点所占的比例</span><br><span class="line">AWB_TAG_P0_CWF:27 //AWB CWF白点所占的比例</span><br><span class="line">AWB_TAG_P0_D:63 //AWB D65白点所占的比例</span><br><span class="line">AWB_TAG_P0_S:3 //AWB Shade白点所占的比例</span><br><span class="line">AWB_TAG_P0_DF:0 //AWB Daylight Fluorescent白点所占的比例</span><br><span class="line"></span><br><span class="line">AWB_TAG_P1_STB:100 //此环境亮度光源为闪光灯的机率</span><br><span class="line">AWB_TAG_P1_T:1 //此环境亮度光源为Tungsten的机率</span><br><span class="line">AWB_TAG_P1_WF:1 //此环境亮度光源为Warm Fluorescent的机率</span><br><span class="line">AWB_TAG_P1_F:66 //此环境亮度光源为Fluorescent的机率</span><br><span class="line">AWB_TAG_P1_CWF:1 //此环境亮度光源为CWF的机率</span><br><span class="line">AWB_TAG_P1_D:100 //此环境亮度光源为D65的机率</span><br><span class="line">AWB_TAG_P1_S:40 //此环境亮度光源为Shade的机率</span><br><span class="line">AWB_TAG_P1_DF:1 //此环境亮度光源为Daylight Fluorescent的机率</span><br><span class="line"></span><br><span class="line">AWB_TAG_P_STB:0 //AWB闪光灯所占的最终比例</span><br><span class="line">AWB_TAG_P_T:0 //AWB Tungsten所占的最终比例</span><br><span class="line">AWB_TAG_P_WF:0 //AWB Warm Fluorescent所占的最终比例</span><br><span class="line">AWB_TAG_P_F:7 //AWB Fluorescent所占的最终比例</span><br><span class="line">AWB_TAG_P_CWF:0 //AWB CWF所占的最终比例</span><br><span class="line">AWB_TAG_P_D:92 //AWB D65所占的最终比例</span><br><span class="line">AWB_TAG_P_S:1 //AWB Shade所占的最终比例</span><br><span class="line">AWB_TAG_P_DF:0 //AWB Daylight Fluorescent所占的最终比例</span><br></pre></td></tr></table></figure>
+<h3 id="6-3-AWB-Gain"><a href="#6-3-AWB-Gain" class="headerlink" title="6.3.AWB Gain"></a>6.3.AWB Gain</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">AWB_TAG_GAIN_R_STB //AWB算法判断Strobe光源要补偿的R Gain</span><br><span class="line">AWB_TAG_GAIN_G_STB //AWB算法判断Strobe光源要补偿的G Gain</span><br><span class="line">AWB_TAG_GAIN_B_STB //AWB算法判断Strobe光源要补偿的B Gain</span><br><span class="line"></span><br><span class="line">AWB_TAG_GAIN_R_T //AWB算法判断Tungsten光源要补偿的R Gain</span><br><span class="line">AWB_TAG_GAIN_G_T //AWB算法判断Tungsten光源要补偿的G Gain</span><br><span class="line">AWB_TAG_GAIN_B_T //AWB算法判断Tungsten光源要补偿的B Gain</span><br><span class="line"></span><br><span class="line">AWB_TAG_GAIN_R_WF //AWB算法判断Warm Fluorescent光源要补偿的R Gain</span><br><span class="line">AWB_TAG_GAIN_G_WF //AWB算法判断Warm Fluorescent光源要补偿的G Gain</span><br><span class="line">AWB_TAG_GAIN_B_WF //AWB算法判断Warm Fluorescent光源要补偿的B Gain</span><br><span class="line"></span><br><span class="line">AWB_TAG_GAIN_R_F //AWB算法判断Fluorescent光源要补偿的R Gain</span><br><span class="line">AWB_TAG_GAIN_G_F //AWB算法判断Fluorescent光源要补偿的G Gain</span><br><span class="line">AWB_TAG_GAIN_B_F //AWB算法判断Fluorescent光源要补偿的B Gain</span><br><span class="line"></span><br><span class="line">AWB_TAG_GAIN_R_D //AWB算法判断D65光源要补偿的R Gain</span><br><span class="line">AWB_TAG_GAIN_G_D //AWB算法判断D65光源要补偿的G Gain</span><br><span class="line">AWB_TAG_GAIN_B_D //AWB算法判断D65光源要补偿的B Gain</span><br><span class="line"></span><br><span class="line">AWB_TAG_GAIN_R_S //AWB算法判断Shade光源要补偿的R Gain</span><br><span class="line">AWB_TAG_GAIN_G_S //AWB算法判断Shade光源要补偿的G Gain</span><br><span class="line">AWB_TAG_GAIN_B_S //AWB算法判断Shade光源要补偿的B Gain</span><br><span class="line"></span><br><span class="line">AWB_TAG_GAIN_R_DF //AWB算法判断Daylight Fluorescent光源要补偿的R Gain</span><br><span class="line">AWB_TAG_GAIN_G_DF //AWB算法判断Daylight Fluorescent光源要补偿的G Gain</span><br><span class="line">AWB_TAG_GAIN_B_DF //AWB算法判断Daylight Fluorescent光源要补偿的B Gain</span><br></pre></td></tr></table></figure>
+<h3 id="6-4-AWB-Info"><a href="#6-4-AWB-Info" class="headerlink" title="6.4.AWB Info"></a>6.4.AWB Info</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AWB_TAG_CCT:5114 //AWB算法判断最后的环境色温</span><br><span class="line">AWB_TAG_FLUORESCENT_INDEX:100 //AWB算法判断环境色温为Fluorescent光源的程度</span><br></pre></td></tr></table></figure>
+<h3 id="6-5-AWB-NVRAM-Value"><a href="#6-5-AWB-NVRAM-Value" class="headerlink" title="6.5.AWB NVRAM Value"></a>6.5.AWB NVRAM Value</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">AWB_NVRAM_STROBE_AWB_GAIN_R:512 //AWB Strobe光源预设的R Gain</span><br><span class="line">AWB_NVRAM_STROBE_AWB_GAIN_G:512 //AWB Strobe光源预设的G Gain</span><br><span class="line">AWB_NVRAM_STROBE_AWB_GAIN_B:512 //AWB Strobe光源预设的B Gain</span><br><span class="line">AWB_NVRAM_HORIZON_AWB_GAIN_R:512 //AWB Horizon光源预设的R Gain</span><br><span class="line">AWB_NVRAM_HORIZON_AWB_GAIN_G:640 //AWB Horizon光源预设的G Gain</span><br><span class="line">AWB_NVRAM_HORIZON_AWB_GAIN_B:1382 //AWB Horizon光源预设的B Gain</span><br><span class="line">AWB_NVRAM_A_AWB_GAIN_R:512 //AWB A光源预设的R Gain</span><br><span class="line">AWB_NVRAM_A_AWB_GAIN_G:539 //AWB A光源预设的G Gain</span><br><span class="line">AWB_NVRAM_A_AWB_GAIN_B:1382 //AWB A光源预设的B Gain</span><br><span class="line">AWB_NVRAM_TL84_AWB_GAIN_R:594 //AWB TL84光源预设的R Gain</span><br><span class="line">AWB_NVRAM_TL84_AWB_GAIN_G:512 //AWB TL84光源预设的G Gain</span><br><span class="line">AWB_NVRAM_TL84_AWB_GAIN_B:920 //AWB TL84光源预设的B Gain</span><br><span class="line">AWB_NVRAM_CWF_AWB_GAIN_R:680 //AWB CWF光源预设的R Gain</span><br><span class="line">AWB_NVRAM_CWF_AWB_GAIN_G:512 //AWB CWF光源预设的G Gain</span><br><span class="line">AWB_NVRAM_CWF_AWB_GAIN_B:897 //AWB CWF光源预设的B Gain</span><br><span class="line">AWB_NVRAM_DNP_AWB_GAIN_R:690 //AWB DNP光源预设的R Gain</span><br><span class="line">AWB_NVRAM_DNP_AWB_GAIN_G:512 //AWB DNP光源预设的G Gain</span><br><span class="line">AWB_NVRAM_DNP_AWB_GAIN_B:755 //AWB DNP光源预设的B Gain</span><br><span class="line">AWB_NVRAM_D65_AWB_GAIN_R:815 //AWB D65光源预设的R Gain</span><br><span class="line">AWB_NVRAM_D65_AWB_GAIN_G:512 //AWB D65光源预设的G Gain</span><br><span class="line">AWB_NVRAM_D65_AWB_GAIN_B:598 //AWB D65光源预设的B Gain</span><br><span class="line">AWB_NVRAM_DF_AWB_GAIN_R:867 //AWB DF光源预设的R Gain</span><br><span class="line">AWB_NVRAM_DF_AWB_GAIN_G:512 //AWB DF光源预设的G Gain</span><br><span class="line">AWB_NVRAM_DF_AWB_GAIN_B:741 //AWB DF光源预设的B Gain</span><br><span class="line"></span><br><span class="line">AWB_NVRAM_STROBE_RIGHT:0 //AWB Strobe光源区域右边边界</span><br><span class="line">AWB_NVRAM_STROBE_LEFT :0 //AWB Strobe光源区域左边边界</span><br><span class="line">AWB_NVRAM_STROBE_UPPER:0 //AWB Strobe光源区域上方边界</span><br><span class="line">AWB_NVRAM_STROBE_LOWER:0 //AWB Strobe光源区域下方边界</span><br><span class="line">AWB_NVRAM_TUNGSTEN_RIGHT:-202 //AWB Tungsten光源区域右边边界</span><br><span class="line">AWB_NVRAM_TUNGSTEN_LEFT:-767 //AWB Tungsten光源区域左边边界</span><br><span class="line">AWB_NVRAM_TUNGSTEN_UPPER:-169 //AWB Tungsten光源区域上方边界</span><br><span class="line">AWB_NVRAM_TUNGSTEN_LOWER:-169 //AWB Tungsten光源区域下方边界</span><br><span class="line">AWB_NVRAM_WARM_FLUORESCENT_RIGHT:-202 //AWB Warm Fluorescent光源区域右边边界</span><br><span class="line">AWB_NVRAM_WARM_FLUORESCENT_LEFT:-767 //AWB Warm Fluorescent光源区域左边边界</span><br><span class="line">AWB_NVRAM_WARM_FLUORESCENT_UPPER:-169 //AWB Warm Fluorescent光源区域上方边界</span><br><span class="line">AWB_NVRAM_WARM_FLUORESCENT_LOWER:-402 //AWB Warm Fluorescent光源区域下方边界</span><br><span class="line">AWB_NVRAM_FLUORESCENT_RIGHT:-50 //AWB Fluorescent光源区域右边边界</span><br><span class="line">AWB_NVRAM_FLUORESCENT_LEFT:-202 //AWB Fluorescent光源区域左边边界</span><br><span class="line">AWB_NVRAM_FLUORESCENT_UPPER:-165 //AWB Fluorescent光源区域上方边界</span><br><span class="line">AWB_NVRAM_FLUORESCENT_LOWER:-290 //AWB Fluorescent光源区域下方边界</span><br><span class="line">AWB_NVRAM_CWF_RIGHT:-5 //AWB CWF光源区域右边边界</span><br><span class="line">AWB_NVRAM_CWF_LEFT:-202 //AWB CWF光源区域左边边界</span><br><span class="line">AWB_NVRAM_CWF_UPPER:-290 //AWB CWF光源区域上方边界</span><br><span class="line">AWB_NVRAM_CWF_LOWER:-397 //AWB CWF光源区域下方边界</span><br><span class="line">AWB_NVRAM_DAYLIGHT_RIGHT:155 //AWB Daylight光源区域右边边界</span><br><span class="line">AWB_NVRAM_DAYLIGHT_LEFT:-50 //AWB Daylight光源区域左边边界</span><br><span class="line">AWB_NVRAM_DAYLIGHT_UPPER:-165 //AWB Daylight光源区域上方边界</span><br><span class="line">AWB_NVRAM_DAYLIGHT_LOWER:-290 //AWB Daylight光源区域下方边界</span><br><span class="line">AWB_NVRAM_SHADE_RIGHT:475 //AWB Shade光源区域右边边界</span><br><span class="line">AWB_NVRAM_SHADE_LEFT:155 //AWB Shade光源区域左边边界</span><br><span class="line">AWB_NVRAM_SHADE_UPPER:-169 //AWB Shade光源区域上方边界</span><br><span class="line">AWB_NVRAM_SHADE_LOWER:-290 //AWB Shade光源区域下方边界</span><br><span class="line">AWB_NVRAM_DAYLIGHT_FLUORESCENT_RIGHT:155 //AWB Daylight Fluorescent光源区域右边边界</span><br><span class="line">AWB_NVRAM_DAYLIGHT_FLUORESCENT_LEFT:-5 //AWB Daylight Fluorescent光源区域左边边界</span><br><span class="line">AWB_NVRAM_DAYLIGHT_FLUORESCENT_UPPER:-290 //AWB Daylight Fluorescent光源区域上方边界</span><br><span class="line">AWB_NVRAM_DAYLIGHT_FLUORESCENT_LOWER:-375 //AWB Daylight Fluorescent光源区域下方边界</span><br><span class="line"></span><br><span class="line">PWB_NVRAM_DEF_GAIN_R_DAYLIGHT:779 //PWB Daylight光源预设R Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_G_DAYLIGHT:512 //PWB Daylight光源预设G Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_B_DAYLIGHT:640 //PWB Daylight光源预设B Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_R_CLOUDY_DAYLIGHT:904 //PWB Cloudy光源预设R Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_G_CLOUDY_DAYLIGHT:512 //PWB Cloudy光源预设G Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_B_CLOUDY_DAYLIGHT:552 //PWB Cloudy光源预B Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_R_SHADE:967 //PWB Shade光源预设R Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_G_SHADE:512 //PWB Shade光源预设G Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_B_SHADE:515 //PWB Shade光源预设B Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_R_TWILIGHT:606 //PWB Twilight光源预设R Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_G_TWILIGHT:512 //PWB Twilight光源预设G Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_B_TWILIGHT:823 //PWB Twilight光源预设B Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_R_FLUORESCENT:692 //PWB Fluorescent光源预设R Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_G_FLUORESCENT:512 //PWB Fluorescent光源预设G Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_B_FLUORESCENT:789 //PWB Fluorescent光源预设B Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_R_WARM_FLUORESCENT:517 //PWB Warm Fluorescent光源预设R Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_G_WARM_FLUORESCENT:512 //PWB Warm Fluorescent光源预设G Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_B_WARM_FLUORESCENT:1054 //PWB Warm Fluorescent光源预设B Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_R_INCANDESCENT:495 //PWB Incandescent光源预设R Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_G_INCANDESCENT:512 //PWB Incandescent光源预设G Gain</span><br><span class="line">PWB_NVRAM_DEF_GAIN_B_INCANDESCENT:1008 //PWB Incandescent光源预设B Gain</span><br><span class="line"></span><br><span class="line">AWB_NVRAM_PREFERENCE_COLOR_SLIDER_TUNGSTEN:0  //AWB Tungsten Preference Color Slider</span><br><span class="line">AWB_NVRAM_PREFERENCE_COLOR_OFFSET_THR_TUNGSTEN:5319  //AWB Tungsten Preference Color Threshold</span><br><span class="line">AWB_NVRAM_PREFERENCE_COLOR_SLIDER_WARM_FLUORESCENT:0  //AWB Warm Fluorescent Preference Color Slider</span><br><span class="line">AWB_NVRAM_PREFERENCE_COLOR_OFFSET_THR_WARM_FLUORESCENT:5319  //AWB Warm Fluorescent Preference Color Slider</span><br><span class="line">AWB_NVRAM_PREFERENCE_COLOR_SLIDER_SHADE:0  //AWB Shade Preference Color Slider</span><br><span class="line">AWB_NVRAM_PREFERENCE_COLOR_OFFSET_THR_SHADE:2409  //AWB Shade Preference Color Slider</span><br></pre></td></tr></table></figure>
+<h3 id="6-6-AWB-Preference-Color"><a href="#6-6-AWB-Preference-Color" class="headerlink" title="6.6.AWB Preference Color"></a>6.6.AWB Preference Color</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AWB_TAG_DAY_LOCUS_OFFSET_T:0 //判断Tungsten光源下的影像是否产生色偏</span><br><span class="line">AWB_TAG_DAY_LOCUS_NEW_OFFSET_T:0 //这个值如果不为0，影像会存在偏黄的Preference Color</span><br><span class="line">AWB_TAG_DAY_LOCUS_OFFSET_WF:0 //判断Warm Fluorescent光源下的影像是否产生色偏</span><br><span class="line">AWB_TAG_DAY_LOCUS_NEW_OFFSET_WF:0 //这个值如果不为0，影像会存在偏黄的Preference Color</span><br><span class="line">AWB_TAG_DAY_LOCUS_OFFSET_S:1316 //判断Shade光源下的影像是否产生色偏</span><br><span class="line">AWB_TAG_DAY_LOCUS_NEW_OFFSET_S:0 //这个值如果不为0，影像会存在偏黄的Preference Color</span><br></pre></td></tr></table></figure>
+<h2 id="7-AWBV"><a href="#7-AWBV" class="headerlink" title="7.AWBV"></a>7.AWBV</h2><h3 id="7-1-第一个功能"><a href="#7-1-第一个功能" class="headerlink" title="7.1.第一个功能"></a>7.1.第一个功能</h3><p>显示AWB算法判断画面中各个色块的色温</p>
+<p>点击按钮[AWBV]，然后选择按钮[Light Source],就会显示AWB算法判断画面中各个色块的色温。</p>
+<p>假如说当前的光源是CWF(绿色)，那么当前中心色（灰色）的部分也一定是绿色的，可以辨认出画面中的中心色是否掉到绿色的Light Source Area。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_6.PNG" alt=" "></p>
+<h3 id="7-2-第二个功能"><a href="#7-2-第二个功能" class="headerlink" title="7.2.第二个功能"></a>7.2.第二个功能</h3><p>显示AWB算法判断画面中各个色块白点的落点</p>
+<p>点击按钮[AWBV]，然后选择按钮[XY Distribution],会显示AWB算法判断画面中各个色块的色彩和色温。</p>
+<p><img src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1330191/o_7.png" alt=" "></p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="https://www.cnblogs.com/images/cnblogs_com/cliy-10/1242272/o_reward-wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/11/01/C-2018-11-01/" class="pre-post btn btn-default" title='MT6589_Advance之AF Gen Table'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">MT6589_Advance之AF Gen Table</span>
+        </a>
+    
+    
+        <a href="/2018/10/30/C-2018-10-30/" class="next-post btn btn-default" title='MT6575之ISP部分'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">MT6575之ISP部分</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: true,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'Chinese'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-目的"><span class="toc-text">1.目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-提供功能"><span class="toc-text">2.提供功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-ISP-Info"><span class="toc-text">3.ISP Info</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-ISP-Index"><span class="toc-text">3.1.ISP Index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-ISP-Value"><span class="toc-text">3.2.ISP Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-ISP-Slider-Position"><span class="toc-text">3.3.ISP Slider Position</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Strobe-Info"><span class="toc-text">4.Strobe Info</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-AE-Info"><span class="toc-text">5.AE Info</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Preview-AE-Setting"><span class="toc-text">5.1.Preview AE Setting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-AF时AE-Setting"><span class="toc-text">5.2.AF时AE Setting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-Capture-AE-Setting"><span class="toc-text">5.3.Capture AE Setting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-AE-Commom"><span class="toc-text">5.4.AE Commom</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-AWB-Info"><span class="toc-text">6.AWB Info</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-AWB-Common"><span class="toc-text">6.1.AWB Common</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-AWB-Probability"><span class="toc-text">6.2.AWB Probability</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-AWB-Gain"><span class="toc-text">6.3.AWB Gain</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-AWB-Info"><span class="toc-text">6.4.AWB Info</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-AWB-NVRAM-Value"><span class="toc-text">6.5.AWB NVRAM Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-6-AWB-Preference-Color"><span class="toc-text">6.6.AWB Preference Color</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-AWBV"><span class="toc-text">7.AWBV</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-第一个功能"><span class="toc-text">7.1.第一个功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-第二个功能"><span class="toc-text">7.2.第二个功能</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: true || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
