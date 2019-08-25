@@ -163,124 +163,6 @@
         <div class="post-content">
             <div class="post-head home-post-head">
                 <h1 class="post-title">
-                    <a href="/2018/05/20/闭包的作用/">闭包的作用</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2018年05月20日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    闭包的作用1.封装变量闭包可以帮助把一些不需要暴露在全局的变量封装成&amp;quot;私有变量&amp;quot;
-举例：我们有一个可以计算乘积的函数
-12345678function mult()&amp;#123;	var s=1;  for(var ...
-                
-            </p>
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title">
-                    <a href="/2018/05/18/闭包/">闭包</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2018年05月18日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    
-闭包的形成与变量的作用域以及变量的生存周期密切相关
-
-1.变量的作用域变量的作用域指变量的有效范围，一般说的变量的作用域就是在函数中声明的变量作用域。
-当在函数中声明一个变量的时候，如果该变量前面没有带上关键字var，这个变量就会成...
-                
-            </p>
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title">
-                    <a href="/2018/05/16/call和apply的用途/">call和apply的用途</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2018年05月16日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    call和apply的用途1.改变this指向call和apply最常见的用途是改变函数内部的this指向
-123456789101112131415var obj1=&amp;#123;	name: &amp;quot;张三&amp;quot;&amp;#125;...
-                
-            </p>
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title">
-                    <a href="/2018/05/15/call和apply/">call和apply</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2018年05月15日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    
-ECMAScript3给Function的原型定义了两个方法Function.prototype.call或Function.prototype.apply，在一些函数式风格的代码编写中，call()方法和apply方法扮演着及其重...
-                
-            </p>
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title">
-                    <a href="/2018/05/14/this/">this</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2018年05月14日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    
-JavaScript的this总是指向一个对象，而具体指向哪个对象是在运行时基于函数的执行环境动态绑定的，而非函数被声明时的环境。
-
-1.this的指向关于this的指向可以分为四种情况
-1.作为对象的方法调用
-2.作为函数的实例化...
-                
-            </p>
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title">
                     <a href="/2018/05/12/JavaScript中的原型继承/">JavaScript中的原型继承</a>
                 </h1>
                 <div class="post-meta">  &bull;
@@ -395,6 +277,122 @@ JavaScript没有提供传统面向对象语言中的类式继承，而是通过p
         </div>
     </article>
  
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title">
+                    <a href="/2018/05/05/4-继承实例/">4-继承实例</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年05月05日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    继承机制实例关于继承，我们就拿多边形来说明问题吧，三角形、矩形、都是多边形的子类，多边形是它们的超类。
+
+1.确定基类考虑Polygon(多边形)类，应该有哪些属性和方法？
+首先一定要知道多边形的边数，然后需要计算多变形的面积，该类的...
+                
+            </p>
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title">
+                    <a href="/2018/05/04/4-继承的实现/">4-继承的实现</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年05月04日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    
+真正的面向对象语言必须必须支持继承机制，所谓的继承就是一个类能够重用(继承)另一个类的方法和属性。JavaScript中是怎么实现继承的呢？
+
+继承1.继承机制的实现要用ECMAScript实现继承机制，我们首先要知道什么是基类？
+...
+                
+            </p>
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title">
+                    <a href="/2018/04/30/3-字符串的连接/">3-字符换的链接</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年04月30日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    字符串链接性能问题1.第一种方式：利用运算符&amp;quot;+&amp;quot;12345var str=&amp;quot;hello&amp;quot;;str=str+&amp;quot;world&amp;quot;;console.log(str);   //hel...
+                
+            </p>
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title">
+                    <a href="/2018/04/27/3-修改对象/">3-修改对象</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年04月27日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    修改对象1.创建新方法可用prototype属性为任何已有的类定义新方法。
+举例：
+
+1、Number类的toString()方法，如果给它传递一个基数16，它将输出十六进制的字符串。我们可以自定义一个输出十六进制的函数toHexSt...
+                
+            </p>
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title">
+                    <a href="/2018/04/25/3-定义类或对象/">3-定义类和对象</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年04月25日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    定义类或对象1.工厂方式一般情况下对象的属性在对象创建后定义。例如下面的代码：
+1234567var car=new Object();car.color=&amp;quot;red&amp;quot;;car.doors=4;car.mpg=23;...
+                
+            </p>
+        </div>
+    </article>
+ 
 
 
     <nav class="pagination" role="navigation">
@@ -481,7 +479,7 @@ JavaScript没有提供传统面向对象语言中的类式继承，而是通过p
         
     <div class="widget">
         <h3 class="title">Categories</h3>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Camera/"><i class="fa" aria-hidden="true">Camera</i></a><span class="category-list-count">37</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">80</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/"><i class="fa" aria-hidden="true">工具</i></a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/"><i class="fa" aria-hidden="true">生活</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/资源/"><i class="fa" aria-hidden="true">资源</i></a><span class="category-list-count">3</span></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Camera/"><i class="fa" aria-hidden="true">Camera</i></a><span class="category-list-count">37</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">75</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/"><i class="fa" aria-hidden="true">工具</i></a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/资源/"><i class="fa" aria-hidden="true">资源</i></a><span class="category-list-count">3</span></li></ul>
     </div>
 
 
@@ -489,7 +487,7 @@ JavaScript没有提供传统面向对象语言中的类式继承，而是通过p
         
     <div class="widget">
         <h3 class="title">Archives</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/"><i class="fa" aria-hidden="true">2019年02月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/"><i class="fa" aria-hidden="true">2018年11月</i></a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">2018年10月</i></a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">2018年09月</i></a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">2018年08月</i></a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/"><i class="fa" aria-hidden="true">2018年07月</i></a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/"><i class="fa" aria-hidden="true">2018年06月</i></a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">2018年05月</i></a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/"><i class="fa" aria-hidden="true">2018年04月</i></a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/"><i class="fa" aria-hidden="true">2018年03月</i></a><span class="archive-list-count">13</span></li></ul>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/"><i class="fa" aria-hidden="true">2018年11月</i></a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">2018年10月</i></a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">2018年09月</i></a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">2018年08月</i></a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/"><i class="fa" aria-hidden="true">2018年07月</i></a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/"><i class="fa" aria-hidden="true">2018年06月</i></a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">2018年05月</i></a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/"><i class="fa" aria-hidden="true">2018年04月</i></a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/"><i class="fa" aria-hidden="true">2018年03月</i></a><span class="archive-list-count">13</span></li></ul>
     </div>
 
 
@@ -500,7 +498,7 @@ JavaScript没有提供传统面向对象语言中的类式继承，而是通过p
     <div class="content tag-cloud">
         
             <canvas width="300" height="300" id="tag-cloud-3d">
-                <a href="/tags/AF/" style="font-size: 10px;">AF</a> <a href="/tags/AJAX/" style="font-size: 11.25px;">AJAX</a> <a href="/tags/CCM/" style="font-size: 10px;">CCM</a> <a href="/tags/CCT/" style="font-size: 15px;">CCT</a> <a href="/tags/Camera-tuning/" style="font-size: 18.75px;">Camera-tuning</a> <a href="/tags/Debug-Parser/" style="font-size: 10px;">Debug Parser</a> <a href="/tags/Dynamic-Gamma/" style="font-size: 10px;">Dynamic Gamma</a> <a href="/tags/Flash/" style="font-size: 10px;">Flash</a> <a href="/tags/Git/" style="font-size: 17.5px;">Git</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Hexo-Github/" style="font-size: 10px;">Hexo Github</a> <a href="/tags/Image-Signal-Processing/" style="font-size: 10px;">Image Signal Processing</a> <a href="/tags/Imatest/" style="font-size: 11.25px;">Imatest</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/JavaScript框架/" style="font-size: 15px;">JavaScript框架</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MTK平台/" style="font-size: 10px;">MTK平台</a> <a href="/tags/Sublime/" style="font-size: 13.75px;">Sublime</a> <a href="/tags/Yquery/" style="font-size: 10px;">Yquery</a> <a href="/tags/adb命令/" style="font-size: 11.25px;">adb命令</a> <a href="/tags/me/" style="font-size: 10px;">me</a> <a href="/tags/主观画质评审指南/" style="font-size: 11.25px;">主观画质评审指南</a> <a href="/tags/图像文件格式/" style="font-size: 12.5px;">图像文件格式</a> <a href="/tags/图像质量规范/" style="font-size: 12.5px;">图像质量规范</a> <a href="/tags/大神/" style="font-size: 11.25px;">大神</a> <a href="/tags/客户端与服务器通信方式/" style="font-size: 10px;">客户端与服务器通信方式</a> <a href="/tags/插件/" style="font-size: 12.5px;">插件</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/禅意花园/" style="font-size: 10px;">禅意花园</a> <a href="/tags/设计模式/" style="font-size: 16.25px;">设计模式</a> <a href="/tags/雅虎35条/" style="font-size: 10px;">雅虎35条</a> <a href="/tags/预解析过程/" style="font-size: 10px;">预解析过程</a>
+                <a href="/tags/AF/" style="font-size: 10px;">AF</a> <a href="/tags/AJAX/" style="font-size: 11.25px;">AJAX</a> <a href="/tags/CCM/" style="font-size: 10px;">CCM</a> <a href="/tags/CCT/" style="font-size: 16.25px;">CCT</a> <a href="/tags/Camera-tuning/" style="font-size: 18.75px;">Camera-tuning</a> <a href="/tags/Debug-Parser/" style="font-size: 10px;">Debug Parser</a> <a href="/tags/Dynamic-Gamma/" style="font-size: 10px;">Dynamic Gamma</a> <a href="/tags/Flash/" style="font-size: 10px;">Flash</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Hexo-Github/" style="font-size: 10px;">Hexo Github</a> <a href="/tags/Image-Signal-Processing/" style="font-size: 10px;">Image Signal Processing</a> <a href="/tags/Imatest/" style="font-size: 11.25px;">Imatest</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/JavaScript框架/" style="font-size: 16.25px;">JavaScript框架</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MTK平台/" style="font-size: 10px;">MTK平台</a> <a href="/tags/Sublime/" style="font-size: 13.75px;">Sublime</a> <a href="/tags/Yquery/" style="font-size: 10px;">Yquery</a> <a href="/tags/adb命令/" style="font-size: 11.25px;">adb命令</a> <a href="/tags/主观画质评审指南/" style="font-size: 11.25px;">主观画质评审指南</a> <a href="/tags/图像文件格式/" style="font-size: 12.5px;">图像文件格式</a> <a href="/tags/图像质量规范/" style="font-size: 12.5px;">图像质量规范</a> <a href="/tags/大神/" style="font-size: 11.25px;">大神</a> <a href="/tags/客户端与服务器通信方式/" style="font-size: 10px;">客户端与服务器通信方式</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/禅意花园/" style="font-size: 10px;">禅意花园</a> <a href="/tags/设计模式/" style="font-size: 17.5px;">设计模式</a> <a href="/tags/雅虎35条/" style="font-size: 10px;">雅虎35条</a> <a href="/tags/预解析过程/" style="font-size: 10px;">预解析过程</a>
             </canvas>
         
     </div>
